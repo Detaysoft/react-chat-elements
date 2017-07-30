@@ -1,0 +1,41 @@
+{
+  "name": "react-chat-elements",
+  "version": "0.1.0",
+  "description": "Reactjs chat components",
+  "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
+  "main": "src/index.js",
+  "devDependencies": {
+    "react": "^15.6.1",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "^1.0.10",
+    "react-test-renderer": "^15.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdurrahmanekr/react-chat-elements.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "chat",
+    "css",
+    "chat",
+    "components"
+  ],
+  "license": "MIT",
+  "jest": {
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/abdurrahmanekr/react-chat-elements/issues"
+  },
+  "homepage": "https://github.com/abdurrahmanekr/react-chat-elements#readme",
+  "scripts": {
+    "test": "react-scripts test --env=jsdom",
+    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
+  }
+}
