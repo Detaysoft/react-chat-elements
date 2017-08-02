@@ -35,6 +35,7 @@
   },
   "homepage": "https://github.com/abdurrahmanekr/react-chat-elements#readme",
   "scripts": {
+    "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   }

@@ -4,4 +4,4 @@ const MessageBox = () => (
 	<div></div>
 );
 
-module.exports = MessageBox;
+export default MessageBox;

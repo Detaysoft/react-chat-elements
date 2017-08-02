@@ -1,8 +1,8 @@
 /* import css */
-import '../assets/css';
+import './assets/css';
 
 /* import components */
-import MessageBox from './MessageBox.js';
+import MessageBox from './MessageBox/MessageBox';
 
 
 export {
