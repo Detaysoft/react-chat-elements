@@ -5,9 +5,10 @@
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "src/index.js",
   "devDependencies": {
-    "react": "^15.6.1",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
+    "lorem-ipsum": "^1.0.4",
+    "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "^1.0.10",
     "react-test-renderer": "^15.6.1"
@@ -38,5 +39,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }

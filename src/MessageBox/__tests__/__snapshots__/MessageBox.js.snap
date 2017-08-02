@@ -1,3 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageBox component should render without issues 1`] = `<div />`;
+exports[`MessageBox component should render without issues 1`] = `
+<div
+  className="rce-container-mbox"
+>
+  <div
+    className="rce-mbox"
+  >
+    <div
+      className="rce-mbox-text"
+    />
+    <div
+      className="rce-mbox-time rce-mbox-right"
+    >
+      12:30
+    </div>
+    <svg
+      className="rce-mbox-right-notch"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0v20L20 0"
+      />
+    </svg>
+  </div>
+</div>
+`;

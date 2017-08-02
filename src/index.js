@@ -1,10 +1,11 @@
-/* import css */
-import './assets/css';
+import './assets/style.css';
+
+import './example';
 
 /* import components */
 import MessageBox from './MessageBox/MessageBox';
 
 
 export {
-	MessageBox
+	MessageBox,
 };

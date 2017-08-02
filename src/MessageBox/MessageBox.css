@@ -1,0 +1,45 @@
+.rce-container-mbox {
+	flex-direction: column;
+	display: block;
+	overflow: hidden;
+}
+.rce-mbox {
+	position: relative;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
+	border-top-right-radius: 0px;
+	margin-right: 20px;
+	margin-top: 5px;
+	display: inline-block;
+	flex-direction: column;
+	margin-bottom: 5px;
+	padding: 6px 9px 8px 9px;
+	float: left;
+}
+
+.rce-mbox.rce-mbox-right {
+	float: right;
+}
+
+.rce-mbox-text {
+	font-size: 13.6px;
+}
+
+.rce-mbox-time {
+	text-align: right;
+	color: rgba(0,0,0,0.45);
+	font-size: 12px;
+}
+
+.rce-mbox-right-notch {
+	z-index: 1;
+	position: absolute;
+	right: -14px;
+	top: 0px;
+	width: 15px;
+	height: 15px;
+	fill: white;
+
+	filter: drop-shadow( 2px 0px 1px rgba(0,0,0,.2) );
+}
