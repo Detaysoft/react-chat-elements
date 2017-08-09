@@ -41,6 +41,9 @@
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "react-icons": "^2.2.5",
+    "react-progressbar.js": "^0.2.0",
+    "react-spinkit": "^3.0.0"
   }
 }

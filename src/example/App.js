@@ -7,9 +7,15 @@ export class App extends Component {
 	random() {
 		return {
 			position: (parseInt(Math.random() * 10 % 2) && 'right'),
-			type: 'text',
+			type: 'photo',
 			text: loremIpsum({count: 1, units: 'sentences'}),
-			data: {},
+			data: {
+				uri: 'https://user-images.githubusercontent.com/15075759/29005175-1d023bea-7ade-11e7-86d5-21f87225ef56.png',
+				status: {
+					click: true,
+					loading: 0.5,
+				}
+			},
 			date: new Date(),
 		};
 	}
