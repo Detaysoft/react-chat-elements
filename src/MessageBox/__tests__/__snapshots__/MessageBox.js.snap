@@ -8,9 +8,6 @@ exports[`MessageBox component should render without issues 1`] = `
     className="rce-mbox"
   >
     <div
-      className="rce-mbox-text"
-    />
-    <div
       className="rce-mbox-time rce-mbox-right"
     >
       12:30
