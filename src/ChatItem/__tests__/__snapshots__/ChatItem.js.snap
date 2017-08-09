@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatItem component should render without issues 1`] = `
+<div
+  className="rce-container-citem"
+>
+  <div
+    className="rce-citem"
+  >
+    <div
+      className="rce-citem-avatar"
+    >
+      <img />
+    </div>
+    <div
+      className="rce-citem-body"
+    >
+      <div
+        className="rce-citem-body--top"
+      >
+        <div
+          className="rce-citem-body--top-title"
+        />
+        <div
+          className="rce-citem-body--top-time"
+        >
+          a few seconds ago
+        </div>
+      </div>
+      <div
+        className="rce-citem-body--bottom"
+      >
+        <div
+          className="rce-citem-body--bottom-title"
+        />
+        <div
+          className="rce-citem-body--bottom-status"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
