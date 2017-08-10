@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhotoMessage component should render without issues 1`] = `
+<div
+  className="rce-mbox-photo"
+>
+  <div
+    className="rce-mbox-photo--img"
+  >
+    <img />
+  </div>
+  <div
+    className="rce-mbox-text"
+  />
+</div>
+`;
