@@ -1,6 +1,6 @@
 import './assets/style.css';
 
-import './example';
+// import './example'; // only develop
 
 /* import components */
 import MessageBox from './MessageBox/MessageBox';
