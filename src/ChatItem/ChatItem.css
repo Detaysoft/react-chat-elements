@@ -14,6 +14,7 @@
     user-select: none;
     max-width: 100%;
     overflow: hidden;
+    min-width: 240px;
 }
 
 .rce-citem:hover {

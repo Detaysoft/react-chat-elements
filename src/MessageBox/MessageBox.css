@@ -11,7 +11,7 @@
 	border-top-right-radius: 0px;
 	margin-right: 20px;
 	margin-top: 5px;
-	display: inline-block;
+	display: flex;
 	flex-direction: column;
 	margin-bottom: 5px;
 	padding: 6px 9px 8px 9px;
@@ -106,4 +106,58 @@
 
 .rce-mbox-photo--download:active {
 	opacity: .3;
+}
+
+.rce-mbox-file {
+	background: #e9e9e9;
+	display: flex;
+	border-radius: 5px;
+	margin-top: -3px;
+	margin-right: -6px;
+	margin-left: -6px;
+	align-items: center;
+	min-height: 52px;
+	max-width: 500px;
+	padding: 5px 0;
+	cursor: pointer;
+    user-select: none;
+    outline: none;
+    border:none;
+}
+
+.rce-mbox-file > * {
+	padding: 0px 10px;
+}
+
+.rce-mbox-file--icon {
+	font-size: 30px;
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.rce-mbox-file--size {
+	font-size: 10px;
+	margin-top: 3px;
+	max-width: 52px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rce-mbox-file--text {
+	font-size: 13.6px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rce-mbox-file--buttons {
+	font-size: 30px;
+	align-items: center;
+    display: flex;
+}
+
+.rce-mbox-file--loading {
+	font-size: 15px;
 }
