@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MessageBox from '../MessageBox/MessageBox';
+import ChatItem from '../ChatItem/ChatItem';
+import SystemMessage from '../SystemMessage/SystemMessage';
 
 const loremIpsum = require('lorem-ipsum');
 
@@ -36,12 +38,15 @@ export class App extends Component {
 						// 	unread={tmp.unread}
 						// 	date={tmp.date}/>;
 
-						return <MessageBox
-							key={i}
-							type={tmp.type}
-							text={tmp.text}
-							data={tmp.data}
-							position={tmp.position}/>
+						// return <MessageBox
+						// 	key={i}
+						// 	type={tmp.type}
+						// 	text={tmp.text}
+						// 	data={tmp.data}
+						// 	position={tmp.position}/>
+
+						return <SystemMessage
+							text={'10.10.1996'}/>
 					})
 				}
 			</div>

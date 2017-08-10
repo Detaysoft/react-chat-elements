@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SystemMessage component should render without issues 1`] = `
+<div
+  className="rce-container-smsg"
+>
+  <div
+    className="rce-smsg"
+  >
+    <div
+      className="rce-smsg-text"
+    />
+  </div>
+</div>
+`;
