@@ -38,15 +38,15 @@ export class App extends Component {
 						// 	unread={tmp.unread}
 						// 	date={tmp.date}/>;
 
-						// return <MessageBox
-						// 	key={i}
-						// 	type={tmp.type}
-						// 	text={tmp.text}
-						// 	data={tmp.data}
-						// 	position={tmp.position}/>
+						return <MessageBox
+							key={i}
+							type={tmp.type}
+							text={tmp.text}
+							data={tmp.data}
+							position={tmp.position}/>
 
-						return <SystemMessage
-							text={'10.10.1996'}/>
+						// return <SystemMessage
+						// 	text={'10.10.1996'}/>
 					})
 				}
 			</div>

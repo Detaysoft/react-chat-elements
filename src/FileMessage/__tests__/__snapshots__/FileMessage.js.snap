@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileMessage component should render without issues 1`] = `
+<button
+  className="rce-mbox-file"
+>
+  <div
+    className="rce-mbox-file--icon"
+  >
+    <FaFile
+      color="#aaa"
+    />
+    <div
+      className="rce-mbox-file--size"
+    >
+      1024mB
+    </div>
+  </div>
+  <div
+    className="rce-mbox-file--text"
+  />
+  <div
+    className="rce-mbox-file--buttons"
+  />
+</button>
+`;
