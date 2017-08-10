@@ -2,3 +2,8 @@ body {
 	font-family: verdana, ubuntu;
 	background: navajowhite;
 }
+
+input,
+button {
+	font-family: verdana, ubuntu;
+}

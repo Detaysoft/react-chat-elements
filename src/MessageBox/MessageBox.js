@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './MessageBox.css';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
+import FaFile from 'react-icons/lib/fa/file';
 
 const classNames = require('classnames');
 const ProgressBar = require('react-progressbar.js');
@@ -26,6 +27,10 @@ export class MessageBox extends Component {
 					circle.setText(value);
 			}
 		};
+		var fileProgressOptions = Object.assign({}, progressOptions);
+		fileProgressOptions.strokeWidth = 5;
+		fileProgressOptions.color = '#333';
+		fileProgressOptions.trailWidth = 5;
 
 		return (
 			<div className="rce-container-mbox">
@@ -73,6 +78,40 @@ export class MessageBox extends Component {
 								{this.props.text}
 							</div>
 						</div>
+					}
+					{
+						this.props.type === 'file' &&
+						<button className="rce-mbox-file">
+							<div className="rce-mbox-file--icon">
+								<FaFile
+									color='#aaa'/>
+								<div className="rce-mbox-file--size">
+									1024mB
+								</div>
+							</div>
+							<div className="rce-mbox-file--text">
+								{this.props.text}
+							</div>
+							<div className="rce-mbox-file--buttons">
+								{
+									!this.props.data.status.click &&
+									<FaCloudDownload
+										color='#aaa'/>
+								}
+								{
+									this.props.data.status.loading !== 0 &&
+									<Circle
+										progress={this.props.data.status.loading}
+										options={fileProgressOptions}
+										initialAnimate={true}
+										containerStyle={{
+											width: '40px',
+											height: '40px',
+										}}
+										containerClassName={'rce-mbox-file--loading'} />
+								}
+							</div>
+						</button>
 					}
 					<div className="rce-mbox-time rce-mbox-right">
 						12:30

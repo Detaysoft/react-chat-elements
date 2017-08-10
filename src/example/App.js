@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import MessageBox from '../MessageBox/MessageBox';
-import ChatItem from '../ChatItem/ChatItem';
 
 const loremIpsum = require('lorem-ipsum');
 
 export class App extends Component {
 	random() {
 		return {
-			unread: parseInt(Math.random() * 10 % 2),
-			title: loremIpsum({count: 1, units: 'sentences'}),
-			avatar: 'https://avatars0.githubusercontent.com/u/15075759?v=4',
-			subtitle: loremIpsum({count: 1, units: 'sentences'}),
-			date: new Date().setDate(1),
+			position: (parseInt(Math.random() * 10 % 2) && 'right'),
+			type: (parseInt(Math.random() * 10 % 2) ? 'file' : 'photo'),
+			text: loremIpsum({count: 1, units: 'sentences'}),
+			data: {
+				uri: 'https://user-images.githubusercontent.com/15075759/29005175-1d023bea-7ade-11e7-86d5-21f87225ef56.png',
+				status: {
+					click: true,
+					loading: 1,
+				}
+			},
+			date: new Date(),
 		};
 	}
 
@@ -22,20 +27,21 @@ export class App extends Component {
 				{
 					arr.map((x, i) => {
 						var tmp = this.random();
-						return <ChatItem
-							key={i}
-							title={tmp.title}
-							subtitle={tmp.subtitle}
-							avatar={tmp.avatar}
-							unread={tmp.unread}
-							date={tmp.date}/>;
 
-						// return <MessageBox
+						// return <ChatItem
 						// 	key={i}
-						// 	type={tmp.type}
-						// 	text={tmp.text}
-						// 	data={tmp.data}
-						// 	position={tmp.position}/>;
+						// 	title={tmp.title}
+						// 	subtitle={tmp.subtitle}
+						// 	avatar={tmp.avatar}
+						// 	unread={tmp.unread}
+						// 	date={tmp.date}/>;
+
+						return <MessageBox
+							key={i}
+							type={tmp.type}
+							text={tmp.text}
+							data={tmp.data}
+							position={tmp.position}/>
 					})
 				}
 			</div>
