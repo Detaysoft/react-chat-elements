@@ -8,6 +8,7 @@
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "lorem-ipsum": "^1.0.4",
+    "nwb": "^0.18.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "^1.0.10",
@@ -36,7 +37,7 @@
   },
   "homepage": "https://github.com/abdurrahmanekr/react-chat-elements#readme",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nwb serve-react-app ./src/example/index.js",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },
