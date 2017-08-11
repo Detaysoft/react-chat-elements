@@ -5,6 +5,7 @@ import {
 	ChatList,
 	SystemMessage,
 	MessageList,
+	Input,
 } from '../src';
 
 const loremIpsum = require('lorem-ipsum');
@@ -59,9 +60,6 @@ export class App extends Component {
 		}
 	}
 
-	test(arr) {
-	}
-
 	render() {
 		var arr = [];
 		for (var i = 0; i < 50; i++)
@@ -75,9 +73,14 @@ export class App extends Component {
 				<ChatList
 					className='chat-list'
 					dataSource={chatSource}/>
-				<MessageList
-					className='message-list'
-					dataSource={messageSource}/>
+				<div
+					className='right-panel'>
+					<MessageList
+						className='message-list'
+						dataSource={messageSource}/>
+					<Input
+						className='input-area'/>
+				</div>
 
 				{
 					// arr.map((x, i) => {
@@ -106,4 +109,5 @@ export class App extends Component {
 		);
 	}
 }
+
 export default App;

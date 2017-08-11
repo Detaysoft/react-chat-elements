@@ -3,6 +3,7 @@ import ChatItem from './ChatItem/ChatItem';
 import SystemMessage from './SystemMessage/SystemMessage';
 import ChatList from './ChatList/ChatList';
 import MessageList from './MessageList/MessageList';
+import Input from './Input/Input';
 
 
 export {
@@ -11,4 +12,5 @@ export {
 	SystemMessage,
 	ChatList,
 	MessageList,
+	Input,
 };
