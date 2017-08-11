@@ -3,10 +3,13 @@ import './MessageList.css';
 
 import MessageBox from '../MessageBox/MessageBox';
 
+const classNames = require('classnames');
+
 export class MessageList extends Component {
 	render() {
 		return (
-			<div className="rce-container-mlist">
+			<div
+				className={classNames(['rce-container-mlist', this.props.className])}>
 				{
 					this.props.dataSource.map((x, i) => (
 						<MessageBox

@@ -3,10 +3,12 @@ import './ChatList.css';
 
 import ChatItem from '../ChatItem/ChatItem';
 
+const classNames = require('classnames');
+
 export class ChatList extends Component {
 	render() {
 		return (
-			<div className="rce-container-clist">
+			<div className={classNames(['rce-container-clist', this.props.className])}>
 				{
 					this.props.dataSource.map((x, i) => (
 						<ChatItem
