@@ -2,6 +2,7 @@
     flex-direction: column;
     display: block;
     overflow: hidden;
+    min-width: 240px;
 }
 
 .rce-citem {

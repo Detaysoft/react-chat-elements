@@ -8,11 +8,19 @@ import {
 } from '../src';
 
 const loremIpsum = require('lorem-ipsum');
+const Identicon = require('identicon.js')
 
 export class App extends Component {
 
 	token() {
 		return (parseInt(Math.random() * 10 % 3));
+	}
+
+	photo(size) {
+		return new Identicon(String(Math.random()) + String(Math.random()), {
+			margin: 0,
+			size: size || 20,
+		}).toString()
 	}
 
 	random(type) {
@@ -31,7 +39,7 @@ export class App extends Component {
 					type: type,
 					text: loremIpsum({count: 1, units: 'sentences'}),
 					data: {
-						uri: 'https://user-images.githubusercontent.com/15075759/29005175-1d023bea-7ade-11e7-86d5-21f87225ef56.png',
+						uri: `data:image/png;base64,${this.photo(150)}`,
 						status: {
 							click: false,
 							loading: 0,
@@ -41,7 +49,7 @@ export class App extends Component {
 				};
 			case 'chat':
 				return {
-					avatar: 'https://avatars0.githubusercontent.com/u/15075759',
+					avatar: `data:image/png;base64,${this.photo()}`,
 					alt: loremIpsum({count: 2, units: 'words'}),
 					title: loremIpsum({count: 2, units: 'words'}),
 					date: new Date(),
