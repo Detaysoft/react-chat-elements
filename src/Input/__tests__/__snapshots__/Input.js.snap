@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render without issues 1`] = `
+<div
+  className="rce-container-input"
+>
+  <input
+    className="rce-input"
+    type="text"
+  />
+</div>
+`;
