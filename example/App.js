@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
 	MessageBox,
 	ChatItem,
+	ChatList,
 	SystemMessage,
 } from '../src';
 
@@ -26,11 +27,26 @@ export class App extends Component {
 
 	render() {
 		var arr = [1,2,3,4,5,6,7,8,9,0];
+		var dataSource = arr.map(x => {
+			return {
+				avatar: 'https://avatars0.githubusercontent.com/u/15075759?v=4',
+				alt: x,
+				title: loremIpsum({count: 1, units: 'sentences'}),
+				date: x,
+				subtitle: loremIpsum({count: 1, units: 'sentences'}),
+				unread: x,
+			}
+		});
+
 		return (
 			<div>
 				{
-					arr.map((x, i) => {
-						var tmp = this.random();
+					<ChatList
+						dataSource={dataSource}/>
+				}
+				{
+					// arr.map((x, i) => {
+						// var tmp = this.random();
 
 						// return <ChatItem
 						// 	key={i}
@@ -40,16 +56,16 @@ export class App extends Component {
 						// 	unread={tmp.unread}
 						// 	date={tmp.date}/>;
 
-						return <MessageBox
-							key={i}
-							type={tmp.type}
-							text={tmp.text}
-							data={tmp.data}
-							position={tmp.position}/>
+						// return <MessageBox
+						// 	key={i}
+						// 	type={tmp.type}
+						// 	text={tmp.text}
+						// 	data={tmp.data}
+						// 	position={tmp.position}/>
 
 						// return <SystemMessage
 						// 	text={'10.10.1996'}/>
-					})
+					// })
 				}
 			</div>
 		);
