@@ -4,6 +4,7 @@ import {
 	ChatItem,
 	ChatList,
 	SystemMessage,
+	MessageList,
 } from '../src';
 
 const loremIpsum = require('lorem-ipsum');
@@ -27,21 +28,12 @@ export class App extends Component {
 
 	render() {
 		var arr = [1,2,3,4,5,6,7,8,9,0];
-		var dataSource = arr.map(x => {
-			return {
-				avatar: 'https://avatars0.githubusercontent.com/u/15075759?v=4',
-				alt: x,
-				title: loremIpsum({count: 1, units: 'sentences'}),
-				date: x,
-				subtitle: loremIpsum({count: 1, units: 'sentences'}),
-				unread: x,
-			}
-		});
+		var dataSource = arr.map(x => this.random());
 
 		return (
 			<div>
 				{
-					<ChatList
+					<MessageList
 						dataSource={dataSource}/>
 				}
 				{
