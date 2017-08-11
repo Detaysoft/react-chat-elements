@@ -30,8 +30,10 @@ button {
 
 .chat-list {
 	float: left;
+	width: 400px;
 }
 
 .message-list {
 	float: left;
+	flex: 1;
 }
