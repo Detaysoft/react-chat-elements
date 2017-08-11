@@ -32,6 +32,7 @@
 
 .rce-mbox-photo--img img {
 	height: 100%;
+	user-select: none;
 }
 
 .rce-mbox-photo--img__block-item {
