@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import MessageBox from '../MessageBox/MessageBox';
-import ChatItem from '../ChatItem/ChatItem';
-import SystemMessage from '../SystemMessage/SystemMessage';
+import {
+	MessageBox,
+	ChatItem,
+	SystemMessage,
+} from '../src';
 
 const loremIpsum = require('lorem-ipsum');
 
