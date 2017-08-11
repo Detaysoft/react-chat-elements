@@ -1,9 +1,37 @@
 body {
 	font-family: verdana, ubuntu;
 	background: navajowhite;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+	overflow: hidden;
 }
 
 input,
 button {
 	font-family: verdana, ubuntu;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	min-height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.chat-list {
+	float: left;
+}
+
+.message-list {
+	float: left;
 }
