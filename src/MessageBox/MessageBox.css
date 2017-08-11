@@ -8,8 +8,8 @@
 	background: white;
 	border-radius: 5px;
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
-	border-top-right-radius: 0px;
-	margin-right: 20px;
+	border-top-left-radius: 0px;
+	margin-left: 20px;
 	margin-top: 5px;
 	display: flex;
 	flex-direction: column;
@@ -22,6 +22,10 @@
 
 .rce-mbox.rce-mbox-right {
 	float: right;
+	margin-left: 0px;
+	margin-right: 20px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 5px;
 }
 
 .rce-mbox-text {
@@ -43,4 +47,14 @@
 	height: 15px;
 	fill: white;
 	filter: drop-shadow( 2px 0px 1px rgba(0,0,0,.2) );
+}
+
+.rce-mbox-left-notch {
+	z-index: 1;
+	position: absolute;
+	left: -14px;
+	top: 0px;
+	width: 15px;
+	height: 15px;
+	fill: white;
 }
