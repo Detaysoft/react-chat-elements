@@ -5,10 +5,15 @@ export class Input extends Component {
 	render() {
 		return (
 			<div className="rce-container-input">
-				<input type="text" className="rce-input" placeholder="Mesajınızı buraya yazınız."/>
+				<input type="text" className="rce-input" placeholder={this.props.placeholder} value={this.props.value} />
 			</div>
 		);
 	}
 }
+
+Input.defaultProps = {
+	placeholder: '',
+	value: '',
+};
 
 export default Input;
