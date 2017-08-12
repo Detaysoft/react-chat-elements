@@ -6,7 +6,9 @@ exports[`Input component should render without issues 1`] = `
 >
   <input
     className="rce-input"
+    placeholder=""
     type="text"
+    value=""
   />
 </div>
 `;
