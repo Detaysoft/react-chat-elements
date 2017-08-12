@@ -6,6 +6,7 @@ exports[`Input component should render without issues 1`] = `
 >
   <input
     className="rce-input"
+    onChange={[Function]}
     placeholder=""
     type="text"
     value=""
