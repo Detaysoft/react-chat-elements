@@ -40,7 +40,6 @@
 }
 
 .rce-mbox-right-notch {
-	z-index: 1;
 	position: absolute;
 	right: -14px;
 	top: 0px;
@@ -51,7 +50,6 @@
 }
 
 .rce-mbox-left-notch {
-	z-index: 1;
 	position: absolute;
 	left: -14px;
 	top: 0px;

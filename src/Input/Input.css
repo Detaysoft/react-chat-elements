@@ -9,4 +9,5 @@
     background: white;
     padding-right: 15px;
     border: none;
+    box-sizing: border-box;
 }
