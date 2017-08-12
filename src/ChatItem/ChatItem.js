@@ -40,4 +40,13 @@ export class ChatItem extends Component {
 	}
 }
 
+ChatItem.defaultProps = {
+	avatar: '',
+	alt: '',
+	title: '',
+	subtitle: '',
+	date: '',
+	unread: 0,
+}
+
 export default ChatItem;
