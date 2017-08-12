@@ -5,7 +5,7 @@ export class Input extends Component {
 	render() {
 		return (
 			<div className="rce-container-input">
-				<input type="text" className="rce-input"/>
+				<input type="text" className="rce-input" placeholder="Mesajınızı buraya yazınız."/>
 			</div>
 		);
 	}
