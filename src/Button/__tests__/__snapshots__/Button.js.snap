@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should render without issues 1`] = `
+<a
+  className="rce-button default"
+  disabled={false}
+/>
+`;
