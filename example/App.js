@@ -80,7 +80,7 @@ export class App extends Component {
 						className='message-list'
 						dataSource={messageSource} />
 					<Input
-						className='input-area' placeholder="Mesajınızı buraya yazınız." value=""/>
+						className='input-area' placeholder="Mesajınızı buraya yazınız." defaultValue=""/>
 					<Button type="outlined" text="Jamiryo!!" />
 				</div>
 
