@@ -6,6 +6,7 @@ import {
 	SystemMessage,
 	MessageList,
 	Input,
+	Button,
 } from '../src';
 
 const loremIpsum = require('lorem-ipsum');
@@ -38,7 +39,7 @@ export class App extends Component {
 				return {
 					position: (this.token() >= 1 ? 'right' : 'left'),
 					type: type,
-					text: loremIpsum({count: 1, units: 'sentences'}),
+					text: loremIpsum({ count: 1, units: 'sentences' }),
 					data: {
 						uri: `data:image/png;base64,${this.photo(150)}`,
 						status: {
@@ -51,10 +52,10 @@ export class App extends Component {
 			case 'chat':
 				return {
 					avatar: `data:image/png;base64,${this.photo()}`,
-					alt: loremIpsum({count: 2, units: 'words'}),
-					title: loremIpsum({count: 2, units: 'words'}),
+					alt: loremIpsum({ count: 2, units: 'words' }),
+					title: loremIpsum({ count: 2, units: 'words' }),
 					date: new Date(),
-					subtitle: loremIpsum({count: 1, units: 'sentences'}),
+					subtitle: loremIpsum({ count: 1, units: 'sentences' }),
 					unread: parseInt(Math.random() * 10 % 3),
 				};
 		}
@@ -64,7 +65,7 @@ export class App extends Component {
 		var arr = [];
 		for (var i = 0; i < 50; i++)
 			arr.push(i);
-		
+
 		var messageSource = arr.map(x => this.random('message'));
 		var chatSource = arr.map(x => this.random('chat'));
 
@@ -72,37 +73,38 @@ export class App extends Component {
 			<div className='container'>
 				<ChatList
 					className='chat-list'
-					dataSource={chatSource}/>
+					dataSource={chatSource} />
 				<div
 					className='right-panel'>
 					<MessageList
 						className='message-list'
-						dataSource={messageSource}/>
+						dataSource={messageSource} />
 					<Input
-						className='input-area'/>
+						className='input-area' placeholder="Mesajınızı buraya yazınız." value=""/>
+					<Button type="outlined" text="Jamiryo!!" />
 				</div>
 
 				{
 					// arr.map((x, i) => {
-						// var tmp = this.random();
+					// var tmp = this.random();
 
-						// return <ChatItem
-						// 	key={i}
-						// 	title={tmp.title}
-						// 	subtitle={tmp.subtitle}
-						// 	avatar={tmp.avatar}
-						// 	unread={tmp.unread}
-						// 	date={tmp.date}/>;
+					// return <ChatItem
+					// 	key={i}
+					// 	title={tmp.title}
+					// 	subtitle={tmp.subtitle}
+					// 	avatar={tmp.avatar}
+					// 	unread={tmp.unread}
+					// 	date={tmp.date}/>;
 
-						// return <MessageBox
-						// 	key={i}
-						// 	type={tmp.type}
-						// 	text={tmp.text}
-						// 	data={tmp.data}
-						// 	position={tmp.position}/>
+					// return <MessageBox
+					// 	key={i}
+					// 	type={tmp.type}
+					// 	text={tmp.text}
+					// 	data={tmp.data}
+					// 	position={tmp.position}/>
 
-						// return <SystemMessage
-						// 	text={'10.10.1996'}/>
+					// return <SystemMessage
+					// 	text={'10.10.1996'}/>
 					// })
 				}
 			</div>
