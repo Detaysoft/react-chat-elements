@@ -20,7 +20,7 @@ button {
 	display: flex;
 	flex-direction: row;
 	min-height: 100%;
-	overflow: hidden;
+	overflow: auto;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -29,7 +29,8 @@ button {
 }
 
 .chat-list {
-	width: 400px;
+	min-width: 240px;
+	max-width: 380px;
 }
 
 .right-panel {
@@ -40,6 +41,7 @@ button {
 
 .message-list {
 	flex: 1;
+	min-width: 140px;
 }
 
 .input-area {
