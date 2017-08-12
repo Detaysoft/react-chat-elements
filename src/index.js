@@ -4,6 +4,7 @@ import SystemMessage from './SystemMessage/SystemMessage';
 import ChatList from './ChatList/ChatList';
 import MessageList from './MessageList/MessageList';
 import Input from './Input/Input';
+import Button from './Button/Button';
 
 
 export {
@@ -13,4 +14,5 @@ export {
 	ChatList,
 	MessageList,
 	Input,
+	Button,
 };

@@ -1,0 +1,49 @@
+.rce-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.5s ease;
+
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 20px 20px;
+    box-sizing: border-box;
+}
+
+.rce-button.default{
+    background: #3979aa;
+    color:#edf1f4;
+    transition: all 0.5s ease;
+}
+
+.rce-button.default:hover{
+    background: #5099d1;
+    color:#e8f2f9;
+}
+
+.rce-button.outlined{
+    background: rgba(0, 0, 0, 0);
+    border:1px solid #3979aa;
+    color:#3979aa;
+    transition: all 0.5s ease;
+}
+
+.rce-button.outlined:hover{
+    border-color: #5099d1;
+    color:#5099d1;
+}
+
+.rce-button.transparent{
+    background: rgba(0, 0, 0, 0);
+    color:#3979aa;
+    transition: all 0.5s ease;
+}
+
+.rce-button.transparent:hover{
+    color:#5099d1;
+}
