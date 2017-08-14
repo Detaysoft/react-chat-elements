@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Dropdown from '../Dropdown';
 
-describe('Avatar component', () => {
+describe('Dropdown component', () => {
   it('should render without issues', () => {
     const component = shallow(<Dropdown />);
     expect(component.length).toBe(1);

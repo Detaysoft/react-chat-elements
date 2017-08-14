@@ -47,7 +47,7 @@ ChatItem.defaultProps = {
 	alt: '',
 	title: '',
 	subtitle: '',
-	date: '',
+	date: new Date(),
 	unread: 0,
 }
 

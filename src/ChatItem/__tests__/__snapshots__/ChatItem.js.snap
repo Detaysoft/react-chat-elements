@@ -29,7 +29,7 @@ exports[`ChatItem component should render without issues 1`] = `
         <div
           className="rce-citem-body--top-time"
         >
-          Invalid date
+          a few seconds ago
         </div>
       </div>
       <div

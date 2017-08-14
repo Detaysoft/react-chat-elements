@@ -47,7 +47,7 @@ Input.defaultProps = {
 	type: 'text',
 	placeholder: '',
 	defaultValue: '',
-	onChange: '',
+	onChange: Function,
 	buttons: null
 };
 
