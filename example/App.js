@@ -10,6 +10,7 @@ import {
 	Avatar,
 	Navbar,
 	SideBar,
+	Dropdown,
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
@@ -77,6 +78,19 @@ export class App extends Component {
 
 		return (
 			<div className='container'>
+				<Dropdown
+					target={{
+						X: 400,
+						Y: 100
+					}}
+					items={[
+						's.a',
+						'lorem',
+						'ipsum',
+						'dolor',
+						'sit',
+						'amet'
+					]}/>
 				<div
 					className='chat-list'>
 					<SideBar
@@ -121,6 +135,9 @@ export class App extends Component {
 							<Button
 								color='white'
 								backgroundColor='black'
+								onClick={e => {
+									console.log(e.nativeEvent)
+								}}
 								icon={{
 									component: <FaSearch />,
 									size: 18,
