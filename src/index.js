@@ -9,6 +9,7 @@ import Avatar from './Avatar/Avatar';
 import Navbar from './Navbar/Navbar';
 import Dropdown from './Dropdown/Dropdown';
 import SideBar from './SideBar/SideBar';
+import Popup from './Popup/Popup';
 
 
 export {
@@ -23,4 +24,5 @@ export {
 	Navbar,
 	Dropdown,
 	SideBar,
+	Popup,
 };

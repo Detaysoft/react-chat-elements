@@ -11,6 +11,7 @@ import {
 	Navbar,
 	SideBar,
 	Dropdown,
+	Popup,
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
@@ -95,9 +96,7 @@ export class App extends Component {
 					className='chat-list'>
 					<SideBar
 						top={
-							<Avatar
-								type='circle'
-								src={`data:image/png;base64,${this.photo()}`}/>
+							<Popup/>
 						}
 						center={
 							<ChatList
