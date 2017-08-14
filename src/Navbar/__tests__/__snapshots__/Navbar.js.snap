@@ -5,37 +5,13 @@ exports[`Navbar component should render without issues 1`] = `
   className="rce-navbar light"
 >
   <div
-    className="rce-navbar-left-side"
-  >
-    <Button
-      backgroundColor="#3979aa"
-      className={null}
-      color="white"
-      disabled={false}
-      icon={null}
-      text="Back"
-      type="default"
-    />
-  </div>
+    className="rce-navbar-item rce-navbar-item__left"
+  />
   <div
-    className="rce-navbar-center-side"
-  >
-    <span
-      className="rce-navbar-title"
-    />
-  </div>
+    className="rce-navbar-item rce-navbar-item__center"
+  />
   <div
-    className="rce-navbar-right-side"
-  >
-    <Button
-      backgroundColor="#3979aa"
-      className={null}
-      color="white"
-      disabled={false}
-      icon={null}
-      text="View Profile"
-      type="default"
-    />
-  </div>
+    className="rce-navbar-item rce-navbar-item__right"
+  />
 </div>
 `;

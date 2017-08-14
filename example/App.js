@@ -12,6 +12,7 @@ import {
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
+import FaComments from 'react-icons/lib/fa/comments';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
@@ -75,9 +76,37 @@ export class App extends Component {
 
 		return (
 			<div className='container'>
-				<ChatList
-					className='chat-list'
-					dataSource={chatSource} />
+				<div
+					className='chat-list'>
+					<Navbar
+						type="light"
+						left={
+							<Avatar
+								type='circle'
+								src={`data:image/png;base64,${this.photo()}`}/>
+						}
+						right={
+							<span>
+								<Button
+									type='transparent'
+									color='black'
+									icon={{
+										component: <FaComments/>,
+										size: 18
+									}}/>
+								<Button
+									type='transparent'
+									color='black'
+									icon={{
+										component: <FaSearch/>,
+										size: 18
+									}}/>
+							</span>
+						}
+						title="Josep Bowman"/>
+					<ChatList
+						dataSource={chatSource} />
+				</div>
 				<div
 					className='right-panel'>
 					<MessageList
@@ -99,7 +128,6 @@ export class App extends Component {
 						}/>
 					
 					<Avatar src="https://randomuser.me/api/portraits/women/22.jpg" size="medium" type="circle"/>
-					<Navbar type="light" title="Josep Bowman"/>
 				</div>
 
 				{

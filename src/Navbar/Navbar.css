@@ -1,4 +1,4 @@
-.rce-navbar{
+.rce-navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -6,38 +6,26 @@
     padding: 10px 10px;
 }
 
-.rce-navbar.light{
-    background: #f4f4f4;    
+.rce-navbar.light {
+    background: #f4f4f4;
 }
 
-.rce-navbar.dark{
-    background: #2f414c;    
+.rce-navbar.dark {
+    background: #2f414c;
 }
 
-.rce-navbar.dark .rce-navbar-title{
-    color:#f4f4f4;   
-}
-
-.rce-navbar-left-side{
+.rce-navbar-item {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
 
-.rce-navbar-center-side{
-    text-align: center;
-    width: 100%;
-}
-
-.rce-navbar-right-side{
+.rce-navbar-item > * {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
 }
 
-.rce-navbar-title{
-    color:#43728e;
-    font-size: 15px;
+.rce-navbar-item > * > * {
+    margin-left: 5px;
 }

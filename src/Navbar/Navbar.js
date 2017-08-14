@@ -10,14 +10,14 @@ export class Navbar extends Component {
 	render() {
 		return (
 			<div className={classNames('rce-navbar', this.props.type)}>
-				<div className="rce-navbar-left-side">
-					<Button type="default" text="Back" />
+				<div className="rce-navbar-item rce-navbar-item__left">
+					{this.props.left}
 				</div>
-				<div className="rce-navbar-center-side">
-					<span className="rce-navbar-title">{this.props.title}</span>
+				<div className="rce-navbar-item rce-navbar-item__center">
+					{this.props.center}
 				</div>
-				<div className="rce-navbar-right-side">
-					<Button type="default" text="View Profile" />
+				<div className="rce-navbar-item rce-navbar-item__right">
+					{this.props.right}
 				</div>
 			</div>
 		);
@@ -26,6 +26,9 @@ export class Navbar extends Component {
 
 Navbar.defaultProps = {
 	title: '',
+	left: null,
+	center: null,
+	right: null,
 	type:'light'
 };
 
