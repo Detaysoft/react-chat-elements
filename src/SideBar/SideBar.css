@@ -1,0 +1,34 @@
+.rce-sbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+.rce-sbar.light {
+    background: #f4f4f4;
+}
+
+.rce-sbar.dark {
+    background: #2f414c;
+}
+
+.rce-sbar-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.rce-sbar-item > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.rce-sbar-item__center {
+    margin: 15px 0;
+}

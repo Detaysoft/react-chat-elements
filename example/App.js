@@ -9,6 +9,7 @@ import {
 	Button,
 	Avatar,
 	Navbar,
+	SideBar,
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
@@ -68,7 +69,7 @@ export class App extends Component {
 
 	render() {
 		var arr = [];
-		for (var i = 0; i < 50; i++)
+		for (var i = 0; i < 5; i++)
 			arr.push(i);
 
 		var messageSource = arr.map(x => this.random('message'));
@@ -78,14 +79,17 @@ export class App extends Component {
 			<div className='container'>
 				<div
 					className='chat-list'>
-					<Navbar
-						type="light"
-						left={
+					<SideBar
+						top={
 							<Avatar
 								type='circle'
 								src={`data:image/png;base64,${this.photo()}`}/>
 						}
-						right={
+						center={
+							<ChatList
+								dataSource={chatSource} />
+						}
+						bottom={
 							<span>
 								<Button
 									type='transparent'
@@ -102,10 +106,7 @@ export class App extends Component {
 										size: 18
 									}}/>
 							</span>
-						}
-						title="Josep Bowman"/>
-					<ChatList
-						dataSource={chatSource} />
+						}/>
 				</div>
 				<div
 					className='right-panel'>
@@ -126,7 +127,7 @@ export class App extends Component {
 									float: 'right'
 								}}/>
 						}/>
-					
+
 					<Avatar src="https://randomuser.me/api/portraits/women/22.jpg" size="medium" type="circle"/>
 				</div>
 
