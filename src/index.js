@@ -7,6 +7,7 @@ import Input from './Input/Input';
 import Button from './Button/Button';
 import Avatar from './Avatar/Avatar';
 import Navbar from './Navbar/Navbar';
+import SearchInput from './SearchInput/SearchInput';
 
 
 export {
@@ -19,4 +20,5 @@ export {
 	Button,
 	Avatar,
 	Navbar,
+	SearchInput
 };
