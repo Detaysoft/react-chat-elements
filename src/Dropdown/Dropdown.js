@@ -6,11 +6,26 @@ const classNames = require('classnames');
 export class Dropdown extends Component {
 	render() {
 		return (
-			<div className={classNames('rce-dropdown', this.props.animtype,this.props.position)}>
+			<div
+				style={{
+					top: this.props.target.Y,
+					left: this.props.target.X,
+				}}
+				className={
+					classNames(
+						'rce-dropdown',
+						this.props.animationType,
+						'rce-dropdown-open__' + this.props.animationPosition,
+					)
+				}>
 				<ul>
-					<li><a>Dropdown Item1</a></li>
-					<li><a>Dropdown Item2</a></li>
-					<li><a>Dropdown Item3</a></li>
+					{
+						this.props.items.map((x, i) => (
+							<li onClick={() => this.props.onSelect(i)}>
+								<a>{x}</a>
+							</li>
+						))
+					}
 				</ul>
 			</div>
 		);
@@ -18,8 +33,11 @@ export class Dropdown extends Component {
 }
 
 Dropdown.defaultProps = {
-	animtype: 'default',
-	position:'top',
+	animationType: 'default',
+	animationPosition: 'nortwest',
+	items: [],
+	onSelect: Function,
+	target: { X: 0, Y: 0 },
 };
 
 export default Dropdown;
