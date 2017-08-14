@@ -6,7 +6,7 @@ const classNames = require('classnames');
 export class Avatar extends Component {
 	render() {
 		return (
-			<img src={this.props.src} className={classNames('rce-avatar', this.props.type, this.props.size)}/>
+			<img alt={this.props.alt} src={this.props.src} className={classNames('rce-avatar', this.props.type, this.props.size)} />
 		);
 	}
 }
@@ -14,7 +14,8 @@ export class Avatar extends Component {
 Avatar.defaultProps = {
 	type: 'default',
 	size: 'default',
-	src:''
+	src: '',
+	alt: '',
 };
 
 export default Avatar;

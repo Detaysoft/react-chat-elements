@@ -2,6 +2,7 @@
 
 exports[`Avatar component should render without issues 1`] = `
 <img
+  alt=""
   className="rce-avatar default default"
   src=""
 />

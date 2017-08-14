@@ -10,9 +10,11 @@ exports[`ChatItem component should render without issues 1`] = `
     <div
       className="rce-citem-avatar"
     >
-      <img
+      <Avatar
         alt=""
+        size="large"
         src=""
+        type="circle"
       />
     </div>
     <div
