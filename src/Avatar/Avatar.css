@@ -1,0 +1,37 @@
+.rce-avatar.default{
+    width: 25px;
+    height: 25px;
+}
+
+.rce-avatar.rounded{
+    border-radius: 5px;
+}
+
+.rce-avatar.circle{
+    border-radius: 100%;
+}
+
+.rce-avatar.xsmall{
+    width: 30px;
+    height: 30px;
+}
+
+.rce-avatar.small{
+    width: 35px;
+    height: 35px;
+}
+
+.rce-avatar.medium{
+    width: 40px;
+    height: 40px;
+}
+
+.rce-avatar.large{
+    width: 45px;
+    height: 45px;
+}
+
+.rce-avatar.xlarge{
+    width: 55px;
+    height: 55px;
+}

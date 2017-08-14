@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component should render without issues 1`] = `
+<img
+  className="rce-avatar default default"
+  src=""
+/>
+`;

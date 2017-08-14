@@ -7,6 +7,7 @@ import {
 	MessageList,
 	Input,
 	Button,
+	Avatar,
 } from '../src';
 
 const loremIpsum = require('lorem-ipsum');
@@ -82,6 +83,7 @@ export class App extends Component {
 					<Input
 						className='input-area' placeholder="Mesajınızı buraya yazınız." defaultValue=""/>
 					<Button type="outlined" text="Jamiryo!!" />
+					<Avatar src="https://randomuser.me/api/portraits/women/22.jpg" size="medium" type="circle"/>
 				</div>
 
 				{
