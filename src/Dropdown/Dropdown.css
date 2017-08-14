@@ -1,0 +1,136 @@
+.rce-dropdown{
+    max-width: 200px;
+    padding: 8px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    margin: 100px;
+    position: relative;
+    transform-origin: left top;
+    animation: dropdown-scaling 0.5s ease forwards;
+}
+
+@keyframes dropdown-scaling{
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.rce-dropdown.top:before{
+    content:'';
+    width: 0;
+	height: 0;
+    border-left: 15px solid transparent;
+	border-bottom: 15px solid #f5f5f5;    
+    border-right:15px solid transparent;
+    border-top:15px solid transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:-25px;
+    margin: auto;
+}
+
+.rce-dropdown.bottom:before{
+    content:'';
+    width: 0;
+	height: 0;
+    border-left: 15px solid transparent;
+	border-bottom: 15px solid transparent;    
+    border-right:15px solid transparent;
+    border-top:15px solid #f5f5f5;
+    position: absolute;
+    right: 0;
+    left:0;
+    bottom:-25px;
+    margin: auto;
+}
+
+.rce-dropdown.left:before{
+    content:'';
+    width: 0;
+	height: 0;
+    border-left: 15px solid transparent;
+    border-top: 15px solid transparent;   
+	border-bottom: 15px solid transparent;    
+    border-right:15px solid #f5f5f5;
+    position: absolute;
+    left: -25px;
+    top:0;
+    bottom:0;
+    margin: auto;
+}
+
+.rce-dropdown.right:before{
+    content:'';
+    width: 0;
+	height: 0;
+    border-left: 15px solid #f5f5f5;
+    border-top: 15px solid transparent;   
+	border-bottom: 15px solid transparent;    
+    border-right:15px solid transparent;
+    position: absolute;
+    right: -25px;
+    top:0;
+    bottom:0;
+    margin: auto;
+}
+
+.rce-dropdown ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rce-dropdown ul li{
+    color:#767676;
+    font-size: 12px;
+    padding: 5px 0;
+    cursor: pointer;
+    width: 100%;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.rce-dropdown ul li:last-child{
+    border:none;   
+}
+
+.rce-dropdown ul li:hover a{
+    color:#3a6d8c;
+}
+
+.rce-dropdown.fade{
+    opacity: 0;
+    transform: scale(1);
+    animation: dropdown-fade 0.5s ease forwards;
+}
+
+@keyframes dropdown-fade{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

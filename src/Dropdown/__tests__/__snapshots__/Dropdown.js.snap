@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component should render without issues 1`] = `
+<div
+  className="rce-dropdown default top"
+>
+  <ul>
+    <li>
+      <a>
+        Dropdown Item1
+      </a>
+    </li>
+    <li>
+      <a>
+        Dropdown Item2
+      </a>
+    </li>
+    <li>
+      <a>
+        Dropdown Item3
+      </a>
+    </li>
+  </ul>
+</div>
+`;
