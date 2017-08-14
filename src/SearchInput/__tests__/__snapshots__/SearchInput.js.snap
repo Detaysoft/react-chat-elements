@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput component should render without issues 1`] = `
+<div
+  className="rce-container-search-input"
+>
+  <Input
+    defaultValue=""
+    onChange=""
+    placeholder="Mesajınızı buraya yazınız."
+    type="text"
+  />
+  <Button
+    backgroundColor="#3979aa"
+    color="white"
+    disabled={false}
+    icon={null}
+    text="Search"
+    type="default"
+  />
+</div>
+`;

@@ -1,7 +1,7 @@
 .rce-container-input {
     display: block;
     overflow: hidden;
-    min-width: 100%;
+    width: 100%;
     box-sizing: border-box;
 }
 
