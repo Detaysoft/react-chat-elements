@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component should render without issues 1`] = `
+<div
+  className="rce-navbar light"
+>
+  <div
+    className="rce-navbar-left-side"
+  >
+    <Button
+      disabled={false}
+      text="Back"
+      type="default"
+    />
+  </div>
+  <div
+    className="rce-navbar-center-side"
+  >
+    <span
+      className="rce-navbar-title"
+    />
+  </div>
+  <div
+    className="rce-navbar-right-side"
+  >
+    <Button
+      disabled={false}
+      text="View Profile"
+      type="default"
+    />
+  </div>
+</div>
+`;
