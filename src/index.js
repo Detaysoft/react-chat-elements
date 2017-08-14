@@ -6,6 +6,7 @@ import MessageList from './MessageList/MessageList';
 import Input from './Input/Input';
 import Button from './Button/Button';
 import Avatar from './Avatar/Avatar';
+import Navbar from './Navbar/Navbar';
 
 
 export {
@@ -17,4 +18,5 @@ export {
 	Input,
 	Button,
 	Avatar,
+	Navbar,
 };
