@@ -8,7 +8,10 @@ exports[`Navbar component should render without issues 1`] = `
     className="rce-navbar-left-side"
   >
     <Button
+      backgroundColor="#3979aa"
+      color="white"
       disabled={false}
+      icon={null}
       text="Back"
       type="default"
     />
@@ -24,7 +27,10 @@ exports[`Navbar component should render without issues 1`] = `
     className="rce-navbar-right-side"
   >
     <Button
+      backgroundColor="#3979aa"
+      color="white"
       disabled={false}
+      icon={null}
       text="View Profile"
       type="default"
     />

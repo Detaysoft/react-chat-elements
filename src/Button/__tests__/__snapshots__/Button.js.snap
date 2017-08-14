@@ -1,8 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button component should render without issues 1`] = `
-<a
-  className="rce-button default"
+<button
+  className="rce-button"
   disabled={false}
-/>
+  style={
+    Object {
+      "backgroundColor": "#3979aa",
+      "borderColor": "#3979aa",
+      "color": "white",
+    }
+  }
+>
+  <span />
+</button>
 `;
