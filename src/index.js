@@ -8,6 +8,7 @@ import Button from './Button/Button';
 import Avatar from './Avatar/Avatar';
 import Navbar from './Navbar/Navbar';
 import Dropdown from './Dropdown/Dropdown';
+import SideBar from './SideBar/SideBar';
 
 
 export {
@@ -21,4 +22,5 @@ export {
 	Avatar,
 	Navbar,
 	Dropdown,
+	SideBar,
 };

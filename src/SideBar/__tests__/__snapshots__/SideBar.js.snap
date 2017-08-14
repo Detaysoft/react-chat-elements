@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideBar component should render without issues 1`] = `
+<div
+  className="rce-sbar dark"
+>
+  <div
+    className="rce-sbar-item"
+  />
+  <div
+    className="rce-sbar-item rce-sbar-item__center"
+  />
+  <div
+    className="rce-sbar-item"
+  />
+</div>
+`;
