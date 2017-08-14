@@ -6,9 +6,27 @@ const classNames = require('classnames');
 export class Button extends Component {
 	render() {
 		return (
-			<a className={classNames('rce-button', this.props.type)}
-				disabled={this.props.disabled}>
-				{this.props.text}</a>
+			<button
+				className={classNames('rce-button', this.props.type)}
+				style={{
+					backgroundColor: this.props.backgroundColor,
+					color: this.props.color,
+					borderColor: this.props.backgroundColor
+				}}
+				disabled={this.props.disabled}
+				onClick={this.props.onClick}>
+				{
+					this.props.icon ?
+					<span className='rce-button-icon--container'>
+						{(this.props.icon.float === 'right' || !this.props.icon.float) && <span>{this.props.text}</span>}
+						
+						<span style={{float: this.props.icon.float, fontSize: this.props.icon.size || 12}} className='rce-button-icon'>{this.props.icon.component}</span>
+						
+						{this.props.icon.float === 'left' && <span>{this.props.text}</span>}
+					</span>
+					: <span>{this.props.text}</span>
+				}
+			</button>
 		);
 	}
 }
@@ -16,7 +34,10 @@ export class Button extends Component {
 Button.defaultProps = {
 	text: '',
 	disabled: false,
-	type: 'default',
+	type: null,
+	icon: null,
+	backgroundColor: '#3979aa',
+	color: 'white',
 };
 
 export default Button;
