@@ -5,6 +5,7 @@ import ChatList from './ChatList/ChatList';
 import MessageList from './MessageList/MessageList';
 import Input from './Input/Input';
 import Button from './Button/Button';
+import Avatar from './Avatar/Avatar';
 
 
 export {
@@ -15,4 +16,5 @@ export {
 	MessageList,
 	Input,
 	Button,
+	Avatar,
 };
