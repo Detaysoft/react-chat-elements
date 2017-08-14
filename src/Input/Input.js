@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './Input.css';
 
+import Button from '../Button/Button';
+
+const classNames = require('classnames');
+
 export class Input extends Component {
 	constructor(props) {
 		super(props);
@@ -22,10 +26,18 @@ export class Input extends Component {
 			<div className="rce-container-input">
 				<input
 					type={this.props.type}
-					className="rce-input"
+					className={classNames("rce-input", {'rce-input-nopadding': this.props.buttons})}
 					placeholder={this.props.placeholder}
 					value={this.state.value}
 					onChange={this.onChange.bind(this)}/>
+
+				{
+					this.props.buttons &&
+					<div
+						className='rce-input-buttons'>
+						{this.props.buttons}
+					</div>
+				}
 			</div>
 		);
 	}
@@ -36,6 +48,7 @@ Input.defaultProps = {
 	placeholder: '',
 	defaultValue: '',
 	onChange: '',
+	buttons: null
 };
 
 export default Input;

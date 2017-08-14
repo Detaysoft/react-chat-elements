@@ -9,8 +9,9 @@ import {
 	Button,
 	Avatar,
 	Navbar,
-	SearchInput,
 } from '../src';
+
+import FaSearch from 'react-icons/lib/fa/search';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
@@ -83,11 +84,22 @@ export class App extends Component {
 						className='message-list'
 						dataSource={messageSource} />
 					<Input
-						className='input-area' placeholder="Mesajınızı buraya yazınız." defaultValue=""/>
-					<Button type="outlined" text="Jamiryo!!" />
+						className='input-area'
+						placeholder="Mesajınızı buraya yazınız."
+						defaultValue=""
+						buttons={
+							<Button
+								color='white'
+								backgroundColor='black'
+								icon={{
+									component: <FaSearch />,
+									size: 18,
+									float: 'right'
+								}}/>
+						}/>
+					
 					<Avatar src="https://randomuser.me/api/portraits/women/22.jpg" size="medium" type="circle"/>
 					<Navbar type="light" title="Josep Bowman"/>
-					<SearchInput type="text" placeholder="Aramak için buraya yazınız" defaultValue=""/>
 				</div>
 
 				{

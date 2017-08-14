@@ -1,44 +1,46 @@
 .rce-container-input {
-    display: block;
+    display: flex;
     overflow: hidden;
-    width: 100%;
+    min-width: 100%;
     box-sizing: border-box;
+    flex-direction: row;
+    background: #fff;
+    align-items: center;
 }
 
 .rce-input {
-    min-width: 100%;
-    background: #fff;
+    flex: 1;
     height: 40px;
     line-height: 40px;
     padding: 0 15px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 12px;
     box-sizing: border-box;
-    transition: box-shadow 0.5s ease;
-    color: #919191 !important;
-    font-size: 12px !important;
+    outline: none;
 }
 
-.rce-input::-webkit-input-placeholder {
-    color: #afafaf !important;
-    font-size: 12px !important;
- }
- 
- .rce-input:-moz-placeholder {
-    color: #afafaf !important;
-    font-size: 12px !important;
- }
- 
- .rce-input::-moz-placeholder {
-    color: #afafaf !important;
-    font-size: 12px !important;
- }
- 
- .rce-input:-ms-input-placeholder {
-    color: #afafaf !important;
-    font-size: 12px !important;
- }
+.rce-input-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
 
- .rce-input:focus {
-    outline: none !important;
- }
+.rce-input-buttons > * {
+    display: flex;
+    flex-direction: row;
+}
+
+.rce-input-buttons .rce-button {
+    margin-left: 5px;
+}
+
+.rce-input-nopadding {
+    padding-right: 0px !important;
+}
+
+.rce-input::placeholder {
+    color: #afafaf;
+    font-size: 12px;
+}

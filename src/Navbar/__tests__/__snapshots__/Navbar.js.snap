@@ -9,6 +9,7 @@ exports[`Navbar component should render without issues 1`] = `
   >
     <Button
       backgroundColor="#3979aa"
+      className={null}
       color="white"
       disabled={false}
       icon={null}
@@ -28,6 +29,7 @@ exports[`Navbar component should render without issues 1`] = `
   >
     <Button
       backgroundColor="#3979aa"
+      className={null}
       color="white"
       disabled={false}
       icon={null}
