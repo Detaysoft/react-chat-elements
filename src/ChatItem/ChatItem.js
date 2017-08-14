@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './ChatItem.css';
 
+import Avatar from '../Avatar/Avatar';
+
 const moment = require('moment')
 
 export class ChatItem extends Component {
@@ -9,7 +11,7 @@ export class ChatItem extends Component {
 			<div className="rce-container-citem">
 				<div className="rce-citem">
 					<div className="rce-citem-avatar">
-						<img src={this.props.avatar} alt={this.props.alt}/>
+						<Avatar src={this.props.avatar} alt={this.props.alt} size="large" type="circle"/>
 					</div>
 
 					<div className="rce-citem-body">
