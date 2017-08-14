@@ -31,6 +31,7 @@ button {
 .chat-list {
 	min-width: 240px;
 	max-width: 380px;
+	overflow: auto;
 }
 
 .right-panel {
