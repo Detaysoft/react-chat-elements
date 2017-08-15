@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Input.css';
 
-import Button from '../Button/Button';
-
 const classNames = require('classnames');
 
 export class Input extends Component {

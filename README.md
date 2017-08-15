@@ -9,6 +9,10 @@ Reactjs chat elements
 5. [ChatList](#chatlist-component)
 6. [Input](#input-component)
 7. [Button](#button-component)
+8. [Popup](#popup-component)
+9. [SideBar](#sidebar-component)
+10. [Navbar](#navbar-component)
+11. [Dropdown](#dropdown-component)
 
 ## ChatItem Component
 
@@ -181,3 +185,128 @@ import { Button } from 'react-chat-elements'
 | type | none | string | button type (outlined, transparent) |
 | disabled | none | string | button is disabled? |
 | text | none | string | button text |
+
+## Popup Component
+
+```javascript
+import { Popup } from 'react-chat-elements'
+
+<Popup
+    show={this.state.show}
+    header='Lorem ipsum dolor sit amet.'
+    headerButtons={[{
+        type: 'transparent',
+        color:'black',
+        text: 'close',
+        onClick: () => {
+            this.setState({show: false})
+        }
+    }]}
+    text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
+    footerButtons={[{
+        color:'white',
+        backgroundColor:'#ff5e3e',
+        text:"Vazgeç",
+    },{
+        color:'white',
+        backgroundColor:'lightgreen',
+        text:"Tamam",
+    }]}/>
+```
+
+#### Popup props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| show | false | bool | popup visible |
+| header | none | string | popup title (header) message |
+| headerButtons | none | array | popup title (header) buttons |
+| text | none | string | popup content (center) message |
+| color | #333 | string (color) | popup content message color |
+| footerButtons | none | array | popup footer buttons |
+| renderHeader | none | function (component) | render header function |
+| renderContent | none | function (component) | render content function |
+| renderFooter | none | function (component) | render footer function |
+
+## SideBar Component
+
+```javascript
+import { SideBar } from 'react-chat-elements'
+
+<SideBar
+    top={
+        <div>'TOP' area</div>
+    }
+    center={
+        <div>'CENTER' area</div>
+    }
+    bottom={
+        <div>'BOTTOM' area</div>
+    }/>
+```
+
+#### SideBar props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| type | dark | string | popup visible |
+| top | false | function (component) | popup top component |
+| center | none | function (component) | popup center component |
+| bottom | none | function (component) | popup bottom component |
+
+
+## Navbar Component
+
+```javascript
+import { Navbar } from 'react-chat-elements'
+
+<Navbar
+    top={
+        <div>'TOP' area</div>
+    }
+    center={
+        <div>'CENTER' area</div>
+    }
+    bottom={
+        <div>'BOTTOM' area</div>
+    }/>
+```
+
+#### Navbar props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| type | dark | string | popup visible |
+| top | false | function (component) | popup top component |
+| center | none | function (component) | popup center component |
+| bottom | none | function (component) | popup bottom component |
+
+## Dropdown Component
+
+```javascript
+import { Dropdown } from 'react-chat-elements'
+
+<Dropdown
+    target={{
+        X: 400,
+        Y: 100
+    }}
+    items={[
+        'merhaba',
+        'lorem',
+        'ipsum',
+        'dolor',
+        'sit',
+        'amet'
+    ]}/>
+```
+
+#### Dropdown props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| animationType | none | string | fade or default |
+| animationPosition | nortwest | string | animation start position (nortwest, norteast, southwest, southeast) |
+| items | none | array | dropdown items array |
+| onSelect | none | function | item on select |
+| target | { X: 0, Y: 0 } | object | dropdown target |
