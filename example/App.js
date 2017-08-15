@@ -105,9 +105,6 @@ export class App extends Component {
 					className='chat-list'>
 					<SideBar
 						top={
-							<Avatar
-								type='circle'
-								src={`data:image/png;base64,${this.photo()}`}/>
 							<Popup
 								show={this.state.show}
 								header='Lorem ipsum dolor sit amet.'
