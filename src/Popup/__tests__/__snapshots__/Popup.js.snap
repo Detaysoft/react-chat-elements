@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popup component should render without issues 1`] = `
+<div
+  className="rce-popup-wrapper"
+>
+  <div
+    className="rce-popup"
+  >
+    <div
+      className="rce-popup-header"
+    >
+      <span />
+    </div>
+    <div
+      className="rce-popup-content"
+      style={
+        Object {
+          "color": "#333",
+        }
+      }
+    />
+    <div
+      className="rce-popup-footer"
+    />
+  </div>
+</div>
+`;

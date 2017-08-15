@@ -21,7 +21,7 @@ export class Dropdown extends Component {
 				<ul>
 					{
 						this.props.items.map((x, i) => (
-							<li onClick={() => this.props.onSelect(i)}>
+							<li key={i} onClick={() => this.props.onSelect(i)}>
 								<a>{x}</a>
 							</li>
 						))

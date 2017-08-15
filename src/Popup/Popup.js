@@ -7,38 +7,64 @@ const classNames = require('classnames');
 
 export class Popup extends Component {
 	render() {
+		if (this.props.show === true)
 		return (
 			<div className={classNames('rce-popup-wrapper', this.props.type)}>
 				<div className="rce-popup">
-					<div className="rce-popup-header">
-						<span>Popup Window Title</span>
-						<Button
-							color='white'
-							text="OKAY" />
-					</div>
-					<div className="rce-popup-content">
-						<p>
-							Chocolate ice cream pie chocolate gingerbread. Cake lollipop apple pie macaroon candy. Wafer wafer sweet roll. 
-						</p>
+					{
+						this.props.renderHeader ?
+							<div className="rce-popup-header">
+								{this.props.renderHeader()}
+							</div>
+						:
+						<div className="rce-popup-header">
+							<span>{this.props.header}</span>
+							{
+								this.props.header &&
+								this.props.headerButtons.map((x, i) => (
+									<Button
+										key={i}
+										{...x}/>
+								))
+							}
+						</div>
+					}
+					<div className="rce-popup-content" style={{color: this.props.color}}>
+						{
+							this.props.renderContent ?
+								this.props.renderContent()
+							:
+							this.props.text
+						}
 					</div>
 					<div className="rce-popup-footer">
-						<Button
-							color='white'
-							type="default"
-							text="OKAY" />
-						<Button
-							color='white'
-							backgroundColor='#ff5e3e'
-							text="CANCEL" />
+						{
+							this.props.renderFooter ?
+								this.props.renderFooter()
+							:
+							this.props.footerButtons.map((x, i) => (
+								<Button
+									key={i}
+									{...x}/>
+							))
+						}
 					</div>
 				</div>
 			</div>
 		);
+		return null;
 	}
 }
 
 Popup.defaultProps = {
-	type: 'default',
+	show: false,
+	header: null,
+	text: null,
+	headerButtons: [],
+	footerButtons: [],
+	renderHeader: null,
+	renderContent: null,
+	color: '#333',
 };
 
 export default Popup;

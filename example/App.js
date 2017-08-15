@@ -16,11 +16,20 @@ import {
 
 import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
+import FaClose from 'react-icons/lib/fa/close';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
 
 export class App extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			show: true
+		};
+	}
 
 	token() {
 		return (parseInt(Math.random() * 10 % 3));
@@ -96,7 +105,30 @@ export class App extends Component {
 					className='chat-list'>
 					<SideBar
 						top={
-							<Popup/>
+							<Popup
+								show={this.state.show}
+								header='Lorem ipsum dolor sit amet.'
+								headerButtons={[{
+									type: 'transparent',
+									color:'black',
+									onClick: () => {
+										this.setState({show: false})
+									},
+									icon: {
+										component: <FaClose/>,
+										size: 18
+									}
+								}]}
+								text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
+								footerButtons={[{
+									color:'white',
+									backgroundColor:'#ff5e3e',
+									text:"Vazgeç",
+								},{
+									color:'white',
+									backgroundColor:'lightgreen',
+									text:"Tamam",
+								}]}/>
 						}
 						center={
 							<ChatList
