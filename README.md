@@ -12,6 +12,7 @@ Reactjs chat elements
 8. [Popup](#popup-component)
 9. [SideBar](#sidebar-component)
 10. [Navbar](#navbar-component)
+11. [Dropdown](#dropdown-component)
 
 ## ChatItem Component
 
@@ -280,3 +281,32 @@ import { Navbar } from 'react-chat-elements'
 | center | none | function (component) | popup center component |
 | bottom | none | function (component) | popup bottom component |
 
+## Dropdown Component
+
+```javascript
+import { Dropdown } from 'react-chat-elements'
+
+<Dropdown
+    target={{
+        X: 400,
+        Y: 100
+    }}
+    items={[
+        'merhaba',
+        'lorem',
+        'ipsum',
+        'dolor',
+        'sit',
+        'amet'
+    ]}/>
+```
+
+#### Dropdown props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| animationType | none | string | fade or default |
+| animationPosition | nortwest | string | animation start position (nortwest, norteast, southwest, southeast) |
+| items | none | array | dropdown items array |
+| onSelect | none | function | item on select |
+| target | { X: 0, Y: 0 } | object | dropdown target |
