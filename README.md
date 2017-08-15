@@ -9,6 +9,7 @@ Reactjs chat elements
 5. [ChatList](#chatlist-component)
 6. [Input](#input-component)
 7. [Button](#button-component)
+8. [Popup](#popup-component)
 
 ## ChatItem Component
 
@@ -181,3 +182,45 @@ import { Button } from 'react-chat-elements'
 | type | none | string | button type (outlined, transparent) |
 | disabled | none | string | button is disabled? |
 | text | none | string | button text |
+
+## Popup Component
+
+```javascript
+import { Popup } from 'react-chat-elements'
+
+<Popup
+    show={this.state.show}
+    header='Lorem ipsum dolor sit amet.'
+    headerButtons={[{
+        type: 'transparent',
+        color:'black',
+        text: 'close',
+        onClick: () => {
+            this.setState({show: false})
+        }
+    }]}
+    text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
+    footerButtons={[{
+        color:'white',
+        backgroundColor:'#ff5e3e',
+        text:"Vazgeç",
+    },{
+        color:'white',
+        backgroundColor:'lightgreen',
+        text:"Tamam",
+    }]}/>
+```
+
+#### Popup props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| show | false | bool | popup visible |
+| header | none | string | popup title (header) message |
+| headerButtons | none | array | popup title (header) buttons |
+| text | none | string | popup content (center) message |
+| color | #333 | string (color) | popup content message color |
+| footerButtons | none | array | popup footer buttons |
+| renderHeader | none | function (component) | render header function |
+| renderContent | none | function (component) | render content function |
+| renderFooter | none | function (component) | render footer function |

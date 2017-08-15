@@ -64,6 +64,7 @@ Popup.defaultProps = {
 	footerButtons: [],
 	renderHeader: null,
 	renderContent: null,
+	renderFooter: null,
 	color: '#333',
 };
 
