@@ -10,6 +10,7 @@ Reactjs chat elements
 6. [Input](#input-component)
 7. [Button](#button-component)
 8. [Popup](#popup-component)
+9. [SideBar](#sidebar-component)
 
 ## ChatItem Component
 
@@ -224,3 +225,30 @@ import { Popup } from 'react-chat-elements'
 | renderHeader | none | function (component) | render header function |
 | renderContent | none | function (component) | render content function |
 | renderFooter | none | function (component) | render footer function |
+
+## SideBar Component
+
+```javascript
+import { SideBar } from 'react-chat-elements'
+
+<SideBar
+    top={
+        <div>'TOP' area</div>
+    }
+    center={
+        <div>'CENTER' area</div>
+    }
+    bottom={
+        <div>'BOTTOM' area</div>
+    }/>
+```
+
+#### SideBar props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| type | dark | string | popup visible |
+| top | false | function (component) | popup top component |
+| center | none | function (component) | popup center component |
+| bottom | none | function (component) | popup bottom component |
+
