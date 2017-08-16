@@ -1,15 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown component should render without issues 1`] = `
-<div
-  className="rce-dropdown default rce-dropdown-open__nortwest"
-  style={
-    Object {
-      "left": 0,
-      "top": 0,
-    }
-  }
->
-  <ul />
-</div>
-`;
+exports[`Dropdown component should render without issues 1`] = `null`;
