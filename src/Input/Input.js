@@ -16,18 +16,42 @@ export class Input extends Component {
 		this.setState({
 			value: e.target.value
 		});
-		this.props.onChange && this.props.onChange(e.target.value);
+		if (this.props.onChange instanceof Function)
+			this.props.onChange(e);
+
+		if (this.props.multiline === true) {
+			if (this.props.autoHeight === true) {
+				e.target.style.height = this.props.minHeight + 'px';
+
+				if (e.target.scrollHeight <= this.props.maxHeight)
+					e.target.style.height = e.target.scrollHeight + 'px';
+				else
+					e.target.style.height = this.props.maxHeight + 'px';
+			}
+		}
 	}
 
 	render() {
 		return (
 			<div className="rce-container-input">
-				<input
-					type={this.props.type}
-					className={classNames("rce-input", {'rce-input-nopadding': this.props.buttons})}
-					placeholder={this.props.placeholder}
-					value={this.state.value}
-					onChange={this.onChange.bind(this)}/>
+				{
+					this.props.multiline === false ?
+					<input
+						type={this.props.type}
+						className={classNames("rce-input", {'rce-input-nopadding': this.props.buttons})}
+						placeholder={this.props.placeholder}
+						value={this.state.value}
+						style={this.props.inputStyle}
+						onChange={this.onChange.bind(this)}/>
+						:
+					<textarea
+						type={this.props.type}
+						className={classNames("rce-input", 'rce-input-textarea', {'rce-input-nopadding': this.props.buttons})}
+						placeholder={this.props.placeholder}
+						value={this.state.value}
+						style={this.props.inputStyle}
+						onChange={this.onChange.bind(this)}></textarea>
+				}
 
 				{
 					this.props.buttons &&
@@ -45,8 +69,13 @@ Input.defaultProps = {
 	type: 'text',
 	placeholder: '',
 	defaultValue: '',
-	onChange: Function,
-	buttons: null
+	onChange: null,
+	buttons: null,
+	multiline: false,
+	minHeight: 25,
+	maxHeight: 200,
+	autoHeight: true,
+	inputStyle: null,
 };
 
 export default Input;
