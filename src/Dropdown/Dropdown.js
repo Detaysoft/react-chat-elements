@@ -5,6 +5,7 @@ const classNames = require('classnames');
 
 export class Dropdown extends Component {
 	render() {
+		if (this.props.show === true)
 		return (
 			<div
 				style={{
@@ -29,10 +30,12 @@ export class Dropdown extends Component {
 				</ul>
 			</div>
 		);
+		return null;
 	}
 }
 
 Dropdown.defaultProps = {
+	show: false,
 	animationType: 'default',
 	animationPosition: 'nortwest',
 	items: [],
