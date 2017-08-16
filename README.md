@@ -157,7 +157,14 @@ import { ChatList } from 'react-chat-elements'
 import { Input } from 'react-chat-elements'
 
 <Input
-    placeholder={'Type here...'} />
+    placeholder="Type here..."
+    multiline={true}
+    buttons={
+        <Button
+            color='white'
+            backgroundColor='black'
+            text='Send'/>
+    }/>
 ```
 
 #### Input props
@@ -168,6 +175,12 @@ import { Input } from 'react-chat-elements'
 | placeholder | none | string | input placeholder text |
 | defaultValue | none | string | input default value |
 | onChange | none | object | input onChange function |
+| multiline | false | bool | input is textarea |
+| autoHeight | true | bool | input auto height |
+| minHeight | 25 | int | input min height |
+| maxHeight | 200 | int | input max height |
+| inputStyle | none | object | inputStyle object |
+
 
 ## Button Component
 

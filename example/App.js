@@ -106,7 +106,7 @@ export class App extends Component {
 					<SideBar
 						top={
 							<Popup
-								show={this.state.show}
+								// show={this.state.show}
 								header='Lorem ipsum dolor sit amet.'
 								headerButtons={[{
 									type: 'transparent',
@@ -159,9 +159,9 @@ export class App extends Component {
 						className='message-list'
 						dataSource={messageSource} />
 					<Input
-						className='input-area'
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
+						multiline={true}
 						buttons={
 							<Button
 								color='white'
