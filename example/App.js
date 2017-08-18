@@ -12,7 +12,7 @@ import {
 	SideBar,
 	Dropdown,
 	Popup,
-} from '../src';
+} from '../dist/main';
 
 import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
