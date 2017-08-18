@@ -43,15 +43,12 @@ module.exports = {
     })],
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.EnvironmentPlugin([
-            "NODE_ENV",
-        ]),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: false,
-            mangle: false,
-            beautify: false,
-            comments: false,
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: false,
+        //     mangle: false,
+        //     beautify: false,
+        //     comments: false,
+        // }),
         new ExtractTextPlugin("main.css"),
     ],
 };
