@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './SystemMessage.css';
 
-const classNames = require('classnames');
-
 export class SystemMessage extends Component {
 	render() {
 		return (
