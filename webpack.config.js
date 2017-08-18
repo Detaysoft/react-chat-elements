@@ -30,11 +30,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                }),
-                // loader: "style-loader!css-loader",
+                // loader: ExtractTextPlugin.extract({
+                //     fallback: "style-loader",
+                //     use: "css-loader"
+                // }),
+                loader: "style-loader!css-loader",
             },
         ]
     },
@@ -43,12 +43,12 @@ module.exports = {
     })],
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: false,
-        //     mangle: false,
-        //     beautify: false,
-        //     comments: false,
-        // }),
-        new ExtractTextPlugin("main.css"),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: false,
+            mangle: false,
+            beautify: false,
+            comments: false,
+        }),
+        // new ExtractTextPlugin("main.css"),
     ],
 };
