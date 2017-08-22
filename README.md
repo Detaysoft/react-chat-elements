@@ -152,7 +152,7 @@ import { ChatList } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | className | none | string | optional chat list className |
 | dataSource | [] | array | chat list array |
-| onClick | none | function | chat list item on click (id is returned) |
+| onClick | none | function | chat list item on click (chat(object) is returned) |
 
 ## Input Component
 

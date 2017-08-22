@@ -68,6 +68,7 @@ export class App extends Component {
 				};
 			case 'chat':
 				return {
+					id: String(Math.random()),
 					avatar: `data:image/png;base64,${this.photo()}`,
 					alt: loremIpsum({ count: 2, units: 'words' }),
 					title: loremIpsum({ count: 2, units: 'words' }),

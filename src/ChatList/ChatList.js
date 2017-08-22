@@ -7,9 +7,9 @@ const classNames = require('classnames');
 
 export class ChatList extends Component {
 
-	onClick(id) {
+	onClick(item, i) {
 		if (this.props.onClick instanceof Function)
-			this.props.onClick(id);
+			this.props.onClick(item, i);
 	}
 
 	render() {
@@ -25,7 +25,7 @@ export class ChatList extends Component {
 							title={x.title}
 							date={x.date}
 							subtitle={x.subtitle}
-							onClick={() => this.onClick(x.id)}
+							onClick={() => this.onClick(x, i)}
 							unread={x.unread}/>
 					))
 				}
