@@ -39,6 +39,8 @@ import { ChatItem } from 'react-chat-elements'
 | subtitle | none | string | ChatItem subtitle |
 | date | none | date | ChatItem date |
 | unread | 0 | int | ChatItem unread count |
+| onClick | none | function | ChatItem on click |
+
 
 
 ## MessageBox Component
@@ -150,6 +152,7 @@ import { ChatList } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | className | none | string | optional chat list className |
 | dataSource | [] | array | chat list array |
+| onClick | none | function | chat list item on click (id is returned) |
 
 ## Input Component
 

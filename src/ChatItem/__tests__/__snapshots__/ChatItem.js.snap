@@ -3,6 +3,7 @@
 exports[`ChatItem component should render without issues 1`] = `
 <div
   className="rce-container-citem"
+  onClick={null}
 >
   <div
     className="rce-citem"

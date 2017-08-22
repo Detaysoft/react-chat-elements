@@ -52,7 +52,7 @@
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
     "start": "nwb serve-react-app ./example/index.js",
-    "build": "webpack --progress --profile --colors --watch",
+    "build": "webpack --progress --profile --colors",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },
