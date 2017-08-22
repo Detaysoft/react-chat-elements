@@ -12,6 +12,12 @@ exports[`Button component should render without issues 1`] = `
     }
   }
 >
-  <span />
+  <div>
+    <span
+      className="rce-button-badge"
+    >
+      17
+    </span>
+  </div>
 </button>
 `;

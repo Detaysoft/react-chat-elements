@@ -6,9 +6,12 @@ import Avatar from '../Avatar/Avatar';
 const moment = require('moment')
 
 export class ChatItem extends Component {
+
 	render() {
 		return (
-			<div className="rce-container-citem">
+			<div
+				className="rce-container-citem"
+				onClick={this.props.onClick}>
 				<div className="rce-citem">
 					<div className="rce-citem-avatar">
 						<Avatar src={this.props.avatar} alt={this.props.alt} size="large" type="circle"/>
@@ -43,6 +46,8 @@ export class ChatItem extends Component {
 }
 
 ChatItem.defaultProps = {
+	id: '',
+	onClick: null,
 	avatar: '',
 	alt: '',
 	title: '',

@@ -12,7 +12,7 @@ import {
 	SideBar,
 	Dropdown,
 	Popup,
-} from '../dist/main';
+} from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
@@ -150,6 +150,7 @@ export class App extends Component {
 										component: <FaSearch/>,
 										size: 18
 									}}/>
+									<Button text="Count"></Button>
 							</span>
 						}/>
 				</div>

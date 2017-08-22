@@ -17,14 +17,14 @@ export class Button extends Component {
 				onClick={this.props.onClick}>
 				{
 					this.props.icon ?
-					<span className='rce-button-icon--container'>
-						{(this.props.icon.float === 'right' || !this.props.icon.float) && <span>{this.props.text}</span>}
-						
-						<span style={{float: this.props.icon.float, fontSize: this.props.icon.size || 12}} className='rce-button-icon'>{this.props.icon.component}</span>
-						
-						{this.props.icon.float === 'left' && <span>{this.props.text}</span>}
-					</span>
-					: <span>{this.props.text}</span>
+						<span className='rce-button-icon--container'>
+							{(this.props.icon.float === 'right' || !this.props.icon.float) && <span>{this.props.text}</span>}
+
+							<span style={{ float: this.props.icon.float, fontSize: this.props.icon.size || 12 }} className='rce-button-icon'>{this.props.icon.component}</span>
+
+							{this.props.icon.float === 'left' && <span>{this.props.text}</span>}
+						</span>
+						: <span>{this.props.text}</span>
 				}
 			</button>
 		);
