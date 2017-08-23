@@ -6,7 +6,7 @@ const classNames = require('classnames');
 export class Navbar extends Component {
 	render() {
 		return (
-			<div className={classNames('rce-navbar', this.props.type)}>
+			<div className={classNames('rce-navbar', this.props.type, this.props.className)}>
 				<div className="rce-navbar-item rce-navbar-item__left">
 					{this.props.left}
 				</div>
