@@ -31,6 +31,7 @@
 
 .rce-mbox-text {
 	font-size: 13.6px;
+	word-break: break-word;
 }
 
 .rce-mbox-time {
