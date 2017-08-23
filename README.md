@@ -120,6 +120,8 @@ import { MessageList } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | className | none | string | optional message list className |
 | dataSource | [] | array | message list array |
+| lockable | false | boolean | It locks to scroll position when the dataSource has been changed |
+| toBottomHeight | 300 | int or string(only '100%') | If the toBottomHeight property's value higher than bottom value of the scrollbar when the data source has been changed Scrollbar goes to bottom at the end of the page. If the toBottomHeight property's value has been set **'100%'**, scrollbar goes to bottom at the end of the page when the data source has been changed. |
 
 
 ## ChatList Component
