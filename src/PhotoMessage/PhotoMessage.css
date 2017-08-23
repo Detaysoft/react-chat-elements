@@ -32,6 +32,7 @@
 
 .rce-mbox-photo--img img {
 	height: 100%;
+	min-height: 100px;
 	user-select: none;
 }
 
