@@ -4,6 +4,8 @@ import './MessageBox.css';
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
 import FileMessage from '../FileMessage/FileMessage';
 
+const moment = require('moment');
+
 const classNames = require('classnames');
 
 export class MessageBox extends Component {
@@ -35,7 +37,7 @@ export class MessageBox extends Component {
 					}
 
 					<div className="rce-mbox-time rce-mbox-right">
-						12:30
+						{moment(this.props.date).fromNow()}
 					</div>
 
 					{
@@ -67,6 +69,7 @@ MessageBox.defaultProps = {
 	position: 'left',
 	type: 'text',
 	text: '',
+	date: new Date(),
 	data: {},
 	onClick: null,
 };

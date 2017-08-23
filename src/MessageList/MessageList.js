@@ -51,11 +51,8 @@ export class MessageList extends Component {
 					this.props.dataSource.map((x, i) => (
 						<MessageBox
 							key={i}
-							position={x.position}
-							type={x.type}
-							text={x.text}
-							onClick={() => this.onClick(x, i)}
-							data={x.data}/>
+							{...x}
+							onClick={() => this.onClick(x, i)} />
 					))
 				}
 			</div>
