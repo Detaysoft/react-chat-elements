@@ -172,6 +172,9 @@ export class App extends Component {
 					<MessageList
 						className='message-list'
 						lockable={true}
+						onClick={(x, i) => {
+							debugger;
+						}}
 						dataSource={this.state.messageList} />
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
