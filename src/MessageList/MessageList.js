@@ -37,6 +37,11 @@ export class MessageList extends Component {
 		return e.scrollHeight - e.scrollTop - e.offsetHeight;
 	}
 
+	onClick(item, i) {
+		if (this.props.onClick instanceof Function)
+			this.props.onClick(item, i);
+	}
+
 	render() {
 		return (
 			<div
@@ -49,6 +54,7 @@ export class MessageList extends Component {
 							position={x.position}
 							type={x.type}
 							text={x.text}
+							onClick={() => this.onClick(x, i)}
 							data={x.data}/>
 					))
 				}
@@ -58,6 +64,7 @@ export class MessageList extends Component {
 }
 
 MessageList.defaultProps = {
+	onClick: null,
 	dataSource: [],
 	lockable: false,
 	toBottomHeight: 300,
