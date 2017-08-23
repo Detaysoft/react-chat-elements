@@ -20,13 +20,8 @@ export class ChatList extends Component {
 						<ChatItem
 							id={x.id || i}
 							key={i}
-							avatar={x.avatar}
-							alt={x.alt}
-							title={x.title}
-							date={x.date}
-							subtitle={x.subtitle}
-							onClick={() => this.onClick(x, i)}
-							unread={x.unread}/>
+							{...x}
+							onClick={() => this.onClick(x, i)}/>
 					))
 				}
 			</div>

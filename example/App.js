@@ -186,7 +186,6 @@ export class App extends Component {
 								backgroundColor='black'
 								onClick={e => {
 									this.addMessage();
-									console.log(e.nativeEvent)
 								}}
 								icon={{
 									component: <FaSearch />,

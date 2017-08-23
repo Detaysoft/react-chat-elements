@@ -70,10 +70,12 @@ import { MessageBox } from 'react-chat-elements'
 
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
+| id | i (index) | string | message box id |
 | position | left | string | message box position |
 | type | text | string | message type (text, photo, file) |
 | text | none | string | message text |
 | data | {} | object | message data |
+| date | new Date() | Date | message date |
 
 
 ## SystemMessage Component
