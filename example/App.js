@@ -27,8 +27,13 @@ export class App extends Component {
 		super(props);
 
 		this.state = {
-			show: true
+			show: true,
+			messageList: [],
 		};
+	}
+
+	componentWillMount() {
+		// setInterval(this.addMessage.bind(this), 3000);
 	}
 
 	token() {
@@ -79,12 +84,19 @@ export class App extends Component {
 		}
 	}
 
+	addMessage() {
+		var list = this.state.messageList;
+		list.unshift(this.random('message'));
+		this.setState({
+			messageList: list,
+		});
+	}
+
 	render() {
 		var arr = [];
 		for (var i = 0; i < 5; i++)
 			arr.push(i);
 
-		var messageSource = arr.map(x => this.random('message'));
 		var chatSource = arr.map(x => this.random('chat'));
 
 		return (
@@ -159,7 +171,8 @@ export class App extends Component {
 					className='right-panel'>
 					<MessageList
 						className='message-list'
-						dataSource={messageSource} />
+						lockable={true}
+						dataSource={this.state.messageList} />
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
@@ -169,6 +182,7 @@ export class App extends Component {
 								color='white'
 								backgroundColor='black'
 								onClick={e => {
+									this.addMessage();
 									console.log(e.nativeEvent)
 								}}
 								icon={{
@@ -177,8 +191,6 @@ export class App extends Component {
 									float: 'right'
 								}}/>
 						}/>
-
-					<Avatar src="https://randomuser.me/api/portraits/women/22.jpg" size="medium" type="circle"/>
 				</div>
 
 				{
