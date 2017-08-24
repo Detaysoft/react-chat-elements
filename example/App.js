@@ -186,6 +186,7 @@ export class App extends Component {
 								onClick={e => {
 									this.addMessage();
 								}}
+								type='circle'
 								icon={{
 									component: <FaSearch />,
 									size: 18,
