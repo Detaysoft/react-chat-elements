@@ -172,15 +172,14 @@ export class App extends Component {
 					<MessageList
 						className='message-list'
 						lockable={true}
-						onClick={(x, i) => {
-							debugger;
-						}}
 						dataSource={this.state.messageList} />
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
 						multiline={true}
+						// buttonsFloat='left'
 						buttons={
+							<div>
 							<Button
 								color='white'
 								backgroundColor='black'
@@ -192,6 +191,19 @@ export class App extends Component {
 									size: 18,
 									float: 'right'
 								}}/>
+							<Button
+								color='white'
+								backgroundColor='black'
+								onClick={e => {
+									this.addMessage();
+								}}
+								icon={{
+									component: <FaSearch />,
+									size: 18,
+									float: 'right'
+								}}/>
+
+							</div>
 						}/>
 				</div>
 
