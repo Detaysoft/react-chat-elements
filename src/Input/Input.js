@@ -42,21 +42,21 @@ export class Input extends Component {
 				}
 				{
 					this.props.multiline === false ?
-						<input
-							type={this.props.type}
-							className={classNames("rce-input")}
-							placeholder={this.props.placeholder}
-							value={this.state.value}
-							style={this.props.inputStyle}
-							onChange={this.onChange.bind(this)} />
-						:
-						<textarea
-							type={this.props.type}
-							className={classNames("rce-input", 'rce-input-textarea')}
-							placeholder={this.props.placeholder}
-							value={this.state.value}
-							style={this.props.inputStyle}
-							onChange={this.onChange.bind(this)}></textarea>
+					<input
+						type={this.props.type}
+						className={classNames("rce-input")}
+						placeholder={this.props.placeholder}
+						value={this.state.value}
+						style={this.props.inputStyle}
+						onChange={this.onChange.bind(this)} />
+					:
+					<textarea
+						type={this.props.type}
+						className={classNames("rce-input", 'rce-input-textarea')}
+						placeholder={this.props.placeholder}
+						value={this.state.value}
+						style={this.props.inputStyle}
+						onChange={this.onChange.bind(this)}></textarea>
 				}
 				{
 					this.props.rightButtons &&
