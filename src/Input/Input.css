@@ -15,14 +15,14 @@
     border: none;
     border-radius: 5px;
     color: #333;
-    font-size: 12px;
+    font-size: 14px;
     box-sizing: border-box;
     outline: none;
 }
 
 .rce-input-textarea {
-    height: 25px;
-    padding: 5px 5px;
+    height: 37px;
+    padding: 10px 5px;
     resize: none;
 }
 
@@ -51,7 +51,11 @@
     padding-right: 0px !important;
 }
 
+.rce-right-padding {
+	padding-right: 10px;
+    padding-left: 0px !important;
+}
+
 .rce-input::placeholder {
     color: #afafaf;
-    font-size: 12px;
 }

@@ -32,42 +32,37 @@ export class Input extends Component {
 	}
 
 	render() {
-		const buttons = () => (
-			<div
-				className='rce-input-buttons'>
-				{this.props.buttons}
-			</div>
-		);
-
 		return (
 			<div className="rce-container-input">
 				{
-					this.props.buttons && this.props.buttonsFloat === 'left' &&
-					buttons()
+					this.props.leftButtons &&
+					<div className="rce-input-buttons">
+						{this.props.leftButtons}
+					</div>
 				}
-
 				{
 					this.props.multiline === false ?
-					<input
-						type={this.props.type}
-						className={classNames("rce-input", {'rce-left-padding': this.props.buttonsFloat !== 'left' })}
-						placeholder={this.props.placeholder}
-						value={this.state.value}
-						style={this.props.inputStyle}
-						onChange={this.onChange.bind(this)}/>
+						<input
+							type={this.props.type}
+							className={classNames("rce-input")}
+							placeholder={this.props.placeholder}
+							value={this.state.value}
+							style={this.props.inputStyle}
+							onChange={this.onChange.bind(this)} />
 						:
-					<textarea
-						type={this.props.type}
-						className={classNames("rce-input", 'rce-input-textarea', {'rce-left-padding': this.props.buttonsFloat !== 'left' })}
-						placeholder={this.props.placeholder}
-						value={this.state.value}
-						style={this.props.inputStyle}
-						onChange={this.onChange.bind(this)}></textarea>
+						<textarea
+							type={this.props.type}
+							className={classNames("rce-input", 'rce-input-textarea')}
+							placeholder={this.props.placeholder}
+							value={this.state.value}
+							style={this.props.inputStyle}
+							onChange={this.onChange.bind(this)}></textarea>
 				}
-
 				{
-					this.props.buttons && this.props.buttonsFloat === 'right' &&
-					buttons()
+					this.props.rightButtons &&
+					<div className="rce-input-buttons">
+						{this.props.rightButtons}
+					</div>
 				}
 			</div>
 		);
@@ -79,8 +74,8 @@ Input.defaultProps = {
 	placeholder: '',
 	defaultValue: '',
 	onChange: null,
-	buttons: null,
-	buttonsFloat: 'right',
+	rightButtons: null,
+	leftButtons: null,
 	multiline: false,
 	minHeight: 25,
 	maxHeight: 200,
