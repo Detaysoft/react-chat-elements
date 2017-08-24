@@ -190,6 +190,8 @@ import { Input } from 'react-chat-elements'
 | minHeight | 25 | int | input min height |
 | maxHeight | 200 | int | input max height |
 | inputStyle | none | object | inputStyle object |
+| buttons | none | object(component) | buttons component |
+| buttonsFloat | right | string | buttons float (right or left) |
 
 
 ## Button Component

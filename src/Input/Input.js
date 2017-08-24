@@ -32,13 +32,25 @@ export class Input extends Component {
 	}
 
 	render() {
+		const buttons = () => (
+			<div
+				className='rce-input-buttons'>
+				{this.props.buttons}
+			</div>
+		);
+
 		return (
 			<div className="rce-container-input">
+				{
+					this.props.buttons && this.props.buttonsFloat === 'left' &&
+					buttons()
+				}
+
 				{
 					this.props.multiline === false ?
 					<input
 						type={this.props.type}
-						className={classNames("rce-input", {'rce-input-nopadding': this.props.buttons})}
+						className={classNames("rce-input", {'rce-left-padding': this.props.buttonsFloat !== 'left' })}
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
@@ -46,7 +58,7 @@ export class Input extends Component {
 						:
 					<textarea
 						type={this.props.type}
-						className={classNames("rce-input", 'rce-input-textarea', {'rce-input-nopadding': this.props.buttons})}
+						className={classNames("rce-input", 'rce-input-textarea', {'rce-left-padding': this.props.buttonsFloat !== 'left' })}
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
@@ -54,11 +66,8 @@ export class Input extends Component {
 				}
 
 				{
-					this.props.buttons &&
-					<div
-						className='rce-input-buttons'>
-						{this.props.buttons}
-					</div>
+					this.props.buttons && this.props.buttonsFloat === 'right' &&
+					buttons()
 				}
 			</div>
 		);
@@ -71,6 +80,7 @@ Input.defaultProps = {
 	defaultValue: '',
 	onChange: null,
 	buttons: null,
+	buttonsFloat: 'right',
 	multiline: false,
 	minHeight: 25,
 	maxHeight: 200,
