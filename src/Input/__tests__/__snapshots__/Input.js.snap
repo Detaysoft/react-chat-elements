@@ -5,7 +5,7 @@ exports[`Input component should render without issues 1`] = `
   className="rce-container-input"
 >
   <input
-    className="rce-input rce-left-padding"
+    className="rce-input"
     onChange={[Function]}
     placeholder=""
     style={null}
