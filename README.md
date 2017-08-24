@@ -191,7 +191,7 @@ import { Input } from 'react-chat-elements'
 | maxHeight | 200 | int | input max height |
 | inputStyle | none | object | inputStyle object |
 | leftButtons | none | object(component) | left buttons component |
-| rightButtons | none | object(component) | left buttons component |
+| rightButtons | none | object(component) | right buttons component |
 
 
 ## Button Component
