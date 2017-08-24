@@ -82,16 +82,6 @@
 .rce-button.circle {
     min-width: 35px;
     min-height: 35px;
-    background: rgba(0, 0, 0, 0) !important;
     border: 1px solid #3979aa;
     border-radius: 100%;
-    color: #3979aa;
-}
-
-.rce-button.circle:hover {
-    opacity: 0.6;
-}
-
-.rce-button.circle:active {
-    opacity: 0.3;
 }
