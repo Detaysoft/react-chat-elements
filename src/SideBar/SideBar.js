@@ -6,7 +6,7 @@ const classNames = require('classnames');
 export class SideBar extends Component {
 	render() {
 		return (
-			<div className={classNames('rce-sbar', this.props.type)}>
+			<div className={classNames('rce-sbar', this.props.type, this.props.className)}>
 				<div className="rce-sbar-item">
 					{this.props.top}
 				</div>

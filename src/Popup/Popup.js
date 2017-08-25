@@ -9,7 +9,7 @@ export class Popup extends Component {
 	render() {
 		if (this.props.show === true)
 		return (
-			<div className={classNames('rce-popup-wrapper', this.props.type)}>
+			<div className={classNames('rce-popup-wrapper', this.props.type, this.props.className)}>
 				<div className="rce-popup">
 					{
 						this.props.renderHeader ?

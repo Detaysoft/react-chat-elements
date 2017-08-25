@@ -33,10 +33,10 @@ export class Input extends Component {
 
 	render() {
 		return (
-			<div className="rce-container-input">
+			<div className={classNames('rce-container-input', this.props.className)}>
 				{
 					this.props.leftButtons &&
-					<div className="rce-input-buttons">
+					<div className='rce-input-buttons'>
 						{this.props.leftButtons}
 					</div>
 				}
@@ -44,7 +44,7 @@ export class Input extends Component {
 					this.props.multiline === false ?
 					<input
 						type={this.props.type}
-						className={classNames("rce-input")}
+						className={classNames('rce-input')}
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
@@ -52,7 +52,7 @@ export class Input extends Component {
 					:
 					<textarea
 						type={this.props.type}
-						className={classNames("rce-input", 'rce-input-textarea')}
+						className={classNames('rce-input', 'rce-input-textarea')}
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
@@ -60,7 +60,7 @@ export class Input extends Component {
 				}
 				{
 					this.props.rightButtons &&
-					<div className="rce-input-buttons">
+					<div className='rce-input-buttons'>
 						{this.props.rightButtons}
 					</div>
 				}

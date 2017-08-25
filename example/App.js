@@ -178,20 +178,8 @@ export class App extends Component {
 						defaultValue=""
 						multiline={true}
 						// buttonsFloat='left'
-						buttons={
+						rightButtons={
 							<div>
-							<Button
-								color='white'
-								backgroundColor='black'
-								onClick={e => {
-									this.addMessage();
-								}}
-								type='circle'
-								icon={{
-									component: <FaSearch />,
-									size: 18,
-									float: 'right'
-								}}/>
 							<Button
 								color='white'
 								backgroundColor='black'
