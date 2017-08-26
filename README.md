@@ -191,7 +191,7 @@ this.refs.input.clear();
 | className | none | string | optional input className |
 | placeholder | none | string | input placeholder text |
 | defaultValue | none | string | input default value |
-| onChange | none | object | input onChange function |
+| onChange | none | function | input onChange function |
 | multiline | false | bool | input is textarea |
 | autoHeight | true | bool | input auto height |
 | minHeight | 25 | int | input min height |
@@ -199,7 +199,7 @@ this.refs.input.clear();
 | inputStyle | none | object | inputStyle object |
 | leftButtons | none | object(component) | left buttons component |
 | rightButtons | none | object(component) | right buttons component |
-| inputRef | none | ref(component) | input or textarea ref |
+| inputRef | none | function | input or textarea ref |
 
 
 ## Button Component
