@@ -176,6 +176,7 @@ export class App extends Component {
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
+						ref='input'
 						multiline={true}
 						// buttonsFloat='left'
 						rightButtons={
@@ -183,9 +184,10 @@ export class App extends Component {
 							<Button
 								color='white'
 								backgroundColor='black'
-								onClick={e => {
+								onClick={(e => {
 									this.addMessage();
-								}}
+									this.refs.input.clear();
+								}).bind(this)}
 								icon={{
 									component: <FaSearch />,
 									size: 18,

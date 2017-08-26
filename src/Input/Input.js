@@ -31,6 +31,15 @@ export class Input extends Component {
 		}
 	}
 
+	clear() {
+		var event = {
+			FAKE_EVENT: true,
+			target: this.input,
+		};
+		this.input.value = '';
+		this.onChange(event);
+	}
+
 	render() {
 		return (
 			<div className={classNames('rce-container-input', this.props.className)}>
@@ -43,6 +52,11 @@ export class Input extends Component {
 				{
 					this.props.multiline === false ?
 					<input
+						ref={(ref) => {
+							if (this.props.inputRef instanceof Function)
+								this.props.inputRef(ref);
+							this.input = ref;
+						}}
 						type={this.props.type}
 						className={classNames('rce-input')}
 						placeholder={this.props.placeholder}
@@ -51,6 +65,11 @@ export class Input extends Component {
 						onChange={this.onChange.bind(this)} />
 					:
 					<textarea
+						ref={(ref) => {
+							if (this.props.inputRef instanceof Function)
+								this.props.inputRef(ref);
+							this.input = ref;
+						}}
 						type={this.props.type}
 						className={classNames('rce-input', 'rce-input-textarea')}
 						placeholder={this.props.placeholder}
@@ -81,6 +100,7 @@ Input.defaultProps = {
 	maxHeight: 200,
 	autoHeight: true,
 	inputStyle: null,
+	inputRef: null,
 };
 
 export default Input;

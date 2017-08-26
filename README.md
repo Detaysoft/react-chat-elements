@@ -175,6 +175,13 @@ import { Input } from 'react-chat-elements'
             backgroundColor='black'
             text='Send'/>
     }/>
+
+// clear text eg:
+<Input
+	ref='input'
+    placeholder="Type here..."/>
+
+this.refs.input.clear();
 ```
 
 #### Input props
