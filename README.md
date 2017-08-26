@@ -178,7 +178,7 @@ import { Input } from 'react-chat-elements'
 
 // clear text eg:
 <Input
-	ref='input'
+    ref='input'
     placeholder="Type here..."/>
 
 this.refs.input.clear();
@@ -199,6 +199,7 @@ this.refs.input.clear();
 | inputStyle | none | object | inputStyle object |
 | leftButtons | none | object(component) | left buttons component |
 | rightButtons | none | object(component) | right buttons component |
+| inputRef | none | ref(component) | input or textarea ref |
 
 
 ## Button Component
