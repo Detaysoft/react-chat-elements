@@ -1,3 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown component should render without issues 1`] = `null`;
+exports[`Dropdown component should render without issues 1`] = `
+<div
+  className="rce-dropdown-container"
+  onBlur={[Function]}
+>
+  <Button
+    backgroundColor="#3979aa"
+    buttonRef={null}
+    className={null}
+    color="white"
+    disabled={false}
+    icon={null}
+    onClick={[Function]}
+    text=""
+    type={null}
+  />
+</div>
+`;

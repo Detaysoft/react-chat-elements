@@ -1,3 +1,6 @@
+.rce-dropdown-container {
+	position: relative;
+}
 .rce-dropdown {
     padding: 5px 10px;
     background: #f5f5f5;
@@ -30,18 +33,30 @@
 
 .rce-dropdown-open__nortwest {
     transform-origin: left top;
+    left: 0;
+    top: 100%;
+    margin-top: 5px
 }
 
 .rce-dropdown-open__norteast {
     transform-origin: right top;
+    right: 0;
+    top: 100%;
+    margin-top: 5px
 }
 
 .rce-dropdown-open__southwest {
     transform-origin: left bottom;
+    left: 0;
+    bottom: 100%;
+    margin-bottom: 5px
 }
 
 .rce-dropdown-open__southeast {
     transform-origin: right bottom;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 5px
 }
 
 .rce-dropdown ul {

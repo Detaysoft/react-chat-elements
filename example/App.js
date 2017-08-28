@@ -101,19 +101,6 @@ export class App extends Component {
 
 		return (
 			<div className='container'>
-				<Dropdown
-					target={{
-						X: 400,
-						Y: 100
-					}}
-					items={[
-						's.a',
-						'lorem',
-						'ipsum',
-						'dolor',
-						'sit',
-						'amet'
-					]}/>
 				<div
 					className='chat-list'>
 					<SideBar
@@ -180,21 +167,18 @@ export class App extends Component {
 						multiline={true}
 						// buttonsFloat='left'
 						rightButtons={
-							<div>
-							<Button
-								color='white'
-								backgroundColor='black'
-								onClick={(e => {
-									this.addMessage();
-									this.refs.input.clear();
-								}).bind(this)}
-								icon={{
-									component: <FaSearch />,
-									size: 18,
-									float: 'right'
-								}}/>
-
-							</div>
+							<Dropdown
+								items={[
+									'asdasd',
+									'asdasdasd',
+								]}
+								buttonProps={{
+									text: 'Boşu Boşuna'
+								}}
+								onSelect={(i) => {
+									console.log(`${i}'nci nesne seçildi`)
+								}}
+								animationPosition='southeast'/>
 						}/>
 				</div>
 

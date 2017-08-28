@@ -1,6 +1,5 @@
 .rce-container-input {
     display: flex;
-    overflow: hidden;
     min-width: 100%;
     box-sizing: border-box;
     flex-direction: row;

@@ -7,6 +7,7 @@ export class Button extends Component {
 	render() {
 		return (
 			<button
+				ref={this.props.buttonRef}
 				className={classNames('rce-button', this.props.type, this.props.className)}
 				style={{
 					backgroundColor: this.props.backgroundColor,
@@ -39,6 +40,7 @@ Button.defaultProps = {
 	backgroundColor: '#3979aa',
 	color: 'white',
 	className: null,
+	buttonRef: null,
 };
 
 export default Button;

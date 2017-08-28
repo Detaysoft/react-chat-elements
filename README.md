@@ -218,6 +218,7 @@ import { Button } from 'react-chat-elements'
 | type | none | string | button type (outlined, transparent) |
 | disabled | none | string | button is disabled? |
 | text | none | string | button text |
+| buttonRef | none | function | button ref |
 
 ## Popup Component
 
@@ -320,17 +321,16 @@ import { Navbar } from 'react-chat-elements'
 import { Dropdown } from 'react-chat-elements'
 
 <Dropdown
-    target={{
-        X: 400,
-        Y: 100
-    }}
+	buttonProps={{
+		text: 'Dropdown',
+	}}
     items={[
         'merhaba',
         'lorem',
         'ipsum',
         'dolor',
         'sit',
-        'amet'
+        'amet',
     ]}/>
 ```
 
@@ -342,4 +342,4 @@ import { Dropdown } from 'react-chat-elements'
 | animationPosition | nortwest | string | animation start position (nortwest, norteast, southwest, southeast) |
 | items | none | array | dropdown items array |
 | onSelect | none | function | item on select |
-| target | { X: 0, Y: 0 } | object | dropdown target |
+| buttonProps | none | object | button properties |
