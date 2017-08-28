@@ -21,7 +21,7 @@ export class Dropdown extends Component {
 
 	render() {
 		return (
-			<div className='rce-dropdown-container' onBlur={this.onBlur.bind(this)}>
+			<div className={classNames('rce-dropdown-container', this.props.className)} onBlur={this.onBlur.bind(this)}>
 				{
 					<Button
 						{...this.props.buttonProps}
