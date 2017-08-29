@@ -178,7 +178,7 @@ export class App extends Component {
 								onSelect={(i) => {
 									console.log(`${i}'nci nesne seçildi`)
 								}}
-								animationPosition='southwest'/>
+								animationPosition='southeast'/>
 						}/>
 				</div>
 
