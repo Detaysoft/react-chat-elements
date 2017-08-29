@@ -38,7 +38,7 @@ export class MessageBox extends Component {
 							text={this.props.text}/>
 					}
 
-					<div className="rce-mbox-time rce-mbox-right">
+					<div className="rce-mbox-time">
 						{moment(this.props.date).fromNow()}
 					</div>
 
