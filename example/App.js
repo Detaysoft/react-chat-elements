@@ -170,7 +170,7 @@ export class App extends Component {
 							<Dropdown
 								items={[
 									'asdasd',
-									'asdasdasd',
+									'Lorem ipsum dolor sit amet.',
 								]}
 								buttonProps={{
 									text: 'Boşu Boşuna'

@@ -15,8 +15,8 @@ export class Dropdown extends Component {
 	}
 
 	onBlur(e) {
-		if (this.state.show === true)
-			this.setState({show: false});
+		// if (this.state.show === true)
+		// 	this.setState({show: false});
 	}
 
 	render() {
