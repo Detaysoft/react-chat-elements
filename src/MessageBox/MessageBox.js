@@ -13,7 +13,9 @@ export class MessageBox extends Component {
 		var positionCls = classNames('rce-mbox', { 'rce-mbox-right' : this.props.position === 'right' });
 
 		return (
-			<div className="rce-container-mbox" onClick={this.props.onClick}>
+			<div
+				className={classNames('rce-container-mbox', this.props.className)}
+				onClick={this.props.onClick}>
 				<div
 					className={positionCls}>
 					{

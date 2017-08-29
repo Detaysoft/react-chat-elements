@@ -3,14 +3,15 @@ import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
 
-const moment = require('moment')
+const moment = require('moment');
+const classNames = require('classnames');
 
 export class ChatItem extends Component {
 
 	render() {
 		return (
 			<div
-				className="rce-container-citem"
+				className={classNames('rce-container-citem', this.props.className)}
 				onClick={this.props.onClick}>
 				<div className="rce-citem">
 					<div className="rce-citem-avatar">
