@@ -16,5 +16,10 @@ exports[`Dropdown component should render without issues 1`] = `
     text=""
     type={null}
   />
+  <div
+    className="rce-dropdown default rce-dropdown-open__nortwest"
+  >
+    <ul />
+  </div>
 </div>
 `;
