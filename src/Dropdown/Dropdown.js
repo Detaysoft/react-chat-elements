@@ -10,13 +10,13 @@ export class Dropdown extends Component {
 		super(props);
 
 		this.state = {
-			show: false,
+			show: undefined,
 		};
 	}
 
 	onBlur(e) {
-		// if (this.state.show === true)
-		// 	this.setState({show: false});
+		if (this.state.show === true)
+			this.setState({show: false});
 	}
 
 	render() {
@@ -25,18 +25,16 @@ export class Dropdown extends Component {
 				{
 					<Button
 						{...this.props.buttonProps}
-						onClick={() => this.setState({show: !this.state.show})}/>
+						onClick={() => this.setState({ show: !this.state.show })} />
 				}
-				{
-					this.state.show &&
-					<div
-						className={
-							classNames(
-								'rce-dropdown',
-								this.props.animationType,
-								'rce-dropdown-open__' + this.props.animationPosition,
-							)
-						}>
+				<div
+					className={classNames(
+						'rce-dropdown',
+						this.props.animationType,
+						'rce-dropdown-open__' + this.props.animationPosition,
+						{ 'dropdown-hide': this.state.show === false },
+						{ 'dropdown-show': this.state.show === true })}>
+
 						<ul>
 							{
 								this.props.items.map((x, i) => (
@@ -46,8 +44,7 @@ export class Dropdown extends Component {
 								))
 							}
 						</ul>
-					</div>
-				}
+				</div>
 			</div>
 		);
 	}
@@ -55,7 +52,7 @@ export class Dropdown extends Component {
 
 Dropdown.defaultProps = {
 	animationType: 'default',
-	animationPosition: 'nortwest',
+	animationPosition: 'southwest',
 	items: [],
 	onSelect: Function,
 	buttonProps: null
