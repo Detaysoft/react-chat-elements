@@ -31,6 +31,8 @@ export class MessageBox extends Component {
 							onOpen={this.props.onOpen}
 							onDownload={this.props.onDownload}
 							data={this.props.data}
+							width={this.props.width}
+							height={this.props.height}
 							text={this.props.text}/>
 					}
 					{

@@ -62,6 +62,8 @@ export class App extends Component {
 					position: (this.token() >= 1 ? 'right' : 'left'),
 					type: type,
 					text: loremIpsum({ count: 1, units: 'sentences' }),
+					width: 300,
+					height: 300,
 					data: {
 						uri: `data:image/png;base64,${this.photo(150)}`,
 						status: {

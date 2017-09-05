@@ -79,6 +79,8 @@ import { MessageBox } from 'react-chat-elements'
 | onClick | none | function | message on click (message(object) is returned) |
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |
+| width | none | int | only photo width (optional) |
+| height | none | int | only photo height (optional) |
 
 
 ## SystemMessage Component
