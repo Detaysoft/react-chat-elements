@@ -76,6 +76,9 @@ import { MessageBox } from 'react-chat-elements'
 | text | none | string | message text |
 | data | {} | object | message data |
 | date | new Date() | Date | message date |
+| onClick | none | function | message on click (message(object) is returned) |
+| onOpen | none | function | message on open (file or photo) (message(object) is returned) |
+| onDownload | none | function | message on download (file or photo) (message(object) is returned) |
 
 
 ## SystemMessage Component
@@ -127,6 +130,8 @@ import { MessageList } from 'react-chat-elements'
 | lockable | false | boolean | It locks to scroll position when the dataSource has been changed |
 | toBottomHeight | 300 | int or string(only '100%') | If the toBottomHeight property's value higher than bottom value of the scrollbar when the data source has been changed Scrollbar goes to bottom at the end of the page. If the toBottomHeight property's value has been set **'100%'**, scrollbar goes to bottom at the end of the page when the data source has been changed. |
 | onClick | none | function | message list item on click (message(object) is returned) |
+| onOpen | none | function | message list item on open (file or photo) (message(object) is returned) |
+| onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 
 
 ## ChatList Component

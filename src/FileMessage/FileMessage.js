@@ -8,6 +8,17 @@ const ProgressBar = require('react-progressbar.js');
 const Circle = ProgressBar.Circle;
 
 export class FileMessage extends Component {
+
+	onClick() {
+		if (!this.props.data.status)
+			return;
+
+		if (!this.props.data.status.download && this.props.onDownload instanceof Function)
+			this.props.onDownload();
+		else if (this.props.data.status.download && this.props.onOpen instanceof Function)
+			this.props.onOpen();
+	}
+
 	render() {
 		var progressOptions = {
 			strokeWidth: 5,
@@ -25,14 +36,14 @@ export class FileMessage extends Component {
 					circle.setText(value);
 			}
 		};
-		
+
 		return (
-			<button className="rce-mbox-file">
+			<button className="rce-mbox-file" onClick={this.onClick.bind(this)}>
 				<div className="rce-mbox-file--icon">
 					<FaFile
 						color='#aaa'/>
 					<div className="rce-mbox-file--size">
-						1024mB
+						{this.props.data.size}
 					</div>
 				</div>
 				<div className="rce-mbox-file--text">
@@ -41,12 +52,14 @@ export class FileMessage extends Component {
 				<div className="rce-mbox-file--buttons">
 					{
 						this.props.data.status &&
+						!this.props.data.status.download &&
 						!this.props.data.status.click &&
 						<FaCloudDownload
 							color='#aaa'/>
 					}
 					{
 						this.props.data.status &&
+						typeof this.props.data.status.loading === 'number' &&
 						this.props.data.status.loading !== 0 &&
 						<Circle
 							progress={this.props.data.status.loading}
@@ -67,6 +80,9 @@ export class FileMessage extends Component {
 FileMessage.defaultProps = {
 	text: '',
 	data: {},
+	onClick: null,
+	onDownload: null,
+	onOpen: null,
 };
 
 

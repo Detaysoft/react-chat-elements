@@ -28,12 +28,16 @@ export class MessageBox extends Component {
 					{
 						this.props.type === 'photo' &&
 						<PhotoMessage
+							onOpen={this.props.onOpen}
+							onDownload={this.props.onDownload}
 							data={this.props.data}
 							text={this.props.text}/>
 					}
 					{
 						this.props.type === 'file' &&
 						<FileMessage
+							onOpen={this.props.onOpen}
+							onDownload={this.props.onDownload}
 							data={this.props.data}
 							text={this.props.text}/>
 					}
@@ -74,6 +78,8 @@ MessageBox.defaultProps = {
 	date: new Date(),
 	data: {},
 	onClick: null,
+	onOpen: null,
+	onDownload: null,
 };
 
 

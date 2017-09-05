@@ -158,6 +158,12 @@ export class App extends Component {
 					className='right-panel'>
 					<MessageList
 						className='message-list'
+						onDownload={() => {
+							debugger;
+						}}
+						onOpen={() => {
+							debugger;
+						}}
 						lockable={true}
 						dataSource={this.state.messageList} />
 					<Input
@@ -175,9 +181,7 @@ export class App extends Component {
 								buttonProps={{
 									text: 'Boşu Boşuna'
 								}}
-								onSelect={(i) => {
-									console.log(`${i}'nci nesne seçildi`)
-								}}
+								onSelect={this.addMessage.bind(this)}
 								animationPosition='southeast'/>
 						}/>
 				</div>
