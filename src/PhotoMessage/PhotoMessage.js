@@ -30,9 +30,9 @@ export class PhotoMessage extends Component {
 			<div className="rce-mbox-photo">
 				<div
 					className="rce-mbox-photo--img"
-					style={this.props.width && this.props.height && {
-						width: this.props.width,
-						height: this.props.height,
+					style={this.props.data.width && this.props.data.height && {
+						width: this.props.data.width,
+						height: this.props.data.height,
 					}}>
 					<img src={this.props.data.uri} alt={this.props.data.alt} onClick={this.props.onOpen}/>
 					{
