@@ -1,37 +1,52 @@
-.rce-avatar.default{
+.rce-avatar-container {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.rce-avatar-container.flexible .rce-avatar {
+	height: auto !important;
+	width: 100% !important;
+	border-radius: unset !important;
+	overflow: unset !important;
+}
+
+.rce-avatar-container.default{
     width: 25px;
     height: 25px;
 }
 
-.rce-avatar.rounded{
+.rce-avatar-container.rounded{
     border-radius: 5px;
 }
 
-.rce-avatar.circle{
+.rce-avatar-container.circle{
     border-radius: 100%;
 }
 
-.rce-avatar.xsmall{
+.rce-avatar-container.xsmall{
     width: 30px;
     height: 30px;
 }
 
-.rce-avatar.small{
+.rce-avatar-container.small{
     width: 35px;
     height: 35px;
 }
 
-.rce-avatar.medium{
+.rce-avatar-container.medium{
     width: 40px;
     height: 40px;
 }
 
-.rce-avatar.large{
+.rce-avatar-container.large{
     width: 45px;
     height: 45px;
 }
 
-.rce-avatar.xlarge{
+.rce-avatar-container.xlarge{
     width: 55px;
     height: 55px;
 }

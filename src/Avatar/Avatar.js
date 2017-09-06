@@ -6,7 +6,9 @@ const classNames = require('classnames');
 export class Avatar extends Component {
 	render() {
 		return (
-			<img alt={this.props.alt} src={this.props.src} className={classNames('rce-avatar', this.props.type, this.props.size, this.props.className)} />
+			<div className={classNames('rce-avatar-container', this.props.type, this.props.size, this.props.className)}>
+				<img alt={this.props.alt} src={this.props.src} className={'rce-avatar'} />
+			</div>
 		);
 	}
 }

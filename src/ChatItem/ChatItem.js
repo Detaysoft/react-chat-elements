@@ -15,7 +15,11 @@ export class ChatItem extends Component {
 				onClick={this.props.onClick}>
 				<div className="rce-citem">
 					<div className="rce-citem-avatar">
-						<Avatar src={this.props.avatar} alt={this.props.alt} size="large" type="circle"/>
+						<Avatar
+							src={this.props.avatar}
+							alt={this.props.alt}
+							size="large"
+							type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
 					</div>
 
 					<div className="rce-citem-body">
@@ -50,6 +54,7 @@ ChatItem.defaultProps = {
 	id: '',
 	onClick: null,
 	avatar: '',
+	avatarFlexible: false,
 	alt: '',
 	title: '',
 	subtitle: '',
