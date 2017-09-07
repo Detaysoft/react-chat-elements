@@ -30,11 +30,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                // loader: ExtractTextPlugin.extract({
-                //     fallback: "style-loader",
-                //     use: "css-loader"
-                // }),
-                loader: "style-loader!css-loader",
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                }),
             },
         ]
     },
@@ -49,6 +48,6 @@ module.exports = {
             beautify: false,
             comments: false,
         }),
-        // new ExtractTextPlugin("main.css"),
+        new ExtractTextPlugin("main.css"),
     ],
 };

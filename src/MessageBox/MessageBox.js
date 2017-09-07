@@ -10,7 +10,7 @@ const classNames = require('classnames');
 
 export class MessageBox extends Component {
 	render() {
-		var positionCls = classNames('rce-mbox', { 'rce-mbox-right' : this.props.position === 'right' });
+		var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
 
 		return (
 			<div
@@ -18,6 +18,12 @@ export class MessageBox extends Component {
 				onClick={this.props.onClick}>
 				<div
 					className={positionCls}>
+
+					{
+						this.props.title &&
+						<p className="rce-mbox-title">{this.props.title}</p>
+					}
+
 					{
 						this.props.type === 'text' &&
 						<div className="rce-mbox-text">
@@ -41,7 +47,7 @@ export class MessageBox extends Component {
 							onOpen={this.props.onOpen}
 							onDownload={this.props.onDownload}
 							data={this.props.data}
-							text={this.props.text}/>
+							text={this.props.text} />
 					}
 
 					<div className="rce-mbox-time">
@@ -51,9 +57,9 @@ export class MessageBox extends Component {
 					{
 						this.props.position === 'right' ?
 							<svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-								<path d="M0 0v20L20 0"/>
+								<path d="M0 0v20L20 0" />
 							</svg>
-						:
+							:
 							<div>
 								<svg className="rce-mbox-left-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 									<defs>
@@ -63,7 +69,7 @@ export class MessageBox extends Component {
 											<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
 										</filter>
 									</defs>
-									<path d="M20 0v20L0 0" filter="url(#filter1)"/>
+									<path d="M20 0v20L0 0" filter="url(#filter1)" />
 								</svg>
 							</div>
 					}
@@ -77,6 +83,7 @@ MessageBox.defaultProps = {
 	position: 'left',
 	type: 'text',
 	text: '',
+	title: null,
 	date: new Date(),
 	data: {},
 	onClick: null,

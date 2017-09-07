@@ -169,6 +169,7 @@ export class App extends Component {
 						}}
 						lockable={true}
 						dataSource={this.state.messageList} />
+						<MessageBox text="bızcıd" title="Mustafa Lemi ELYAKAN"/>
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
