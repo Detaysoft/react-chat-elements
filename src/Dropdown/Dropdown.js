@@ -52,7 +52,7 @@ export class Dropdown extends Component {
 
 Dropdown.defaultProps = {
 	animationType: 'default',
-	animationPosition: 'southwest',
+	animationPosition: 'nortwest',
 	items: [],
 	onSelect: Function,
 	buttonProps: null

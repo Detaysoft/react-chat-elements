@@ -37,6 +37,16 @@ export class MessageList extends Component {
 		return e.scrollHeight - e.scrollTop - e.offsetHeight;
 	}
 
+	onOpen(item, i) {
+		if (this.props.onOpen instanceof Function)
+			this.props.onOpen(item, i);
+	}
+
+	onDownload(item, i) {
+		if (this.props.onDownload instanceof Function)
+			this.props.onDownload(item, i);
+	}
+
 	onClick(item, i) {
 		if (this.props.onClick instanceof Function)
 			this.props.onClick(item, i);
@@ -52,6 +62,8 @@ export class MessageList extends Component {
 						<MessageBox
 							key={i}
 							{...x}
+							onOpen={() => this.onOpen(x, i)}
+							onDownload={() => this.onDownload(x, i)}
 							onClick={() => this.onClick(x, i)} />
 					))
 				}
@@ -62,6 +74,8 @@ export class MessageList extends Component {
 
 MessageList.defaultProps = {
 	onClick: null,
+	onOpen: null,
+	onDownload: null,
 	dataSource: [],
 	lockable: false,
 	toBottomHeight: 300,

@@ -28,8 +28,13 @@ export class PhotoMessage extends Component {
 
 		return (
 			<div className="rce-mbox-photo">
-				<div className="rce-mbox-photo--img">
-					<img src={this.props.data.uri} alt={this.props.data.alt}/>
+				<div
+					className="rce-mbox-photo--img"
+					style={this.props.data.width && this.props.data.height && {
+						width: this.props.data.width,
+						height: this.props.data.height,
+					}}>
+					<img src={this.props.data.uri} alt={this.props.data.alt} onClick={this.props.onOpen}/>
 					{
 						this.props.data.status &&
 						!this.props.data.status.download &&
@@ -37,11 +42,13 @@ export class PhotoMessage extends Component {
 							{
 								!this.props.data.status.click &&
 								<button
+									onClick={this.props.onDownload}
 									className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
 									<FaCloudDownload/>
 								</button>
 							}
 							{
+								typeof this.props.data.status.loading === 'number' &&
 								this.props.data.status.loading !== 0 &&
 								<Circle
 									progress={this.props.data.status.loading}
@@ -67,6 +74,8 @@ export class PhotoMessage extends Component {
 PhotoMessage.defaultProps = {
 	text: '',
 	data: {},
+	onDownload: null,
+	onOpen: null,
 };
 
 

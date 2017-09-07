@@ -3,6 +3,7 @@
 exports[`FileMessage component should render without issues 1`] = `
 <button
   className="rce-mbox-file"
+  onClick={[Function]}
 >
   <div
     className="rce-mbox-file--icon"
@@ -12,9 +13,7 @@ exports[`FileMessage component should render without issues 1`] = `
     />
     <div
       className="rce-mbox-file--size"
-    >
-      1024mB
-    </div>
+    />
   </div>
   <div
     className="rce-mbox-file--text"

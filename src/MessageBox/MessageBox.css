@@ -11,6 +11,7 @@
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
 	border-top-left-radius: 0px;
 	margin-left: 20px;
+	margin-right: 5px;
 	margin-top: 5px;
 	display: flex;
 	flex-direction: column;
@@ -23,7 +24,7 @@
 
 .rce-mbox.rce-mbox-right {
 	float: right;
-	margin-left: 0px;
+	margin-left: 5px;
 	margin-right: 20px;
 	border-top-right-radius: 0px;
 	border-top-left-radius: 5px;

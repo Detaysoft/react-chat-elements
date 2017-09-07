@@ -13,7 +13,9 @@ export class MessageBox extends Component {
 		var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
 
 		return (
-			<div className="rce-container-mbox" onClick={this.props.onClick}>
+			<div
+				className={classNames('rce-container-mbox', this.props.className)}
+				onClick={this.props.onClick}>
 				<div
 					className={positionCls}>
 
@@ -32,17 +34,23 @@ export class MessageBox extends Component {
 					{
 						this.props.type === 'photo' &&
 						<PhotoMessage
+							onOpen={this.props.onOpen}
+							onDownload={this.props.onDownload}
 							data={this.props.data}
-							text={this.props.text} />
+							width={this.props.width}
+							height={this.props.height}
+							text={this.props.text}/>
 					}
 					{
 						this.props.type === 'file' &&
 						<FileMessage
+							onOpen={this.props.onOpen}
+							onDownload={this.props.onDownload}
 							data={this.props.data}
 							text={this.props.text} />
 					}
 
-					<div className="rce-mbox-time rce-mbox-right">
+					<div className="rce-mbox-time">
 						{moment(this.props.date).fromNow()}
 					</div>
 
@@ -79,6 +87,8 @@ MessageBox.defaultProps = {
 	date: new Date(),
 	data: {},
 	onClick: null,
+	onOpen: null,
+	onDownload: null,
 };
 
 

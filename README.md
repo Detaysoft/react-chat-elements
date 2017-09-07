@@ -13,6 +13,7 @@ Reactjs chat elements
 9. [SideBar](#sidebar-component)
 10. [Navbar](#navbar-component)
 11. [Dropdown](#dropdown-component)
+12. [Avatar](#avatar)
 
 ## ChatItem Component
 
@@ -34,6 +35,7 @@ import { ChatItem } from 'react-chat-elements'
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
 | avatar | none | string | ChatItem avatar photo url |
+| avatarFlexible | false | boolean | flexible ChatItem avatar photo |
 | alt | none | string | ChatItem avatar photo alt text |
 | title | none | string | ChatItem title |
 | subtitle | none | string | ChatItem subtitle |
@@ -76,6 +78,9 @@ import { MessageBox } from 'react-chat-elements'
 | text | none | string | message text |
 | data | {} | object | message data |
 | date | new Date() | Date | message date |
+| onClick | none | function | message on click (message(object) is returned) |
+| onOpen | none | function | message on open (file or photo) (message(object) is returned) |
+| onDownload | none | function | message on download (file or photo) (message(object) is returned) |
 
 
 ## SystemMessage Component
@@ -127,6 +132,8 @@ import { MessageList } from 'react-chat-elements'
 | lockable | false | boolean | It locks to scroll position when the dataSource has been changed |
 | toBottomHeight | 300 | int or string(only '100%') | If the toBottomHeight property's value higher than bottom value of the scrollbar when the data source has been changed Scrollbar goes to bottom at the end of the page. If the toBottomHeight property's value has been set **'100%'**, scrollbar goes to bottom at the end of the page when the data source has been changed. |
 | onClick | none | function | message list item on click (message(object) is returned) |
+| onOpen | none | function | message list item on open (file or photo) (message(object) is returned) |
+| onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 
 
 ## ChatList Component
@@ -321,9 +328,9 @@ import { Navbar } from 'react-chat-elements'
 import { Dropdown } from 'react-chat-elements'
 
 <Dropdown
-	buttonProps={{
-		text: 'Dropdown',
-	}}
+    buttonProps={{
+        text: 'Dropdown',
+    }}
     items={[
         'merhaba',
         'lorem',
@@ -343,3 +350,25 @@ import { Dropdown } from 'react-chat-elements'
 | items | none | array | dropdown items array |
 | onSelect | none | function | item on select |
 | buttonProps | none | object | button properties |
+
+
+## Avatar Component
+
+```javascript
+import { Avatar } from 'react-chat-elements'
+
+<Avatar
+    src={'https://facebook.github.io/react/img/logo.svg'}
+    alt={'logo'}
+    size="large"
+    type="circle flexible"/>
+```
+
+#### Avatar props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| src | none | image | image src |
+| alt | none | string | image alt description |
+| size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
+| type | default | string | types: default, circle, rounded(border radius 5px), flexible |

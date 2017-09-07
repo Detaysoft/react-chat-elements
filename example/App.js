@@ -67,7 +67,9 @@ export class App extends Component {
 						status: {
 							click: false,
 							loading: 0,
-						}
+						},
+						width: 300,
+						height: 300,
 					},
 					date: new Date(),
 				};
@@ -75,6 +77,7 @@ export class App extends Component {
 				return {
 					id: String(Math.random()),
 					avatar: `data:image/png;base64,${this.photo()}`,
+					avatarFlexible: true,
 					alt: loremIpsum({ count: 2, units: 'words' }),
 					title: loremIpsum({ count: 2, units: 'words' }),
 					date: new Date(),
@@ -158,6 +161,12 @@ export class App extends Component {
 					className='right-panel'>
 					<MessageList
 						className='message-list'
+						onDownload={() => {
+							debugger;
+						}}
+						onOpen={() => {
+							debugger;
+						}}
 						lockable={true}
 						dataSource={this.state.messageList} />
 						<MessageBox text="bızcıd" title="Mustafa Lemi ELYAKAN"/>
@@ -176,10 +185,8 @@ export class App extends Component {
 								buttonProps={{
 									text: 'Boşu Boşuna'
 								}}
-								onSelect={(i) => {
-									console.log(`${i}'nci nesne seçildi`)
-								}}
-								animationPosition='southwest'/>
+								onSelect={this.addMessage.bind(this)}
+								animationPosition='southeast'/>
 						}/>
 				</div>
 
