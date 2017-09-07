@@ -1,6 +1,22 @@
 # react-chat-elements
 Reactjs chat elements
 
+## Install
+
+```
+npm install react-chat-elements@latest --save
+```
+
+
+### Imports
+```javascript
+// RCE CSS
+import 'react-chat-elements/dist/main.css';
+// MessageBox component
+import {MessageBox} from 'react-chat-elements';
+```
+
+
 ## Components
 1. [ChatItem](#chatitem-component)
 2. [MessageBox](#messagebox-component)
