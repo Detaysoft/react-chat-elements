@@ -19,6 +19,11 @@ export class MessageBox extends Component {
 				<div
 					className={positionCls}>
 					{
+						this.props.title &&
+						<p className="rce-mbox-title">{this.props.title}</p>
+					}
+
+					{
 						this.props.type === 'text' &&
 						<div className="rce-mbox-text">
 							{this.props.text}
@@ -77,6 +82,7 @@ MessageBox.defaultProps = {
 	position: 'left',
 	type: 'text',
 	text: '',
+	title: null,
 	date: new Date(),
 	data: {},
 	onClick: null,
