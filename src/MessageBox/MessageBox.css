@@ -59,3 +59,9 @@
 	height: 15px;
 	fill: white;
 }
+
+.rce-mbox-title{
+	margin: 0;
+	font-size: 10px;
+	color:#4f81a1;
+}
