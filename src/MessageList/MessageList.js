@@ -52,6 +52,11 @@ export class MessageList extends Component {
 			this.props.onClick(item, i);
 	}
 
+	onTitleClick(item, i) {
+		if (this.props.onTitleClick instanceof Function)
+			this.props.onTitleClick(item, i);
+	}
+
 	render() {
 		return (
 			<div
@@ -64,6 +69,7 @@ export class MessageList extends Component {
 							{...x}
 							onOpen={() => this.onOpen(x, i)}
 							onDownload={() => this.onDownload(x, i)}
+							onTitleClick={() => this.onTitleClick(x, i)}
 							onClick={() => this.onClick(x, i)} />
 					))
 				}
@@ -74,6 +80,7 @@ export class MessageList extends Component {
 
 MessageList.defaultProps = {
 	onClick: null,
+	onTitleClick: null,
 	onOpen: null,
 	onDownload: null,
 	dataSource: [],

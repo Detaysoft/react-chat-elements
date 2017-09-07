@@ -76,11 +76,14 @@ import { MessageBox } from 'react-chat-elements'
 | position | left | string | message box position |
 | type | text | string | message type (text, photo, file) |
 | text | none | string | message text |
+| title | none | string | message title |
+| titleColor | none | string(color) | message title color |
 | data | {} | object | message data |
 | date | new Date() | Date | message date |
 | onClick | none | function | message on click (message(object) is returned) |
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |
+| onTitleClick | none | function | message title on click event |
 
 
 ## SystemMessage Component
