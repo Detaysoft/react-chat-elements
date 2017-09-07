@@ -36,6 +36,15 @@ export class App extends Component {
 		// setInterval(this.addMessage.bind(this), 3000);
 	}
 
+	getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	}
+
 	token() {
 		return (parseInt(Math.random() * 10 % 3));
 	}
@@ -61,6 +70,8 @@ export class App extends Component {
 				return {
 					position: (this.token() >= 1 ? 'right' : 'left'),
 					type: type,
+					title: loremIpsum({ count: 2, units: 'words' }),
+					titleColor: this.getRandomColor(),
 					text: loremIpsum({ count: 1, units: 'sentences' }),
 					data: {
 						uri: `data:image/png;base64,${this.photo(150)}`,
@@ -162,10 +173,13 @@ export class App extends Component {
 					<MessageList
 						className='message-list'
 						onDownload={() => {
-							debugger;
+							console.log('onDownload');
+						}}
+						onTitleClick={() => {
+							console.log('onTitleClick');
 						}}
 						onOpen={() => {
-							debugger;
+							console.log('onOpen');
 						}}
 						lockable={true}
 						dataSource={this.state.messageList} />
@@ -176,16 +190,9 @@ export class App extends Component {
 						multiline={true}
 						// buttonsFloat='left'
 						rightButtons={
-							<Dropdown
-								items={[
-									'asdasd',
-									'Lorem ipsum dolor sit amet.',
-								]}
-								buttonProps={{
-									text: 'Boşu Boşuna'
-								}}
-								onSelect={this.addMessage.bind(this)}
-								animationPosition='southeast'/>
+							<Button
+								text='Gönder'
+								onClick={this.addMessage.bind(this)}/>
 						}/>
 				</div>
 
