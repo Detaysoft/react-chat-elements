@@ -189,6 +189,17 @@ export class App extends Component {
 						ref='input'
 						multiline={true}
 						// buttonsFloat='left'
+						onKeyPress={(e) => {
+							if (e.shiftKey && e.charCode === 13) {
+								return true;
+							}
+							if (e.charCode === 13) {
+								this.refs.input.clear();
+								this.addMessage();
+								e.preventDefault();
+								return false;
+							}
+						}}
 						rightButtons={
 							<Button
 								text='Gönder'

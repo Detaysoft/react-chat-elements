@@ -62,7 +62,15 @@ export class Input extends Component {
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
-						onChange={this.onChange.bind(this)} />
+						onChange={this.onChange.bind(this)}
+						onBlur={this.props.onBlur}
+						onFocus={this.props.onFocus}
+						onSelect={this.props.onSelect}
+						onSubmit={this.props.onSubmit}
+						onReset={this.props.onReset}
+						onKeyDown={this.props.onKeyDown}
+						onKeyPress={this.props.onKeyPress}
+						onKeyUp={this.props.onKeyUp}/>
 					:
 					<textarea
 						ref={(ref) => {
@@ -75,7 +83,15 @@ export class Input extends Component {
 						placeholder={this.props.placeholder}
 						value={this.state.value}
 						style={this.props.inputStyle}
-						onChange={this.onChange.bind(this)}></textarea>
+						onChange={this.onChange.bind(this)}
+						onBlur={this.props.onBlur}
+						onFocus={this.props.onFocus}
+						onSelect={this.props.onSelect}
+						onSubmit={this.props.onSubmit}
+						onReset={this.props.onReset}
+						onKeyDown={this.props.onKeyDown}
+						onKeyPress={this.props.onKeyPress}
+						onKeyUp={this.props.onKeyUp}></textarea>
 				}
 				{
 					this.props.rightButtons &&
