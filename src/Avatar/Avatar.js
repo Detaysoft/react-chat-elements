@@ -8,6 +8,7 @@ export class Avatar extends Component {
 		return (
 			<div className={classNames('rce-avatar-container', this.props.type, this.props.size, this.props.className)}>
 				<img alt={this.props.alt} src={this.props.src} className={'rce-avatar'} />
+				{this.props.sideElement}
 			</div>
 		);
 	}
@@ -18,6 +19,7 @@ Avatar.defaultProps = {
 	size: 'default',
 	src: '',
 	alt: '',
+	sideElement: null,
 };
 
 export default Avatar;

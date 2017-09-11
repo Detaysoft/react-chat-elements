@@ -13,6 +13,7 @@ exports[`ChatItem component should render without issues 1`] = `
     >
       <Avatar
         alt=""
+        sideElement={null}
         size="large"
         src=""
         type="circle"

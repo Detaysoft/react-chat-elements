@@ -91,6 +91,7 @@ export class App extends Component {
 					id: String(Math.random()),
 					avatar: `data:image/png;base64,${this.photo()}`,
 					avatarFlexible: true,
+					statusColor: 'lightgreen',
 					alt: loremIpsum({ count: 2, units: 'words' }),
 					title: loremIpsum({ count: 2, units: 'words' }),
 					date: new Date(),

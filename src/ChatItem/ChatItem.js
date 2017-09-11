@@ -19,6 +19,12 @@ export class ChatItem extends Component {
 							src={this.props.avatar}
 							alt={this.props.alt}
 							size="large"
+							sideElement={
+								this.props.statusColor &&
+								<span className='rce-citem-status' style={{backgroundColor: this.props.statusColor}}>
+									{this.props.statusText}
+								</span>
+							}
 							type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
 					</div>
 
@@ -64,6 +70,8 @@ ChatItem.defaultProps = {
 	subtitle: '',
 	date: new Date(),
 	unread: 0,
+	statusColor: null,
+	statusText: null,
 }
 
 export default ChatItem;

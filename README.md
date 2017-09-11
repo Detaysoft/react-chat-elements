@@ -58,6 +58,8 @@ import { ChatItem } from 'react-chat-elements'
 | date | none | date | ChatItem date |
 | unread | 0 | int | ChatItem unread count |
 | onClick | none | function | ChatItem on click |
+| statusColor | none | color | ChatItem status color |
+| statusText | none | color | ChatItem status text |
 
 
 
@@ -391,3 +393,4 @@ import { Avatar } from 'react-chat-elements'
 | alt | none | string | image alt description |
 | size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
+| sideElement | none | component | avatar side element |

@@ -23,10 +23,24 @@
 }
 
 .rce-citem-avatar {
+	position: relative;
     padding: 0 15px 0 13px;
     justify-content: center;
     display: flex;
     align-items: center;
+}
+
+.rce-citem-status {
+    width: 20px;
+    height: 20px;
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	background: #ccc;
 }
 
 .rce-citem-avatar img {
