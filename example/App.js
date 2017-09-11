@@ -46,7 +46,7 @@ export class App extends Component {
 	}
 
 	token() {
-		return (parseInt(Math.random() * 10 % 3));
+		return (parseInt(Math.random() * 10 % 4));
 	}
 
 	photo(size) {
@@ -60,10 +60,12 @@ export class App extends Component {
 		switch (type) {
 			case 'message':
 				var type = this.token();
-				if (type < 1)
+				if (type === 0)
 					type = 'photo';
-				else if (type > 1)
+				else if (type === 1)
 					type = 'file';
+				else if (type === 2)
+					type = 'system';
 				else
 					type = 'text';
 
@@ -100,7 +102,7 @@ export class App extends Component {
 
 	addMessage() {
 		var list = this.state.messageList;
-		list.unshift(this.random('message'));
+		list.push(this.random('message'));
 		this.setState({
 			messageList: list,
 		});

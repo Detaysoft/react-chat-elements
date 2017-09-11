@@ -3,6 +3,7 @@ import './MessageBox.css';
 
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
 import FileMessage from '../FileMessage/FileMessage';
+import SystemMessage from '../SystemMessage/SystemMessage';
 
 const moment = require('moment');
 
@@ -16,63 +17,69 @@ export class MessageBox extends Component {
 			<div
 				className={classNames('rce-container-mbox', this.props.className)}
 				onClick={this.props.onClick}>
-				<div
-					className={positionCls}>
-					{
-						this.props.title &&
-						<p style={this.props.titleColor && {color: this.props.titleColor}} onClick={this.props.onTitleClick} className="rce-mbox-title">{this.props.title}</p>
-					}
+				{
+					this.props.type === 'system' ?
+					<SystemMessage
+						text={this.props.text}/>
+					:
+					<div
+						className={positionCls}>
+						{
+							this.props.title &&
+							<p style={this.props.titleColor && {color: this.props.titleColor}} onClick={this.props.onTitleClick} className="rce-mbox-title">{this.props.title}</p>
+						}
 
-					{
-						this.props.type === 'text' &&
-						<div className="rce-mbox-text">
-							{this.props.text}
-						</div>
-					}
-
-					{
-						this.props.type === 'photo' &&
-						<PhotoMessage
-							onOpen={this.props.onOpen}
-							onDownload={this.props.onDownload}
-							data={this.props.data}
-							width={this.props.width}
-							height={this.props.height}
-							text={this.props.text}/>
-					}
-					{
-						this.props.type === 'file' &&
-						<FileMessage
-							onOpen={this.props.onOpen}
-							onDownload={this.props.onDownload}
-							data={this.props.data}
-							text={this.props.text}/>
-					}
-
-					<div className="rce-mbox-time">
-						{moment(this.props.date).fromNow()}
-					</div>
-
-					{
-						this.props.position === 'right' ?
-							<svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-								<path d="M0 0v20L20 0"/>
-							</svg>
-						:
-							<div>
-								<svg className="rce-mbox-left-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-									<defs>
-										<filter id="filter1" x="0" y="0">
-											<feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
-											<feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
-											<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-										</filter>
-									</defs>
-									<path d="M20 0v20L0 0" filter="url(#filter1)"/>
-								</svg>
+						{
+							this.props.type === 'text' &&
+							<div className="rce-mbox-text">
+								{this.props.text}
 							</div>
-					}
-				</div>
+						}
+
+						{
+							this.props.type === 'photo' &&
+							<PhotoMessage
+								onOpen={this.props.onOpen}
+								onDownload={this.props.onDownload}
+								data={this.props.data}
+								width={this.props.width}
+								height={this.props.height}
+								text={this.props.text}/>
+						}
+						{
+							this.props.type === 'file' &&
+							<FileMessage
+								onOpen={this.props.onOpen}
+								onDownload={this.props.onDownload}
+								data={this.props.data}
+								text={this.props.text}/>
+						}
+
+						<div className="rce-mbox-time">
+							{moment(this.props.date).fromNow()}
+						</div>
+
+						{
+							this.props.position === 'right' ?
+								<svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+									<path d="M0 0v20L20 0"/>
+								</svg>
+							:
+								<div>
+									<svg className="rce-mbox-left-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+										<defs>
+											<filter id="filter1" x="0" y="0">
+												<feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
+												<feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+												<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+											</filter>
+										</defs>
+										<path d="M20 0v20L0 0" filter="url(#filter1)"/>
+									</svg>
+								</div>
+						}
+					</div>
+				}
 			</div>
 		);
 	}
