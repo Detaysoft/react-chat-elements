@@ -56,7 +56,11 @@ export class MessageBox extends Component {
 						}
 
 						<div className="rce-mbox-time">
-							{moment(this.props.date).fromNow()}
+							{
+								this.props.date &&
+								!isNaN(this.props.date) &&
+								moment(this.props.date).fromNow()
+							}
 						</div>
 
 						{

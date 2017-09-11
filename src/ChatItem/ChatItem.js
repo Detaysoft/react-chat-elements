@@ -28,7 +28,11 @@ export class ChatItem extends Component {
 								{this.props.title}
 							</div>
 							<div className="rce-citem-body--top-time">
-								{moment(this.props.date).fromNow()}
+								{
+									this.props.date &&
+									!isNaN(this.props.date) &&
+									moment(this.props.date).fromNow()
+								}
 							</div>
 						</div>
 
