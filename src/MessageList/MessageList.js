@@ -61,6 +61,7 @@ export class MessageList extends Component {
 		return (
 			<div
 				ref='mlist'
+				onScroll={this.props.onScroll}
 				className={classNames(['rce-container-mlist', this.props.className])}>
 				{
 					this.props.dataSource.map((x, i) => (

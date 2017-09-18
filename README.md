@@ -155,6 +155,7 @@ import { MessageList } from 'react-chat-elements'
 | onClick | none | function | message list item on click (message(object) is returned) |
 | onOpen | none | function | message list item on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
+| onScroll | none | function | message list onScroll event |
 
 
 ## ChatList Component
