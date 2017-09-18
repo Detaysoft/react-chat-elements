@@ -7,9 +7,15 @@ const classNames = require('classnames');
 
 export class ChatList extends Component {
 
-	onClick(item, i) {
+	onClick(item, i, e) {
 		if (this.props.onClick instanceof Function)
-			this.props.onClick(item, i);
+			this.props.onClick(item, i, e);
+	}
+
+	onContextMenu(item, i, e) {
+		e.preventDefault();
+		if (this.props.onContextMenu instanceof Function)
+			this.props.onContextMenu(item, i, e);
 	}
 
 	render() {
@@ -21,6 +27,7 @@ export class ChatList extends Component {
 							id={x.id || i}
 							key={i}
 							{...x}
+							onContextMenu={(e) => this.onContextMenu(x,i,e)}
 							onClick={() => this.onClick(x, i)}/>
 					))
 				}

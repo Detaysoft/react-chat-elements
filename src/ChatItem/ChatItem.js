@@ -12,7 +12,8 @@ export class ChatItem extends Component {
 		return (
 			<div
 				className={classNames('rce-container-citem', this.props.className)}
-				onClick={this.props.onClick}>
+				onClick={this.props.onClick}
+				onContextMenu={this.props.onContextMenu}>
 				<div className="rce-citem">
 					<div className="rce-citem-avatar">
 						<Avatar

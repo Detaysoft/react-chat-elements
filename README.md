@@ -58,6 +58,7 @@ import { ChatItem } from 'react-chat-elements'
 | date | none | date | ChatItem date |
 | unread | 0 | int | ChatItem unread count |
 | onClick | none | function | ChatItem on click |
+| onContextMenu | none | function | ChatItem on context menu |
 | statusColor | none | color | ChatItem status color |
 | statusText | none | color | ChatItem status text |
 
@@ -189,6 +190,7 @@ import { ChatList } from 'react-chat-elements'
 | className | none | string | optional chat list className |
 | dataSource | [] | array | chat list array |
 | onClick | none | function | chat list item on click (chat(object) is returned) |
+| onContextMenu | none | function | chat list item on context menu (chat(object) is returned) |
 
 ## Input Component
 
