@@ -4,6 +4,7 @@ import './MessageBox.css';
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
 import FileMessage from '../FileMessage/FileMessage';
 import SystemMessage from '../SystemMessage/SystemMessage';
+import LocationMessage from '../LocationMessage/LocationMessage';
 
 const moment = require('moment');
 
@@ -34,6 +35,16 @@ export class MessageBox extends Component {
 							<div className="rce-mbox-text">
 								{this.props.text}
 							</div>
+						}
+
+						{
+							this.props.type === 'location' &&
+							<LocationMessage
+								onOpen={this.props.onOpen}
+								data={this.props.data}
+								target={this.props.target}
+								href={this.props.href}
+								src={this.props.src}/>
 						}
 
 						{

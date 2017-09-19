@@ -37,24 +37,24 @@ export class MessageList extends Component {
 		return e.scrollHeight - e.scrollTop - e.offsetHeight;
 	}
 
-	onOpen(item, i) {
+	onOpen(item, i, e) {
 		if (this.props.onOpen instanceof Function)
-			this.props.onOpen(item, i);
+			this.props.onOpen(item, i, e);
 	}
 
-	onDownload(item, i) {
+	onDownload(item, i, e) {
 		if (this.props.onDownload instanceof Function)
-			this.props.onDownload(item, i);
+			this.props.onDownload(item, i, e);
 	}
 
-	onClick(item, i) {
+	onClick(item, i, e) {
 		if (this.props.onClick instanceof Function)
-			this.props.onClick(item, i);
+			this.props.onClick(item, i, e);
 	}
 
-	onTitleClick(item, i) {
+	onTitleClick(item, i, e) {
 		if (this.props.onTitleClick instanceof Function)
-			this.props.onTitleClick(item, i);
+			this.props.onTitleClick(item, i, e);
 	}
 
 	render() {
@@ -68,10 +68,10 @@ export class MessageList extends Component {
 						<MessageBox
 							key={i}
 							{...x}
-							onOpen={() => this.onOpen(x, i)}
-							onDownload={() => this.onDownload(x, i)}
-							onTitleClick={() => this.onTitleClick(x, i)}
-							onClick={() => this.onClick(x, i)} />
+							onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
+							onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
+							onTitleClick={this.props.onDownload && ((e) => this.onTitleClick(x, i, e))}
+							onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}/>
 					))
 				}
 			</div>

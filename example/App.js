@@ -46,7 +46,7 @@ export class App extends Component {
 	}
 
 	token() {
-		return (parseInt(Math.random() * 10 % 4));
+		return (parseInt(Math.random() * 10 % 5));
 	}
 
 	photo(size) {
@@ -66,6 +66,8 @@ export class App extends Component {
 					type = 'file';
 				else if (type === 2)
 					type = 'system';
+				else if (type === 3)
+					type = 'location';
 				else
 					type = 'text';
 
@@ -83,6 +85,8 @@ export class App extends Component {
 						},
 						width: 300,
 						height: 300,
+						latitude: '37.773972',
+						longitude: '-122.431297',
 					},
 					date: new Date(),
 				};
@@ -175,15 +179,6 @@ export class App extends Component {
 					className='right-panel'>
 					<MessageList
 						className='message-list'
-						onDownload={() => {
-							console.log('onDownload');
-						}}
-						onTitleClick={() => {
-							console.log('onTitleClick');
-						}}
-						onOpen={() => {
-							console.log('onOpen');
-						}}
 						lockable={true}
 						dataSource={this.state.messageList} />
 					<Input
