@@ -30,6 +30,7 @@ import {MessageBox} from 'react-chat-elements';
 10. [Navbar](#navbar-component)
 11. [Dropdown](#dropdown-component)
 12. [Avatar](#avatar)
+13. [LocationMessage](#locationmessage-component)
 
 ## ChatItem Component
 
@@ -66,9 +67,9 @@ import { ChatItem } from 'react-chat-elements'
 
 ## MessageBox Component
 
-| file | photo | text |
-| ---- | ---- | ---- |
-| ![file-message](https://user-images.githubusercontent.com/15075759/29243524-786baf8c-7fa9-11e7-92b2-3960cc34fcf4.png) | ![photo-message](https://user-images.githubusercontent.com/15075759/29243556-1368c4e8-7faa-11e7-9fdd-57b67542c381.png) | ![text-message](https://user-images.githubusercontent.com/15075759/29243573-a809456e-7faa-11e7-97b4-d258bc6a7728.png) |
+| file | photo | text | location |
+| ---- | ---- | ---- | ---- |
+| ![file-message](https://user-images.githubusercontent.com/15075759/29243524-786baf8c-7fa9-11e7-92b2-3960cc34fcf4.png) | ![photo-message](https://user-images.githubusercontent.com/15075759/29243556-1368c4e8-7faa-11e7-9fdd-57b67542c381.png) | ![text-message](https://user-images.githubusercontent.com/15075759/29243573-a809456e-7faa-11e7-97b4-d258bc6a7728.png) | ![location-message](https://user-images.githubusercontent.com/15075759/30582943-2b3338aa-9d2e-11e7-93d5-8614563b9217.png)
 
 
 ```javascript
@@ -397,3 +398,25 @@ import { Avatar } from 'react-chat-elements'
 | size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
 | sideElement | none | component | avatar side element |
+
+
+## LocationMessage Component
+
+```javascript
+import { LocationMessage } from 'react-chat-elements'
+
+<LocationMessage
+    data={{
+        latitude: '37.773972',
+        longitude: '-122.431297',
+    }}/>
+```
+
+#### LocationMessage props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| src | none | image | image src |
+| data | {} | object | message data |
+| target | _blank | string | image a tag target prop |
+| onOpen | none | function | image on open |
