@@ -4,6 +4,50 @@
 	overflow: hidden;
 	min-width: 200px;
 }
+
+.rce-mbox-wrapper{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.rce-message-forward{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background:#fff;
+	display: none;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.rce-message-forward-left{
+	display: flex;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.rce-message-forward-right{
+	display: flex;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.rce-mbox-wrapper:hover .rce-message-forward-left{
+	opacity: 1;
+	visibility: visible;
+}
+
+.rce-mbox-wrapper:hover .rce-message-forward-right{
+	opacity: 1;
+	visibility: visible;
+}
+
 .rce-mbox {
 	position: relative;
 	background: white;

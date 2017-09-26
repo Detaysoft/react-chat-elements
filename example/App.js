@@ -105,7 +105,7 @@ export class App extends Component {
 		}
 	}
 
-	addMessage() {
+	addMessage()  {
 		var list = this.state.messageList;
 		list.push(this.random('message'));
 		this.setState({
@@ -131,25 +131,25 @@ export class App extends Component {
 								header='Lorem ipsum dolor sit amet.'
 								headerButtons={[{
 									type: 'transparent',
-									color:'black',
+									color: 'black',
 									onClick: () => {
-										this.setState({show: false})
+										this.setState({ show: false })
 									},
 									icon: {
-										component: <FaClose/>,
+										component: <FaClose />,
 										size: 18
 									}
 								}]}
 								text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
 								footerButtons={[{
-									color:'white',
-									backgroundColor:'#ff5e3e',
-									text:"Vazgeç",
-								},{
-									color:'white',
-									backgroundColor:'lightgreen',
-									text:"Tamam",
-								}]}/>
+									color: 'white',
+									backgroundColor: '#ff5e3e',
+									text: "Vazgeç",
+								}, {
+									color: 'white',
+									backgroundColor: 'lightgreen',
+									text: "Tamam",
+								}]} />
 						}
 						center={
 							<ChatList
@@ -161,19 +161,19 @@ export class App extends Component {
 									type='transparent'
 									color='black'
 									icon={{
-										component: <FaComments/>,
+										component: <FaComments />,
 										size: 18
-									}}/>
+									}} />
 								<Button
 									type='transparent'
 									color='black'
 									icon={{
-										component: <FaSearch/>,
+										component: <FaSearch />,
 										size: 18
-									}}/>
-									<Button text="Count"></Button>
+									}} />
+								<Button text="Count"></Button>
 							</span>
-						}/>
+						} />
 				</div>
 				<div
 					className='right-panel'>
@@ -181,6 +181,9 @@ export class App extends Component {
 						className='message-list'
 						lockable={true}
 						dataSource={this.state.messageList} />
+
+					<MessageBox text="Merhaba"/>
+
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
 						defaultValue=""
@@ -201,8 +204,8 @@ export class App extends Component {
 						rightButtons={
 							<Button
 								text='Gönder'
-								onClick={this.addMessage.bind(this)}/>
-						}/>
+								onClick={this.addMessage.bind(this)} />
+						} />
 				</div>
 
 				{
