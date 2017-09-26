@@ -1,119 +1,119 @@
 .rce-container-mbox {
-	flex-direction: column;
-	display: block;
-	overflow: hidden;
-	min-width: 200px;
+    flex-direction: column;
+    display: block;
+    overflow: hidden;
+    min-width: 200px;
 }
 
-.rce-mbox-wrapper{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
+.rce-mbox-forward {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background: #fff;
+    position: absolute;
+    /*display: none;*/
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.rce-message-forward{
-	width: 40px;
-	height: 40px;
-	border-radius: 20px;
-	background:#fff;
-	display: none;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
-	cursor: pointer;
-	transition: all 0.3s ease;
+.rce-mbox-forward-left {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    left: -40px;
 }
 
-.rce-message-forward-left{
-	display: flex;
-	opacity: 0;
-	visibility: hidden;
+.rce-mbox-forward-right {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    right: -40px;
 }
 
-.rce-message-forward-right{
-	display: flex;
-	opacity: 0;
-	visibility: hidden;
+.rce-container-mbox:hover .rce-mbox-forward-left {
+    opacity: 1;
+    visibility: visible;
 }
 
-.rce-mbox-wrapper:hover .rce-message-forward-left{
-	opacity: 1;
-	visibility: visible;
-}
-
-.rce-mbox-wrapper:hover .rce-message-forward-right{
-	opacity: 1;
-	visibility: visible;
+.rce-container-mbox:hover .rce-mbox-forward-right {
+    opacity: 1;
+    visibility: visible;
 }
 
 .rce-mbox {
-	position: relative;
-	background: white;
-	border-radius: 5px;
-	box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
-	border-top-left-radius: 0px;
-	margin-left: 20px;
-	margin-right: 5px;
-	margin-top: 5px;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 5px;
-	padding: 6px 9px 8px 9px;
-	float: left;
-	min-width: 140px;
-	max-width: 70%;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .2);
+    border-top-left-radius: 0px;
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    padding: 6px 9px 8px 9px;
+    float: left;
+    min-width: 140px;
+    max-width: 70%;
 }
 
 .rce-mbox.rce-mbox-right {
-	float: right;
-	margin-left: 5px;
-	margin-right: 20px;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 5px;
+    float: right;
+    margin-left: 5px;
+    margin-right: 20px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 5px;
 }
 
 .rce-mbox-text {
-	font-size: 13.6px;
-	word-break: break-word;
+    font-size: 13.6px;
+    word-break: break-word;
 }
 
 .rce-mbox-time {
-	text-align: right;
-	color: rgba(0,0,0,0.45);
-	font-size: 12px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 12px;
 }
 
 .rce-mbox-right-notch {
-	position: absolute;
-	right: -14px;
-	top: 0px;
-	width: 15px;
-	height: 15px;
-	fill: white;
-	filter: drop-shadow( 2px 0px 1px rgba(0,0,0,.2) );
+    position: absolute;
+    right: -14px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    fill: white;
+    filter: drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2));
 }
 
 .rce-mbox-left-notch {
-	position: absolute;
-	left: -14px;
-	top: 0px;
-	width: 15px;
-	height: 15px;
-	fill: white;
+    position: absolute;
+    left: -14px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    fill: white;
 }
 
 .rce-mbox-title {
-	margin: 0;
-	margin-bottom: 8px;
-	font-weight: 500;
-	font-size: 13px;
-	color: #4f81a1;
-	user-select: none;
-	cursor: pointer;
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #4f81a1;
+    user-select: none;
+    cursor: pointer;
 }
 
 .rce-mbox-title:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }

@@ -104,6 +104,8 @@ import { MessageBox } from 'react-chat-elements'
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |
 | onTitleClick | none | function | message title on click event |
+| onForwardClick | none | function | message forward on click event |
+| forwarded | none | boolean | message forward icon |
 
 
 ## SystemMessage Component
@@ -158,6 +160,7 @@ import { MessageList } from 'react-chat-elements'
 | onOpen | none | function | message list item on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 | onScroll | none | function | message list onScroll event |
+| onForwardClick | none | function | message list item onForwardClick event |
 
 
 ## ChatList Component

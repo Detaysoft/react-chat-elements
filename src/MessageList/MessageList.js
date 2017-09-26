@@ -57,6 +57,11 @@ export class MessageList extends Component {
 			this.props.onTitleClick(item, i, e);
 	}
 
+	onForwardClick(item, i, e) {
+		if (this.props.onForwardClick instanceof Function)
+			this.props.onForwardClick(item, i, e);
+	}
+
 	render() {
 		return (
 			<div
@@ -71,6 +76,7 @@ export class MessageList extends Component {
 							onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
 							onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
 							onTitleClick={this.props.onDownload && ((e) => this.onTitleClick(x, i, e))}
+							onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
 							onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}/>
 					))
 				}
@@ -82,6 +88,7 @@ export class MessageList extends Component {
 MessageList.defaultProps = {
 	onClick: null,
 	onTitleClick: null,
+	onForwardClick: null,
 	onOpen: null,
 	onDownload: null,
 	dataSource: [],

@@ -73,6 +73,7 @@ export class App extends Component {
 
 				return {
 					position: (this.token() >= 1 ? 'right' : 'left'),
+					forwarded: true,
 					type: type,
 					title: loremIpsum({ count: 2, units: 'words' }),
 					titleColor: this.getRandomColor(),
@@ -181,8 +182,6 @@ export class App extends Component {
 						className='message-list'
 						lockable={true}
 						dataSource={this.state.messageList} />
-
-					<MessageBox text="Merhaba"/>
 
 					<Input
 						placeholder="Mesajınızı buraya yazınız."
