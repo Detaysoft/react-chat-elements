@@ -117,3 +117,8 @@
 .rce-mbox-title:hover {
     text-decoration: underline;
 }
+
+.rce-mbox-statu {
+	margin-left: 3px;
+	font-size: 15px;
+}

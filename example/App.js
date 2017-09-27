@@ -60,16 +60,28 @@ export class App extends Component {
 		switch (type) {
 			case 'message':
 				var type = this.token();
-				if (type === 0)
-					type = 'photo';
-				else if (type === 1)
-					type = 'file';
-				else if (type === 2)
-					type = 'system';
-				else if (type === 3)
-					type = 'location';
-				else
-					type = 'text';
+				var statu = 'waiting';
+				switch(type) {
+					case 0:
+						type = 'photo';
+						statu = 'sent';
+						break;
+					case 1:
+						type = 'file';
+						statu = 'sent';
+						break;
+					case 2:
+						type = 'system';
+						statu = 'received';
+						break;
+					case 3:
+						type = 'location';
+						break;
+					default:
+						type = 'text';
+						statu = 'read';
+						break;
+				}
 
 				return {
 					position: (this.token() >= 1 ? 'right' : 'left'),
@@ -89,6 +101,7 @@ export class App extends Component {
 						latitude: '37.773972',
 						longitude: '-122.431297',
 					},
+					statu: statu,
 					date: new Date(),
 				};
 			case 'chat':
