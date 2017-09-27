@@ -106,6 +106,7 @@ import { MessageBox } from 'react-chat-elements'
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | forwarded | none | boolean | message forward icon |
+| statu | none | string | message statu info (waiting, sent, received, read) |
 
 
 ## SystemMessage Component
