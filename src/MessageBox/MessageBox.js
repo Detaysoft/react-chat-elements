@@ -9,6 +9,10 @@ import LocationMessage from '../LocationMessage/LocationMessage';
 import FaForward from 'react-icons/lib/fa/mail-forward';
 import FaReply from 'react-icons/lib/fa/mail-reply';
 
+import IoDoneAll from 'react-icons/lib/io/android-done-all';
+import MdIosTime from 'react-icons/lib/md/access-time';
+import MdCheck from 'react-icons/lib/md/check';
+
 const moment = require('moment');
 
 const classNames = require('classnames');
@@ -31,7 +35,6 @@ export class MessageBox extends Component {
 							{
 								this.props.forwarded === true &&
 								<div
-									title="Mesajı İlet"
 									className={classNames(
 										'rce-mbox-forward',
 										{ 'rce-mbox-forward-right': this.props.position === 'left' },
@@ -89,6 +92,30 @@ export class MessageBox extends Component {
 									!isNaN(this.props.date) &&
 									moment(this.props.date).fromNow()
 								}
+								{
+									this.props.statu &&
+									<span className='rce-mbox-statu'>
+										{
+											this.props.statu === 'waiting' &&
+											<MdIosTime />
+										}
+
+										{
+											this.props.statu === 'sent' &&
+											<MdCheck />
+										}
+
+										{
+											this.props.statu === 'received' &&
+											<IoDoneAll />
+										}
+
+										{
+											this.props.statu === 'read' &&
+											<IoDoneAll color='#4FC3F7'/>
+										}
+									</span>
+								}
 							</div>
 
 							{
@@ -131,6 +158,7 @@ MessageBox.defaultProps = {
 	onOpen: null,
 	onDownload: null,
 	forwarded: false,
+	statu: null,
 };
 
 

@@ -5,7 +5,7 @@ import MessageBox from '../MessageBox';
 
 describe('MessageBox component', () => {
   it('should render without issues', () => {
-    const component = shallow(<MessageBox />);
+    const component = shallow(<MessageBox statu='read'/>);
 
     expect(component.length).toBe(1);
     expect(toJson(component)).toMatchSnapshot();
