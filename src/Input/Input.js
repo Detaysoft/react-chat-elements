@@ -63,6 +63,9 @@ export class Input extends Component {
 						value={this.state.value}
 						style={this.props.inputStyle}
 						onChange={this.onChange.bind(this)}
+						onCopy={this.props.onCopy}
+						onCut={this.props.onCut}
+						onPaste={this.props.onPaste}
 						onBlur={this.props.onBlur}
 						onFocus={this.props.onFocus}
 						onSelect={this.props.onSelect}
@@ -84,6 +87,9 @@ export class Input extends Component {
 						value={this.state.value}
 						style={this.props.inputStyle}
 						onChange={this.onChange.bind(this)}
+						onCopy={this.props.onCopy}
+						onCut={this.props.onCut}
+						onPaste={this.props.onPaste}
 						onBlur={this.props.onBlur}
 						onFocus={this.props.onFocus}
 						onSelect={this.props.onSelect}
