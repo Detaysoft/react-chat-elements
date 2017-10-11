@@ -46,7 +46,7 @@ export class App extends Component {
 	}
 
 	token() {
-		return (parseInt(Math.random() * 10 % 5));
+		return (parseInt(Math.random() * 10 % 6));
 	}
 
 	photo(size) {
@@ -77,6 +77,9 @@ export class App extends Component {
 					case 3:
 						type = 'location';
 						break;
+					case 4:
+						type = 'spotify';
+						break;
 					default:
 						type = 'text';
 						statu = 'read';
@@ -89,7 +92,7 @@ export class App extends Component {
 					type: type,
 					title: loremIpsum({ count: 2, units: 'words' }),
 					titleColor: this.getRandomColor(),
-					text: loremIpsum({ count: 1, units: 'sentences' }),
+					text: type === 'spotify' ? 'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf' : loremIpsum({ count: 1, units: 'sentences' }),
 					data: {
 						uri: `data:image/png;base64,${this.photo(150)}`,
 						status: {
