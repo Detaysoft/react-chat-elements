@@ -5,6 +5,7 @@ import PhotoMessage from '../PhotoMessage/PhotoMessage';
 import FileMessage from '../FileMessage/FileMessage';
 import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
+import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 
 import FaForward from 'react-icons/lib/fa/mail-forward';
 import FaReply from 'react-icons/lib/fa/mail-reply';
@@ -77,6 +78,7 @@ export class MessageBox extends Component {
 									height={this.props.height}
 									text={this.props.text} />
 							}
+
 							{
 								this.props.type === 'file' &&
 								<FileMessage
@@ -84,6 +86,15 @@ export class MessageBox extends Component {
 									onDownload={this.props.onDownload}
 									data={this.props.data}
 									text={this.props.text} />
+							}
+
+							{
+								this.props.type === 'spotify' &&
+								<SpotifyMessage
+									width={this.props.width}
+									height={this.props.height}
+									data={this.props.data}
+									uri={this.props.uri || this.props.text} />
 							}
 
 							<div className="rce-mbox-time">

@@ -1,0 +1,8 @@
+.rce-mbox-spotify {
+	margin-top: -2px;
+    overflow: hidden;
+    margin-right: -5px;
+    margin-left: -5px;
+    display: flex;
+    border-radius: 5px;
+}
