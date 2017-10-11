@@ -31,6 +31,7 @@ import {MessageBox} from 'react-chat-elements';
 11. [Dropdown](#dropdown-component)
 12. [Avatar](#avatar)
 13. [LocationMessage](#locationmessage-component)
+14. [SpotifyMessage](#spotifymessage-component)
 
 ## ChatItem Component
 
@@ -424,3 +425,25 @@ import { LocationMessage } from 'react-chat-elements'
 | data | {} | object | message data |
 | target | _blank | string | image a tag target prop |
 | onOpen | none | function | image on open |
+
+
+## SpotifyMessage Component
+
+![spotify](https://user-images.githubusercontent.com/15075759/31466094-ad5852b8-aede-11e7-91bc-8a29e7427552.png)
+
+
+```javascript
+import { SpotifyMessage } from 'react-chat-elements'
+
+<SpotifyMessage
+    uri={'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf'}/>
+```
+
+#### SpotifyMessage props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| uri | none | uri | spotify uri |
+| data | {} | object | message data |
+| width | 300 | int | spotify embed width |
+| height | 380 | int | spotify embed height |
