@@ -436,6 +436,8 @@ import { LocationMessage } from 'react-chat-elements'
 import { SpotifyMessage } from 'react-chat-elements'
 
 <SpotifyMessage
+    theme='white'
+    view='coverart'
     uri={'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf'}/>
 ```
 
@@ -444,6 +446,8 @@ import { SpotifyMessage } from 'react-chat-elements'
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
 | uri | none | uri | spotify uri |
+| theme | black | string | spotify theme color (black or white) |
+| view | list | string | spotify view type (list or coverart) |
 | data | {} | object | message data |
 | width | 300 | int | spotify embed width |
 | height | 380 | int | spotify embed height |
