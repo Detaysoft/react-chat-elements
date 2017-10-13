@@ -90,6 +90,8 @@ export class App extends Component {
 					position: (this.token() >= 1 ? 'right' : 'left'),
 					forwarded: true,
 					type: type,
+					theme: 'white',
+					view: 'list',
 					title: loremIpsum({ count: 2, units: 'words' }),
 					titleColor: this.getRandomColor(),
 					text: type === 'spotify' ? 'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf' : loremIpsum({ count: 1, units: 'sentences' }),
