@@ -65,6 +65,7 @@ export class MessageBox extends Component {
 									data={this.props.data}
 									target={this.props.target}
 									href={this.props.href}
+									apiKey={this.props.apiKey}
 									src={this.props.src} />
 							}
 

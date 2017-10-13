@@ -422,6 +422,7 @@ import { LocationMessage } from 'react-chat-elements'
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
 | src | none | image | image src |
+| apiKey | none | string | google staticmap api key |
 | data | {} | object | message data |
 | target | _blank | string | image a tag target prop |
 | onOpen | none | function | image on open |
