@@ -12,8 +12,9 @@ export class LocationMessage extends Component {
 			longitude,
 		} = this.props.data || {};
 
+		var key = this.props.apiKey ? ('&key=' + this.props.apiKey): '';
 		this.state = {
-			url: 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|'+latitude+','+longitude+'&zoom=14&size=270x200&scale=2',
+			url: 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|'+latitude+','+longitude+'&zoom=14&size=270x200&scale=2' + key,
 		};
 	}
 
@@ -37,6 +38,7 @@ export class LocationMessage extends Component {
 
 LocationMessage.defaultProps = {
 	target: '_blank',
+	apiKey: null,
 }
 
 export default LocationMessage;
