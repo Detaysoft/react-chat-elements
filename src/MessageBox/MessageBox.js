@@ -93,6 +93,8 @@ export class MessageBox extends Component {
 								<SpotifyMessage
 									width={this.props.width}
 									height={this.props.height}
+									theme={this.props.theme}
+									view={this.props.view}
 									data={this.props.data}
 									uri={this.props.uri || this.props.text} />
 							}
