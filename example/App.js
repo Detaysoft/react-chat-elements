@@ -224,30 +224,6 @@ export class App extends Component {
                                 onClick={this.addMessage.bind(this)} />
                         } />
                 </div>
-
-                {
-                    // arr.map((x, i) => {
-                    // var tmp = this.random();
-
-                    // return <ChatItem
-                    //  key={i}
-                    //  title={tmp.title}
-                    //  subtitle={tmp.subtitle}
-                    //  avatar={tmp.avatar}
-                    //  unread={tmp.unread}
-                    //  date={tmp.date}/>;
-
-                    // return <MessageBox
-                    //  key={i}
-                    //  type={tmp.type}
-                    //  text={tmp.text}
-                    //  data={tmp.data}
-                    //  position={tmp.position}/>
-
-                    // return <SystemMessage
-                    //  text={'10.10.1996'}/>
-                    // })
-                }
             </div>
         );
     }
