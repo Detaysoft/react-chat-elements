@@ -1,9 +1,9 @@
 .rce-dropdown-container {
-	position: relative;
+    position: relative;
 }
 .rce-dropdown {
-	min-width: 100%;
-	box-sizing: border-box;
+    min-width: 100%;
+    box-sizing: border-box;
     padding: 5px 10px;
     background: #f5f5f5;
     border-radius: 5px;

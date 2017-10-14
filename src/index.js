@@ -13,16 +13,16 @@ import Popup from './Popup/Popup';
 
 
 export {
-	MessageBox,
-	ChatItem,
-	SystemMessage,
-	ChatList,
-	MessageList,
-	Input,
-	Button,
-	Avatar,
-	Navbar,
-	Dropdown,
-	SideBar,
-	Popup,
+    MessageBox,
+    ChatItem,
+    SystemMessage,
+    ChatList,
+    MessageList,
+    Input,
+    Button,
+    Avatar,
+    Navbar,
+    Dropdown,
+    SideBar,
+    Popup,
 };

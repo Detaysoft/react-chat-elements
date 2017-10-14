@@ -23,7 +23,7 @@
 }
 
 .rce-citem-avatar {
-	position: relative;
+    position: relative;
     padding: 0 15px 0 13px;
     justify-content: center;
     display: flex;
@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-	background: #ccc;
+    background: #ccc;
 }
 
 .rce-citem-avatar img {
@@ -79,18 +79,18 @@
 
 .rce-citem-body--bottom-title, .rce-citem-body--top-title {
     flex: 1;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .rce-citem-body--top-title {
-	font-size: 16px;
+    font-size: 16px;
 }
 
 .rce-citem-body--bottom-title {
-	color: #555;
-	font-size: 15px;
+    color: #555;
+    font-size: 15px;
 }
 
 .rce-citem-body--top-time {
@@ -99,7 +99,7 @@
 }
 
 .rce-citem-body--bottom-status {
-	margin-left: 3px;
+    margin-left: 3px;
 }
 
 .rce-citem-body--bottom-status span {
