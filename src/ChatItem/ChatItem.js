@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
-import Dropdown from '../Dropdown/Dropdown';
-import FaMenu from 'react-icons/lib/md/more-vert';
 
 const moment = require('moment');
 const classNames = require('classnames');
@@ -34,7 +32,7 @@ export class ChatItem extends Component {
                     <div
                         className={classNames(
                             "rce-citem-body",
-                            { "rce-citem-with-menu": this.props.menuItems })
+                            { "rce-citem-with-menu": this.props.dropdownMenu })
                         }>
                         <div className="rce-citem-body--top">
                             <div className="rce-citem-body--top-title">
@@ -62,19 +60,9 @@ export class ChatItem extends Component {
                         </div>
                     </div>
                     {
-                        this.props.menuItems &&
+                        this.props.dropdownMenu &&
                         <div className="rce-citem-menu">
-                            <Dropdown
-                                animationPosition="norteast"
-                                buttonProps={{
-                                    type: "transparent",
-                                    color: "#cecece",
-                                    icon: {
-                                        component: <FaMenu />,
-                                        size: 24,
-                                    }
-                                }}
-                                items={this.props.menuItems} />
+                            {this.props.dropdownMenu}
                         </div>
                     }
                 </div>
@@ -95,7 +83,7 @@ ChatItem.defaultProps = {
     unread: 0,
     statusColor: null,
     statusText: null,
-    menuItems: null,
+    dropdownMenu: null,
 }
 
 export default ChatItem;

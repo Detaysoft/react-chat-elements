@@ -120,11 +120,6 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
-                    menuItems: [
-                        'Menu Item1',
-                        'Menu Item2',
-                        'Menu Item3',
-                    ]
                 };
         }
     }
