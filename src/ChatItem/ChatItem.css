@@ -8,7 +8,6 @@
 }
 
 .rce-citem-menu{
-    opacity: 0;
     width: 30px;
     display:flex;
     flex-direction: row;
@@ -25,10 +24,11 @@
 }
 
 .rce-citem-menu .rce-button{
+    opacity: 0;
     padding: 0;
 }
 
-.rce-container-citem:hover .rce-citem-menu{
+.rce-container-citem:hover .rce-citem-menu .rce-button{
     opacity: 1;
 }
 
