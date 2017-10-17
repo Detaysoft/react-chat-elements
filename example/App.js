@@ -61,7 +61,7 @@ export class App extends Component {
             case 'message':
                 var type = this.token();
                 var statu = 'waiting';
-                switch(type) {
+                switch (type) {
                     case 0:
                         type = 'photo';
                         statu = 'sent';
@@ -120,11 +120,16 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
+                    menuItems: [
+                        'Menu Item1',
+                        'Menu Item2',
+                        'Menu Item3',
+                    ]
                 };
         }
     }
 
-    addMessage()  {
+    addMessage() {
         var list = this.state.messageList;
         list.push(this.random('message'));
         this.setState({
@@ -194,18 +199,6 @@ export class App extends Component {
                             </span>
                         } />
                 </div>
-                <Dropdown
-                    buttonProps={{
-                        text: 'Dropdown',
-                    }}
-                    items={[
-                        'merhaba',
-                        'lorem',
-                        'ipsum',
-                        'dolor',
-                        'sit',
-                        'amet',
-                    ]} />
                 <div
                     className='right-panel'>
                     <MessageList

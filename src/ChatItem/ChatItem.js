@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
+import Dropdown from '../Dropdown/Dropdown';
+import FaMenu from 'react-icons/lib/md/more-vert';
 
 const moment = require('moment');
 const classNames = require('classnames');
@@ -22,14 +24,18 @@ export class ChatItem extends Component {
                             size="large"
                             sideElement={
                                 this.props.statusColor &&
-                                <span className='rce-citem-status' style={{backgroundColor: this.props.statusColor}}>
+                                <span className='rce-citem-status' style={{ backgroundColor: this.props.statusColor }}>
                                     {this.props.statusText}
                                 </span>
                             }
-                            type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
+                            type={classNames('circle', { 'flexible': this.props.avatarFlexible })} />
                     </div>
 
-                    <div className="rce-citem-body">
+                    <div
+                        className={classNames(
+                            "rce-citem-body",
+                            { "rce-citem-with-menu": this.props.menuItems })
+                        }>
                         <div className="rce-citem-body--top">
                             <div className="rce-citem-body--top-title">
                                 {this.props.title}
@@ -55,6 +61,22 @@ export class ChatItem extends Component {
                             </div>
                         </div>
                     </div>
+                    {
+                        this.props.menuItems &&
+                        <div className="rce-citem-menu">
+                            <Dropdown
+                                animationPosition="norteast"
+                                buttonProps={{
+                                    type: "transparent",
+                                    color: "#cecece",
+                                    icon: {
+                                        component: <FaMenu />,
+                                        size: 24,
+                                    }
+                                }}
+                                items={this.props.menuItems} />
+                        </div>
+                    }
                 </div>
             </div>
         );
@@ -73,6 +95,7 @@ ChatItem.defaultProps = {
     unread: 0,
     statusColor: null,
     statusText: null,
+    menuItems: null,
 }
 
 export default ChatItem;
