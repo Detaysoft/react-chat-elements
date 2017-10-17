@@ -194,6 +194,18 @@ export class App extends Component {
                             </span>
                         } />
                 </div>
+                <Dropdown
+                    buttonProps={{
+                        text: 'Dropdown',
+                    }}
+                    items={[
+                        'merhaba',
+                        'lorem',
+                        'ipsum',
+                        'dolor',
+                        'sit',
+                        'amet',
+                    ]} />
                 <div
                     className='right-panel'>
                     <MessageList
