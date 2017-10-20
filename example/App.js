@@ -21,6 +21,7 @@ import FaMenu from 'react-icons/lib/md/more-vert';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
+const moment = require('moment');
 
 export class App extends Component {
 
@@ -109,6 +110,7 @@ export class App extends Component {
                     },
                     statu: statu,
                     date: new Date(),
+                    dateString: moment(new Date()).format('HH:mm'),
                 };
             case 'chat':
                 return {
@@ -121,22 +123,24 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
-                    dropdownMenu:
-                    <Dropdown
-                        animationPosition="norteast"
-                        buttonProps={{
-                            type: "transparent",
-                            color: "#cecece",
-                            icon: {
-                                component: <FaMenu />,
-                                size: 24,
-                            }
-                        }}
-                        items={[
-                            'Menu Item1',
-                            'Menu Item2',
-                            'Menu Item3',
-                        ]} />
+                    dropdownMenu: (
+                        <Dropdown
+                            animationPosition="norteast"
+                            buttonProps={{
+                                type: "transparent",
+                                color: "#cecece",
+                                icon: {
+                                    component: <FaMenu />,
+                                    size: 24,
+                                }
+                            }}
+                            items={[
+                                'Menu Item1',
+                                'Menu Item2',
+                                'Menu Item3',
+                            ]} />
+                    ),
+                    dateString: moment(new Date()).format('HH:mm'),
                 };
         }
     }

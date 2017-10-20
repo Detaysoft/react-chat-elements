@@ -104,7 +104,10 @@ export class MessageBox extends Component {
                                 {
                                     this.props.date &&
                                     !isNaN(this.props.date) &&
-                                    moment(this.props.date).fromNow()
+                                    (
+                                        this.props.dateString ||
+                                        moment(this.props.date).fromNow()
+                                    )
                                 }
                                 {
                                     this.props.statu &&
@@ -173,6 +176,7 @@ MessageBox.defaultProps = {
     onDownload: null,
     forwarded: false,
     statu: null,
+    dateString: null,
 };
 
 
