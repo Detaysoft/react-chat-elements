@@ -98,9 +98,15 @@
 .rce-dropdown ul li {
     white-space: nowrap;
     color: #767676;
+<<<<<<< HEAD
     padding: 8px 25px;
     cursor: pointer;
     font-size: 15px;
+=======
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+>>>>>>> next
     width: 100%;
     box-sizing: border-box;
     user-select: none;
