@@ -38,7 +38,10 @@ export class ChatItem extends Component {
                                 {
                                     this.props.date &&
                                     !isNaN(this.props.date) &&
-                                    moment(this.props.date).fromNow()
+                                    (
+                                        this.props.dateString ||
+                                        moment(this.props.date).fromNow()
+                                    )
                                 }
                             </div>
                         </div>
@@ -73,6 +76,7 @@ ChatItem.defaultProps = {
     unread: 0,
     statusColor: null,
     statusText: null,
+    dateString: null,
 }
 
 export default ChatItem;
