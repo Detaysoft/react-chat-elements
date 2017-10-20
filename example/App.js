@@ -20,6 +20,7 @@ import FaClose from 'react-icons/lib/fa/close';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
+const moment = require('moment');
 
 export class App extends Component {
 
@@ -108,6 +109,7 @@ export class App extends Component {
                     },
                     statu: statu,
                     date: new Date(),
+                    dateString: moment(new Date()).format('HH:mm'),
                 };
             case 'chat':
                 return {
@@ -120,6 +122,7 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
+                    dateString: moment(new Date()).format('HH:mm'),
                 };
         }
     }
