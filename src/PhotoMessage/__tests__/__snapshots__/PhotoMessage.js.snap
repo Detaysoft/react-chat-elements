@@ -11,8 +11,5 @@ exports[`PhotoMessage component should render without issues 1`] = `
       onClick={null}
     />
   </div>
-  <div
-    className="rce-mbox-text"
-  />
 </div>
 `;

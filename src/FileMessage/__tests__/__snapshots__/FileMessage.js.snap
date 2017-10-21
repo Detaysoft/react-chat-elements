@@ -1,25 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FileMessage component should render without issues 1`] = `
-<button
+<div
   className="rce-mbox-file"
-  onClick={[Function]}
 >
-  <div
-    className="rce-mbox-file--icon"
+  <button
+    onClick={[Function]}
   >
-    <FaFile
-      color="#aaa"
+    <div
+      className="rce-mbox-file--icon"
+    >
+      <FaFile
+        color="#aaa"
+      />
+      <div
+        className="rce-mbox-file--size"
+      />
+    </div>
+    <div
+      className="rce-mbox-file--text"
     />
     <div
-      className="rce-mbox-file--size"
+      className="rce-mbox-file--buttons"
     />
-  </div>
-  <div
-    className="rce-mbox-file--text"
-  />
-  <div
-    className="rce-mbox-file--buttons"
-  />
-</button>
+  </button>
+</div>
 `;
