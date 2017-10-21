@@ -63,9 +63,12 @@ export class PhotoMessage extends Component {
                         </div>
                     }
                 </div>
-                <div className="rce-mbox-text">
-                    {this.props.text}
-                </div>
+                {
+                    this.props.text &&
+                    <div className="rce-mbox-text">
+                        {this.props.text}
+                    </div>
+                }
             </div>
         );
     }

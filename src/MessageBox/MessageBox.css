@@ -28,14 +28,14 @@
     display: flex;
     opacity: 0;
     visibility: hidden;
-    left: -40px;
+    left: -50px;
 }
 
 .rce-mbox-forward-right {
     display: flex;
     opacity: 0;
     visibility: hidden;
-    right: -40px;
+    right: -50px;
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-left {
@@ -57,13 +57,18 @@
     margin-left: 20px;
     margin-right: 5px;
     margin-top: 3px;
-    display: flex;
     flex-direction: column;
     margin-bottom: 3px;
     padding: 6px 9px 8px 9px;
     float: left;
     min-width: 140px;
     max-width: 70%;
+}
+
+.rce-mbox-body {
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 .rce-mbox.rce-mbox-right {
@@ -79,10 +84,37 @@
     word-break: break-word;
 }
 
+.rce-mbox-text:after {
+    content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"
+}
+
 .rce-mbox-time {
     text-align: right;
     color: rgba(0, 0, 0, 0.45);
     font-size: 12px;
+    position: absolute;
+    right: -4px;
+    bottom: -5px;
+}
+
+.rce-mbox-time-block {
+    /*position: relative;*/
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-right: -6px;
+    margin-left: -6px;
+    padding-top: 5px;
+    padding-right: 3px;
+    padding-bottom: 2px;
+    background: linear-gradient(to top, rgba(0,0,0,0.33), transparent);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+}
+
+.rce-mbox--clear-padding {
+    padding-bottom: 3px;
 }
 
 .rce-mbox-right-notch {
@@ -116,6 +148,10 @@
 
 .rce-mbox-title:hover {
     text-decoration: underline;
+}
+
+.rce-mbox-title--clear {
+    margin-bottom: 5px;
 }
 
 .rce-mbox-statu {

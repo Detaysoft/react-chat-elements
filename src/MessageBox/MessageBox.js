@@ -21,6 +21,7 @@ const classNames = require('classnames');
 export class MessageBox extends Component {
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
+        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file';
 
         return (
             <div
@@ -32,107 +33,119 @@ export class MessageBox extends Component {
                             text={this.props.text} />
                         :
                         <div
-                            className={positionCls}>
-                            {
-                                this.props.forwarded === true &&
-                                <div
-                                    className={classNames(
-                                        'rce-mbox-forward',
-                                        { 'rce-mbox-forward-right': this.props.position === 'left' },
-                                        { 'rce-mbox-forward-left': this.props.position === 'right' }
-                                    )}
-                                    onClick={this.props.onForwardClick}>
-                                        <FaForward />
-                                </div>
-                            }
-
-                            {
-                                this.props.title &&
-                                <p style={this.props.titleColor && { color: this.props.titleColor }} onClick={this.props.onTitleClick} className="rce-mbox-title">{this.props.title}</p>
-                            }
-
-                            {
-                                this.props.type === 'text' &&
-                                <div className="rce-mbox-text">
-                                    {this.props.text}
-                                </div>
-                            }
-
-                            {
-                                this.props.type === 'location' &&
-                                <LocationMessage
-                                    onOpen={this.props.onOpen}
-                                    data={this.props.data}
-                                    target={this.props.target}
-                                    href={this.props.href}
-                                    apiKey={this.props.apiKey}
-                                    src={this.props.src} />
-                            }
-
-                            {
-                                this.props.type === 'photo' &&
-                                <PhotoMessage
-                                    onOpen={this.props.onOpen}
-                                    onDownload={this.props.onDownload}
-                                    data={this.props.data}
-                                    width={this.props.width}
-                                    height={this.props.height}
-                                    text={this.props.text} />
-                            }
-
-                            {
-                                this.props.type === 'file' &&
-                                <FileMessage
-                                    onOpen={this.props.onOpen}
-                                    onDownload={this.props.onDownload}
-                                    data={this.props.data}
-                                    text={this.props.text} />
-                            }
-
-                            {
-                                this.props.type === 'spotify' &&
-                                <SpotifyMessage
-                                    width={this.props.width}
-                                    height={this.props.height}
-                                    theme={this.props.theme}
-                                    view={this.props.view}
-                                    data={this.props.data}
-                                    uri={this.props.uri || this.props.text} />
-                            }
-
-                            <div className="rce-mbox-time">
+                            className={classNames(
+                                positionCls,
+                                {'rce-mbox--clear-padding': thatAbsoluteTime},
+                            )}>
+                            <div className='rce-mbox-body'>
                                 {
-                                    this.props.date &&
-                                    !isNaN(this.props.date) &&
-                                    (
-                                        this.props.dateString ||
-                                        moment(this.props.date).fromNow()
-                                    )
+                                    this.props.forwarded === true &&
+                                    <div
+                                        className={classNames(
+                                            'rce-mbox-forward',
+                                            { 'rce-mbox-forward-right': this.props.position === 'left' },
+                                            { 'rce-mbox-forward-left': this.props.position === 'right' }
+                                        )}
+                                        onClick={this.props.onForwardClick}>
+                                            <FaForward />
+                                    </div>
                                 }
+
                                 {
-                                    this.props.statu &&
-                                    <span className='rce-mbox-statu'>
-                                        {
-                                            this.props.statu === 'waiting' &&
-                                            <MdIosTime />
-                                        }
-
-                                        {
-                                            this.props.statu === 'sent' &&
-                                            <MdCheck />
-                                        }
-
-                                        {
-                                            this.props.statu === 'received' &&
-                                            <IoDoneAll />
-                                        }
-
-                                        {
-                                            this.props.statu === 'read' &&
-                                            <IoDoneAll color='#4FC3F7'/>
-                                        }
-                                    </span>
+                                    this.props.title &&
+                                    <p
+                                        style={this.props.titleColor && { color: this.props.titleColor }}
+                                        onClick={this.props.onTitleClick}
+                                        className={classNames('rce-mbox-title', {
+                                            'rce-mbox-title--clear': this.props.type === 'text',
+                                        })}>
+                                        {this.props.title}
+                                    </p>
                                 }
+
+                                {
+                                    this.props.type === 'text' &&
+                                    <div className="rce-mbox-text">
+                                        {this.props.text}
+                                    </div>
+                                }
+
+                                {
+                                    this.props.type === 'location' &&
+                                    <LocationMessage
+                                        onOpen={this.props.onOpen}
+                                        data={this.props.data}
+                                        target={this.props.target}
+                                        href={this.props.href}
+                                        apiKey={this.props.apiKey}
+                                        src={this.props.src} />
+                                }
+
+                                {
+                                    this.props.type === 'photo' &&
+                                    <PhotoMessage
+                                        onOpen={this.props.onOpen}
+                                        onDownload={this.props.onDownload}
+                                        data={this.props.data}
+                                        width={this.props.width}
+                                        height={this.props.height}
+                                        text={this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'file' &&
+                                    <FileMessage
+                                        onOpen={this.props.onOpen}
+                                        onDownload={this.props.onDownload}
+                                        data={this.props.data}
+                                        text={this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'spotify' &&
+                                    <SpotifyMessage
+                                        width={this.props.width}
+                                        height={this.props.height}
+                                        theme={this.props.theme}
+                                        view={this.props.view}
+                                        data={this.props.data}
+                                        uri={this.props.uri || this.props.text} />
+                                }
+
+                                <div className={classNames('rce-mbox-time', { 'rce-mbox-time-block': thatAbsoluteTime })}>
+                                    {
+                                        this.props.date &&
+                                        !isNaN(this.props.date) &&
+                                        (
+                                            this.props.dateString ||
+                                            moment(this.props.date).fromNow()
+                                        )
+                                    }
+                                    {
+                                        this.props.statu &&
+                                        <span className='rce-mbox-statu'>
+                                            {
+                                                this.props.statu === 'waiting' &&
+                                                <MdIosTime />
+                                            }
+
+                                            {
+                                                this.props.statu === 'sent' &&
+                                                <MdCheck />
+                                            }
+
+                                            {
+                                                this.props.statu === 'received' &&
+                                                <IoDoneAll />
+                                            }
+
+                                            {
+                                                this.props.statu === 'read' &&
+                                                <IoDoneAll color='#4FC3F7'/>
+                                            }
+                                        </span>
+                                    }
+                                </div>
                             </div>
 
                             {

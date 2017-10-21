@@ -9,19 +9,23 @@ exports[`MessageBox component should render without issues 1`] = `
     className="rce-mbox"
   >
     <div
-      className="rce-mbox-text"
-    />
-    <div
-      className="rce-mbox-time"
+      className="rce-mbox-body"
     >
-      a few seconds ago
-      <span
-        className="rce-mbox-statu"
+      <div
+        className="rce-mbox-text"
+      />
+      <div
+        className="rce-mbox-time"
       >
-        <IoAndroidDoneAll
-          color="#4FC3F7"
-        />
-      </span>
+        a few seconds ago
+        <span
+          className="rce-mbox-statu"
+        >
+          <IoAndroidDoneAll
+            color="#4FC3F7"
+          />
+        </span>
+      </div>
     </div>
     <div>
       <svg

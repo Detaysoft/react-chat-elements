@@ -17,6 +17,7 @@ import {
 import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
 import FaClose from 'react-icons/lib/fa/close';
+import FaMenu from 'react-icons/lib/md/more-vert';
 
 const loremIpsum = require('lorem-ipsum');
 const Identicon = require('identicon.js')
@@ -62,7 +63,7 @@ export class App extends Component {
             case 'message':
                 var type = this.token();
                 var statu = 'waiting';
-                switch(type) {
+                switch (type) {
                     case 0:
                         type = 'photo';
                         statu = 'sent';
@@ -122,12 +123,29 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
+                    dropdownMenu: (
+                        <Dropdown
+                            animationPosition="norteast"
+                            buttonProps={{
+                                type: "transparent",
+                                color: "#cecece",
+                                icon: {
+                                    component: <FaMenu />,
+                                    size: 24,
+                                }
+                            }}
+                            items={[
+                                'Menu Item1',
+                                'Menu Item2',
+                                'Menu Item3',
+                            ]} />
+                    ),
                     dateString: moment(new Date()).format('HH:mm'),
                 };
         }
     }
 
-    addMessage()  {
+    addMessage() {
         var list = this.state.messageList;
         list.push(this.random('message'));
         this.setState({
