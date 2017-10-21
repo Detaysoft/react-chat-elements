@@ -28,14 +28,14 @@
     display: flex;
     opacity: 0;
     visibility: hidden;
-    left: -40px;
+    left: -50px;
 }
 
 .rce-mbox-forward-right {
     display: flex;
     opacity: 0;
     visibility: hidden;
-    right: -40px;
+    right: -50px;
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-left {
