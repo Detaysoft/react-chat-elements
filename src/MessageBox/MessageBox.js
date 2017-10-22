@@ -36,6 +36,7 @@ export class MessageBox extends Component {
                             className={classNames(
                                 positionCls,
                                 {'rce-mbox--clear-padding': thatAbsoluteTime},
+                                {'rce-mbox--clear-notch': !this.props.notch}
                             )}>
                             <div className='rce-mbox-body'>
                                 {
@@ -149,7 +150,8 @@ export class MessageBox extends Component {
                             </div>
 
                             {
-                                this.props.position === 'right' ?
+                                this.props.notch &&
+                                (this.props.position === 'right' ?
                                     <svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M0 0v20L20 0" />
                                     </svg>
@@ -166,6 +168,7 @@ export class MessageBox extends Component {
                                             <path d="M20 0v20L0 0" filter="url(#filter1)" />
                                         </svg>
                                     </div>
+                                )
                             }
                         </div>
                 }
@@ -190,6 +193,7 @@ MessageBox.defaultProps = {
     forwarded: false,
     statu: null,
     dateString: null,
+    notch: true,
 };
 
 

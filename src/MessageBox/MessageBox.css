@@ -117,6 +117,10 @@
     padding-bottom: 3px;
 }
 
+.rce-mbox.rce-mbox--clear-notch {
+    border-radius: 5px 5px 5px 5px !important;
+}
+
 .rce-mbox-right-notch {
     position: absolute;
     right: -14px;
