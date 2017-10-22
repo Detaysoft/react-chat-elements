@@ -148,6 +148,8 @@
     color: #4f81a1;
     user-select: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .rce-mbox-title:hover {
@@ -161,4 +163,8 @@
 .rce-mbox-statu {
     margin-left: 3px;
     font-size: 15px;
+}
+
+.rce-mbox-title > .rce-avatar-container {
+    margin-right: 5px;
 }

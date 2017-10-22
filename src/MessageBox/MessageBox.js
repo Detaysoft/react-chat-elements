@@ -7,6 +7,8 @@ import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 
+import Avatar from '../Avatar/Avatar';
+
 import FaForward from 'react-icons/lib/fa/mail-forward';
 import FaReply from 'react-icons/lib/fa/mail-reply';
 
@@ -53,14 +55,22 @@ export class MessageBox extends Component {
                                 }
 
                                 {
-                                    this.props.title &&
+                                    (this.props.title || this.props.avatar) &&
                                     <p
                                         style={this.props.titleColor && { color: this.props.titleColor }}
                                         onClick={this.props.onTitleClick}
                                         className={classNames('rce-mbox-title', {
                                             'rce-mbox-title--clear': this.props.type === 'text',
                                         })}>
-                                        {this.props.title}
+                                        {
+                                            this.props.avatar &&
+                                            <Avatar
+                                                src={this.props.avatar}/>
+                                        }
+                                        {
+                                            this.props.title &&
+                                            <span>{this.props.title}</span>
+                                        }
                                     </p>
                                 }
 
@@ -194,6 +204,7 @@ MessageBox.defaultProps = {
     statu: null,
     dateString: null,
     notch: true,
+    avatar: null,
 };
 
 
