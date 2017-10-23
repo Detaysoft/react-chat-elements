@@ -7,6 +7,8 @@ import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 
+import Avatar from '../Avatar/Avatar';
+
 import FaForward from 'react-icons/lib/fa/mail-forward';
 import FaReply from 'react-icons/lib/fa/mail-reply';
 
@@ -28,6 +30,10 @@ export class MessageBox extends Component {
                 className={classNames('rce-container-mbox', this.props.className)}
                 onClick={this.props.onClick}>
                 {
+                    this.props.renderAddCmp instanceof Function &&
+                    this.props.renderAddCmp()
+                }
+                {
                     this.props.type === 'system' ?
                         <SystemMessage
                             text={this.props.text} />
@@ -36,6 +42,7 @@ export class MessageBox extends Component {
                             className={classNames(
                                 positionCls,
                                 {'rce-mbox--clear-padding': thatAbsoluteTime},
+                                {'rce-mbox--clear-notch': !this.props.notch}
                             )}>
                             <div className='rce-mbox-body'>
                                 {
@@ -52,14 +59,22 @@ export class MessageBox extends Component {
                                 }
 
                                 {
-                                    this.props.title &&
+                                    (this.props.title || this.props.avatar) &&
                                     <p
                                         style={this.props.titleColor && { color: this.props.titleColor }}
                                         onClick={this.props.onTitleClick}
                                         className={classNames('rce-mbox-title', {
                                             'rce-mbox-title--clear': this.props.type === 'text',
                                         })}>
-                                        {this.props.title}
+                                        {
+                                            this.props.avatar &&
+                                            <Avatar
+                                                src={this.props.avatar}/>
+                                        }
+                                        {
+                                            this.props.title &&
+                                            <span>{this.props.title}</span>
+                                        }
                                     </p>
                                 }
 
@@ -149,7 +164,8 @@ export class MessageBox extends Component {
                             </div>
 
                             {
-                                this.props.position === 'right' ?
+                                this.props.notch &&
+                                (this.props.position === 'right' ?
                                     <svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M0 0v20L20 0" />
                                     </svg>
@@ -166,6 +182,7 @@ export class MessageBox extends Component {
                                             <path d="M20 0v20L0 0" filter="url(#filter1)" />
                                         </svg>
                                     </div>
+                                )
                             }
                         </div>
                 }
@@ -190,6 +207,9 @@ MessageBox.defaultProps = {
     forwarded: false,
     statu: null,
     dateString: null,
+    notch: true,
+    avatar: null,
+    renderAddCmp: null,
 };
 
 
