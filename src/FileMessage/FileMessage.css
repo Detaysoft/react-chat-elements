@@ -1,4 +1,8 @@
 .rce-mbox-file {
+    padding-bottom: 13px;
+}
+
+.rce-mbox-file > button {
     background: #e9e9e9;
     display: flex;
     border-radius: 5px;
@@ -15,7 +19,7 @@
     border:none;
 }
 
-.rce-mbox-file > * {
+.rce-mbox-file > button > * {
     padding: 0px 10px;
 }
 
