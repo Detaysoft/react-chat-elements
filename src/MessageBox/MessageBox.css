@@ -62,7 +62,6 @@
     padding: 6px 9px 8px 9px;
     float: left;
     min-width: 140px;
-    max-width: 70%;
 }
 
 .rce-mbox-body {
@@ -117,6 +116,10 @@
     padding-bottom: 3px;
 }
 
+.rce-mbox.rce-mbox--clear-notch {
+    border-radius: 5px 5px 5px 5px !important;
+}
+
 .rce-mbox-right-notch {
     position: absolute;
     right: -14px;
@@ -144,6 +147,8 @@
     color: #4f81a1;
     user-select: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .rce-mbox-title:hover {
@@ -157,4 +162,8 @@
 .rce-mbox-statu {
     margin-left: 3px;
     font-size: 15px;
+}
+
+.rce-mbox-title > .rce-avatar-container {
+    margin-right: 5px;
 }

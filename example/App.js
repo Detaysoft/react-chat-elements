@@ -96,7 +96,7 @@ export class App extends Component {
                     view: 'list',
                     title: loremIpsum({ count: 2, units: 'words' }),
                     titleColor: this.getRandomColor(),
-                    text: type === 'spotify' ? 'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf' : loremIpsum({ count: 1, units: 'sentences' }),
+                    text: type === 'spotify' ? 'spotify:track:7wGoVu4Dady5GV0Sv4UIsx' : loremIpsum({ count: 1, units: 'sentences' }),
                     data: {
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
@@ -111,6 +111,7 @@ export class App extends Component {
                     statu: statu,
                     date: new Date(),
                     dateString: moment(new Date()).format('HH:mm'),
+                    avatar: `data:image/png;base64,${this.photo()}`,
                 };
             case 'chat':
                 return {

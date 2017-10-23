@@ -110,6 +110,9 @@ import { MessageBox } from 'react-chat-elements'
 | onForwardClick | none | function | message forward on click event |
 | forwarded | none | boolean | message forward icon |
 | statu | none | string | message statu info (waiting, sent, received, read) |
+| notch | true | boolean | message box notch |
+| avatar | none | url | message box avatar url |
+| renderAddCmp | none | function (component) | adding custom components to message box |
 
 
 ## SystemMessage Component
