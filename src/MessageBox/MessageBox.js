@@ -30,6 +30,10 @@ export class MessageBox extends Component {
                 className={classNames('rce-container-mbox', this.props.className)}
                 onClick={this.props.onClick}>
                 {
+                    this.props.renderAddCmp instanceof Function &&
+                    this.props.renderAddCmp()
+                }
+                {
                     this.props.type === 'system' ?
                         <SystemMessage
                             text={this.props.text} />
@@ -63,9 +67,6 @@ export class MessageBox extends Component {
                                             'rce-mbox-title--clear': this.props.type === 'text',
                                         })}>
                                         {
-                                            this.props.renderAvatar instanceof Function ?
-                                                this.props.renderAvatar()
-                                            :
                                             this.props.avatar &&
                                             <Avatar
                                                 src={this.props.avatar}/>
@@ -208,7 +209,7 @@ MessageBox.defaultProps = {
     dateString: null,
     notch: true,
     avatar: null,
-    renderAvatar: null,
+    renderAddCmp: null,
 };
 
 

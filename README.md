@@ -112,7 +112,7 @@ import { MessageBox } from 'react-chat-elements'
 | statu | none | string | message statu info (waiting, sent, received, read) |
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
-| renderAvatar | none | function (component) | message box custom avatar component |
+| renderAddCmp | none | function (component) | adding custom components to message box |
 
 
 ## SystemMessage Component
