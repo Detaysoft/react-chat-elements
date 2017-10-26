@@ -16,12 +16,6 @@ export class LocationMessage extends Component {
         this.className = this.className.bind(this);
     }
 
-    staticURL() {
-        var center = this.props.data;
-
-        return STATIC_URL.replace('');
-    }
-
     buildURL(url) {
         var center = this.props.data;
 
