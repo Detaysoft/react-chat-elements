@@ -93,7 +93,9 @@ export class MessageBox extends Component {
                                         target={this.props.target}
                                         href={this.props.href}
                                         apiKey={this.props.apiKey}
-                                        src={this.props.src} />
+                                        src={this.props.src}
+                                        zoom={this.props.zoom}
+                                        markerColor={this.props.markerColor} />
                                 }
 
                                 {
