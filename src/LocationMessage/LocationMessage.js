@@ -16,22 +16,41 @@ export class LocationMessage extends Component {
         this.state = {
             url: 'https://maps.googleapis.com/maps/api/staticmap?markers=color:red|'+latitude+','+longitude+'&zoom=14&size=270x200&scale=2' + key,
         };
+
+        this.className = this.className.bind(this);
+    }
+
+    className() {
+      var className = classNames('rce-mbox-location', this.props.className);
+
+      if (this.props.text && this.props.text.length > 0) {
+        className = classNames(className, 'rce-mbox-location-has-text');
+      }
+
+      return className;
     }
 
     render() {
         return (
-            <a
-                onClick={this.props.onOpen}
-                target={this.props.target}
-                href={this.props.href || this.props.src || this.state.url}
-                className={classNames('rce-mbox-location', this.props.className)}>
-                <img
-                    className='rce-mbox-location-img'
-                    src={
-                        this.props.src ||
-                        this.state.url
-                    }/>
-            </a>
+            <div>
+                <a
+                    onClick={this.props.onOpen}
+                    target={this.props.target}
+                    href={this.props.href || this.props.src || this.state.url}
+                    className={this.className()}>
+                        <img className='rce-mbox-location-img'
+                             src={
+                                 this.props.src ||
+                                 this.state.url
+                             }/>
+                </a>
+                {
+                    this.props.text &&
+                    <div className="rce-mbox-text rce-mbox-location-text">
+                        {this.props.text}
+                    </div>
+                }
+            </div>
         );
     }
 }
