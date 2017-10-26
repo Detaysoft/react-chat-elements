@@ -12,7 +12,6 @@ export class LocationMessage extends Component {
     constructor(props) {
         super(props);
 
-        this.staticURL = this.staticURL.bind(this);
         this.className = this.className.bind(this);
     }
 
@@ -24,8 +23,6 @@ export class LocationMessage extends Component {
                   .replace('MARKER_COLOR', this.props.markerColor || DEFAULT_MARKER_COLOR)
                   .replace('ZOOM', this.props.zoom || DEFAULT_ZOOM_LEVEL)
                   .replace('KEY', this.props.apiKey);
-
-        
     }
 
     className() {
