@@ -95,7 +95,7 @@ export class MessageBox extends Component {
                                         apiKey={this.props.apiKey}
                                         src={this.props.src}
                                         zoom={this.props.zoom}
-                                        markerColor={this.props.markerColor} />
+                                        markerColor={this.props.markerColor}
                                         text={this.props.text} />
                                 }
 
