@@ -13,6 +13,7 @@ export class LocationMessage extends Component {
         super(props);
 
         this.staticURL = this.staticURL.bind(this);
+        this.className = this.className.bind(this);
     }
 
     staticURL() {
@@ -29,22 +30,41 @@ export class LocationMessage extends Component {
                   .replace('MARKER_COLOR', this.props.markerColor || DEFAULT_MARKER_COLOR)
                   .replace('ZOOM', this.props.zoom || DEFAULT_ZOOM_LEVEL)
                   .replace('KEY', this.props.apiKey);
+
+        
+    }
+
+    className() {
+      var className = classNames('rce-mbox-location', this.props.className);
+
+      if (this.props.text && this.props.text.length > 0) {
+        className = classNames(className, 'rce-mbox-location-has-text');
+      }
+
+      return className;
     }
 
     render() {
         return (
-            <a
-                onClick={this.props.onOpen}
-                target={this.props.target}
-                href={this.props.href || this.props.src || this.buildURL(MAP_URL)}
-                className={classNames('rce-mbox-location', this.props.className)}>
-                <img
-                    className='rce-mbox-location-img'
-                    src={
-                        this.props.src ||
-                        this.buildURL(STATIC_URL)
-                    }/>
-            </a>
+            <div>
+                <a
+                    onClick={this.props.onOpen}
+                    target={this.props.target}
+                    href={this.props.href || this.props.src || this.buildURL(MAP_URL)}
+                    className={this.className()}>
+                        <img className='rce-mbox-location-img'
+                             src={
+                                 this.props.src ||
+                                 this.buildURL(STATIC_URL)
+                             }/>
+                </a>
+                {
+                    this.props.text &&
+                    <div className="rce-mbox-text rce-mbox-location-text">
+                        {this.props.text}
+                    </div>
+                }
+            </div>
         );
     }
 }
