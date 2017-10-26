@@ -23,7 +23,7 @@ const classNames = require('classnames');
 export class MessageBox extends Component {
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file';
+        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
 
         return (
             <div
@@ -93,7 +93,8 @@ export class MessageBox extends Component {
                                         target={this.props.target}
                                         href={this.props.href}
                                         apiKey={this.props.apiKey}
-                                        src={this.props.src} />
+                                        src={this.props.src}
+                                        text={this.props.text} />
                                 }
 
                                 {

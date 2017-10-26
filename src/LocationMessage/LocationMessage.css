@@ -1,7 +1,6 @@
 .rce-mbox-location {
     position: relative;
     width: 250px;
-    height: 150px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -14,4 +13,10 @@
 
 .rce-mbox-location-img {
     width: 100%;
+}
+
+.rce-mbox-location-text {
+  width: 250px;
+  margin-left: -6px;
+  margin-right: -6px;
 }
