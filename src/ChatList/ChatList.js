@@ -20,7 +20,9 @@ export class ChatList extends Component {
 
     render() {
         return (
-            <div className={classNames('rce-container-clist', this.props.className)}>
+            <div
+                ref={this.props.cmpRef}
+                className={classNames('rce-container-clist', this.props.className)}>
                 {
                     this.props.dataSource.map((x, i) => (
                         <ChatItem

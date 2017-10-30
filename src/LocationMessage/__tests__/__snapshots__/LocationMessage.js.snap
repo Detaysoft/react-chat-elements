@@ -1,14 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LocationMessage component should render without issues 1`] = `
-<a
-  className="rce-mbox-location"
-  href="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|undefined,undefined&zoom=14&size=270x200&scale=2"
-  target="_blank"
+<div
+  className="rce-container-lmsg"
 >
-  <img
-    className="rce-mbox-location-img"
-    src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|undefined,undefined&zoom=14&size=270x200&scale=2"
-  />
-</a>
+  <a
+    className="rce-mbox-location"
+    href="https://www.google.com/maps/search/?api=1&query=undefined,undefined&zoom=14"
+    target="_blank"
+  >
+    <img
+      className="rce-mbox-location-img"
+      src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|undefined,undefined&zoom=14&size=270x200&scale=2&key="
+    />
+  </a>
+</div>
 `;
