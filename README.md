@@ -428,6 +428,8 @@ import { LocationMessage } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | src | none | image | image src |
 | apiKey | none | string | google staticmap api key |
+| zoom | 14 | int | google staticmap zoom level |
+| markerColor | red | string | google staticmap marker color |
 | data | {} | object | message data |
 | target | _blank | string | image a tag target prop |
 | onOpen | none | function | image on open |
