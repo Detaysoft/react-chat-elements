@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LocationMessage component should render without issues 1`] = `
-<div>
+<div
+  className="rce-container-lmsg"
+>
   <a
     className="rce-mbox-location"
     href="https://www.google.com/maps/search/?api=1&query=undefined,undefined&zoom=14"

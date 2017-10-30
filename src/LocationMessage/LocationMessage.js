@@ -35,7 +35,7 @@ export class LocationMessage extends Component {
 
     render() {
         return (
-            <div>
+            <div className='rce-container-lmsg'>
                 <a
                     onClick={this.props.onOpen}
                     target={this.props.target}
