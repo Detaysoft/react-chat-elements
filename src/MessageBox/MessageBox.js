@@ -23,7 +23,7 @@ const classNames = require('classnames');
 export class MessageBox extends Component {
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file';
+        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
 
         return (
             <div
@@ -93,7 +93,10 @@ export class MessageBox extends Component {
                                         target={this.props.target}
                                         href={this.props.href}
                                         apiKey={this.props.apiKey}
-                                        src={this.props.src} />
+                                        src={this.props.src}
+                                        zoom={this.props.zoom}
+                                        markerColor={this.props.markerColor}
+                                        text={this.props.text} />
                                 }
 
                                 {
@@ -137,25 +140,25 @@ export class MessageBox extends Component {
                                         )
                                     }
                                     {
-                                        this.props.statu &&
-                                        <span className='rce-mbox-statu'>
+                                        this.props.status &&
+                                        <span className='rce-mbox-status'>
                                             {
-                                                this.props.statu === 'waiting' &&
+                                                this.props.status === 'waiting' &&
                                                 <MdIosTime />
                                             }
 
                                             {
-                                                this.props.statu === 'sent' &&
+                                                this.props.status === 'sent' &&
                                                 <MdCheck />
                                             }
 
                                             {
-                                                this.props.statu === 'received' &&
+                                                this.props.status === 'received' &&
                                                 <IoDoneAll />
                                             }
 
                                             {
-                                                this.props.statu === 'read' &&
+                                                this.props.status === 'read' &&
                                                 <IoDoneAll color='#4FC3F7'/>
                                             }
                                         </span>
@@ -205,7 +208,7 @@ MessageBox.defaultProps = {
     onOpen: null,
     onDownload: null,
     forwarded: false,
-    statu: null,
+    status: null,
     dateString: null,
     notch: true,
     avatar: null,

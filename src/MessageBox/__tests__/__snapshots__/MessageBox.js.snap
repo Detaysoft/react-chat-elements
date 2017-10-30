@@ -19,7 +19,7 @@ exports[`MessageBox component should render without issues 1`] = `
       >
         a few seconds ago
         <span
-          className="rce-mbox-statu"
+          className="rce-mbox-status"
         >
           <IoAndroidDoneAll
             color="#4FC3F7"
