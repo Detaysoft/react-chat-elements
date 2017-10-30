@@ -62,19 +62,19 @@ export class App extends Component {
         switch (type) {
             case 'message':
                 var type = this.token();
-                var statu = 'waiting';
+                var status = 'waiting';
                 switch (type) {
                     case 0:
                         type = 'photo';
-                        statu = 'sent';
+                        status = 'sent';
                         break;
                     case 1:
                         type = 'file';
-                        statu = 'sent';
+                        status = 'sent';
                         break;
                     case 2:
                         type = 'system';
-                        statu = 'received';
+                        status = 'received';
                         break;
                     case 3:
                         type = 'location';
@@ -84,7 +84,7 @@ export class App extends Component {
                         break;
                     default:
                         type = 'text';
-                        statu = 'read';
+                        status = 'read';
                         break;
                 }
 
@@ -108,7 +108,7 @@ export class App extends Component {
                         latitude: '37.773972',
                         longitude: '-122.431297',
                     },
-                    statu: statu,
+                    status: status,
                     date: new Date(),
                     dateString: moment(new Date()).format('HH:mm'),
                     avatar: `data:image/png;base64,${this.photo()}`,
