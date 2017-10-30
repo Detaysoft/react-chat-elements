@@ -14,7 +14,7 @@ export class LocationMessage extends Component {
     }
 
     buildURL(url) {
-        var center = this.props.data;
+        var center = this.props.data || {};
 
         return url.replace('LATITUDE', center.latitude)
                   .replace('LONGITUDE', center.longitude)
