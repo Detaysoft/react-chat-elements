@@ -31,6 +31,8 @@ export class MessageList extends Component {
     }
 
     componentWillReceiveProps() {
+        if (!this.mlistRef)
+            return;
         this.setState({
             scrollBottom: this.getBottom(this.mlistRef),
         });
