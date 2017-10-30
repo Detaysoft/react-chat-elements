@@ -15,7 +15,10 @@ export class MessageList extends Component {
     }
 
     componentDidUpdate() {
-        var e = this.refs.mlist;
+        var e = this.mlistRef;
+        if (!e)
+            return;
+
         var bottom = this.getBottom(e);
         if (this.props.toBottomHeight === '100%' || bottom < this.props.toBottomHeight) {
             // scroll to bottom
@@ -29,7 +32,7 @@ export class MessageList extends Component {
 
     componentWillReceiveProps() {
         this.setState({
-            scrollBottom: this.getBottom(this.refs.mlist),
+            scrollBottom: this.getBottom(this.mlistRef),
         });
     }
 
@@ -62,10 +65,16 @@ export class MessageList extends Component {
             this.props.onForwardClick(item, i, e);
     }
 
+    loadRef(ref) {
+        this.mlistRef = ref;
+        if (this.props.cmpRef instanceof Function)
+            this.props.cmpRef(ref);
+    }
+
     render() {
         return (
             <div
-                ref='mlist'
+                ref={this.loadRef.bind(this)}
                 onScroll={this.props.onScroll}
                 className={classNames(['rce-container-mlist', this.props.className])}>
                 {
