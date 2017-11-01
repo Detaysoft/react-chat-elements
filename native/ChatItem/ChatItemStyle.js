@@ -38,14 +38,15 @@ export default StyleSheet.create({
     rceCitemStatus: {
         width: 20,
         height: 20,
-        bottom: 10,
-        right: 10,
+        bottom: -1,
+        right: -1,
         position: 'absolute',
         borderRadius: 10,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#ccc',
+        overflow: 'hidden',
     },
 
     rceCitemAvatarImg: {
@@ -75,25 +76,27 @@ export default StyleSheet.create({
 
     rceCitemBodyTop: {
         display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
 
     rceCitemBodyBottom: {
         marginTop: 4,
         display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
 
     rceCitemBodyTopTitle: {
         flex: 1,
-        // whiteSpace: 'nowrap',
-        // textOverflow: 'ellipsis',
         overflow: 'hidden',
-    },
-
-    rceCitemBodyTopTitle: {
         fontSize: 16,
     },
 
     rceCitemBodyBottomTitle: {
+        flex: 1,
         color: '#555',
         fontSize: 15,
     },
@@ -101,23 +104,28 @@ export default StyleSheet.create({
     rceCitemBodyTopTime: {
         fontSize: 12,
         color: 'rgba(0,0,0,0.4)',
+        marginLeft: 5,
+        maxWidth: 100,
+        justifyContent: 'flex-start',
     },
 
     rceCitemBodyBottomStatus: {
+        display: 'flex',
+        width: 18,
+        height: 18,
         marginLeft: 3,
+        backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 9,
+        overflow: 'hidden',
     },
 
     rceCitemBodyBottomStatusText: {
-        width: 18,
-        height: 18,
-        fontSize: 12,
+        textAlign: 'center',
         color: 'white',
         fontWeight: 'bold',
-        textAlign: 'center',
-        alignItems: 'center',
-        justifyContent: 'center',
-        display: 'flex',
-        borderRadius: 9,
-        backgroundColor: 'red',
+        fontSize: 12,
+        backgroundColor: 'transparent',
     },
 });

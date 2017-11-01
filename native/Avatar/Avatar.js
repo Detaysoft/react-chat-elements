@@ -11,6 +11,7 @@ export class Avatar extends Component {
         return (
             <View style={styles.rceAvatarContainer}>
                 <Image
+                    style={styles.rceAvatarDefault}
                     source={this.props.src} />
                 {this.props.sideElement}
             </View>

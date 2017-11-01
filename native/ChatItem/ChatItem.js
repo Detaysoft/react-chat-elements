@@ -25,39 +25,48 @@ export class ChatItem extends Component {
                             size="large"
                             sideElement={
                                 this.props.statusColor &&
-                                <Text className='rce-citem-status' style={[styles.rceCitemStatus, {backgroundColor: this.props.statusColor}]}>
-                                    {this.props.statusText}
-                                </Text>
+                                <View
+                                    style={[styles.rceCitemStatus, {backgroundColor: this.props.statusColor}]}>
+                                    <Text>
+                                        {this.props.statusText}
+                                    </Text>
+                                </View>
                             }
                             type={'circle' && {'flexible': this.props.avatarFlexible}}/>
                     </View>
 
                     <View style={styles.rceCitemBody}>
                         <View style={styles.rceCitemBodyTop}>
-                            <View>
-                                <Text style={styles.rceCitemBodyTopTitle}>
-                                    {this.props.title}
-                                </Text>
-                            </View>
-                            <Text style={styles.rceCitemBodyTopTime}>
+                            <Text
+                                ellipsizeMode='tail'
+                                numberOfLines={1}
+                                style={styles.rceCitemBodyTopTitle}>
+                                {this.props.title}
+                            </Text>
+                            <Text
+                                style={styles.rceCitemBodyTopTime}
+                                ellipsizeMode='tail'
+                                numberOfLines={1}>
                                 {
                                     this.props.date &&
                                     !isNaN(this.props.date) &&
                                     (
                                         this.props.dateString ||
-                                        'Moment(this.props.date).fromNow()'
+                                        (this.props.date).toString()
                                     )
                                 }
                             </Text>
                         </View>
 
                         <View style={styles.rceCitemBodyBottom}>
-                            <View>
-                                <Text style={styles.rceCitemBodyTopTitle}>
-                                    {this.props.subtitle}
-                                </Text>
-                            </View>
-                            <View style={styles.rceCitemBodyBottomStatus}>
+                            <Text
+                                ellipsizeMode='tail'
+                                numberOfLines={1}
+                                style={styles.rceCitemBodyTopTitle}>
+                                {this.props.subtitle}
+                            </Text>
+                            <View
+                                style={styles.rceCitemBodyBottomStatus}>
                                 {
                                     this.props.unread > 0 &&
                                     <Text
