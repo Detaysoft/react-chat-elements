@@ -4,26 +4,19 @@ import {
 
 export default StyleSheet.create({
     rceAvatarContainer: {
-        overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        overflow: 'hidden',
     },
 
-    rceAvatarContainerRceAvatar: {
-        width: '100%',
-        height: '100%',
+    rceAvatarDefault: {
+        width: 50,
+        height: 50,
     },
 
     rceAvatarContainerFlexibleRceAvatar: {
         height: 'auto',
         width: '100%',
-    },
-
-    rceAvatarContainerDefault: {
-        width: '25px',
-        height: '25px',
     },
 
     rceAvatarContainerRounded: {
