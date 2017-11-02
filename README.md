@@ -96,7 +96,7 @@ import { MessageBox } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | id | i (index) | string | message box id |
 | position | left | string | message box position |
-| type | text | string | message type (text, photo, file) |
+| type | text | string | message type (text, photo, file, location, spotify) |
 | text | none | string | message text |
 | title | none | string | message title |
 | titleColor | none | string(color) | message title color |
@@ -109,7 +109,7 @@ import { MessageBox } from 'react-chat-elements'
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | forwarded | none | boolean | message forward icon |
-| statu | none | string | message statu info (waiting, sent, received, read) |
+| status | none | string | message status info (waiting, sent, received, read) |
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
 | renderAddCmp | none | function (component) | adding custom components to message box |
@@ -428,6 +428,8 @@ import { LocationMessage } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | src | none | image | image src |
 | apiKey | none | string | google staticmap api key |
+| zoom | 14 | int | google staticmap zoom level |
+| markerColor | red | string | google staticmap marker color |
 | data | {} | object | message data |
 | target | _blank | string | image a tag target prop |
 | onOpen | none | function | image on open |
