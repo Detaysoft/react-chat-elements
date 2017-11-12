@@ -8,10 +8,15 @@ import {
 
 export class Avatar extends Component {
     render() {
+        const size = this.props.size;
+
         return (
             <View style={styles.rceAvatarContainer}>
                 <Image
-                    style={styles.rceAvatarDefault}
+                    style={[
+                        styles.rceAvatarDefault,
+                        size && { width: size.width, height: size.height },
+                    ]}
                     source={this.props.src} />
                 {this.props.sideElement}
             </View>
@@ -21,7 +26,7 @@ export class Avatar extends Component {
 
 Avatar.defaultProps = {
     type: 'default',
-    size: 'default',
+    size: null,
     src: '',
     alt: '',
     sideElement: null,

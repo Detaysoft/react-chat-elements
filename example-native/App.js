@@ -6,13 +6,14 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
 } from 'react-native';
 
-import { ChatItem } from '../native';
+import { ChatItem, MessageBox, } from '../native';
 
 export default class App extends Component<{}> {
     constructor(props) {
@@ -45,31 +46,8 @@ export default class App extends Component<{}> {
         switch (type) {
             case 'message':
                 var type = this.token();
-                var statu = 'waiting';
-                switch (type) {
-                    case 0:
-                        type = 'photo';
-                        statu = 'sent';
-                        break;
-                    case 1:
-                        type = 'file';
-                        statu = 'sent';
-                        break;
-                    case 2:
-                        type = 'system';
-                        statu = 'received';
-                        break;
-                    case 3:
-                        type = 'location';
-                        break;
-                    case 4:
-                        type = 'spotify';
-                        break;
-                    default:
-                        type = 'text';
-                        statu = 'read';
-                        break;
-                }
+                var status = 'waiting';
+                type = 'text';
 
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
@@ -91,7 +69,7 @@ export default class App extends Component<{}> {
                         latitude: '37.773972',
                         longitude: '-122.431297',
                     },
-                    statu: statu,
+                    status: status,
                     date: new Date(),
                     dateString: new Date().toString(),
                     avatar: require('./assets/chat-user.png'),
@@ -118,8 +96,21 @@ export default class App extends Component<{}> {
             arr.push(i);
 
         var chatSource = arr.map(x => this.random('chat'));
+        var messageSource = arr.map(x => this.random('message'));
         return (
-            <View style={{flex: 1, marginTop: 10}}>
+            <ScrollView
+                style={{
+                    flex: 1,
+                    marginTop: 10,
+                    backgroundColor: '#ccc',
+                }}>
+                {
+                    messageSource.map((x, i) => (
+                        <MessageBox
+                            key={i}
+                            {...x}/>
+                    ))
+                }
                 {
                     chatSource.map((x, i) => (
                         <ChatItem
@@ -131,7 +122,7 @@ export default class App extends Component<{}> {
                             avatar={require('./assets/chat-user.png')}/>
                     ))
                 }
-            </View>
+            </ScrollView>
         );
     }
 }
