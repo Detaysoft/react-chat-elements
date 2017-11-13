@@ -10,15 +10,14 @@ import {
     StyleSheet,
     Text,
     View,
-    ScrollView,
 } from 'react-native';
 
-import { ChatItem, MessageBox, } from '../native';
+import { ChatItem, MessageList, } from '../native';
 import Theme from '../native/Theme';
 
 import IconI from 'react-native-vector-icons/Ionicons';
 import IconM from 'react-native-vector-icons/MaterialIcons';
-
+var messageSource=[];
 export default class App extends Component<{}> {
     constructor(props) {
         super(props);
@@ -27,6 +26,7 @@ export default class App extends Component<{}> {
             show: true,
             messageList: [],
         };
+
         Theme.icons = {
             waiting: <IconM name='access-time' size={13}/>,
             sent: <IconM name='check' size={13}/>,
@@ -67,7 +67,7 @@ export default class App extends Component<{}> {
                     view: 'list',
                     title: 'consectetur adipisicing elit',
                     titleColor: this.getRandomColor(),
-                    text: type === 'spotify' ? 'spotify:track:7wGoVu4Dady5GV0Sv4UIsx' : 'Ab beatae odit deleniti dolor numquam nisi, non laboriosam sequi',
+                    text: 'Ab beatae odit deleniti dolor numquam nisi, non laboriosam sequi',
                     data: {
                         uri: require('./assets/chat-user.png'),
                         status: {
@@ -101,38 +101,19 @@ export default class App extends Component<{}> {
     }
 
     render() {
-        var arr = [];
-        for (var i = 0; i < 5; i++)
-            arr.push(i);
-
-        var chatSource = arr.map(x => this.random('chat'));
-        var messageSource = arr.map(x => this.random('message'));
+        messageSource.unshift(this.random('message'));
         return (
-            <ScrollView
+            <View
                 style={{
                     flex: 1,
                     marginTop: 10,
                     backgroundColor: '#ccc',
                 }}>
-                {
-                    messageSource.map((x, i) => (
-                        <MessageBox
-                            key={i}
-                            {...x}/>
-                    ))
-                }
-                {
-                    chatSource.map((x, i) => (
-                        <ChatItem
-                            key={i}
-                            title={x.title}
-                            unread={i || 1}
-                            statusColor='lightgreen'
-                            subtitle={x.subtitle}
-                            avatar={require('./assets/chat-user.png')}/>
-                    ))
-                }
-            </ScrollView>
+                <MessageList
+                    lockable={true}
+                    dataSource={messageSource}/>
+                <Text onPress={() => {this.setState(this.state)}}>Gönder</Text>
+            </View>
         );
     }
 }
