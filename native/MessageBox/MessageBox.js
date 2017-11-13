@@ -9,6 +9,8 @@ import {
     Image,
 } from 'react-native';
 
+import Theme from '../Theme';
+
 export class MessageBox extends Component {
 
     render() {
@@ -41,18 +43,18 @@ export class MessageBox extends Component {
                                             this.props.type === 'text' && styles.rceMboxTitleClear,
                                         ]}
                                         onClick={this.props.onTitleClick}>
-                                        <View
-                                            style={styles.rceMboxTitleAvatar}>
-                                            {
-                                                this.props.avatar &&
-                                                <Avatar
-                                                    size={{
-                                                        width: 30,
-                                                        height: 30,
-                                                    }}
-                                                    src={this.props.avatar}/>
-                                            }
-                                        </View>
+                                        {
+                                            this.props.avatar &&
+                                            <View
+                                                style={styles.rceMboxTitleAvatar}>
+                                                    <Avatar
+                                                        size={{
+                                                            width: 30,
+                                                            height: 30,
+                                                        }}
+                                                        src={this.props.avatar}/>
+                                            </View>
+                                        }
                                         <View>
                                         {
                                             this.props.title &&
@@ -71,6 +73,7 @@ export class MessageBox extends Component {
                                     <Text
                                         style={styles.rceMboxText}>
                                         {this.props.text}
+                                        {'\t\t\t\t\t'}
                                     </Text>
                                 }
 
@@ -94,25 +97,24 @@ export class MessageBox extends Component {
                                         this.props.status &&
                                         <Text
                                             style={styles.rceMboxStatus}>
-                                            {this.props.status}
                                             {
-                                                // this.props.status === 'waiting' &&
-                                                // <MdIosTime />
+                                                this.props.status === 'waiting' &&
+                                                Theme.icons.waiting
                                             }
 
                                             {
-                                                // this.props.status === 'sent' &&
-                                                // <MdCheck />
+                                                this.props.status === 'sent' &&
+                                                Theme.icons.sent
                                             }
 
                                             {
-                                                // this.props.status === 'received' &&
-                                                // <IoDoneAll />
+                                                this.props.status === 'received' &&
+                                                Theme.icons.received
                                             }
 
                                             {
-                                                // this.props.status === 'read' &&
-                                                // <IoDoneAll color='#4FC3F7'/>
+                                                this.props.status === 'read' &&
+                                                Theme.icons.read
                                             }
                                         </Text>
                                     }

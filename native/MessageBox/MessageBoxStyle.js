@@ -55,7 +55,7 @@ export default StyleSheet.create({
 
     rceMboxTimeText: {
         textAlign: 'right',
-        color: '#ccc',
+        color: '#777',
         fontSize: 12,
     },
 
@@ -108,7 +108,7 @@ export default StyleSheet.create({
     rceMboxStatus: {
         textAlign: 'right',
         marginLeft: 3,
-        fontSize: 15,
+        color: '#999'
     },
 
     rceMboxTitleRceAvatarContainer: {

@@ -14,6 +14,10 @@ import {
 } from 'react-native';
 
 import { ChatItem, MessageBox, } from '../native';
+import Theme from '../native/Theme';
+
+import IconI from 'react-native-vector-icons/Ionicons';
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 export default class App extends Component<{}> {
     constructor(props) {
@@ -23,6 +27,12 @@ export default class App extends Component<{}> {
             show: true,
             messageList: [],
         };
+        Theme.icons = {
+            waiting: <IconM name='access-time' size={13}/>,
+            sent: <IconM name='check' size={13}/>,
+            received: <IconI name='md-done-all' size={13}/>,
+            read: <IconI name='md-done-all' color='#4FC3F7' size={13}/>,
+        }
     }
 
     getRandomColor() {
@@ -71,8 +81,8 @@ export default class App extends Component<{}> {
                     },
                     status: status,
                     date: new Date(),
-                    dateString: new Date().toString(),
-                    avatar: require('./assets/chat-user.png'),
+                    dateString: new Date().toTimeString().split(' ')[0],
+                    // avatar: require('./assets/chat-user.png'),
                 };
             case 'chat':
                 return {
@@ -85,7 +95,7 @@ export default class App extends Component<{}> {
                     date: new Date(),
                     subtitle: 'eligendi quaerat nam ipsam tempora.',
                     unread: parseInt(Math.random() * 10 % 3),
-                    dateString: new Date().toString(),
+                    dateString: new Date().toTimeString().split(' ')[0],
                 };
         }
     }
