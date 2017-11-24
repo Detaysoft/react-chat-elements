@@ -9,14 +9,14 @@ const Circle = ProgressBar.Circle;
 
 export class FileMessage extends Component {
 
-    onClick() {
+    onClick(e) {
         if (!this.props.data.status)
             return;
 
         if (!this.props.data.status.download && this.props.onDownload instanceof Function)
-            this.props.onDownload();
+            this.props.onDownload(e);
         else if (this.props.data.status.download && this.props.onOpen instanceof Function)
-            this.props.onOpen();
+            this.props.onOpen(e);
     }
 
     render() {
