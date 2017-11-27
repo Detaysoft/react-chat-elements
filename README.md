@@ -242,6 +242,7 @@ this.refs.input.clear();
 | leftButtons | none | object(component) | left buttons component |
 | rightButtons | none | object(component) | right buttons component |
 | inputRef | none | function | input or textarea ref |
+| maxlength | none | int | input or textarea maxlength |
 
 
 ## Button Component
