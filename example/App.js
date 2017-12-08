@@ -221,6 +221,7 @@ export class App extends Component {
                     <MessageList
                         className='message-list'
                         lockable={true}
+                        downButtonBadge={10}
                         dataSource={this.state.messageList} />
 
                     <Input
