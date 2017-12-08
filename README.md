@@ -168,6 +168,9 @@ import { MessageList } from 'react-chat-elements'
 | onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 | onScroll | none | function | message list onScroll event |
 | onForwardClick | none | function | message list item onForwardClick event |
+| downButton | true | boolean | message list scroll to bottom button |
+| downButtonBadge | none | boolean | message list downButton badge content |
+| onDownButtonClick | none | function | message list onDownButtonClick |
 
 
 ## ChatList Component
