@@ -3,6 +3,8 @@ import './MessageList.css';
 
 import MessageBox from '../MessageBox/MessageBox';
 
+import FaChevronDown from 'react-icons/lib/fa/chevron-down';
+
 const classNames = require('classnames');
 
 export class MessageList extends Component {
@@ -11,16 +13,16 @@ export class MessageList extends Component {
         super(props);
         this.state = {
             scrollBottom: 0,
+            downButton: false,
         };
     }
 
-    componentDidUpdate() {
+    checkScroll() {
         var e = this.mlistRef;
         if (!e)
             return;
 
-        var bottom = this.getBottom(e);
-        if (this.props.toBottomHeight === '100%' || bottom < this.props.toBottomHeight) {
+        if (this.props.toBottomHeight === '100%' || this.state.scrollBottom < this.props.toBottomHeight) {
             // scroll to bottom
             e.scrollTop = e.scrollHeight;
         } else {
@@ -35,7 +37,7 @@ export class MessageList extends Component {
             return;
         this.setState({
             scrollBottom: this.getBottom(this.mlistRef),
-        });
+        }, this.checkScroll.bind(this));
     }
 
     getBottom(e) {
@@ -73,23 +75,74 @@ export class MessageList extends Component {
             this.props.cmpRef(ref);
     }
 
+    onScroll(e) {
+        var bottom = this.getBottom(e.target);
+        this.state.scrollBottom = bottom;
+        if (this.props.toBottomHeight === '100%' || bottom > this.props.toBottomHeight) {
+            if (this.state.downButton !== true) {
+                this.state.downButton = true;
+                this.setState({
+                    downButton: true,
+                    scrollBottom: bottom,
+                })
+            }
+        } else {
+            if (this.state.downButton !== false) {
+                this.state.downButton = false;
+                this.setState({
+                    downButton: false,
+                    scrollBottom: bottom,
+                })
+            }
+        }
+    }
+
+    toBottom(e) {
+        if(!this.mlistRef)
+            return;
+        this.mlistRef.scrollTop = this.mlistRef.scrollHeight;
+        if (this.props.onDownButtonClick instanceof Function) {
+            this.props.onDownButtonClick(e);
+        }
+    }
+
     render() {
         return (
             <div
-                ref={this.loadRef.bind(this)}
-                onScroll={this.props.onScroll}
                 className={classNames(['rce-container-mlist', this.props.className])}>
+                <div
+                    ref={this.loadRef.bind(this)}
+                    onScroll={this.onScroll.bind(this)}
+                    className='rce-mlist'>
+                    {
+                        this.props.dataSource.map((x, i) => (
+                            <MessageBox
+                                key={i}
+                                {...x}
+                                onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
+                                onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
+                                onTitleClick={this.props.onDownload && ((e) => this.onTitleClick(x, i, e))}
+                                onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
+                                onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}/>
+                        ))
+                    }
+                </div>
                 {
-                    this.props.dataSource.map((x, i) => (
-                        <MessageBox
-                            key={i}
-                            {...x}
-                            onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
-                            onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
-                            onTitleClick={this.props.onDownload && ((e) => this.onTitleClick(x, i, e))}
-                            onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
-                            onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}/>
-                    ))
+                    this.props.downButton === true &&
+                    this.state.downButton &&
+                    this.props.toBottomHeight !== '100%' &&
+                    <div
+                        className='rce-mlist-down-button'
+                        onClick={this.toBottom.bind(this)}>
+                        <FaChevronDown/>
+                        {
+                            this.props.downButtonBadge &&
+                            <span
+                                className='rce-mlist-down-button--badge'>
+                                {this.props.downButtonBadge}
+                            </span>
+                        }
+                    </div>
                 }
             </div>
         );
@@ -100,11 +153,14 @@ MessageList.defaultProps = {
     onClick: null,
     onTitleClick: null,
     onForwardClick: null,
+    onDownButtonClick: null,
     onOpen: null,
     onDownload: null,
     dataSource: [],
     lockable: false,
     toBottomHeight: 300,
+    downButton: true,
+    downButtonBadge: null,
 };
 
 export default MessageList;

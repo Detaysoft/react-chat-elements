@@ -3,5 +3,10 @@
 exports[`MessageList component should render without issues 1`] = `
 <div
   className="rce-container-mlist"
-/>
+>
+  <div
+    className="rce-mlist"
+    onScroll={[Function]}
+  />
+</div>
 `;
