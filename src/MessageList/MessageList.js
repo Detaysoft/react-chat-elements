@@ -95,6 +95,10 @@ export class MessageList extends Component {
                 })
             }
         }
+
+        if (this.props.onScroll instanceof Function) {
+            this.props.onScroll(e);
+        }
     }
 
     toBottom(e) {
