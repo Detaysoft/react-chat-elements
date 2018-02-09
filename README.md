@@ -113,6 +113,7 @@ import { MessageBox } from 'react-chat-elements'
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
 | renderAddCmp | none | function (component) | adding custom components to message box |
+| copiableDate | false | boolean | message box date text copiable |
 
 
 ## SystemMessage Component

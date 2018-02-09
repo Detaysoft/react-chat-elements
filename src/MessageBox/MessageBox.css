@@ -96,6 +96,10 @@
     bottom: -5px;
 }
 
+.rce-mbox-time.non-copiable:before {
+    content: attr(data-text);
+}
+
 .rce-mbox-time-block {
     /*position: relative;*/
     right: 0;

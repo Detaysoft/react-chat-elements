@@ -25,6 +25,12 @@ export class MessageBox extends Component {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
         var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
 
+
+        const dateText = this.props.date && !isNaN(this.props.date) && (
+            this.props.dateString ||
+            moment(this.props.date).fromNow()
+        );
+
         return (
             <div
                 className={classNames('rce-container-mbox', this.props.className)}
@@ -130,8 +136,15 @@ export class MessageBox extends Component {
                                         uri={this.props.uri || this.props.text} />
                                 }
 
-                                <div className={classNames('rce-mbox-time', { 'rce-mbox-time-block': thatAbsoluteTime })}>
+                                <div
+                                    className={classNames(
+                                        'rce-mbox-time',
+                                        { 'rce-mbox-time-block': thatAbsoluteTime },
+                                        { 'non-copiable': !this.props.copiableDate },
+                                    )}
+                                    data-text={this.props.copiableDate ? undefined : dateText}>
                                     {
+                                        this.props.copiableDate &&
                                         this.props.date &&
                                         !isNaN(this.props.date) &&
                                         (
@@ -213,6 +226,7 @@ MessageBox.defaultProps = {
     notch: true,
     avatar: null,
     renderAddCmp: null,
+    copiableDate: false,
 };
 
 
