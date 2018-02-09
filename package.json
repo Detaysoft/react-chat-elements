@@ -1,6 +1,6 @@
 {
   "name": "react-chat-elements",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
