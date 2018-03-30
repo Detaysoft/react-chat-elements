@@ -60,7 +60,7 @@
     "classnames": "^2.2.5",
     "moment": "^2.18.1",
     "react-icons": "^2.2.5",
-    "react-progressbar.js": "^0.2.0",
+    "react-progress-bar.js": "^0.2.0-dev",
     "react-spinkit": "^3.0.0"
   }
 }
