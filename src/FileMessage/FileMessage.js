@@ -66,10 +66,6 @@ export class FileMessage extends Component {
                                 progress={this.props.data.status.loading}
                                 options={progressOptions}
                                 initialAnimate={true}
-                                containerStyle={{
-                                    width: '40px',
-                                    height: '40px',
-                                }}
                                 containerClassName={'rce-mbox-file--loading'} />
                         }
                     </div>

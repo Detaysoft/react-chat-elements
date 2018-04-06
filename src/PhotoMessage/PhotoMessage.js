@@ -54,10 +54,6 @@ export class PhotoMessage extends Component {
                                     progress={this.props.data.status.loading}
                                     options={progressOptions}
                                     initialAnimate={true}
-                                    containerStyle={{
-                                        width: '100px',
-                                        height: '100px',
-                                    }}
                                     containerClassName={'rce-mbox-photo--img__block-item'} />
                             }
                         </div>

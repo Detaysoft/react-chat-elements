@@ -54,4 +54,6 @@
 
 .rce-mbox-file--loading {
     font-size: 15px;
+    width: 40px;
+    height: 40px;
 }
