@@ -1,6 +1,6 @@
 {
   "name": "react-chat-elements",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
@@ -21,8 +21,8 @@
     "isomorphic-style-loader": "^2.0.0",
     "lorem-ipsum": "^1.0.4",
     "nwb": "^0.18.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-scripts": "^1.0.10",
     "react-test-renderer": "^15.6.1",
     "webpack-node-externals": "^1.6.0"
@@ -60,7 +60,7 @@
     "classnames": "^2.2.5",
     "moment": "^2.18.1",
     "react-icons": "^2.2.5",
-    "react-progressbar.js": "^0.2.0",
+    "react-progress-bar.js": "^0.2.3",
     "react-spinkit": "^3.0.0"
   }
 }

@@ -100,9 +100,10 @@ export class App extends Component {
                     data: {
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
-                            click: false,
-                            loading: 0,
+                            click: true,
+                            loading: .5,
                         },
+                        size: "100MB",
                         width: 300,
                         height: 300,
                         latitude: '37.773972',

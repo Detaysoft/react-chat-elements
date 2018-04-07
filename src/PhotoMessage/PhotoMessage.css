@@ -39,6 +39,8 @@
 .rce-mbox-photo--img__block-item {
     margin: auto;
     cursor: pointer;
+    width: 100px;
+    height: 100px;
 }
 
 .rce-mbox-photo--download {

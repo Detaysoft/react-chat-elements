@@ -66,7 +66,7 @@ export class MessageBox extends Component {
 
                                 {
                                     (this.props.title || this.props.avatar) &&
-                                    <p
+                                    <div
                                         style={this.props.titleColor && { color: this.props.titleColor }}
                                         onClick={this.props.onTitleClick}
                                         className={classNames('rce-mbox-title', {
@@ -81,7 +81,7 @@ export class MessageBox extends Component {
                                             this.props.title &&
                                             <span>{this.props.title}</span>
                                         }
-                                    </p>
+                                    </div>
                                 }
 
                                 {

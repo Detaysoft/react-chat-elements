@@ -4,7 +4,7 @@ import './FileMessage.css';
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
 import FaFile from 'react-icons/lib/fa/file';
 
-const ProgressBar = require('react-progressbar.js');
+const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
 
 export class FileMessage extends Component {
@@ -66,10 +66,6 @@ export class FileMessage extends Component {
                                 progress={this.props.data.status.loading}
                                 options={progressOptions}
                                 initialAnimate={true}
-                                containerStyle={{
-                                    width: '40px',
-                                    height: '40px',
-                                }}
                                 containerClassName={'rce-mbox-file--loading'} />
                         }
                     </div>
