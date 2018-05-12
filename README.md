@@ -29,7 +29,7 @@ import {MessageBox} from 'react-chat-elements';
 9. [SideBar](#sidebar-component)
 10. [Navbar](#navbar-component)
 11. [Dropdown](#dropdown-component)
-12. [Avatar](#avatar)
+12. [Avatar](#avatar-component)
 13. [LocationMessage](#locationmessage-component)
 14. [SpotifyMessage](#spotifymessage-component)
 
