@@ -215,7 +215,7 @@ import { Input } from 'react-chat-elements'
 <Input
     placeholder="Type here..."
     multiline={true}
-    buttons={
+    rightButtons={
         <Button
             color='white'
             backgroundColor='black'
