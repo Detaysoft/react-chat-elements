@@ -13,6 +13,9 @@ export class Input extends Component {
     }
 
     onChange(e) {
+        if (this.props.maxlength && (e.target.value || '').length > this.props.maxlength)
+            return;
+
         this.setState({
             value: e.target.value
         });
@@ -123,6 +126,7 @@ Input.defaultProps = {
     autoHeight: true,
     inputStyle: null,
     inputRef: null,
+    maxlength: null,
 };
 
 export default Input;

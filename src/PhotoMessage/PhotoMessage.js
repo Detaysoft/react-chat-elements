@@ -4,7 +4,7 @@ import './PhotoMessage.css';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
 
-const ProgressBar = require('react-progressbar.js');
+const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
 
 export class PhotoMessage extends Component {
@@ -54,10 +54,6 @@ export class PhotoMessage extends Component {
                                     progress={this.props.data.status.loading}
                                     options={progressOptions}
                                     initialAnimate={true}
-                                    containerStyle={{
-                                        width: '100px',
-                                        height: '100px',
-                                    }}
                                     containerClassName={'rce-mbox-photo--img__block-item'} />
                             }
                         </div>

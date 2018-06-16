@@ -30,7 +30,7 @@ export class SpotifyMessage extends Component {
                     width={this.props.width}
                     height={this.props.height}
                     frameBorder="0"
-                    allowTransparency="true"></iframe>
+                    allowtransparency="true"></iframe>
             </div>
         );
     }

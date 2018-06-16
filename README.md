@@ -29,7 +29,7 @@ import {MessageBox} from 'react-chat-elements';
 9. [SideBar](#sidebar-component)
 10. [Navbar](#navbar-component)
 11. [Dropdown](#dropdown-component)
-12. [Avatar](#avatar)
+12. [Avatar](#avatar-component)
 13. [LocationMessage](#locationmessage-component)
 14. [SpotifyMessage](#spotifymessage-component)
 
@@ -113,6 +113,7 @@ import { MessageBox } from 'react-chat-elements'
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
 | renderAddCmp | none | function (component) | adding custom components to message box |
+| copiableDate | false | boolean | message box date text copiable |
 
 
 ## SystemMessage Component
@@ -168,6 +169,9 @@ import { MessageList } from 'react-chat-elements'
 | onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 | onScroll | none | function | message list onScroll event |
 | onForwardClick | none | function | message list item onForwardClick event |
+| downButton | true | boolean | message list scroll to bottom button |
+| downButtonBadge | none | boolean | message list downButton badge content |
+| onDownButtonClick | none | function | message list onDownButtonClick |
 
 
 ## ChatList Component
@@ -242,6 +246,7 @@ this.refs.input.clear();
 | leftButtons | none | object(component) | left buttons component |
 | rightButtons | none | object(component) | right buttons component |
 | inputRef | none | function | input or textarea ref |
+| maxlength | none | int | input or textarea maxlength |
 
 
 ## Button Component
