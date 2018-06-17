@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 
 import { ChatItem, MessageList, } from '../native';
-import Theme from '../native/Theme';
 
 import IconI from 'react-native-vector-icons/Ionicons';
 import IconM from 'react-native-vector-icons/MaterialIcons';
@@ -26,13 +25,6 @@ export default class App extends Component<{}> {
             show: true,
             messageList: [],
         };
-
-        Theme.icons = {
-            waiting: <IconM name='access-time' size={13}/>,
-            sent: <IconM name='check' size={13}/>,
-            received: <IconI name='md-done-all' size={13}/>,
-            read: <IconI name='md-done-all' color='#4FC3F7' size={13}/>,
-        }
     }
 
     getRandomColor() {

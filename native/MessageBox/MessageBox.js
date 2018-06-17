@@ -9,7 +9,8 @@ import {
     Image,
 } from 'react-native';
 
-import Theme from '../Theme';
+import IconI from 'react-native-vector-icons/Ionicons';
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 export class MessageBox extends Component {
 
@@ -99,22 +100,22 @@ export class MessageBox extends Component {
                                             style={styles.rceMboxStatus}>
                                             {
                                                 this.props.status === 'waiting' &&
-                                                Theme.icons.waiting
+                                                <IconM name='access-time' size={13}/>
                                             }
 
                                             {
                                                 this.props.status === 'sent' &&
-                                                Theme.icons.sent
+                                                <IconM name='check' size={13}/>
                                             }
 
                                             {
                                                 this.props.status === 'received' &&
-                                                Theme.icons.received
+                                                <IconI name='md-done-all' size={13}/>
                                             }
 
                                             {
                                                 this.props.status === 'read' &&
-                                                Theme.icons.read
+                                                <IconI name='md-done-all' color='#4FC3F7' size={13}/>
                                             }
                                         </Text>
                                     }

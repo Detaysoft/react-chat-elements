@@ -10,3 +10,12 @@ coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# react-native
+/ios
+/android
+
+# examples
+/example
+/example-native
+

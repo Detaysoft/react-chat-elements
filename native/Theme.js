@@ -1,3 +1,0 @@
-class Theme {
-    icons = {};
-}
