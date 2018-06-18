@@ -4,18 +4,45 @@ Reactjs chat elements
 ## Install
 
 ```
-npm install react-chat-elements@latest --save
+npm install react-chat-elements --save
 ```
 
+### For React Native
+Step 1: Install react-chat-elements
+
+```
+npm install react-chat-elements --save
+```
+
+If you have already installed react-native-vector-icons as a dependency for your project you can skip this step. Otherwise run the following command:
+
+Step 2: Install react-native-vector-icons
+
+```
+npm i --save react-native-vector-icons
+```
+
+**Link:**
+
+```
+react-native link react-native-vector-icons
+```
+
+*If you have any issues installing react-native-vector-icons, check out their installation guide [here](https://github.com/oblador/react-native-vector-icons#installation).*
 
 ### Imports
 ```javascript
 // RCE CSS
 import 'react-chat-elements/dist/main.css';
 // MessageBox component
-import {MessageBox} from 'react-chat-elements';
+import { MessageBox } from 'react-chat-elements';
 ```
 
+#### React Native
+```javascript
+// MessageBox component
+import { MessageBox } from 'react-chat-elements/native';
+```
 
 ## Components
 1. [ChatItem](#chatitem-component)

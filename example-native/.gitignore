@@ -1,18 +1,6 @@
-dependencies
-node_modules
-
-# testing
-coverage
-
-# misc
+# OSX
+#
 .DS_Store
-.env
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-dist
-
-# -------- React Native -------- #
 
 # Xcode
 #
@@ -42,6 +30,12 @@ build/
 local.properties
 *.iml
 
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+
 # BUCK
 buck-out/
 \.buckd/
@@ -57,5 +51,3 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-
-# -------- React Native -------- #
