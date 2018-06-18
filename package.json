@@ -42,7 +42,9 @@
     "css",
     "chat",
     "components",
-    "detaysoft"
+    "detaysoft",
+    "native",
+    "react-native"
   ],
   "license": "MIT",
   "jest": {
