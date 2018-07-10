@@ -357,10 +357,10 @@ import { SideBar } from 'react-chat-elements'
 
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
-| type | dark | string | popup visible |
-| top | false | function (component) | popup top component |
-| center | none | function (component) | popup center component |
-| bottom | none | function (component) | popup bottom component |
+| type | light | string | sidebar style type (eg: light, dark) |
+| top | none | component | sidebar top component |
+| center | none | component | sidebar center component |
+| bottom | none | component | sidebar bottom component |
 
 
 ## Navbar Component
@@ -369,14 +369,14 @@ import { SideBar } from 'react-chat-elements'
 import { Navbar } from 'react-chat-elements'
 
 <Navbar
-    top={
-        <div>'TOP' area</div>
+    left={
+        <div>'LEFT' area</div>
     }
     center={
         <div>'CENTER' area</div>
     }
-    bottom={
-        <div>'BOTTOM' area</div>
+    right={
+        <div>'RIGHT' area</div>
     }/>
 ```
 
@@ -384,10 +384,10 @@ import { Navbar } from 'react-chat-elements'
 
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
-| type | dark | string | popup visible |
-| top | false | function (component) | popup top component |
-| center | none | function (component) | popup center component |
-| bottom | none | function (component) | popup bottom component |
+| type | light | string | navbar style type (eg: light, dark)  |
+| left | none | component | navbar left component |
+| center | none | component | navbar center component |
+| right | none | component | navbar right component |
 
 ## Dropdown Component
 
