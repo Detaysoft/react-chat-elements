@@ -110,6 +110,7 @@ export class MessageBox extends Component {
                                     <PhotoMessage
                                         onOpen={this.props.onOpen}
                                         onDownload={this.props.onDownload}
+                                        onLoad={this.props.onLoad}
                                         data={this.props.data}
                                         width={this.props.width}
                                         height={this.props.height}
@@ -220,6 +221,7 @@ MessageBox.defaultProps = {
     onClick: null,
     onOpen: null,
     onDownload: null,
+    onLoad: null,
     forwarded: false,
     status: null,
     dateString: null,
