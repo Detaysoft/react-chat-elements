@@ -34,7 +34,11 @@ export class PhotoMessage extends Component {
                         width: this.props.data.width,
                         height: this.props.data.height,
                     }}>
-                    <img src={this.props.data.uri} alt={this.props.data.alt} onClick={this.props.onOpen}/>
+                    <img
+                        src={this.props.data.uri}
+                        alt={this.props.data.alt}
+                        onClick={this.props.onOpen}
+                        onLoad={this.props.onLoad}/>
                     {
                         this.props.data.status &&
                         !this.props.data.status.download &&
@@ -75,6 +79,7 @@ PhotoMessage.defaultProps = {
     data: {},
     onDownload: null,
     onOpen: null,
+    onLoad: null,
 };
 
 

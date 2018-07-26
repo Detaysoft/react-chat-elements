@@ -109,6 +109,9 @@ export class App extends Component {
                         latitude: '37.773972',
                         longitude: '-122.431297',
                     },
+                    onLoad: () => {
+                        console.log('Photo loaded');
+                    },
                     status: status,
                     date: new Date(),
                     dateString: moment(new Date()).format('HH:mm'),

@@ -133,6 +133,7 @@ import { MessageBox } from 'react-chat-elements'
 | onClick | none | function | message on click (message(object) is returned) |
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |
+| onLoad | none | function | message on load photo |
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | forwarded | none | boolean | message forward icon |
