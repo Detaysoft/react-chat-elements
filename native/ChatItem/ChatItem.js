@@ -64,16 +64,16 @@ export class ChatItem extends Component {
                                 style={styles.rceCitemBodyTopTitle}>
                                 {this.props.subtitle}
                             </Text>
-                            <View
-                                style={styles.rceCitemBodyBottomStatus}>
-                                {
-                                    this.props.unread > 0 &&
+                            {
+                                this.props.unread > 0 &&
+                                <View
+                                    style={styles.rceCitemBodyBottomStatus}>
                                     <Text
                                         style={styles.rceCitemBodyBottomStatusText}>
                                         {this.props.unread}
                                     </Text>
-                                }
-                            </View>
+                                </View>
+                            }
                         </View>
                     </View>
                 </View>
