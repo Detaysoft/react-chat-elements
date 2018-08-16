@@ -1,8 +1,35 @@
 .rce-container-citem {
     flex-direction: column;
     display: block;
-    overflow: hidden;
     min-width: 240px;
+    overflow: visible;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.rce-citem-menu{
+    width: 30px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.rce-citem-with-menu.rce-citem-body{
+    padding-right: 0 !important;
+}
+
+.rce-citem-menu .rce-dropdown{
+    z-index: 1;
+}
+
+.rce-citem-menu .rce-button{
+    opacity: 0;
+    padding: 0;
+}
+
+.rce-container-citem:hover .rce-citem-menu .rce-button{
+    opacity: 1;
 }
 
 .rce-citem {
@@ -13,8 +40,8 @@
     height: 72px;
     cursor: pointer;
     user-select: none;
+    overflow: visible;
     max-width: 100%;
-    overflow: hidden;
     min-width: 240px;
 }
 
@@ -64,7 +91,6 @@
     display: flex;
     justify-content: center;
     padding-right: 15px;
-    border-bottom: 1px solid rgba(0,0,0,.05);
     overflow: hidden;
 }
 

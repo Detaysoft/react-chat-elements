@@ -22,14 +22,18 @@ export class ChatItem extends Component {
                             size="large"
                             sideElement={
                                 this.props.statusColor &&
-                                <span className='rce-citem-status' style={{backgroundColor: this.props.statusColor}}>
+                                <span className='rce-citem-status' style={{ backgroundColor: this.props.statusColor }}>
                                     {this.props.statusText}
                                 </span>
                             }
-                            type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
+                            type={classNames('circle', { 'flexible': this.props.avatarFlexible })} />
                     </div>
 
-                    <div className="rce-citem-body">
+                    <div
+                        className={classNames(
+                            "rce-citem-body",
+                            { "rce-citem-with-menu": this.props.dropdownMenu })
+                        }>
                         <div className="rce-citem-body--top">
                             <div className="rce-citem-body--top-title">
                                 {this.props.title}
@@ -58,6 +62,12 @@ export class ChatItem extends Component {
                             </div>
                         </div>
                     </div>
+                    {
+                        this.props.dropdownMenu &&
+                        <div className="rce-citem-menu">
+                            {this.props.dropdownMenu}
+                        </div>
+                    }
                 </div>
             </div>
         );
@@ -76,6 +86,7 @@ ChatItem.defaultProps = {
     unread: 0,
     statusColor: null,
     statusText: null,
+    dropdownMenu: null,
     dateString: null,
 }
 
