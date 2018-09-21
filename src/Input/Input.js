@@ -13,8 +13,11 @@ export class Input extends Component {
     }
 
     onChange(e) {
-        if (this.props.maxlength && (e.target.value || '').length > this.props.maxlength)
+        if (this.props.maxlength && (e.target.value || '').length > this.props.maxlength) {
+            if (this.props.onMaxLengthExceed instanceof Function)
+                this.props.onMaxLengthExceed();
             return;
+        }
 
         this.setState({
             value: e.target.value
@@ -127,6 +130,7 @@ Input.defaultProps = {
     inputStyle: null,
     inputRef: null,
     maxlength: null,
+    onMaxLengthExceed: null,
 };
 
 export default Input;
