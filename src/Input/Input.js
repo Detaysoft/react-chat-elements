@@ -46,6 +46,11 @@ export class Input extends Component {
         this.onChange(event);
     }
 
+    componentDidMount() {
+        if (this.props.autofocus === true)
+            this.input.focus();
+    }
+
     render() {
         return (
             <div className={classNames('rce-container-input', this.props.className)}>
@@ -131,6 +136,7 @@ Input.defaultProps = {
     inputRef: null,
     maxlength: null,
     onMaxLengthExceed: null,
+    autofocus: false,
 };
 
 export default Input;
