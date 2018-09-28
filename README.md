@@ -276,6 +276,7 @@ this.refs.input.clear();
 | inputRef | none | function | input or textarea ref |
 | maxlength | none | int | input or textarea maxlength |
 | onMaxLengthExceed | none | function | called when max length exceed |
+| autofocus | false | bool | input autofocus |
 
 
 ## Button Component
