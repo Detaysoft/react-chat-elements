@@ -46,6 +46,11 @@ export class Input extends Component {
         this.onChange(event);
     }
 
+    componentDidMount() {
+        if (this.props.focus === true)
+            this.input.focus();
+    }
+
     render() {
         return (
             <div className={classNames('rce-container-input', this.props.className)}>
