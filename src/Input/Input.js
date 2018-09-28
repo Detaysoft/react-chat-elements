@@ -47,7 +47,7 @@ export class Input extends Component {
     }
 
     componentDidMount() {
-        if (this.props.focus === true)
+        if (this.props.autofocus === true)
             this.input.focus();
     }
 
@@ -136,6 +136,7 @@ Input.defaultProps = {
     inputRef: null,
     maxlength: null,
     onMaxLengthExceed: null,
+    autofocus: false,
 };
 
 export default Input;
