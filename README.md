@@ -296,6 +296,7 @@ import { Button } from 'react-chat-elements'
 | disabled | none | string | button is disabled? |
 | text | none | string | button text |
 | buttonRef | none | function | button ref |
+| title | none | string | button title |
 
 ## Popup Component
 
