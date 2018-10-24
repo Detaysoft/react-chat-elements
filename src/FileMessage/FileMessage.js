@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './FileMessage.css';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
+import FaError from 'react-icons/lib/fa/exclamation-triangle';
 import FaFile from 'react-icons/lib/fa/file';
 
 const ProgressBar = require('react-progress-bar.js');
@@ -37,6 +38,8 @@ export class FileMessage extends Component {
             }
         };
 
+        const error = this.props.data.status && this.props.data.status.error === true;
+
         return (
             <div className='rce-mbox-file'>
                 <button onClick={this.onClick.bind(this)}>
@@ -52,6 +55,12 @@ export class FileMessage extends Component {
                     </div>
                     <div className="rce-mbox-file--buttons">
                         {
+                            error &&
+                            <FaError
+                                color='#ff3d3d'/>
+                        }
+                        {
+                            !error &&
                             this.props.data.status &&
                             !this.props.data.status.download &&
                             !this.props.data.status.click &&
@@ -59,6 +68,7 @@ export class FileMessage extends Component {
                                 color='#aaa'/>
                         }
                         {
+                            !error &&
                             this.props.data.status &&
                             typeof this.props.data.status.loading === 'number' &&
                             this.props.data.status.loading !== 0 &&
