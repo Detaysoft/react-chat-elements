@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './PhotoMessage.css';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
+import FaError from 'react-icons/lib/fa/exclamation-triangle';
 
 const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
@@ -26,6 +27,8 @@ export class PhotoMessage extends Component {
             }
         };
 
+        const error = this.props.data.status && this.props.data.status.error === true;
+
         return (
             <div className="rce-mbox-photo">
                 <div
@@ -39,7 +42,18 @@ export class PhotoMessage extends Component {
                         alt={this.props.data.alt}
                         onClick={this.props.onOpen}
                         onLoad={this.props.onLoad}/>
+
                     {
+                        error &&
+                        <div className="rce-mbox-photo--img__block">
+                            <button
+                                className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                                <FaError/>
+                            </button>
+                        </div>
+                    }
+                    {
+                        !error &
                         this.props.data.status &&
                         !this.props.data.status.download &&
                         <div className="rce-mbox-photo--img__block">
