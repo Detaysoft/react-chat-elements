@@ -64,3 +64,12 @@
 .rce-mbox-photo--download:active {
     opacity: .3;
 }
+
+.rce-mbox-photo--error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    font-size: 70px;
+    color: #eaeaea;
+}

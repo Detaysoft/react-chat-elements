@@ -46,14 +46,14 @@ export class PhotoMessage extends Component {
                     {
                         error &&
                         <div className="rce-mbox-photo--img__block">
-                            <button
-                                className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                            <span
+                                className="rce-mbox-photo--img__block-item rce-mbox-photo--error">
                                 <FaError/>
-                            </button>
+                            </span>
                         </div>
                     }
                     {
-                        !error &
+                        !error &&
                         this.props.data.status &&
                         !this.props.data.status.download &&
                         <div className="rce-mbox-photo--img__block">
