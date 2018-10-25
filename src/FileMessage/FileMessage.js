@@ -56,8 +56,10 @@ export class FileMessage extends Component {
                     <div className="rce-mbox-file--buttons">
                         {
                             error &&
-                            <FaError
-                                color='#ff3d3d'/>
+                            <span className="rce-error-button">
+                                <FaError
+                                    color='#ff3d3d'/>
+                            </span>
                         }
                         {
                             !error &&

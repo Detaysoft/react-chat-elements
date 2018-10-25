@@ -51,6 +51,9 @@
     align-items: center;
     display: flex;
 }
+.rce-mbox-file--buttons .rce-error-button {
+    display: inherit;
+}
 
 .rce-mbox-file--loading {
     font-size: 15px;

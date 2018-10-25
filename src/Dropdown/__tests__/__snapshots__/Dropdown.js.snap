@@ -14,6 +14,7 @@ exports[`Dropdown component should render without issues 1`] = `
     icon={null}
     onClick={[Function]}
     text=""
+    title={null}
     type={null}
   />
   <div

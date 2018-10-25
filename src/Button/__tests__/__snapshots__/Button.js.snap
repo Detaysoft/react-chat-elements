@@ -11,6 +11,7 @@ exports[`Button component should render without issues 1`] = `
       "color": "white",
     }
   }
+  title={null}
 >
   <span />
 </button>
