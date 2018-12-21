@@ -50,7 +50,9 @@ export class MessageBox extends Component {
                                 {'rce-mbox--clear-padding': thatAbsoluteTime},
                                 {'rce-mbox--clear-notch': !this.props.notch}
                             )}>
-                            <div className='rce-mbox-body'>
+                            <div
+                                className='rce-mbox-body'
+                                onContextMenu={this.props.onContextMenu}>
                                 {
                                     this.props.forwarded === true &&
                                     <div
@@ -229,6 +231,7 @@ MessageBox.defaultProps = {
     avatar: null,
     renderAddCmp: null,
     copiableDate: false,
+    onContextMenu: null,
 };
 
 
