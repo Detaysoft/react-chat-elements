@@ -136,6 +136,7 @@ import { MessageBox } from 'react-chat-elements'
 | onLoad | none | function | message on load photo |
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
+| onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
 | status | none | string | message status info (waiting, sent, received, read) |
 | notch | true | boolean | message box notch |
@@ -200,7 +201,7 @@ import { MessageList } from 'react-chat-elements'
 | downButton | true | boolean | message list scroll to bottom button |
 | downButtonBadge | none | boolean | message list downButton badge content |
 | onDownButtonClick | none | function | message list onDownButtonClick |
-
+| onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
 
 ## ChatList Component
 
