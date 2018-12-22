@@ -235,6 +235,7 @@ import { ChatList } from 'react-chat-elements'
 | dataSource | [] | array | chat list array |
 | onClick | none | function | chat list item on click (chat(object) is returned) |
 | onContextMenu | none | function | chat list item on context menu (chat(object) is returned) |
+| onAvatarError | none | function | chat list item on error avatar img |
 
 ## Input Component
 
