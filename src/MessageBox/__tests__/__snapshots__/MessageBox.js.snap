@@ -10,6 +10,7 @@ exports[`MessageBox component should render without issues 1`] = `
   >
     <div
       className="rce-mbox-body"
+      onContextMenu={null}
     >
       <div
         className="rce-mbox-text"

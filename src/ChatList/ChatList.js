@@ -18,6 +18,11 @@ export class ChatList extends Component {
             this.props.onContextMenu(item, i, e);
     }
 
+    onAvatarError(item, i, e) {
+        if (this.props.onAvatarError instanceof Function)
+            this.props.onAvatarError(item, i, e);
+    }
+
     render() {
         return (
             <div
@@ -29,6 +34,7 @@ export class ChatList extends Component {
                             id={x.id || i}
                             key={i}
                             {...x}
+                            onAvatarError={(e) => this.onAvatarError(x,i,e)}
                             onContextMenu={(e) => this.onContextMenu(x,i,e)}
                             onClick={() => this.onClick(x, i)}/>
                     ))
