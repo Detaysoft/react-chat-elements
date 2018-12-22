@@ -41,7 +41,9 @@ export class LocationMessage extends Component {
                     target={this.props.target}
                     href={this.props.href || this.props.src || this.buildURL(MAP_URL)}
                     className={this.className()}>
-                    <img className='rce-mbox-location-img'
+                    <img
+                        onError={this.props.onError}
+                        className='rce-mbox-location-img'
                         src={
                             this.props.src ||
                             this.buildURL(STATIC_URL)
@@ -63,6 +65,7 @@ LocationMessage.defaultProps = {
     apiKey: '',
     zoom: 14,
     markerColor: 'red',
+    onError: () => void(0),
 }
 
 export default LocationMessage;

@@ -26,6 +26,7 @@ export class ChatItem extends Component {
                                     {this.props.statusText}
                                 </span>
                             }
+                            onError={this.props.onAvatarError}
                             type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
                     </div>
 
@@ -77,6 +78,7 @@ ChatItem.defaultProps = {
     statusColor: null,
     statusText: null,
     dateString: null,
+    onAvatarError: () => void(0),
 }
 
 export default ChatItem;
