@@ -446,6 +446,7 @@ import { Avatar } from 'react-chat-elements'
 | size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
 | sideElement | none | component | avatar side element |
+| onError | none | component | avatar img onerror |
 
 
 ## LocationMessage Component
