@@ -11,6 +11,7 @@ exports[`LocationMessage component should render without issues 1`] = `
   >
     <img
       className="rce-mbox-location-img"
+      onError={[Function]}
       src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|undefined,undefined&zoom=14&size=270x200&scale=2&key="
     />
   </a>

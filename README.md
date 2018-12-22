@@ -235,6 +235,7 @@ import { ChatList } from 'react-chat-elements'
 | dataSource | [] | array | chat list array |
 | onClick | none | function | chat list item on click (chat(object) is returned) |
 | onContextMenu | none | function | chat list item on context menu (chat(object) is returned) |
+| onAvatarError | none | function | chat list item on error avatar img |
 
 ## Input Component
 
@@ -445,6 +446,7 @@ import { Avatar } from 'react-chat-elements'
 | size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
 | sideElement | none | component | avatar side element |
+| onError | none | component | avatar img onerror |
 
 
 ## LocationMessage Component
