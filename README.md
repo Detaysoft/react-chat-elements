@@ -1,3 +1,4 @@
+[![npm](https://img.shields.io/npm/dt/react-chat-elements.svg?label=npm-install&style=flat)]() [![Github pre-)release](https://img.shields.io/github/release-pre/Detaysoft/react-chat-elements.svg?style=flat)]()
 # react-chat-elements
 Reactjs chat elements
 
