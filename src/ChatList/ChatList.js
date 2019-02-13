@@ -33,6 +33,7 @@ export class ChatList extends Component {
                         <ChatItem
                             id={x.id || i}
                             key={i}
+                            lazyLoadingImage={this.props.lazyLoadingImage}
                             {...x}
                             onAvatarError={(e) => this.onAvatarError(x,i,e)}
                             onContextMenu={(e) => this.onContextMenu(x,i,e)}
@@ -47,6 +48,7 @@ export class ChatList extends Component {
 ChatList.defaultProps = {
     dataSource: [],
     onClick: null,
+    lazyLoadingImage: undefined,
 };
 
 export default ChatList;

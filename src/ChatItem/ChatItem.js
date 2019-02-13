@@ -27,6 +27,7 @@ export class ChatItem extends Component {
                                 </span>
                             }
                             onError={this.props.onAvatarError}
+                            lazyLoadingImage={this.props.lazyLoadingImage}
                             type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
                     </div>
 
@@ -78,6 +79,7 @@ ChatItem.defaultProps = {
     statusColor: null,
     statusText: null,
     dateString: null,
+    lazyLoadingImage: undefined,
     onAvatarError: () => void(0),
 }
 

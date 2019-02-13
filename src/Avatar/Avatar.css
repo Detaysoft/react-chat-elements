@@ -55,3 +55,19 @@
     width: 55px;
     height: 55px;
 }
+
+@keyframes avatarLazy {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:.5;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.rce-avatar-lazy {
+    animation: avatarLazy normal 2s infinite ease-in-out;
+}
