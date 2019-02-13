@@ -92,6 +92,7 @@ import { ChatItem } from 'react-chat-elements'
 | onContextMenu | none | function | ChatItem on context menu |
 | statusColor | none | color | ChatItem status color |
 | statusText | none | color | ChatItem status text |
+| lazyLoadingImage | none | image path | lazy loading image |
 
 
 
@@ -237,6 +238,7 @@ import { ChatList } from 'react-chat-elements'
 | onClick | none | function | chat list item on click (chat(object) is returned) |
 | onContextMenu | none | function | chat list item on context menu (chat(object) is returned) |
 | onAvatarError | none | function | chat list item on error avatar img |
+| lazyLoadingImage | none | image path | lazy loading image |
 
 ## Input Component
 
@@ -448,6 +450,7 @@ import { Avatar } from 'react-chat-elements'
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
 | sideElement | none | component | avatar side element |
 | onError | none | component | avatar img onerror |
+| lazyLoadingImage | none | image path | lazy loading image |
 
 
 ## LocationMessage Component
