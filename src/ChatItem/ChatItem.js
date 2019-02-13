@@ -11,7 +11,6 @@ export class ChatItem extends Component {
     render() {
         return (
             <div
-                id={this.props.id}
                 className={classNames('rce-container-citem', this.props.className)}
                 onClick={this.props.onClick}
                 onContextMenu={this.props.onContextMenu}>
