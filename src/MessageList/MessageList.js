@@ -130,7 +130,7 @@ export class MessageList extends Component {
                                 {...x}
                                 onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
                                 onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
-                                onTitleClick={this.props.onDownload && ((e) => this.onTitleClick(x, i, e))}
+                                onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
                                 onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
