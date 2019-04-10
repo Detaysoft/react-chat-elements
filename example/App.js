@@ -18,10 +18,12 @@ import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
 import FaClose from 'react-icons/lib/fa/close';
 import FaMenu from 'react-icons/lib/md/more-vert';
+import {
+    format,
+} from 'timeago.js';
 
-const loremIpsum = require('lorem-ipsum');
-const Identicon = require('identicon.js')
-const moment = require('moment');
+import loremIpsum from 'lorem-ipsum';
+import Identicon from 'identicon.js';
 
 export class App extends Component {
 
@@ -113,8 +115,8 @@ export class App extends Component {
                         console.log('Photo loaded');
                     },
                     status: status,
-                    date: new Date(),
-                    dateString: moment(new Date()).format('HH:mm'),
+                    date: new Date(new Date().setDate(this.token())),
+                    dateString: format(new Date()),
                     avatar: `data:image/png;base64,${this.photo()}`,
                 };
             case 'chat':
@@ -145,7 +147,7 @@ export class App extends Component {
                                 'Menu Item3',
                             ]} />
                     ),
-                    dateString: moment(new Date()).format('HH:mm'),
+                    dateString: format(new Date()),
                 };
         }
     }
