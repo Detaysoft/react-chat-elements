@@ -3,8 +3,11 @@ import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
 
-const moment = require('moment');
-const classNames = require('classnames');
+import {
+    format,
+} from'timeago.js';
+
+import classNames from 'classnames';
 
 export class ChatItem extends Component {
 
@@ -42,7 +45,7 @@ export class ChatItem extends Component {
                                     !isNaN(this.props.date) &&
                                     (
                                         this.props.dateString ||
-                                        moment(this.props.date).fromNow()
+                                        format(new Date(), undefined, this.props.date)
                                     )
                                 }
                             </div>

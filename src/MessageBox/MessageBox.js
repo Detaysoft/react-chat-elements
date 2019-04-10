@@ -16,9 +16,11 @@ import IoDoneAll from 'react-icons/lib/io/android-done-all';
 import MdIosTime from 'react-icons/lib/md/access-time';
 import MdCheck from 'react-icons/lib/md/check';
 
-const moment = require('moment');
+import {
+    format,
+} from 'timeago.js';
 
-const classNames = require('classnames');
+import classNames from 'classnames';
 
 export class MessageBox extends Component {
     render() {
@@ -28,7 +30,7 @@ export class MessageBox extends Component {
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
-            moment(this.props.date).fromNow()
+            format(new Date(), undefined, this.props.date)
         );
 
         return (
@@ -152,7 +154,7 @@ export class MessageBox extends Component {
                                         !isNaN(this.props.date) &&
                                         (
                                             this.props.dateString ||
-                                            moment(this.props.date).fromNow()
+                                            format(new Date(), undefined, this.props.date)
                                         )
                                     }
                                     {
