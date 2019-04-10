@@ -30,7 +30,7 @@ export class MessageBox extends Component {
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
-            format(this.props.date)
+            format(new Date(), undefined, this.props.date)
         );
 
         return (
@@ -154,7 +154,7 @@ export class MessageBox extends Component {
                                         !isNaN(this.props.date) &&
                                         (
                                             this.props.dateString ||
-                                            format(this.props.date)
+                                            format(new Date(), undefined, this.props.date)
                                         )
                                     }
                                     {

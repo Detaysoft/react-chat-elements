@@ -45,7 +45,7 @@ export class ChatItem extends Component {
                                     !isNaN(this.props.date) &&
                                     (
                                         this.props.dateString ||
-                                        format(this.props.date)
+                                        format(new Date(), undefined, this.props.date)
                                     )
                                 }
                             </div>

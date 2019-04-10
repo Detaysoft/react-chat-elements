@@ -115,8 +115,7 @@ export class App extends Component {
                         console.log('Photo loaded');
                     },
                     status: status,
-                    date: new Date(new Date().setDate(this.token())),
-                    dateString: format(new Date()),
+                    date: +new Date(),
                     avatar: `data:image/png;base64,${this.photo()}`,
                 };
             case 'chat':
@@ -147,7 +146,6 @@ export class App extends Component {
                                 'Menu Item3',
                             ]} />
                     ),
-                    dateString: format(new Date()),
                 };
         }
     }
