@@ -86,7 +86,7 @@ import { ChatItem } from 'react-chat-elements'
 | title | none | string | ChatItem title |
 | subtitle | none | string | ChatItem subtitle |
 | date | none | date | ChatItem date |
-| dateString | none | string | ChatItem represents dateString or moment(date).fromNow() |
+| dateString | none | string | ChatItem represents dateString or timeagojs(now, date) |
 | unread | 0 | int | ChatItem unread count |
 | onClick | none | function | ChatItem on click |
 | onContextMenu | none | function | ChatItem on context menu |
@@ -131,7 +131,7 @@ import { MessageBox } from 'react-chat-elements'
 | titleColor | none | string(color) | message title color |
 | data | {} | object | message data |
 | date | new Date() | Date | message date |
-| dateString | none | string | message represents dateString or moment(date).fromNow() |
+| dateString | none | string | message represents dateString or timeagojs(now, date) |
 | onClick | none | function | message on click (message(object) is returned) |
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |

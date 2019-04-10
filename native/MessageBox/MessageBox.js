@@ -9,6 +9,10 @@ import {
     Image,
 } from 'react-native';
 
+import {
+    format,
+} from'timeago.js';
+
 import IconI from 'react-native-vector-icons/Ionicons';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
@@ -90,7 +94,7 @@ export class MessageBox extends Component {
                                         !isNaN(this.props.date) &&
                                         (
                                             this.props.dateString ||
-                                            moment(this.props.date).fromNow()
+                                            format(new Date(), undefined, this.props.date)
                                         )
                                     }
                                     </Text>
