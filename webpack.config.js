@@ -16,12 +16,16 @@ module.exports = {
     node: {
         global: false,
     },
+    devtool: false,
     stats: {
         colors: true,
         warnings: false,
     },
+    optimization: {
+        minimize: true,
+    },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -42,12 +46,6 @@ module.exports = {
     })],
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: false,
-            mangle: false,
-            beautify: false,
-            comments: false,
-        }),
         new ExtractTextPlugin("main.css"),
     ],
 };
