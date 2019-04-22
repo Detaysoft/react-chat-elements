@@ -12,6 +12,14 @@ export class Avatar extends Component {
         this.requestImage = this.requestImage.bind(this);
     }
 
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     isLoaded(src) {
         return loadedAvatars.indexOf(src) !== -1;
     }
@@ -23,7 +31,9 @@ export class Avatar extends Component {
         var loaded = () => {
             loadedAvatars.push(src);
             delete self.loading;
-            self.setState({});
+            if (this._isMounted !== false) {
+                self.setState({});
+            }
         };
 
         var img = document.createElement('img');
@@ -33,8 +43,8 @@ export class Avatar extends Component {
     }
 
     render() {
-        var src = this.props.src;
-        var isLazyImage = false;
+        let src = this.props.src;
+        let isLazyImage = false;
 
         if (this.props.lazyLoadingImage) {
             isLazyImage = true;

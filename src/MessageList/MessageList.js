@@ -15,6 +15,9 @@ export class MessageList extends Component {
             scrollBottom: 0,
             downButton: false,
         };
+
+        this.loadRef = this.loadRef.bind(this);
+        this.onScroll = this.onScroll.bind(this);
     }
 
     checkScroll() {
@@ -120,8 +123,8 @@ export class MessageList extends Component {
             <div
                 className={classNames(['rce-container-mlist', this.props.className])}>
                 <div
-                    ref={this.loadRef.bind(this)}
-                    onScroll={this.onScroll.bind(this)}
+                    ref={this.loadRef}
+                    onScroll={this.onScroll}
                     className='rce-mlist'>
                     {
                         this.props.dataSource.map((x, i) => (
