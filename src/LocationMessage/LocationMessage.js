@@ -34,19 +34,21 @@ export class LocationMessage extends Component {
     }
 
     render() {
+        const data = this.props.data || {};
+
         return (
             <div className='rce-container-lmsg'>
                 <a
                     onClick={this.props.onOpen}
                     target={this.props.target}
-                    href={this.props.href || this.props.src || this.buildURL(MAP_URL)}
+                    href={this.props.href || this.props.src || this.buildURL(data.mapURL || MAP_URL)}
                     className={this.className()}>
                     <img
                         onError={this.props.onError}
                         className='rce-mbox-location-img'
                         src={
                             this.props.src ||
-                            this.buildURL(STATIC_URL)
+                            this.buildURL(data.staticURL || STATIC_URL)
                         }/>
                 </a>
                 {
