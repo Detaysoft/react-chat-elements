@@ -16,8 +16,8 @@ export class LocationMessage extends Component {
     buildURL(url) {
         var center = this.props.data || {};
 
-        return url.replace('LATITUDE', center.latitude)
-                  .replace('LONGITUDE', center.longitude)
+        return url.replace(/LATITUDE/g, center.latitude)
+                  .replace(/LONGITUDE/g, center.longitude)
                   .replace('MARKER_COLOR', this.props.markerColor)
                   .replace('ZOOM', this.props.zoom)
                   .replace('KEY', this.props.apiKey);

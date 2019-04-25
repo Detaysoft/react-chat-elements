@@ -110,6 +110,7 @@ export class App extends Component {
                         height: 300,
                         latitude: '37.773972',
                         longitude: '-122.431297',
+                        staticURL: 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-circle+FF0000(LONGITUDE,LATITUDE)/LONGITUDE,LATITUDE,ZOOM/270x200@2x?access_token=KEY',
                     },
                     onLoad: () => {
                         console.log('Photo loaded');
