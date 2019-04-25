@@ -462,6 +462,8 @@ import { LocationMessage } from 'react-chat-elements'
     data={{
         latitude: '37.773972',
         longitude: '-122.431297',
+        // staticURL: '<optional>',
+        // mapURL: '<optional>'
     }}/>
 ```
 
