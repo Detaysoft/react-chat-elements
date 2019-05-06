@@ -7,12 +7,6 @@ const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
 import "prismjs/themes/prism.css";
 import Prism from "prismjs";
-
-
-const func = x => 42;
-
-const asdd = func("123");
-
 export default class CodeSnippetMessage extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +42,6 @@ export default class CodeSnippetMessage extends Component {
     componentDidUpdate() {
         this.hightlight();
     }
-
 
     render() {
         var progressOptions = {
@@ -88,9 +81,9 @@ export default class CodeSnippetMessage extends Component {
                     }
                     {
                         error &&
-                        <div className="rce-mbox-code--img__block">
+                        <div className="rce-mbox-code--code__block">
                             <span
-                                className="rce-mbox-code--img__block-item rce-mbox-code--error">
+                                className="rce-mbox-code--code__block-item rce-mbox-code--error">
                                 <FaError/>
                             </span>
                         </div>
@@ -99,12 +92,12 @@ export default class CodeSnippetMessage extends Component {
                         !error &&
                         this.props.data.status &&
                         !this.props.data.status.download &&
-                        <div className="rce-mbox-code--img__block">
+                        <div className="rce-mbox-code--code__block">
                             {
                                 !this.props.data.status.click &&
                                 <button
                                     onClick={this.props.onDownload}
-                                    className="rce-mbox-code--img__block-item rce-mbox-code--download">
+                                    className="rce-mbox-code--code__block-item rce-mbox-code--download">
                                     <FaCloudDownload/>
                                 </button>
                             }
@@ -115,7 +108,7 @@ export default class CodeSnippetMessage extends Component {
                                     progress={this.props.data.status.loading}
                                     options={progressOptions}
                                     initialAnimate={true}
-                                    containerClassName={'rce-mbox-code--img__block-item'} />
+                                    containerClassName={'rce-mbox-code--code__block-item'} />
                             }
                         </div>
                     }
