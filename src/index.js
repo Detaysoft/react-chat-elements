@@ -10,6 +10,7 @@ import Navbar from './Navbar/Navbar';
 import Dropdown from './Dropdown/Dropdown';
 import SideBar from './SideBar/SideBar';
 import Popup from './Popup/Popup';
+import CodeSnippetMessage from './CodeSnippetMessage/CodeSnippetMessage';
 
 
 export {
@@ -25,4 +26,5 @@ export {
     Dropdown,
     SideBar,
     Popup,
+    CodeSnippetMessage,
 };

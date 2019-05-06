@@ -63,7 +63,8 @@ export class App extends Component {
     random(type) {
         switch (type) {
             case 'message':
-                var type = this.token();
+                // var type = this.token();
+                var type = 5;
                 var status = 'waiting';
                 switch (type) {
                     case 0:
@@ -83,6 +84,9 @@ export class App extends Component {
                         break;
                     case 4:
                         type = 'spotify';
+                        break;
+                    case 5:
+                        type = 'code';
                         break;
                     default:
                         type = 'text';

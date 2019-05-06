@@ -6,6 +6,7 @@ import FileMessage from '../FileMessage/FileMessage';
 import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
+import CodeSnippetMessage from '../CodeSnippetMessage/CodeSnippetMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -118,7 +119,7 @@ export class MessageBox extends Component {
                                         data={this.props.data}
                                         width={this.props.width}
                                         height={this.props.height}
-                                        text={this.props.text} />
+                                        />
                                 }
 
                                 {
@@ -139,6 +140,38 @@ export class MessageBox extends Component {
                                         view={this.props.view}
                                         data={this.props.data}
                                         uri={this.props.uri || this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'code' &&
+                                    <CodeSnippetMessage
+                                        onOpen={this.props.onOpen}
+                                        onDownload={this.props.onDownload}
+                                        // data={this.props.data}
+                                        data={{
+                                            language: `java`,
+                                            code: `
+                                            import java.util.Scanner;
+                                            import java.io.File;
+                                            import java.io.IOException;
+
+                                            public class ReadAndPrintScores
+                                            {
+                                                public static void main(String[] args)
+                                                {	try
+                                                {   Scanner s = new Scanner( new File("scores.dat") );
+                                                    while( s.hasNextInt() )
+                                                    {	System.out.println( s.nextInt() );
+                                                    }
+                                                }
+                                                catch(IOException e)
+                                                {	System.out.println( e );
+                                                }
+                                                }
+                                            }
+                                            `
+                                        }}
+                                        />
                                 }
 
                                 <div
