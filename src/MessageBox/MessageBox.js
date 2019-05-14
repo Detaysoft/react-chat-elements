@@ -147,30 +147,22 @@ export class MessageBox extends Component {
                                     <CodeSnippetMessage
                                         onOpen={this.props.onOpen}
                                         onDownload={this.props.onDownload}
-                                        // data={this.props.data}
-                                        data={{
-                                            language: `java`,
-                                            code: `
-                                            import java.util.Scanner;
-                                            import java.io.File;
-                                            import java.io.IOException;
-
-                                            public class ReadAndPrintScores
-                                            {
-                                                public static void main(String[] args)
-                                                {	try
-                                                {   Scanner s = new Scanner( new File("scores.dat") );
-                                                    while( s.hasNextInt() )
-                                                    {	System.out.println( s.nextInt() );
-                                                    }
-                                                }
-                                                catch(IOException e)
-                                                {	System.out.println( e );
-                                                }
-                                                }
-                                            }
-                                            `
-                                        }}
+                                        data={this.props.data}
+                                        // data={{
+                                        //     language: `java`,
+                                        //     code: `
+                                        //     for(int r = row - neighberhoodSize; r <= row + neighberhoodSize; r++)
+                                        //     {	for(int c = col - neighberhoodSize; c <= col + neighberhoodSize; c++)
+                                        //         {	if( inBounds( image, r, c ) )
+                                        //             {	numNeighbors++;
+                                        //                 red += image[r][c].getRed();
+                                        //                 green += image[r][c].getGreen();
+                                        //                 blue += image[r][c].getBlue();
+                                        //             }
+                                        //         }
+                                        //     }
+                                        //     `
+                                        // }}
                                         />
                                 }
 
