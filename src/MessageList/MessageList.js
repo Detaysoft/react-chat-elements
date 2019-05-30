@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import './MessageList.css';
 
-import MessageBox from '../MessageBox/MessageBox';
+import {
+    MessageBox,
+} from '../MessageBox/MessageBox';
 
 import FaChevronDown from 'react-icons/lib/fa/chevron-down';
 
@@ -14,10 +16,24 @@ export class MessageList extends Component {
         this.state = {
             scrollBottom: 0,
             downButton: false,
+            messageFocus: false,
         };
 
         this.loadRef = this.loadRef.bind(this);
+        this.createReferenceOfMessage = this.createReferenceOfMessage.bind(this);
         this.onScroll = this.onScroll.bind(this);
+        this.messageRefs = [];
+    }
+
+    scrollIntoMessage(focusedMessage) {
+        var message = this.messageRefs.find(x => x.messageId === focusedMessage);
+        if (message !== undefined) {
+            this.setState({
+                messageFocus: true,
+            }, () => {
+                message.ref.scrollIntoView({block: this.props.scrollBlock, behavior: 'smooth',});
+            });
+        }
     }
 
     checkScroll() {
@@ -35,12 +51,15 @@ export class MessageList extends Component {
         }
     }
 
-    componentWillReceiveProps() {
+    componentWillReceiveProps(nextProps) {
         if (!this.mlistRef)
             return;
         this.setState({
             scrollBottom: this.getBottom(this.mlistRef),
         }, this.checkScroll.bind(this));
+
+        if (nextProps.focusedMessage)
+            this.scrollIntoMessage(nextProps.focusedMessage);
     }
 
     getBottom(e) {
@@ -83,6 +102,22 @@ export class MessageList extends Component {
             this.props.cmpRef(ref);
     }
 
+    createReferenceOfMessage(ref, messageId) {
+        var check = this.messageRefs.find(res => res.messageId === messageId);
+
+        if (check !== undefined) {
+            var index = this.messageRefs.indexOf(check);
+            if (index !== -1) {
+                this.messageRefs.splice(index, 1);
+            }
+        }
+
+        this.messageRefs.push({
+            ref: ref,
+            messageId: messageId,
+        });
+    }
+
     onScroll(e) {
         var bottom = this.getBottom(e.target);
         this.state.scrollBottom = bottom;
@@ -92,7 +127,7 @@ export class MessageList extends Component {
                 this.setState({
                     downButton: true,
                     scrollBottom: bottom,
-                })
+                });
             }
         } else {
             if (this.state.downButton !== false) {
@@ -100,7 +135,7 @@ export class MessageList extends Component {
                 this.setState({
                     downButton: false,
                     scrollBottom: bottom,
-                })
+                });
             }
         }
 
@@ -128,16 +163,22 @@ export class MessageList extends Component {
                     className='rce-mlist'>
                     {
                         this.props.dataSource.map((x, i) => (
-                            <MessageBox
-                                key={i}
-                                {...x}
-                                onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
-                                onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
-                                onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
-                                onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
-                                onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
-                                onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
+                            <div
+                                ref={ref =>  this.createReferenceOfMessage(ref, x.id)}>
+                                <MessageBox
+                                    key={i}
+                                    {...x}
+                                    focusedMessage={this.props.focusedMessage}
+                                    messageFocus={x.id === this.props.focusedMessage && this.state.messageFocus}
+                                    onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
+                                    onFocus={this.props.onFocus && ((e) => this.onFocus(x, i, e)) }
+                                    onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
+                                    onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
+                                    onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
+                                    onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
+                                    onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
                                 />
+                            </div>
                         ))
                     }
                 </div>
@@ -175,6 +216,8 @@ MessageList.defaultProps = {
     toBottomHeight: 300,
     downButton: true,
     downButtonBadge: null,
+    focusedMessage: null,
+    scrollBlock: 'center',
 };
 
 export default MessageList;
