@@ -50,7 +50,8 @@ export class MessageBox extends Component {
                             className={classNames(
                                 positionCls,
                                 {'rce-mbox--clear-padding': thatAbsoluteTime},
-                                {'rce-mbox--clear-notch': !this.props.notch}
+                                {'rce-mbox--clear-notch': !this.props.notch},
+                                { 'message-focus': this.props.messageFocus},
                             )}>
                             <div
                                 className='rce-mbox-body'
@@ -187,12 +188,18 @@ export class MessageBox extends Component {
                             {
                                 this.props.notch &&
                                 (this.props.position === 'right' ?
-                                    <svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <svg className={classNames(
+                                        "rce-mbox-right-notch",
+                                        { 'message-focus': this.props.messageFocus},
+                                    )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M0 0v20L20 0" />
                                     </svg>
                                     :
                                     <div>
-                                        <svg className="rce-mbox-left-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <svg className={classNames(
+                                                "rce-mbox-left-notch",
+                                                { 'message-focus': this.props.messageFocus},
+                                            )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <defs>
                                                 <filter id="filter1" x="0" y="0">
                                                     <feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
@@ -234,6 +241,7 @@ MessageBox.defaultProps = {
     renderAddCmp: null,
     copiableDate: false,
     onContextMenu: null,
+    messageFocus: false,
 };
 
 

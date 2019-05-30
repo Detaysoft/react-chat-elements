@@ -64,6 +64,19 @@
     min-width: 140px;
 }
 
+.rce-mbox.message-focus {
+    animation-iteration-count: 4;
+    -webkit-animation-iteration-count: 5;
+    -webkit-animation-duration: 1s;
+    animation-name: message-box-default-focus;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes message-box-default-focus {
+    from {background-color: #fff;}
+    to {background-color: #dfdfdf;}
+}
+
 .rce-mbox-body {
     margin: 0;
     padding: 0;
@@ -76,6 +89,19 @@
     margin-right: 20px;
     border-top-right-radius: 0px;
     border-top-left-radius: 5px;
+}
+
+.rce-mbox.rce-mbox-right.message-focus {
+    animation-iteration-count: 4;
+    -webkit-animation-iteration-count: 5;
+    -webkit-animation-duration: 1s;
+    animation-name: message-box-right-focus;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes message-box-right-focus {
+    from {background-color: #d4f1fb;}
+    to {background-color: #b8dae6;}
 }
 
 .rce-mbox-text {
@@ -134,6 +160,19 @@
     filter: drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2));
 }
 
+.rce-mbox-right-notch.message-focus {
+    animation-iteration-count: 4;
+    -webkit-animation-iteration-count: 5;
+    -webkit-animation-duration: 1s;
+    animation-name: message-right-notch-focus;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes message-right-notch-focus {
+    from {fill: #d4f1fb;}
+    to {fill: #b8dae6;}
+}
+
 .rce-mbox-left-notch {
     position: absolute;
     left: -14px;
@@ -141,6 +180,19 @@
     width: 15px;
     height: 15px;
     fill: white;
+}
+
+.rce-mbox-left-notch.message-focus {
+    animation-iteration-count: 4;
+    -webkit-animation-iteration-count: 5;
+    -webkit-animation-duration: 1s;
+    animation-name: message-left-notch-focus;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes message-left-notch-focus {
+    from {fill: #fff;}
+    to {fill: #dfdfdf;}
 }
 
 .rce-mbox-title {
