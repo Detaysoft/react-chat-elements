@@ -145,7 +145,8 @@ import { MessageBox } from 'react-chat-elements'
 | avatar | none | url | message box avatar url |
 | renderAddCmp | none | function (component) | adding custom components to message box |
 | copiableDate | false | boolean | message box date text copiable |
-| messageFocus | false | boolean | used in message focus feature in MessageList component, makes style of the component focused |
+| focus | false | boolean | used in message focus feature in MessageList component, makes style of the component focused |
+| onMessageFocused | none | function | makes focus value false after the message becomes focus |
 
 
 ## SystemMessage Component
@@ -205,9 +206,6 @@ import { MessageList } from 'react-chat-elements'
 | downButtonBadge | none | boolean | message list downButton badge content |
 | onDownButtonClick | none | function | message list onDownButtonClick |
 | onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
-| focusedMessage | none | string | id of a message to focus on, this prop makes the MessageList scroll into MessageBox item of given message id |
-| scrollBlock | 'center' | string | used in scroll into focusedMessage as value of block property in parameter of scrollIntoView function |
-
 
 ## ChatList Component
 
