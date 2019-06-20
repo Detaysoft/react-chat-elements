@@ -1,9 +1,7 @@
 import React, { Component, } from 'react';
 import './MessageList.css';
 
-import {
-    MessageBox,
-} from '../MessageBox/MessageBox';
+import MessageBox from '../MessageBox/MessageBox';
 
 import FaChevronDown from 'react-icons/lib/fa/chevron-down';
 
