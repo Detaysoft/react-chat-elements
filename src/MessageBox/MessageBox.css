@@ -65,8 +65,8 @@
 }
 
 .rce-mbox.message-focus {
-    animation-iteration-count: 4;
-    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 2;
     -webkit-animation-duration: 1s;
     animation-name: message-box-default-focus;
     animation-duration: 1s;
@@ -92,8 +92,8 @@
 }
 
 .rce-mbox.rce-mbox-right.message-focus {
-    animation-iteration-count: 4;
-    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 2;
     -webkit-animation-duration: 1s;
     animation-name: message-box-right-focus;
     animation-duration: 1s;
@@ -161,8 +161,8 @@
 }
 
 .rce-mbox-right-notch.message-focus {
-    animation-iteration-count: 4;
-    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 2;
     -webkit-animation-duration: 1s;
     animation-name: message-right-notch-focus;
     animation-duration: 1s;
@@ -183,8 +183,8 @@
 }
 
 .rce-mbox-left-notch.message-focus {
-    animation-iteration-count: 4;
-    -webkit-animation-iteration-count: 5;
+    animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 2;
     -webkit-animation-duration: 1s;
     animation-name: message-left-notch-focus;
     animation-duration: 1s;

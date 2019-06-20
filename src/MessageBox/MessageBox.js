@@ -23,6 +23,19 @@ import {
 import classNames from 'classnames';
 
 export class MessageBox extends Component {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.focus !== this.props.focus && nextProps.focus === true) {
+            if (this.refs['message']) {
+                this.refs['message'].scrollIntoView({
+                    block: "center",
+                    behavior: 'smooth'
+                })
+
+                this.props.onMessageFocused(nextProps);
+            }
+        }
+    }
+
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
         var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
@@ -35,6 +48,7 @@ export class MessageBox extends Component {
 
         return (
             <div
+                ref='message'
                 className={classNames('rce-container-mbox', this.props.className)}
                 onClick={this.props.onClick}>
                 {
@@ -51,7 +65,7 @@ export class MessageBox extends Component {
                                 positionCls,
                                 {'rce-mbox--clear-padding': thatAbsoluteTime},
                                 {'rce-mbox--clear-notch': !this.props.notch},
-                                { 'message-focus': this.props.messageFocus},
+                                { 'message-focus': this.props.focus},
                             )}>
                             <div
                                 className='rce-mbox-body'
@@ -190,7 +204,7 @@ export class MessageBox extends Component {
                                 (this.props.position === 'right' ?
                                     <svg className={classNames(
                                         "rce-mbox-right-notch",
-                                        { 'message-focus': this.props.messageFocus},
+                                        { 'message-focus': this.props.focus},
                                     )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M0 0v20L20 0" />
                                     </svg>
@@ -198,7 +212,7 @@ export class MessageBox extends Component {
                                     <div>
                                         <svg className={classNames(
                                                 "rce-mbox-left-notch",
-                                                { 'message-focus': this.props.messageFocus},
+                                                { 'message-focus': this.props.focus},
                                             )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <defs>
                                                 <filter id="filter1" x="0" y="0">
@@ -241,7 +255,8 @@ MessageBox.defaultProps = {
     renderAddCmp: null,
     copiableDate: false,
     onContextMenu: null,
-    messageFocus: false,
+    focus: false,
+    onMessageFocused: null,
 };
 
 
