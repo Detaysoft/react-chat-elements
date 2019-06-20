@@ -14,7 +14,6 @@ export class MessageList extends Component {
         this.state = {
             scrollBottom: 0,
             downButton: false,
-            messageFocus: false,
         };
 
         this.loadRef = this.loadRef.bind(this);
@@ -139,14 +138,13 @@ export class MessageList extends Component {
                             <MessageBox
                                 key={i}
                                 {...x}
-                                onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                                 onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
-                                onFocus={this.props.onFocus && ((e) => this.onFocus(x, i, e)) }
                                 onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
                                 onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
                                 onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
+                                onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                             />
                         ))
                     }
