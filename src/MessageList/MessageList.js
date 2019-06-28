@@ -38,11 +38,10 @@ export class MessageList extends Component {
     componentWillReceiveProps(nextProps) {
         if (!this.mlistRef)
             return;
-        if (nextProps.dataSource.length !== this.props.dataSource.length) {
-            this.setState({
-                scrollBottom: this.getBottom(this.mlistRef),
-            }, this.checkScroll.bind(this));
-        }
+        
+        this.setState({
+            scrollBottom: this.getBottom(this.mlistRef),
+        }, this.checkScroll.bind(this));
     }
 
     getBottom(e) {
