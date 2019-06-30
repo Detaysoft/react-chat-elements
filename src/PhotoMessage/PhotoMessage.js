@@ -42,7 +42,7 @@ export class PhotoMessage extends Component {
                         alt={this.props.data.alt}
                         onClick={this.props.onOpen}
                         onLoad={this.props.onLoad}
-                        onPhotoError={this.props.onPhotoError}/>
+                        onError={this.props.onPhotoError}/>
                     {
                         error &&
                         <div className="rce-mbox-photo--img__block">
