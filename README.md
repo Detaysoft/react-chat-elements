@@ -136,6 +136,7 @@ import { MessageBox } from 'react-chat-elements'
 | onOpen | none | function | message on open (file or photo) (message(object) is returned) |
 | onDownload | none | function | message on download (file or photo) (message(object) is returned) |
 | onLoad | none | function | message on load photo |
+| onError | none | function | message on error photo |
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | onContextMenu | none | function | message contextmenu click event |
@@ -206,6 +207,7 @@ import { MessageList } from 'react-chat-elements'
 | downButtonBadge | none | boolean | message list downButton badge content |
 | onDownButtonClick | none | function | message list onDownButtonClick |
 | onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
+| onError | none | function | message list item on error photo |
 
 ## ChatList Component
 

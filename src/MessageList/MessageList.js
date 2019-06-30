@@ -59,6 +59,11 @@ export class MessageList extends Component {
             this.props.onDownload(item, i, e);
     }
 
+    onError(item, i, e) {
+      if (this.props.onError instanceof Function)
+        this.props.onError(item, i, e);
+    }
+
     onClick(item, i, e) {
         if (this.props.onClick instanceof Function)
             this.props.onClick(item, i, e);
@@ -139,6 +144,7 @@ export class MessageList extends Component {
                                 key={i}
                                 {...x}
                                 onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
+                                onError={this.props.onError && ((e) => this.onError(x, i, e))}
                                 onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
                                 onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
                                 onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
@@ -177,6 +183,7 @@ MessageList.defaultProps = {
     onForwardClick: null,
     onDownButtonClick: null,
     onOpen: null,
+    onError: null,
     onDownload: null,
     dataSource: [],
     lockable: false,

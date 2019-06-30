@@ -41,8 +41,8 @@ export class PhotoMessage extends Component {
                         src={this.props.data.uri}
                         alt={this.props.data.alt}
                         onClick={this.props.onOpen}
-                        onLoad={this.props.onLoad}/>
-
+                        onLoad={this.props.onLoad}
+                        onError={this.props.onError}/>
                     {
                         error &&
                         <div className="rce-mbox-photo--img__block">
@@ -94,6 +94,7 @@ PhotoMessage.defaultProps = {
     onDownload: null,
     onOpen: null,
     onLoad: null,
+    onError: null,
 };
 
 

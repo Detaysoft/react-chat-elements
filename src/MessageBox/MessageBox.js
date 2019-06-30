@@ -130,6 +130,7 @@ export class MessageBox extends Component {
                                         onOpen={this.props.onOpen}
                                         onDownload={this.props.onDownload}
                                         onLoad={this.props.onLoad}
+                                        onError={this.props.onError}
                                         data={this.props.data}
                                         width={this.props.width}
                                         height={this.props.height}
@@ -247,6 +248,7 @@ MessageBox.defaultProps = {
     onOpen: null,
     onDownload: null,
     onLoad: null,
+    onError: null,
     forwarded: false,
     status: null,
     dateString: null,
