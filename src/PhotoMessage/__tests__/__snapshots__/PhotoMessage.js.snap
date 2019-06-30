@@ -9,6 +9,7 @@ exports[`PhotoMessage component should render without issues 1`] = `
   >
     <img
       onClick={null}
+      onError={null}
       onLoad={null}
     />
   </div>
