@@ -94,7 +94,7 @@ export class MessageBox extends Component {
                                         !isNaN(this.props.date) &&
                                         (
                                             this.props.dateString ||
-                                            format(new Date(), undefined, this.props.date)
+                                            format(this.props.date)
                                         )
                                     }
                                     </Text>
