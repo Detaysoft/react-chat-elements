@@ -25,7 +25,7 @@ export class ChatItem extends Component {
                             size="large"
                             sideElement={
                                 this.props.statusColor &&
-                                <span className='rce-citem-status' style={{backgroundColor: this.props.statusColor}}>
+                                <span className='rce-citem-status' style={{boxShadow: `inset 0 0 0 2px ${this.props.statusColor}, inset 0 0 0 5px #FFFFFF`}}>
                                     {this.props.statusText}
                                 </span>
                             }
