@@ -37,9 +37,23 @@ export class Dropdown extends Component {
 
                         <ul>
                             {
+                                this.props.title &&
+                                <span className='rce-dropdown-title'>{this.props.title}</span>
+                            }
+                            {
                                 this.props.items.map((x, i) => (
                                     <li key={i} onMouseDown={(e) => this.props.onSelect(i)}>
-                                        <a>{x}</a>
+                                        {
+                                            x.icon ?
+                                                <span className='rce-button-icon--container'>
+                                                    {(x.icon.float === 'right' || !x.icon.float) && <a>{x.text}</a>}
+
+                                                    <span style={{ float: x.icon.float, color: x.icon.color, fontSize: x.icon.size || 12 }} className={classNames('rce-button-icon', x.icon.className)}>{x.icon.component}</span>
+
+                                                    {x.icon.float === 'left' && <a>{x.text}</a>}
+                                                </span>
+                                                : <a>{x.text}</a>
+                                        }
                                     </li>
                                 ))
                             }
