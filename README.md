@@ -412,12 +412,27 @@ import { Dropdown } from 'react-chat-elements'
         text: 'Dropdown',
     }}
     items={[
-        'merhaba',
-        'lorem',
-        'ipsum',
-        'dolor',
-        'sit',
-        'amet',
+        {
+            icon: {
+                component: icon,
+                float: 'left',
+                color: 'red',
+                size: 22,
+            },
+            text: 'lorem'
+        },
+        {
+            icon: {
+                component: icon,
+                float: 'left',
+                color: 'purple',
+                size: 22,
+            },
+            text: 'ipsum'
+        },
+        {
+            text: 'dolor'
+        },
     ]}/>
 ```
 
