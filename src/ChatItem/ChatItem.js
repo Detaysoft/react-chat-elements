@@ -5,7 +5,7 @@ import Avatar from '../Avatar/Avatar';
 
 import {
     format,
-} from'timeago.js';
+} from 'timeago.js';
 
 import classNames from 'classnames';
 
@@ -25,13 +25,13 @@ export class ChatItem extends Component {
                             size="large"
                             sideElement={
                                 this.props.statusColor &&
-                                <span className='rce-citem-status' style={{backgroundColor: this.props.statusColor}}>
+                                <span className='rce-citem-status' style={{ backgroundColor: this.props.statusColor }}>
                                     {this.props.statusText}
                                 </span>
                             }
                             onError={this.props.onAvatarError}
                             lazyLoadingImage={this.props.lazyLoadingImage}
-                            type={classNames('circle', {'flexible': this.props.avatarFlexible})}/>
+                            type={classNames('circle', { 'flexible': this.props.avatarFlexible })} />
                     </div>
 
                     <div className="rce-citem-body">
@@ -39,15 +39,8 @@ export class ChatItem extends Component {
                             <div className="rce-citem-body--top-title">
                                 {this.props.title}
                             </div>
-                            <div className="rce-citem-body--top-time">
-                                {
-                                    this.props.date &&
-                                    !isNaN(this.props.date) &&
-                                    (
-                                        this.props.dateString ||
-                                        format(this.props.date)
-                                    )
-                                }
+                            <div className='rce-citem-body-dropdown'>
+                                {this.props.dropdownMenu}
                             </div>
                         </div>
 
@@ -61,6 +54,16 @@ export class ChatItem extends Component {
                                     <span>{this.props.unread}</span>
                                 }
                             </div>
+                        </div>
+                        <div className="rce-citem-body--top-time">
+                            {
+                                this.props.date &&
+                                !isNaN(this.props.date) &&
+                                (
+                                    this.props.dateString ||
+                                    format(this.props.date)
+                                )
+                            }
                         </div>
                     </div>
                 </div>

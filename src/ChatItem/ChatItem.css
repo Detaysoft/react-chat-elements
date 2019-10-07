@@ -1,7 +1,6 @@
 .rce-container-citem {
     flex-direction: column;
     display: block;
-    overflow: hidden;
     min-width: 240px;
 }
 
@@ -14,12 +13,22 @@
     cursor: pointer;
     user-select: none;
     max-width: 100%;
-    overflow: hidden;
     min-width: 240px;
 }
 
 .rce-citem:hover {
     background: #f9f9f9;
+}
+
+.rce-citem-body-dropdown {
+    display: none
+}
+
+.rce-citem-body:hover .rce-citem-body-dropdown{
+    position: absolute;
+    right: 0;
+    margin: auto;
+    display: flex;
 }
 
 .rce-citem-avatar {
@@ -70,6 +79,8 @@
 
 .rce-citem-body--top {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rce-citem-body--bottom {
