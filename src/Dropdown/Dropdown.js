@@ -44,15 +44,18 @@ export class Dropdown extends Component {
                                 this.props.items.map((x, i) => (
                                     <li key={i} onMouseDown={(e) => this.props.onSelect(i)}>
                                         {
-                                            x.icon ?
-                                                <span className='rce-button-icon--container'>
-                                                    {(x.icon.float === 'right' || !x.icon.float) && <a>{x.text}</a>}
+                                            x instanceof Object ?
+                                                x.icon ?
+                                                    <span className='rce-button-icon--container'>
+                                                        {(x.icon.float === 'right' || !x.icon.float) && <a>{x.text}</a>}
 
-                                                    <span style={{ float: x.icon.float, color: x.icon.color, fontSize: x.icon.size || 12 }} className={classNames('rce-button-icon', x.icon.className)}>{x.icon.component}</span>
+                                                        <span style={{ float: x.icon.float, color: x.icon.color, fontSize: x.icon.size || 12 }} className={classNames('rce-button-icon', x.icon.className)}>{x.icon.component}</span>
 
-                                                    {x.icon.float === 'left' && <a>{x.text}</a>}
-                                                </span>
-                                                : <a>{x.text}</a>
+                                                        {x.icon.float === 'left' && <a>{x.text}</a>}
+                                                    </span>
+                                                    : <a>{x.text}</a>
+                                            :
+                                            <a>{x}</a>
                                         }
                                     </li>
                                 ))
