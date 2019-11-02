@@ -127,6 +127,7 @@ export class App extends Component {
                     avatar: `data:image/png;base64,${this.photo()}`,
                     avatarFlexible: true,
                     statusColor: 'lightgreen',
+                    statusColorType: parseInt(Math.random() * 100 % 2) === 1 ? 'encircle' : undefined,
                     alt: loremIpsum({ count: 2, units: 'words' }),
                     title: loremIpsum({ count: 2, units: 'words' }),
                     date: new Date(),

@@ -3,8 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    position: relative;
 }
 
 .rce-avatar-container .rce-avatar {
@@ -71,4 +69,9 @@
 
 .rce-avatar-lazy {
     animation: avatarLazy normal 2s infinite ease-in-out;
+}
+
+.rce-avatar-container.rce-citem-avatar-encircle-status {
+    box-sizing: border-box;
+    position: relative;
 }
