@@ -5,6 +5,10 @@
     min-width: 240px;
 }
 
+.rce-container-citem.rce-citem-status-encircle {
+    position: relative;
+}
+
 .rce-citem {
     position: relative;
     background: white;
@@ -41,6 +45,18 @@
     align-items: center;
     justify-content: center;
     background: #ccc;
+}
+
+.rce-citem-avatar.rce-citem-status-encircle .rce-citem-status {
+    left:0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    margin: auto;
+    border-radius: 100%;
 }
 
 .rce-citem-avatar img {

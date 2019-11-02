@@ -91,6 +91,7 @@ import { ChatItem } from 'react-chat-elements'
 | onClick | none | function | ChatItem on click |
 | onContextMenu | none | function | ChatItem on context menu |
 | statusColor | none | color | ChatItem status color |
+| statusColorType | badge | string | ChatItem status color type (encircle, badge) |
 | statusText | none | color | ChatItem status text |
 | lazyLoadingImage | none | image path | lazy loading image |
 
