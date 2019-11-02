@@ -18,6 +18,8 @@ import FaSearch from 'react-icons/lib/fa/search';
 import FaComments from 'react-icons/lib/fa/comments';
 import FaClose from 'react-icons/lib/fa/close';
 import FaMenu from 'react-icons/lib/md/more-vert';
+import FaSquare from 'react-icons/lib/md/crop-square';
+
 import {
     format,
 } from 'timeago.js';
@@ -133,6 +135,7 @@ export class App extends Component {
                     dropdownMenu: (
                         <Dropdown
                             animationPosition="norteast"
+                            title='Dropdown Title'
                             buttonProps={{
                                 type: "transparent",
                                 color: "#cecece",
@@ -142,9 +145,33 @@ export class App extends Component {
                                 }
                             }}
                             items={[
-                                'Menu Item1',
-                                'Menu Item2',
-                                'Menu Item3',
+                                {
+                                    icon: {
+                                        component: <FaSquare />,
+                                        float: 'left',
+                                        color: 'red',
+                                        size: 22,
+                                    },
+                                    text: 'Menu Item'
+                                },
+                                {
+                                    icon: {
+                                        component: <FaSquare/>,
+                                        float: 'left',
+                                        color: 'purple',
+                                        size: 22,
+                                    },
+                                    text: 'Menu Item'
+                                },
+                                {
+                                    icon: {
+                                        component: <FaSquare/>,
+                                        float: 'left',
+                                        color: 'yellow',
+                                        size: 22,
+                                    },
+                                    text: 'Menu Item'
+                                },
                             ]} />
                     ),
                 };
