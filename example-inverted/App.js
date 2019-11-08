@@ -251,13 +251,6 @@ export class App extends Component {
                 </div>
                 <div
                     className='right-panel'>
-                    <MessageList
-                        className='message-list'
-                        lockable={false}
-                        loadMoreButton={true}
-                        onLoadMoreClick={()=>console.log('Load-More Button Clicked')}
-                        downButtonBadge={10}
-                        dataSource={this.state.messageList} />
                     <Input
                         placeholder="Mesajınızı buraya yazınız."
                         defaultValue=""
@@ -280,6 +273,14 @@ export class App extends Component {
                                 text='Gönder'
                                 onClick={this.addMessage.bind(this)} />
                         } />
+                    <MessageList
+                        className='message-list'
+                        lockable={false} 
+                        isInverted={true}
+                        loadMoreButton={true}
+                        onLoadMoreClick={()=>console.log('Load-More Button Clicked2')}
+                        downButtonBadge={10}
+                        dataSource={this.state.messageList} />
                 </div>
             </div>
         );

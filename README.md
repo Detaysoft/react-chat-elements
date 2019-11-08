@@ -209,6 +209,10 @@ import { MessageList } from 'react-chat-elements'
 | onDownButtonClick | none | function | message list onDownButtonClick |
 | onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
 | onPhotoError | none | function | message list item on error photo |
+| isInverted | false | boolean | invert scrolling, for use when input is above message list |
+| loadMoreButton | false | boolean | add button 
+| onLoadMoreClick | none | function | message list on loadMoreButton click |
+| loadMoreCustomButton | <Button> | component | add a custom load more button |
 
 ## ChatList Component
 

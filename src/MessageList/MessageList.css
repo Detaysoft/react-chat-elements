@@ -47,3 +47,9 @@
     color: #fff;
     font-weight: 700;
 }
+
+.rce-load-more-button-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}

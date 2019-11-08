@@ -2,8 +2,10 @@ import React, { Component, } from 'react';
 import './MessageList.css';
 
 import MessageBox from '../MessageBox/MessageBox';
+import Button from '../Button/Button';
 
 import FaChevronDown from 'react-icons/lib/fa/chevron-down';
+import FaChevronUp from 'react-icons/lib/fa/chevron-up'
 
 const classNames = require('classnames');
 
@@ -22,13 +24,18 @@ export class MessageList extends Component {
 
     checkScroll() {
         var e = this.mlistRef;
+
         if (!e)
             return;
 
-        if (this.props.toBottomHeight === '100%' || this.state.scrollBottom < this.props.toBottomHeight) {
+        if ( this.props.toBottomHeight === '100%' || this.state.scrollBottom < this.props.toBottomHeight) {
             // scroll to bottom
+            console.log('scroll to bottom')
             e.scrollTop = e.scrollHeight;
-        } else {
+        } else if ( this.props.toBottomHeight === '0%' || this.state.scrollBottom) {
+            console.log('scroll to top')
+            e.scrollTop = 0
+        }  else {
             if (this.props.lockable === true) {
                 e.scrollTop = e.scrollHeight - e.offsetHeight - this.state.scrollBottom;
             }
@@ -60,8 +67,8 @@ export class MessageList extends Component {
     }
 
     onPhotoError(item, i, e) {
-      if (this.props.onPhotoError instanceof Function)
-        this.props.onPhotoError(item, i, e);
+        if (this.props.onPhotoError instanceof Function)
+            this.props.onPhotoError(item, i, e);
     }
 
     onClick(item, i, e) {
@@ -98,7 +105,15 @@ export class MessageList extends Component {
     onScroll(e) {
         var bottom = this.getBottom(e.target);
         this.state.scrollBottom = bottom;
-        if (this.props.toBottomHeight === '100%' || bottom > this.props.toBottomHeight) {
+        if ( !this.props.isInverted && (this.props.toBottomHeight === '100%' || bottom > this.props.toBottomHeight)) {
+            if (this.state.downButton !== true) {
+                this.state.downButton = true;
+                this.setState({
+                    downButton: true,
+                    scrollBottom: bottom,
+                });
+            }
+        } else if ( this.props.isInverted && (this.props.toBottomHeight === '0%' || bottom < this.props.toBottomHeight)) {
             if (this.state.downButton !== true) {
                 this.state.downButton = true;
                 this.setState({
@@ -120,17 +135,34 @@ export class MessageList extends Component {
             this.props.onScroll(e);
         }
     }
+    onMessageFocused(item, i, e) {
+        if (this.props.onMessageFocused instanceof Function)
+            this.props.onMessageFocused(item, i, e);
+    }
+
+    onLoadMoreClick(e) {
+        if (this.props.onLoadMoreClick instanceof Function)
+            this.props.onLoadMoreClick(e);
+    }
 
     toBottom(e) {
         if(!this.mlistRef)
             return;
-        this.mlistRef.scrollTop = this.mlistRef.scrollHeight;
+        if (!this.props.isInverted) {
+            this.mlistRef.scrollTop = this.mlistRef.scrollHeight;
+        } else {
+            this.mlistRef.scrollTop = 0;
+        }
         if (this.props.onDownButtonClick instanceof Function) {
             this.props.onDownButtonClick(e);
         }
     }
 
     render() {
+        const defaultLoadMoreButton = <Button
+            text='Load More'
+            onClick={this.props.onLoadMoreClick && ((e)=> this.onLoadMoreClick(e))}
+            />
         return (
             <div
                 className={classNames(['rce-container-mlist', this.props.className])}>
@@ -138,6 +170,11 @@ export class MessageList extends Component {
                     ref={this.loadRef}
                     onScroll={this.onScroll}
                     className='rce-mlist'>
+                    {this.props.loadMoreButton && !this.props.isInverted ?
+                        <div className='rce-load-more-button-container'>
+                            {this.props.loadMoreCustomButton|| defaultLoadMoreButton}
+                        </div>
+                    : null }
                     {
                         this.props.dataSource.map((x, i) => (
                             <MessageBox
@@ -153,9 +190,15 @@ export class MessageList extends Component {
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                             />
                         ))
+                        
                     }
+                    {this.props.loadMoreButton && this.props.isInverted ?
+                        <div className='rce-load-more-button-container'>
+                            {this.props.loadMoreCustomButton|| defaultLoadMoreButton}
+                        </div>
+                    : null }
                 </div>
-                {
+                {!this.props.isInverted ?
                     this.props.downButton === true &&
                     this.state.downButton &&
                     this.props.toBottomHeight !== '100%' &&
@@ -163,6 +206,22 @@ export class MessageList extends Component {
                         className='rce-mlist-down-button'
                         onClick={this.toBottom.bind(this)}>
                         <FaChevronDown/>
+                        {
+                            this.props.downButtonBadge &&
+                            <span
+                                className='rce-mlist-down-button--badge'>
+                                {this.props.downButtonBadge}
+                            </span>
+                        }
+                    </div>
+                :
+                    this.props.downButton === true &&
+                    this.state.downButton &&
+                    this.props.toBottomHeight !== '100%' &&
+                    <div
+                        className='rce-mlist-down-button'
+                        onClick={this.toBottom.bind(this)}>
+                        <FaChevronUp/>
                         {
                             this.props.downButtonBadge &&
                             <span
@@ -190,6 +249,10 @@ MessageList.defaultProps = {
     toBottomHeight: 300,
     downButton: true,
     downButtonBadge: null,
+    isInverted: false,
+    loadMoreButton: false,
+    loadMoreCustomButton: null,
+    onLoadMoreClick: null,
 };
 
 export default MessageList;
