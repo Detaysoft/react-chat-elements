@@ -84,6 +84,7 @@
 }
 
 .rce-mbox.rce-mbox-right {
+    background: #dcf8c6;
     float: right;
     margin-left: 5px;
     margin-right: 20px;
