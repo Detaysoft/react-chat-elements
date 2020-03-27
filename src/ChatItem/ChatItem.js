@@ -31,6 +31,7 @@ export class ChatItem extends Component {
                             alt={this.props.alt}
                             className={statusColorType === 'encircle' ? 'rce-citem-avatar-encircle-status' : ''}
                             size="large"
+                            letterItem={this.props.letterItem}
                             sideElement={
                                 this.props.statusColor &&
                                 <span

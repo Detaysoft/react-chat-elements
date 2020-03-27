@@ -22,6 +22,7 @@ export class ChatItem extends Component {
                         <Avatar
                             src={this.props.avatar}
                             alt={this.props.alt}
+                            letterItem={this.props.letterItem}
                             sideElement={
                                 this.props.statusColor &&
                                 <View
