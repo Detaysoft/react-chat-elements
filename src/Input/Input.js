@@ -71,7 +71,7 @@ export class Input extends Component {
                         type={this.props.type}
                         className={classNames('rce-input')}
                         placeholder={this.props.placeholder}
-                        value={this.state.value}
+                        value={this.props.value || this.state.value}
                         style={this.props.inputStyle}
                         onChange={this.onChange.bind(this)}
                         onCopy={this.props.onCopy}
@@ -95,7 +95,7 @@ export class Input extends Component {
                         type={this.props.type}
                         className={classNames('rce-input', 'rce-input-textarea')}
                         placeholder={this.props.placeholder}
-                        value={this.state.value}
+                        value={this.props.value || this.state.value}
                         style={this.props.inputStyle}
                         onChange={this.onChange.bind(this)}
                         onCopy={this.props.onCopy}
