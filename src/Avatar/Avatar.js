@@ -42,6 +42,20 @@ export class Avatar extends Component {
         img.onerror = loaded;
     }
 
+    stringToColour (str) {
+        var hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        var colour = '#';
+        for (let i = 0; i < 3; i++) {
+            var value = (hash >> (i * 8)) & 0xFF;
+            value = (value % 150) + 50;
+            colour += ('00' + value.toString(16)).substr(-2);
+        }
+        return colour;
+    }
+
     render() {
         let src = this.props.src;
         let isLazyImage = false;
@@ -63,14 +77,25 @@ export class Avatar extends Component {
 
         return (
             <div className={classNames('rce-avatar-container', this.props.type, this.props.size, this.props.className)}>
-                <img
-                    alt={this.props.alt}
-                    src={src}
-                    onError={this.props.onError}
-                    className={classNames(
-                        'rce-avatar',
-                        {'rce-avatar-lazy': isLazyImage},
-                    )} />
+                {
+                    this.props.letterItem ?
+                    <div
+                        className="rce-avatar-letter-background"
+                        style={{ backgroundColor: this.stringToColour(this.props.letterItem.id)}}>
+                        <span class="rce-avatar-letter">
+                            {this.props.letterItem.letter}
+                        </span>
+                    </div>
+                    :
+                    <img
+                        alt={this.props.alt}
+                        src={src}
+                        onError={this.props.onError}
+                        className={classNames(
+                            'rce-avatar',
+                            {'rce-avatar-lazy': isLazyImage},
+                        )} />
+                }
                 {this.props.sideElement}
             </div>
         );

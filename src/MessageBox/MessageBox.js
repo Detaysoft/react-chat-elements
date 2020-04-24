@@ -94,6 +94,7 @@ export class MessageBox extends Component {
                                         {
                                             this.props.avatar &&
                                             <Avatar
+                                                letterItem={this.props.letterItem}
                                                 src={this.props.avatar}/>
                                         }
                                         {

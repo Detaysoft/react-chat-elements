@@ -472,6 +472,7 @@ import { Avatar } from 'react-chat-elements'
 | alt | none | string | image alt description |
 | size | default | string | image size. default (25px), xsmall(30px), small(35px), medium(40px), large(45px), xlarge (55px) |
 | type | default | string | types: default, circle, rounded(border radius 5px), flexible |
+| letterItem | none | object | avatar to be a letter |
 | sideElement | none | component | avatar side element |
 | onError | none | component | avatar img onerror |
 | lazyLoadingImage | none | image path | lazy loading image |

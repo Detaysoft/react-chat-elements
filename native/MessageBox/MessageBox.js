@@ -57,6 +57,7 @@ export class MessageBox extends Component {
                                                             width: 30,
                                                             height: 30,
                                                         }}
+                                                        letterItem={this.props.letterItem}
                                                         src={this.props.avatar}/>
                                             </View>
                                         }

@@ -75,3 +75,18 @@
     box-sizing: border-box;
     position: relative;
 }
+
+.rce-avatar-letter {
+    margin-top: 5px;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rce-avatar-letter-background{
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+}
