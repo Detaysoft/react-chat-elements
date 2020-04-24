@@ -260,12 +260,16 @@ import { Input } from 'react-chat-elements'
             text='Send'/>
     }/>
 
-// clear text eg:
-<Input
-    ref='input'
-    placeholder="Type here..."/>
+// Clear text, e.g.:
+// For pure components, use inputRef instead of this.inputRef
 
-this.refs.input.clear();
+inputRef = React.createRef();
+// ...
+<Input
+    ref={el => (this.inputRef = el)}
+    placeholder="Type here..."/>
+// ...
+this.inputRef.clear();
 ```
 
 #### Input props
@@ -283,7 +287,7 @@ this.refs.input.clear();
 | inputStyle | none | object | inputStyle object |
 | leftButtons | none | object(component) | left buttons component |
 | rightButtons | none | object(component) | right buttons component |
-| inputRef | none | function | input or textarea ref |
+| ref | none | function | input or textarea ref |
 | maxlength | none | int | input or textarea maxlength |
 | onMaxLengthExceed | none | function | called when max length exceed |
 | autofocus | false | bool | input autofocus |
