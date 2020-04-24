@@ -17,7 +17,7 @@ exports[`MessageBox component should render without issues 1`] = `
       />
       <div
         className="rce-mbox-time non-copiable"
-        data-text="right now"
+        data-text="just now"
       >
         <span
           className="rce-mbox-status"
