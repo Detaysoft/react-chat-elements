@@ -149,6 +149,27 @@ import { MessageBox } from 'react-chat-elements'
 | copiableDate | false | boolean | message box date text copiable |
 | focus | false | boolean | used in message focus feature in MessageList component, makes style of the component focused |
 | onMessageFocused | none | function | makes focus value false after the message becomes focus |
+| reply | none | object | reply data |
+
+## Reply Message Component
+
+```javascript
+import { MessageBox } from 'react-chat-elements'
+
+<MessageBox
+    reply={{
+        photoURL: 'https://facebook.github.io/react/img/logo.svg',
+        title: 'elit magna',
+        titleColor: '#8717ae',
+        message: 'Aliqua amet incididunt id nostrud',
+    }}
+    onReplyMessageClick={() => console.log('reply clicked!')}
+    position={'left'}
+    type={'text'}
+    text={'Tempor duis do voluptate enim duis velit veniam aute ullamco dolore duis irure.'}/>
+```
+
+![reply-message](https://user-images.githubusercontent.com/15075759/80224625-9dbbeb00-8652-11ea-994f-022be0cffe30.png)
 
 
 ## SystemMessage Component

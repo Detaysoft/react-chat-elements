@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReplyMessage component should render without issues 1`] = `
+<div
+  className="rce-mbox-reply"
+  onClick={[Function]}
+  style={null}
+>
+  <div
+    className="rce-mbox-reply-left"
+  >
+    <div
+      className="rce-mbox-reply-owner"
+      style={null}
+    >
+      Unknown
+    </div>
+    <div
+      className="rce-mbox-reply-message"
+    >
+      ...
+    </div>
+  </div>
+</div>
+`;

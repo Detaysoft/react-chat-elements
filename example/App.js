@@ -95,6 +95,12 @@ export class App extends Component {
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
                     forwarded: true,
+                    reply: this.token() >= 1 ? ({
+                        photoURL: this.token() >= 1 ? `data:image/png;base64,${this.photo(150)}` : null,
+                        title: loremIpsum({ count: 2, units: 'words' }),
+                        titleColor: this.getRandomColor(),
+                        message: loremIpsum({ count: 1, units: 'sentences' }),
+                    }) : null,
                     type: type,
                     theme: 'white',
                     view: 'list',
@@ -119,6 +125,9 @@ export class App extends Component {
                     },
                     status: status,
                     date: +new Date(),
+                    onReplyMessageClick: () => {
+                        console.log('onReplyMessageClick');
+                    },
                     avatar: `data:image/png;base64,${this.photo()}`,
                 };
             case 'chat':

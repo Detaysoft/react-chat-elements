@@ -13,6 +13,7 @@ exports[`ChatItem component should render without issues 1`] = `
     >
       <Avatar
         alt=""
+        className=""
         onError={[Function]}
         sideElement={null}
         size="large"
@@ -32,7 +33,7 @@ exports[`ChatItem component should render without issues 1`] = `
         <div
           className="rce-citem-body--top-time"
         >
-          right now
+          just now
         </div>
       </div>
       <div

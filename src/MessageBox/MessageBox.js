@@ -6,6 +6,7 @@ import FileMessage from '../FileMessage/FileMessage';
 import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
+import ReplyMessage from '../ReplyMessage/ReplyMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -102,6 +103,16 @@ export class MessageBox extends Component {
                                             <span>{this.props.title}</span>
                                         }
                                     </div>
+                                }
+
+                                {
+                                    this.props.reply &&
+                                    <ReplyMessage
+                                        photoURL={this.props.reply.photoURL}
+                                        title={this.props.reply.title}
+                                        titleColor={this.props.reply.titleColor}
+                                        message={this.props.reply.message}
+                                        onClick={this.props.onReplyMessageClick}/>
                                 }
 
                                 {
@@ -243,6 +254,7 @@ MessageBox.defaultProps = {
     titleColor: null,
     onTitleClick: null,
     onForwardClick: null,
+    onReplyMessageClick: null,
     date: new Date(),
     data: {},
     onClick: null,
@@ -251,6 +263,7 @@ MessageBox.defaultProps = {
     onLoad: null,
     onPhotoError: null,
     forwarded: false,
+    reply: false,
     status: null,
     dateString: null,
     notch: true,
