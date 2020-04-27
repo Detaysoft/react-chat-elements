@@ -38,12 +38,36 @@
     right: -50px;
 }
 
+.rce-mbox-reply-btn-left {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    left: -85px;
+}
+
+.rce-mbox-reply-btn-right {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    right: -85px;
+}
+
 .rce-container-mbox:hover .rce-mbox-forward-left {
     opacity: 1;
     visibility: visible;
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-right {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rce-container-mbox:hover .rce-mbox-reply-btn-left {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rce-container-mbox:hover .rce-mbox-reply-btn-right {
     opacity: 1;
     visibility: visible;
 }

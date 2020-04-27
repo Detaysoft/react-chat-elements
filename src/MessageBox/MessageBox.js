@@ -11,11 +11,11 @@ import ReplyMessage from '../ReplyMessage/ReplyMessage';
 import Avatar from '../Avatar/Avatar';
 
 import FaForward from 'react-icons/lib/fa/mail-forward';
-import FaReply from 'react-icons/lib/fa/mail-reply';
 
 import IoDoneAll from 'react-icons/lib/io/android-done-all';
 import MdIosTime from 'react-icons/lib/md/access-time';
 import MdCheck from 'react-icons/lib/md/check';
+import MdMessage from 'react-icons/lib/md/message';
 
 import {
     format,
@@ -81,6 +81,23 @@ export class MessageBox extends Component {
                                         )}
                                         onClick={this.props.onForwardClick}>
                                             <FaForward />
+                                    </div>
+                                }
+
+                                {
+                                    this.props.replyButton === true &&
+                                    <div
+                                        className={this.props.forwarded !== true ? classNames(
+                                            'rce-mbox-forward',
+                                            { 'rce-mbox-forward-right': this.props.position === 'left' },
+                                            { 'rce-mbox-forward-left': this.props.position === 'right' }
+                                        ) : classNames(
+                                            'rce-mbox-forward',
+                                            { 'rce-mbox-reply-btn-right': this.props.position === 'left' },
+                                            { 'rce-mbox-reply-btn-left': this.props.position === 'right' }
+                                        )}
+                                        onClick={this.props.onReplyClick}>
+                                            <MdMessage />
                                     </div>
                                 }
 
@@ -254,6 +271,7 @@ MessageBox.defaultProps = {
     titleColor: null,
     onTitleClick: null,
     onForwardClick: null,
+    onReplyClick: null,
     onReplyMessageClick: null,
     date: new Date(),
     data: {},

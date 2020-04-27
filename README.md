@@ -140,8 +140,11 @@ import { MessageBox } from 'react-chat-elements'
 | onPhotoError | none | function | message on error photo |
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
+| onReplyClick | none | function | message reply on click event |
+| onReplyMessageClick | none | function | reply message on click event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
+| replyButton | none | boolean | message reply icon |
 | status | none | string | message status info (waiting, sent, received, read) |
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
@@ -225,6 +228,8 @@ import { MessageList } from 'react-chat-elements'
 | onDownload | none | function | message list item on download (file or photo) (message(object) is returned) |
 | onScroll | none | function | message list onScroll event |
 | onForwardClick | none | function | message list item onForwardClick event |
+| onReplyClick | none | function | message list item onReplyClick event |
+| onReplyMessageClick | none | function | message list item onReplyMessageClick event |
 | downButton | true | boolean | message list scroll to bottom button |
 | downButtonBadge | none | boolean | message list downButton badge content |
 | onDownButtonClick | none | function | message list onDownButtonClick |

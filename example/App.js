@@ -95,6 +95,7 @@ export class App extends Component {
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
                     forwarded: true,
+                    replyButton: true,
                     reply: this.token() >= 1 ? ({
                         photoURL: this.token() >= 1 ? `data:image/png;base64,${this.photo(150)}` : null,
                         title: loremIpsum({ count: 2, units: 'words' }),

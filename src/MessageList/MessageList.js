@@ -79,6 +79,16 @@ export class MessageList extends Component {
             this.props.onForwardClick(item, i, e);
     }
 
+    onReplyClick(item, i, e) {
+        if (this.props.onReplyClick instanceof Function)
+            this.props.onReplyClick(item, i, e);
+    }
+
+    onReplyMessageClick(item, i, e) {
+        if (this.props.onReplyMessageClick instanceof Function)
+            this.props.onReplyMessageClick(item, i, e);
+    }
+
     onContextMenu(item, i, e) {
         if (this.props.onContextMenu instanceof Function)
             this.props.onContextMenu(item, i, e);
@@ -148,6 +158,8 @@ export class MessageList extends Component {
                                 onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
                                 onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
                                 onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
+                                onReplyClick={this.props.onReplyClick && ((e) => this.onReplyClick(x, i, e))}
+                                onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
@@ -181,6 +193,8 @@ MessageList.defaultProps = {
     onClick: null,
     onTitleClick: null,
     onForwardClick: null,
+    onReplyClick: null,
+    onReplyMessageClick: null,
     onDownButtonClick: null,
     onOpen: null,
     onPhotoError: null,
