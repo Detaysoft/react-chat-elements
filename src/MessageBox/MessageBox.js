@@ -133,10 +133,17 @@ export class MessageBox extends Component {
                                 }
 
                                 {
-                                    this.props.type === 'text' &&
-                                    <div className="rce-mbox-text">
-                                        {this.props.text}
-                                    </div>
+                                    this.props.type === "text" && (
+                                    <div
+                                        className="rce-mbox-text"
+                                        dangerouslySetInnerHTML={{
+                                            __html: this.props.text.replace(
+                                                /\n/g,
+                                                "<br />"
+                                            ),
+                                        }}
+                                    />
+                                    )
                                 }
 
                                 {
