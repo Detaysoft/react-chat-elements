@@ -38,7 +38,7 @@ export class App extends Component {
         };
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         // setInterval(this.addMessage.bind(this), 3000);
     }
 

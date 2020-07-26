@@ -35,7 +35,7 @@ export class MessageList extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (!this.mlistRef)
             return;
         if (nextProps.dataSource.length !== this.props.dataSource.length) {
