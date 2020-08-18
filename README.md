@@ -621,6 +621,8 @@ import { MeetingList } from 'react-chat-elements'
 | className | none | string | optional meeting list className |
 | dataSource | [] | array | meeting list array |
 | onClick | none | function | meeting list item on click (meeting(object) is returned) |
+| onMeetingClick | none | function | meeting list item on meeting click (meeting(object) is returned) |
+| onShareClick | none | function | meeting list item on share click (meeting(object) is returned) |
 | onContextMenu | none | function | meeting list item on context menu (meeting(object) is returned) |
 | onAvatarError | none | function | meeting list item on error avatar img |
 | lazyLoadingImage | none | image path | lazy loading image |
