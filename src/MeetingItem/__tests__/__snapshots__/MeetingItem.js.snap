@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeetingItem component should render without issues 1`] = `
+<div
+  className="rce-container-mtitem"
+  onClick={null}
+>
+  <div
+    className="rce-mtitem"
+  >
+    <div
+      className="rce-mtitem-subject"
+    />
+    <div
+      className="rce-mtitem-body"
+    >
+      <div
+        className="rce-mtitem-body--avatars"
+      />
+      <div
+        className="rce-mtitem-body--functions"
+      >
+        <div
+          className="rce-mtitem-button"
+          onClick={[Function]}
+        >
+          <MdVideoCall />
+        </div>
+      </div>
+    </div>
+    <div
+      className="rce-mtitem-footer"
+    >
+      <div
+        className="rce-mtitem-share"
+        onClick={[Function]}
+      >
+        <MdLink />
+      </div>
+      <span
+        className="rce-mtitem-date"
+      >
+        just now
+      </span>
+    </div>
+  </div>
+</div>
+`;

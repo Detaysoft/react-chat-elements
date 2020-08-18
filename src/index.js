@@ -11,6 +11,8 @@ import Dropdown from './Dropdown/Dropdown';
 import SideBar from './SideBar/SideBar';
 import Popup from './Popup/Popup';
 import ReplyMessage from './ReplyMessage/ReplyMessage';
+import MeetingItem from './MeetingItem/MeetingItem';
+import MeetingList from './MeetingList/MeetingList';
 
 
 export {
@@ -27,4 +29,6 @@ export {
     SideBar,
     Popup,
     ReplyMessage,
+    MeetingItem,
+    MeetingList,
 };
