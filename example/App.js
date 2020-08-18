@@ -12,6 +12,7 @@ import {
     SideBar,
     Dropdown,
     Popup,
+    MeetingList,
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
@@ -34,6 +35,7 @@ export class App extends Component {
 
         this.state = {
             show: true,
+            list: 'chat',
             messageList: [],
         };
     }
@@ -186,6 +188,17 @@ export class App extends Component {
                             ]} />
                     ),
                 };
+            case 'meeting':
+                return {
+                    id: String(Math.random()),
+                    lazyLoadingImage: `data:image/png;base64,${this.photo()}`,
+                    avatarFlexible: true,
+                    subject: loremIpsum({ count: 1, units: 'sentences' }),
+                    date: new Date(),
+                    avatars: Array(this.token() + 2).fill(1).map(x => ({
+                        src: `data:image/png;base64,${this.photo()}`,
+                    })),
+                };
         }
     }
 
@@ -203,6 +216,7 @@ export class App extends Component {
             arr.push(i);
 
         var chatSource = arr.map(x => this.random('chat'));
+        var meetingSource = arr.map(x => this.random('meeting'));
 
         return (
             <div className='container'>
@@ -210,34 +224,52 @@ export class App extends Component {
                     className='chat-list'>
                     <SideBar
                         top={
-                            <Popup
-                                // show={this.state.show}
-                                header='Lorem ipsum dolor sit amet.'
-                                headerButtons={[{
-                                    type: 'transparent',
-                                    color: 'black',
-                                    onClick: () => {
-                                        this.setState({ show: false })
-                                    },
-                                    icon: {
-                                        component: <FaClose />,
-                                        size: 18
-                                    }
-                                }]}
-                                text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
-                                footerButtons={[{
-                                    color: 'white',
-                                    backgroundColor: '#ff5e3e',
-                                    text: "Vazgeç",
-                                }, {
-                                    color: 'white',
-                                    backgroundColor: 'lightgreen',
-                                    text: "Tamam",
-                                }]} />
+                            <div>
+                                <Popup
+                                    // show={this.state.show}
+                                    header='Lorem ipsum dolor sit amet.'
+                                    headerButtons={[{
+                                        type: 'transparent',
+                                        color: 'black',
+                                        onClick: () => {
+                                            this.setState({ show: false })
+                                        },
+                                        icon: {
+                                            component: <FaClose />,
+                                            size: 18
+                                        }
+                                    }]}
+                                    text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
+                                    footerButtons={[{
+                                        color: 'white',
+                                        backgroundColor: '#ff5e3e',
+                                        text: "Vazgeç",
+                                    }, {
+                                        color: 'white',
+                                        backgroundColor: 'lightgreen',
+                                        text: "Tamam",
+                                    }]} />
+
+                                <Button
+                                    type='transparent'
+                                    color='black'
+                                    text={this.state.list === 'chat' ? 'MeetingList' : 'ChatList'}
+                                    onClick={() => {
+                                        this.setState({
+                                            list: this.state.list === 'chat' ? 'meeeting' : 'chat',
+                                        });
+                                    }}/>
+                            </div>
                         }
                         center={
+                            this.state.list === 'chat' ?
                             <ChatList
                                 dataSource={chatSource} />
+                            :
+                            <MeetingList
+                                onMeetingClick={console.log}
+                                onShareClick={console.log}
+                                dataSource={meetingSource} />
                         }
                         bottom={
                             <span>

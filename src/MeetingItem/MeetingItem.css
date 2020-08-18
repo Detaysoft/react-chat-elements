@@ -1,0 +1,117 @@
+.rce-container-mtitem {
+    flex-direction: column;
+    display: block;
+    overflow: hidden;
+    min-width: 240px;
+}
+
+.rce-mtitem {
+    position: relative;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    max-width: 100%;
+    overflow: hidden;
+    min-width: 240px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.rce-mtitem:hover {
+    background: #fbfbfb;
+}
+
+
+.rce-mtitem-subject {
+    padding: 0 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    overflow: hidden;
+    color: #333;
+    max-height: 35px;
+    text-overflow: ellipsis;
+}
+
+.rce-mtitem-body {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.rce-mtitem-body--avatars {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    opacity: 0.7;
+}
+
+.rce-mtitem-body--functions {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rce-mtitem-footer {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.rce-mtitem-body--avatars .rce-avatar-container {
+    margin-left: -15px;
+    border: 2px solid #fff;
+}
+
+.rce-mtitem-body--avatars .rce-avatar-container:first-child {
+    margin: 0;
+}
+
+.rce-mtitem-letter {
+    color: #fff;
+    background: #e48989;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rce-mtitem-button {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #5ba7c5;
+    border-radius: 100%;
+    padding: 3px;
+    transition: 300ms;
+}
+
+.rce-mtitem-share {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5ba7c5;
+    margin: -10px 0;
+    transition: 300ms;
+}
+
+
+.rce-mtitem-button:hover,
+.rce-mtitem-share:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.rce-mtitem-date {
+    color: #9f9f9f;
+    font-size: 13px;
+}

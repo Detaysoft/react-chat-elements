@@ -60,6 +60,8 @@ import { MessageBox } from 'react-chat-elements/native';
 12. [Avatar](#avatar-component)
 13. [LocationMessage](#locationmessage-component)
 14. [SpotifyMessage](#spotifymessage-component)
+15. [MeetingItem](#meetingitem-component)
+16. [MeetingList](#meetinglist-component)
 
 ## ChatItem Component
 
@@ -555,3 +557,72 @@ import { SpotifyMessage } from 'react-chat-elements'
 | data | {} | object | message data |
 | width | 300 | int | spotify embed width |
 | height | 380 | int | spotify embed height |
+
+
+## MeetingItem Component
+
+![meeting-photo](https://user-images.githubusercontent.com/15075759/90499887-cd878500-e152-11ea-9e13-80118bf2c94f.png)
+
+```javascript
+import { MeetingItem } from 'react-chat-elements'
+
+<MeetingItem
+    subject={'New Release!!!'}
+    avatars={[
+        src: 'https://facebook.github.io/react/img/logo.svg'
+    ]}
+    onMeetingClick={console.log}
+    onShareClick={console.log}/>
+```
+#### MeetingItem props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| subject | none | string | MeetingItem subject |
+| subjectLimit | 60 | int | MeetingItem subject text limit |
+| date | none | date | MeetingItem date |
+| dateString | none | string | MeetingItem represents dateString or timeagojs(now, date) |
+| lazyLoadingImage | none | image path | lazy loading image |
+| onClick | none | function | MeetingItem on click |
+| onMeetingClick | none | function | MeetingItem on meeting click |
+| onShareClick | none | function | MeetingItem on share click |
+| avatars | none | date | MeetingItem avatars |
+| avatarLimit | 5 | date | MeetingItem avatars limit |
+
+
+## MeetingList Component
+
+![meetingList-photo](https://user-images.githubusercontent.com/15075759/90499889-ce201b80-e152-11ea-9cdb-7c3ef0e04b4e.png)
+
+```javascript
+import { MeetingList } from 'react-chat-elements'
+
+<MeetingList
+    className='meeting-list'
+    dataSource={[
+        {
+            id: '1',
+            subject: 'New Release',
+            date: new Date(),
+            avatars: [{
+               src: 'https://facebook.github.io/react/img/logo.svg',
+            }]
+        },
+        .
+        .
+        .
+    ]} />
+```
+
+#### MeetingList props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| className | none | string | optional meeting list className |
+| dataSource | [] | array | meeting list array |
+| onClick | none | function | meeting list item on click (meeting(object) is returned) |
+| onMeetingClick | none | function | meeting list item on meeting click (meeting(object) is returned) |
+| onShareClick | none | function | meeting list item on share click (meeting(object) is returned) |
+| onContextMenu | none | function | meeting list item on context menu (meeting(object) is returned) |
+| onAvatarError | none | function | meeting list item on error avatar img |
+| lazyLoadingImage | none | image path | lazy loading image |
