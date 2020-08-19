@@ -45,11 +45,11 @@ export class MeetingList extends Component {
                             key={i}
                             lazyLoadingImage={this.props.lazyLoadingImage}
                             {...x}
-                            onAvatarError={(e) => this.onAvatarError(x,i,e)}
-                            onContextMenu={(e) => this.onContextMenu(x,i,e)}
-                            onClick={() => this.onClick(x, i)}
-                            onMeetingClick={() => this.onMeetingClick(x, i)}
-                            onShareClick={() => this.onShareClick(x, i)}/>
+                            onAvatarError={(e) => this.onAvatarError(x, i, e)}
+                            onContextMenu={(e) => this.onContextMenu(x, i, e)}
+                            onClick={() => this.onClick(x, i, e)}
+                            onMeetingClick={() => this.onMeetingClick(x, i, e)}
+                            onShareClick={() => this.onShareClick(x, i, e)}/>
                     ))
                 }
             </div>

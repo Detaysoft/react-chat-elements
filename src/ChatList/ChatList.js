@@ -35,9 +35,9 @@ export class ChatList extends Component {
                             key={i}
                             lazyLoadingImage={this.props.lazyLoadingImage}
                             {...x}
-                            onAvatarError={(e) => this.onAvatarError(x,i,e)}
-                            onContextMenu={(e) => this.onContextMenu(x,i,e)}
-                            onClick={() => this.onClick(x, i)}/>
+                            onAvatarError={(e) => this.onAvatarError(x, i, e)}
+                            onContextMenu={(e) => this.onContextMenu(x, i, e)}
+                            onClick={() => this.onClick(x, i, e)}/>
                     ))
                 }
             </div>
