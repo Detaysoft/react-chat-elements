@@ -37,7 +37,7 @@ export class ChatList extends Component {
                             {...x}
                             onAvatarError={(e) => this.onAvatarError(x, i, e)}
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
-                            onClick={() => this.onClick(x, i, e)}/>
+                            onClick={(e) => this.onClick(x, i, e)}/>
                     ))
                 }
             </div>

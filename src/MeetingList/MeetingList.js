@@ -47,9 +47,9 @@ export class MeetingList extends Component {
                             {...x}
                             onAvatarError={(e) => this.onAvatarError(x, i, e)}
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
-                            onClick={() => this.onClick(x, i, e)}
-                            onMeetingClick={() => this.onMeetingClick(x, i, e)}
-                            onShareClick={() => this.onShareClick(x, i, e)}/>
+                            onClick={(e) => this.onClick(x, i, e)}
+                            onMeetingClick={(e) => this.onMeetingClick(x, i, e)}
+                            onShareClick={(e) => this.onShareClick(x, i, e)}/>
                     ))
                 }
             </div>
