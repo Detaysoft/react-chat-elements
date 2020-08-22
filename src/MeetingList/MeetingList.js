@@ -33,6 +33,11 @@ export class MeetingList extends Component {
             this.props.onShareClick(item, i, e);
     }
 
+    onCloseClick(item, i, e) {
+        if (this.props.onCloseClick instanceof Function)
+            this.props.onCloseClick(item, i, e);
+    }
+
     render() {
         return (
             <div
@@ -49,7 +54,8 @@ export class MeetingList extends Component {
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
                             onClick={(e) => this.onClick(x, i, e)}
                             onMeetingClick={(e) => this.onMeetingClick(x, i, e)}
-                            onShareClick={(e) => this.onShareClick(x, i, e)}/>
+                            onShareClick={(e) => this.onShareClick(x, i, e)}
+                            onCloseClick={(e) => this.onCloseClick(x, i, e)}/>
                     ))
                 }
             </div>

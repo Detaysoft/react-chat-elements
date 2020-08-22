@@ -51,7 +51,7 @@
 }
 
 .rce-mtitem-body--functions {
-    width: 60px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -94,6 +94,22 @@
     transition: 300ms;
 }
 
+.rce-mtitem-closable {
+    font-size: 25px;
+    color: #fff;
+    background:#ff4a4f;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 3px;
+    margin-right: 7px;
+}
+
+.rce-mtitem:hover .rce-mtitem-closable {
+    display: flex;
+}
+
 .rce-mtitem-share {
     font-size: 30px;
     display: flex;
@@ -103,7 +119,6 @@
     margin: -10px 0;
     transition: 300ms;
 }
-
 
 .rce-mtitem-button:hover,
 .rce-mtitem-share:hover {

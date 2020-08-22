@@ -3,6 +3,7 @@ import './MeetingItem.css';
 
 import MdVideoCall from 'react-icons/lib/md/video-call';
 import MdLink from 'react-icons/lib/md/link';
+import MdCall from 'react-icons/lib/md/call';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -37,7 +38,7 @@ export class MeetingItem extends Component {
                     <div className="rce-mtitem-body">
                         <div className="rce-mtitem-body--avatars">
                             {
-                                this.props.avatars.slice(0, 5).map((x, i) => x instanceof Avatar ? x : (
+                                this.props.avatars.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
                                     <Avatar
                                         key={i}
                                         src={x.src}
@@ -67,12 +68,20 @@ export class MeetingItem extends Component {
                                 this.props.avatars.length > AVATAR_LIMIT &&
                                 <div className='rce-avatar-container circle small rce-mtitem-letter'>
                                     <span>
-                                        {'+' + AVATAR_LIMIT}
+                                        {'+' + (this.props.avatars.length - AVATAR_LIMIT)}
                                     </span>
                                 </div>
                             }
                         </div>
                         <div className="rce-mtitem-body--functions">
+                            {
+                                this.props.closable &&
+                                <div
+                                    className="rce-mtitem-closable"
+                                    onClick={this.props.onCloseClick}>
+                                    <MdCall />
+                                </div>
+                            }
                             <div
                                 className='rce-mtitem-button'
                                 onClick={this.props.onMeetingClick}>
