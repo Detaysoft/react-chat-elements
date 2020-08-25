@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import './MeetingMessage.css';
 
 import FaCalendar from 'react-icons/lib/fa/calendar';
-import MdMoreHoriz from 'react-icons/lib/md/more-horiz'
-import IoVideoCamera from 'react-icons/lib/io/ios-videocam'
+import MdMoreHoriz from 'react-icons/lib/md/more-horiz';
 
 import {
     format,
 } from'timeago.js';
-
-import Avatar from '../Avatar/Avatar';
-
-import classNames from 'classnames';
 
 export class MeetingMessage extends Component {
     constructor(props) {
