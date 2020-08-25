@@ -88,6 +88,9 @@ export class App extends Component {
                     case 4:
                         type = 'spotify';
                         break;
+                    case 5:
+                        type = 'meet';
+                        break;
                     default:
                         type = 'text';
                         status = 'read';
@@ -103,6 +106,22 @@ export class App extends Component {
                         title: loremIpsum({ count: 2, units: 'words' }),
                         titleColor: this.getRandomColor(),
                         message: loremIpsum({ count: 1, units: 'sentences' }),
+                    }) : null,
+                    meet: this.token() >= 1 ? ({
+                        id: parseInt(Math.random() * 10 % 6),
+                        meetSubject: loremIpsum({ count: 2, units: 'words' }),
+                        title: loremIpsum({ count: 2, units: 'words' }),
+                        date: +new Date(),
+                        dataSource: Array(this.token() + 5).fill(1).map(x => ({
+                            id: String(Math.random()),
+                            avatar: `data:image/png;base64,${this.photo()}`,
+                            message: loremIpsum({ count: 1, units: 'sentences' }),
+                            title:   loremIpsum({ count: 2, units: 'words' }),
+                            lazyLoadingImage: `data:image/png;base64,${this.photo()}`,
+                            alt: loremIpsum({ count: 2, units: 'words' }),
+                            avatarFlexible: true,
+                            date: +new Date(),
+                        })),
                     }) : null,
                     type: type,
                     theme: 'white',

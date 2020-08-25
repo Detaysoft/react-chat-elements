@@ -99,6 +99,11 @@ export class MessageList extends Component {
             this.props.onMessageFocused(item, i, e);
     }
 
+    onMeetingMessageClick(item, i, e) {
+        if (this.props.onMeetingMessageClick instanceof Function)
+            this.props.onMeetingMessageClick(item, i, e);
+    }
+
     loadRef(ref) {
         this.mlistRef = ref;
         if (this.props.cmpRef instanceof Function)
@@ -163,6 +168,7 @@ export class MessageList extends Component {
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
+                                onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
                             />
                         ))
                     }
@@ -195,6 +201,7 @@ MessageList.defaultProps = {
     onForwardClick: null,
     onReplyClick: null,
     onReplyMessageClick: null,
+    onMeetingMessageClick: null,
     onDownButtonClick: null,
     onOpen: null,
     onPhotoError: null,

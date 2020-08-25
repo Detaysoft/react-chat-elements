@@ -7,6 +7,7 @@ import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 import ReplyMessage from '../ReplyMessage/ReplyMessage';
+import MeetingMessage from '../MeetingMessage/MeetingMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -184,6 +185,18 @@ export class MessageBox extends Component {
                                         view={this.props.view}
                                         data={this.props.data}
                                         uri={this.props.uri || this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'meet' &&
+                                    this.props.meet &&
+                                    <MeetingMessage
+                                        id={this.props.meet.id}
+                                        meetSubject={this.props.meet.meetSubject}
+                                        title={this.props.meet.title}
+                                        date={this.props.meet.date}
+                                        dataSource={this.props.meet.dataSource}
+                                        onMeetingMessageClick={this.props.onMeetingMessageClick} />
                                 }
 
                                 <div
