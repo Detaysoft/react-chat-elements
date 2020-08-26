@@ -188,14 +188,14 @@ export class MessageBox extends Component {
                                 }
 
                                 {
-                                    this.props.type === 'meet' &&
-                                    this.props.meet &&
+                                    this.props.type === 'meeting' &&
+                                    this.props.meeting &&
                                     <MeetingMessage
-                                        id={this.props.meet.id}
-                                        meetSubject={this.props.meet.meetSubject}
-                                        title={this.props.meet.title}
-                                        date={this.props.meet.date}
-                                        dataSource={this.props.meet.dataSource}
+                                        id={this.props.meeting.id}
+                                        subject={this.props.meeting.subject}
+                                        title={this.props.meeting.title}
+                                        date={this.props.meeting.date}
+                                        dataSource={this.props.meeting.dataSource}
                                         onMeetingMessageClick={this.props.onMeetingMessageClick} />
                                 }
 

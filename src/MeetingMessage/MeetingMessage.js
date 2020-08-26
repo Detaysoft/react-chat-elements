@@ -27,7 +27,7 @@ export class MeetingMessage extends Component {
         const {
             id,
             title,
-            meetSubject,
+            subject,
             onClick,
             date,
             dataSource,
@@ -42,7 +42,7 @@ export class MeetingMessage extends Component {
                 <div className="rce-mtmg">
                     <div
                         className="rce-mtmg-subject">
-                        {meetSubject || 'Unknown'}
+                        {subject || 'Unknown Meeting'}
                     </div>
                     <div
                         className="rce-mtmg-toogleClick"
@@ -105,7 +105,7 @@ MeetingMessage.defaultProps = {
     id: '',
     alt: '',
     title: '',
-    meetSubject: '',
+    subject: '',
     message: '',
     dataSource: [],
     date: new Date(),

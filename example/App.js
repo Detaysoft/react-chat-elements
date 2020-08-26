@@ -89,7 +89,7 @@ export class App extends Component {
                         type = 'spotify';
                         break;
                     case 5:
-                        type = 'meet';
+                        type = 'meeting';
                         break;
                     default:
                         type = 'text';
@@ -107,7 +107,7 @@ export class App extends Component {
                         titleColor: this.getRandomColor(),
                         message: loremIpsum({ count: 1, units: 'sentences' }),
                     }) : null,
-                    meet: this.token() >= 1 ? ({
+                    meeting: this.token() >= 1 ? ({
                         id: parseInt(Math.random() * 10 % 6),
                         meetSubject: loremIpsum({ count: 2, units: 'words' }),
                         title: loremIpsum({ count: 2, units: 'words' }),
