@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    padding-bottom: 25px;
+    padding-bottom: 13px;
     min-width: 500px;
     max-width: 500px;
 }
@@ -23,7 +23,7 @@
     text-align: start;
     display: inline-block;
     font-size: 15px;
-    padding: 5px;
+    padding: 5px 9px;
 }
 
 .rce-mtmg-toogleItem {
@@ -31,7 +31,7 @@
     height: 100%;
 }
 
-.rce-mtmg-toogleClick {
+.rce-mtmg-body {
     height: 50px;
     background: #6264a7;
     color: white;
@@ -40,7 +40,7 @@
     justify-content: space-between;
 }
 
-.rce-mtmg-toogleClick:hover {
+.rce-mtmg-body:hover {
     opacity: 0.9;
 }
 
@@ -68,10 +68,37 @@
     font-size: 13px;
 }
 
+.rce-mtmg-body-bottom {
+    display: flex;
+    flex-direction: row;
+    padding: 9px;
+    color: #6264a7;
+    cursor: pointer;
+}
+
+.rce-mtmg-bottom--tptitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rce-mtmg-bottom--tptitle > svg{
+    color: #6264a7a1;
+}
+
+.rce-mtmg-body-bottom--bttitle > span {
+    padding: 0 0 0 6px;
+}
+
 .rce-mtmg-toogleContent {
+    display: none;
     height: auto;
     min-height: 60px;
     flex-direction: column;
+}
+
+.rce-mtmg-toogleContent--click {
+    display: flex;
 }
 
 .rce-mtmg-right-icon {
@@ -101,28 +128,118 @@
     align-items: flex-start;
     flex-direction: column;
     padding: 8px;
-    max-width: 500px;
-    width: 400px;
 }
 
 .rce-mitem-body--top {
     display: flex;
     align-items: center;
+    margin-bottom: 2px;
 }
 
 .rce-mitem-body--top-title {
     font-size: 16px;
     padding: 0px 15px 0 0;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-weight: 600;
+}
+
+.rce-mitem-body--top-title:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #6264a7;
 }
 
 .rce-mitem-body--bottom-title {
     color: #252525;
     font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .rce-mitem-body--top-time {
     font-size: 12px;
     color: rgba(0,0,0,0.4);
+}
+
+.rce-mitem-bottom-body {
+    padding: 10px 8px;
+}
+
+.rce-mitem-bottom-body-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.rce-mitem-avatar-content {
+    position: absolute;
+    right: 10px;
+    display: flex;
+}
+
+.rce-mitem-avatar {
+    padding: 0 3px 0 0;
+}
+
+.rce-mitem-avatar img {
+    width: 50px;
+    height: 50px;
+    border: none !important;
+    background: #ccc;
+    border-radius: 100%;
+}
+
+.rce-mtmg-call-record {
+    width: 350px;
+    height: 85%;
+    background: #eaeaea;
+    margin-top: 11px;
+}
+
+.rce-mtmg-call-body {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    position: relative;
+}
+
+.rce-mtmg-call-avatars {
+    width: 140px !important;
+    height: 100px !important;
+    position: relative;
+}
+
+.rce-mtmg-call-avatars img {
+    width: 100% !important;
+    height: 100% !important;
+    background: #ccc;
+}
+
+.rce-mtmg-call-body-title {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    top: 30px;
+    left: 15px;
+}
+.rce-mtmg-call-body-bottom {
+    color: #505050;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 185px;
+    font-size: 12px;
+}
+
+.rce-mtmg-record:hover {
+    background: #d0d0d0;
+}
+
+.rce-mtmg-record-time {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 13px;
+    background: #000000cf;
+    color: white;
+    padding: 4px;
+    border-radius: 5px;
 }

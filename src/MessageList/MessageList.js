@@ -104,6 +104,16 @@ export class MessageList extends Component {
             this.props.onMeetingMessageClick(item, i, e);
     }
 
+    onMeetingTitleClick(item, i, e) {
+        if (this.props.onMeetingTitleClick instanceof Function)
+            this.props.onMeetingTitleClick(item, i, e);
+    }
+
+    onMeetingVideoLinkClick(item, i, e) {
+        if (this.props.onMeetingVideoLinkClick instanceof Function)
+            this.props.onMeetingVideoLinkClick(item, i, e);
+    }
+
     loadRef(ref) {
         this.mlistRef = ref;
         if (this.props.cmpRef instanceof Function)
@@ -169,6 +179,8 @@ export class MessageList extends Component {
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                                 onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
+                                onMeetingTitleClick={this.props.onMeetingTitleClick && ((e) => this.onMeetingTitleClick(x, i, e))}
+                                onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick && ((e) => this.onMeetingVideoLinkClick(x, i, e))}
                             />
                         ))
                     }

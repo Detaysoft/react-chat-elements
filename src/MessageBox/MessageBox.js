@@ -40,8 +40,7 @@ export class MessageBox extends Component {
 
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
-
+        var thatAbsoluteTime = !/(text|file|meeting)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
@@ -191,12 +190,15 @@ export class MessageBox extends Component {
                                     this.props.type === 'meeting' &&
                                     this.props.meeting &&
                                     <MeetingMessage
-                                        id={this.props.meeting.id}
-                                        subject={this.props.meeting.subject}
+                                        meetSubject={this.props.meeting.meetSubject}
                                         title={this.props.meeting.title}
                                         date={this.props.meeting.date}
+                                        altTitle={this.props.meeting.altTitle}
+                                        participants={this.props.meeting.participants}
                                         dataSource={this.props.meeting.dataSource}
-                                        onMeetingMessageClick={this.props.onMeetingMessageClick} />
+                                        onMeetingMessageClick={this.props.onMeetingMessageClick}
+                                        onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
+                                        onMeetingTitleClick={this.props.onMeetingTitleClick} />
                                 }
 
                                 <div

@@ -143,6 +143,9 @@ import { MessageBox } from 'react-chat-elements'
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | onReplyClick | none | function | message reply on click event |
+| onMeetingMessageClick | none | function | meeting message on click event |
+| onMeetingTitleClick | none | function | meeting title message on click event |
+| onMeetingVideoLinkClick | none | function | meeting video link message on click event |
 | onReplyMessageClick | none | function | reply message on click event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
@@ -176,6 +179,66 @@ import { MessageBox } from 'react-chat-elements'
 
 ![reply-message](https://user-images.githubusercontent.com/15075759/80224625-9dbbeb00-8652-11ea-994f-022be0cffe30.png)
 
+
+## MeetingMessage Component
+
+```javascript
+import { MeetingMessage } from 'react-chat-elements'
+
+<MeetingMessage
+    meetSubject={'New Release'}
+    title={'in ullamco'}
+    date={new Date()}
+    altTitle={'Commodo aliquip'}
+    participants={[
+        {
+            id: '1',
+            title: 'Facebook',
+        },
+        .
+        .
+        .
+    ]}
+    dataSource={[
+        {
+            id: '1',
+            avatar: 'https://facebook.github.io/react/img/logo.svg',
+            message: 'Lorem ipsum dolor sit amet.',
+            title: 'Elit magna',
+            avatarFlexible: true,
+            date: new Date(),
+            event: {[
+                title: 'Toplantı sona erdi!',
+                avatars={[
+                    src: 'https://facebook.github.io/react/img/logo.svg'
+                ]}
+            ]}
+            record: {[
+                avatar: 'https://facebook.github.io/react/img/logo.svg',
+                title: 'Arama',
+                savedBy: 'Kaydeden: Elit magna',
+                time: new Date(),
+            ]}
+        },
+        .
+        .
+        .
+    ]} />
+```
+
+#### MeetingMessage props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| meetSubject | none | string | Meeting messagee |
+| title | none | string | Meeting title |
+| date | new Date() | Date | Meeting date |
+| altTitle | none | string | Meeting subtitle |
+| participants | [] | array | Meeting participant array |
+| dataSource | [] | array | meeting list array |
+| onMeetingMessageClick | none | function | meeting message on click event (message(object) is returned) |
+| onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
+| onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
 
 ## SystemMessage Component
 
