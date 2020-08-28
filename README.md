@@ -186,7 +186,7 @@ import { MessageBox } from 'react-chat-elements'
 import { MeetingMessage } from 'react-chat-elements'
 
 <MeetingMessage
-    meetSubject={'New Release'}
+    subject={'New Release'}
     title={'in ullamco'}
     date={new Date()}
     altTitle={'Commodo aliquip'}
@@ -230,7 +230,7 @@ import { MeetingMessage } from 'react-chat-elements'
 
 | prop | default | type | description |
 | ---- | ---- | ---- | ---- |
-| meetSubject | none | string | Meeting messagee |
+| subject | none | string | Meeting messagee |
 | title | none | string | Meeting title |
 | date | new Date() | Date | Meeting date |
 | altTitle | none | string | Meeting subtitle |

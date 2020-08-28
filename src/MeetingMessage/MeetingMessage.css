@@ -220,6 +220,14 @@
     top: 30px;
     left: 15px;
 }
+
+.rce-mtmg-call-body-title > span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 185px;
+}
+
 .rce-mtmg-call-body-bottom {
     color: #505050;
     text-overflow: ellipsis;

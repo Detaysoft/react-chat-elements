@@ -32,7 +32,7 @@ export class MeetingMessage extends Component {
         const {
             date,
             title,
-            meetSubject,
+            subject,
             onClick,
             altTitle,
             dataSource,
@@ -50,7 +50,7 @@ export class MeetingMessage extends Component {
                 <div className="rce-mtmg">
                     <div
                         className="rce-mtmg-subject">
-                        {meetSubject || 'Unknown Meeting'}
+                        {subject || 'Unknown Meeting'}
                     </div>
                     <div
                         className="rce-mtmg-body"
@@ -159,7 +159,9 @@ export class MeetingMessage extends Component {
                                                                         </div>
                                                                     </div>
                                                                     <div className="rce-mtmg-call-body-title">
-                                                                        {x.record.title}
+                                                                        <span>
+                                                                            {x.record.title}
+                                                                        </span>
                                                                         <div className="rce-mtmg-call-body-bottom">
                                                                             {x.record.savedBy}
                                                                         </div>
@@ -187,7 +189,7 @@ export class MeetingMessage extends Component {
 MeetingMessage.defaultProps = {
     date: new Date(),
     title: '',
-    meetSubject: '',
+    subject: '',
     altTitle: '',
     participantsLimit: 3,
     avatarFlexible: false,

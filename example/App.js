@@ -108,7 +108,7 @@ export class App extends Component {
                         message: loremIpsum({ count: 1, units: 'sentences' }),
                     }) : null,
                     meeting: this.token() >= 1 ? ({
-                        meetSubject: loremIpsum({ count: 2, units: 'words' }),
+                        subject: loremIpsum({ count: 2, units: 'words' }),
                         title: loremIpsum({ count: 2, units: 'words' }),
                         date: +new Date(),
                         altTitle: loremIpsum({ count: 2, units: 'words' }),

@@ -190,7 +190,7 @@ export class MessageBox extends Component {
                                     this.props.type === 'meeting' &&
                                     this.props.meeting &&
                                     <MeetingMessage
-                                        meetSubject={this.props.meeting.meetSubject}
+                                        subject={this.props.meeting.subject}
                                         title={this.props.meeting.title}
                                         date={this.props.meeting.date}
                                         altTitle={this.props.meeting.altTitle}
