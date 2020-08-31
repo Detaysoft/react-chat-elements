@@ -81,15 +81,15 @@ export class MeetingMessage extends Component {
                             </div>
                             :
                             <div className="rce-mtmg-body-bottom--bttitle">
-                                {
-                                    participants.slice(0, PARTICIPANT_LIMIT).map(x => x.title || 'Unknow').join(', ')
-                                }
-                                {
-                                    participants.length > PARTICIPANT_LIMIT &&
-                                    <span>
-                                        {'ve ' + (participants.length - PARTICIPANT_LIMIT) + ' diğer kişi'}
-                                    </span>
-                                }
+                                <span>
+                                    {
+                                        participants.slice(0, PARTICIPANT_LIMIT).map(x => x.title || 'Unknow').join(', ')
+                                    }
+                                    {
+                                        participants.length > PARTICIPANT_LIMIT &&
+                                            `, +${(participants.length - PARTICIPANT_LIMIT)}`
+                                    }
+                                </span>
                             </div>
                         }
                     </div>
@@ -102,13 +102,13 @@ export class MeetingMessage extends Component {
                             dataSource &&
                             dataSource.map((x, i) => {
                                 return (
-                                    <div>
+                                    <div key={i}>
                                         <div className="rce-mitem">
                                             <div className="rce-mitem-body">
                                                 <div className="rce-mitem-body--top">
                                                     <div
                                                         className="rce-mitem-body--top-title"
-                                                        onClick={onMeetingTitleClick}>
+                                                        onClick={(e) => onMeetingTitleClick(x, i, e)}>
                                                         {x.title}
                                                     </div>
                                                     <div className="rce-mitem-body--top-time">
@@ -137,7 +137,7 @@ export class MeetingMessage extends Component {
                                                             {
                                                                 x.event.avatars &&
                                                                 x.event.avatars.map((x, i) => x instanceof Avatar ? x : (
-                                                                    <div className="rce-mitem-avatar">
+                                                                    <div key={i} className="rce-mitem-avatar">
                                                                         <Avatar
                                                                             src={x.src}/>
                                                                     </div>
@@ -149,7 +149,7 @@ export class MeetingMessage extends Component {
                                                             <div className="rce-mtmg-call-record">
                                                                 <div className="rce-mtmg-call-body">
                                                                     <div
-                                                                        onClick={onMeetingVideoLinkClick}
+                                                                        onClick={(e) => onMeetingVideoLinkClick(x, i, e)}
                                                                         className="rce-mtmg-call-avatars">
                                                                         <Avatar
                                                                             className={'rce-mtmg-call-avatars'}
