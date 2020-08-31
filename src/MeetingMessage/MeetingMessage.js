@@ -132,9 +132,9 @@ export class MeetingMessage extends Component {
                                             </div>
                                         }
 
-                                        <div className="rce-mtmg-record">
-                                            {
-                                                x.event ?
+                                        {
+                                            x.event &&
+                                            <div className="rce-mitem-event">
                                                 <div className="rce-mitem-bottom-body">
                                                     <div className="rce-mitem-bottom-body-top">
                                                         {x.event.title}
@@ -157,7 +157,7 @@ export class MeetingMessage extends Component {
                                                             }
                                                         </div>
                                                         {
-                                                            x.record ?
+                                                            x.record &&
                                                             <div className="rce-mtmg-call-record">
                                                                 <div className="rce-mtmg-call-body">
                                                                     <div
@@ -180,13 +180,11 @@ export class MeetingMessage extends Component {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            : null
                                                         }
                                                     </div>
                                                 </div>
-                                                : null
-                                            }
-                                        </div>
+                                            </div>
+                                        }
                                     </div>
                                 )
                             })
