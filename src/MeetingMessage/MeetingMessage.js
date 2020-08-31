@@ -31,6 +31,7 @@ export class MeetingMessage extends Component {
     render() {
         const {
             date,
+            dateString,
             title,
             subject,
             onClick,
@@ -43,7 +44,7 @@ export class MeetingMessage extends Component {
 
         const PARTICIPANT_LIMIT = this.props.participantsLimit;
 
-        const dateText = date && !isNaN(date) && (format(date));
+        const dateText = dateString ? dateString : (date && !isNaN(date) && (format(date)));
 
         return (
             <div className="rce-mbox-mtmg">
@@ -103,36 +104,47 @@ export class MeetingMessage extends Component {
                             dataSource.map((x, i) => {
                                 return (
                                     <div key={i}>
-                                        <div className="rce-mitem">
-                                            <div className="rce-mitem-body">
-                                                <div className="rce-mitem-body--top">
-                                                    <div
-                                                        className="rce-mitem-body--top-title"
-                                                        onClick={(e) => onMeetingTitleClick(x, i, e)}>
-                                                        {x.title}
+                                        {
+                                            !x.event &&
+                                            <div className="rce-mitem">
+                                                <div className="rce-mitem-body">
+                                                    <div className="rce-mitem-body--top">
+                                                        <div
+                                                            className="rce-mitem-body--top-title"
+                                                            onClick={(e) => onMeetingTitleClick(x, i, e)}>
+                                                            {x.title}
+                                                        </div>
+                                                        <div className="rce-mitem-body--top-time">
+                                                            {
+                                                                x.dateString ? x.dateString : (x.date &&
+                                                                !isNaN(x.date) &&
+                                                                (format(x.date)))
+                                                            }
+                                                        </div>
                                                     </div>
-                                                    <div className="rce-mitem-body--top-time">
-                                                        {
-                                                            x.date &&
-                                                            !isNaN(x.date) &&
-                                                            (format(x.date))
-                                                        }
-                                                    </div>
-                                                </div>
-                                                <div className="rce-mitem-body--bottom">
-                                                    <div
-                                                        className="rce-mitem-body--bottom-title" >
-                                                        {x.message}
+                                                    <div className="rce-mitem-body--bottom">
+                                                        <div
+                                                            className="rce-mitem-body--bottom-title" >
+                                                            {x.message}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
+
                                         <div className="rce-mtmg-record">
                                             {
                                                 x.event ?
                                                 <div className="rce-mitem-bottom-body">
                                                     <div className="rce-mitem-bottom-body-top">
                                                         {x.event.title}
+                                                        <div className="rce-mitem-body--top-time">
+                                                            {
+                                                                x.dateString ? x.dateString : (x.date &&
+                                                                !isNaN(x.date) &&
+                                                                (format(x.date)))
+                                                            }
+                                                        </div>
                                                         <div className="rce-mitem-avatar-content">
                                                             {
                                                                 x.event.avatars &&
@@ -188,6 +200,7 @@ export class MeetingMessage extends Component {
 
 MeetingMessage.defaultProps = {
     date: new Date(),
+    dateString: '',
     title: '',
     subject: '',
     altTitle: '',

@@ -193,6 +193,7 @@ export class MessageBox extends Component {
                                         subject={this.props.meeting.subject}
                                         title={this.props.meeting.title}
                                         date={this.props.meeting.date}
+                                        dateString={this.props.meeting.dateString}
                                         altTitle={this.props.meeting.altTitle}
                                         participants={this.props.meeting.participants}
                                         dataSource={this.props.meeting.dataSource}
