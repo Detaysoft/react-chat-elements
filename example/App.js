@@ -111,7 +111,7 @@ export class App extends Component {
                         subject: loremIpsum({ count: 2, units: 'words' }),
                         title: loremIpsum({ count: 2, units: 'words' }),
                         date: +new Date(),
-                        altTitle: loremIpsum({ count: 2, units: 'words' }),
+                        collapseTitle: loremIpsum({ count: 2, units: 'words' }),
                         participants: Array(this.token() + 6).fill(1).map(x => ({
                             id: parseInt(Math.random() * 10 % 6),
                             title: loremIpsum({ count: 1, units: 'words' }),

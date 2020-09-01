@@ -189,7 +189,7 @@ import { MeetingMessage } from 'react-chat-elements'
     subject={'New Release'}
     title={'in ullamco'}
     date={new Date()}
-    altTitle={'Commodo aliquip'}
+    collapseTitle={'Commodo aliquip'}
     participants={[
         {
             id: '1',
@@ -233,7 +233,7 @@ import { MeetingMessage } from 'react-chat-elements'
 | subject | none | string | Meeting messagee |
 | title | none | string | Meeting title |
 | date | new Date() | Date | Meeting date |
-| altTitle | none | string | Meeting subtitle |
+| collapseTitle | none | string | Meeting subtitle |
 | participants | [] | array | Meeting participant array |
 | dataSource | [] | array | meeting list array |
 | onMeetingMessageClick | none | function | meeting message on click event (message(object) is returned) |

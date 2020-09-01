@@ -4,6 +4,9 @@ import './MeetingMessage.css';
 import FaCalendar from 'react-icons/lib/fa/calendar';
 import MdMoreHoriz from 'react-icons/lib/md/more-horiz';
 import FaCaretDown from 'react-icons/lib/fa/caret-down';
+import FaCaretRight from 'react-icons/lib/fa/caret-right';
+import IoVideo from 'react-icons/lib/io/ios-videocam-outline';
+import IoChatboxes from 'react-icons/lib/io/ios-chatboxes-outline';
 
 import {
     format,
@@ -35,7 +38,7 @@ export class MeetingMessage extends Component {
             title,
             subject,
             onClick,
-            altTitle,
+            collapseTitle,
             dataSource,
             participants,
             onMeetingTitleClick,
@@ -78,10 +81,11 @@ export class MeetingMessage extends Component {
                             this.state.toogle === true ?
                             <div className="rce-mtmg-bottom--tptitle">
                                 <FaCaretDown/>
-                                <span>{altTitle}</span>
+                                <span>{collapseTitle}</span>
                             </div>
                             :
                             <div className="rce-mtmg-body-bottom--bttitle">
+                                <FaCaretRight/>
                                 <span>
                                     {
                                         participants.slice(0, PARTICIPANT_LIMIT).map(x => x.title || 'Unknow').join(', ')
@@ -107,6 +111,17 @@ export class MeetingMessage extends Component {
                                         {
                                             !x.event &&
                                             <div className="rce-mitem">
+                                                <div
+                                                    className={classNames(
+                                                        'rce-mitem avatar',
+                                                        {'rce-mitem no-avatar': !x.avatar}
+                                                    )}>
+                                                    {
+                                                        x.avatar ?
+                                                            <Avatar src={x.avatar}/>
+                                                            : <IoChatboxes />
+                                                    }
+                                                </div>
                                                 <div className="rce-mitem-body">
                                                     <div className="rce-mitem-body--top">
                                                         <div
@@ -136,6 +151,9 @@ export class MeetingMessage extends Component {
                                             x.event &&
                                             <div className="rce-mitem-event">
                                                 <div className="rce-mitem-bottom-body">
+                                                    <div className="rce-mitem-body avatar">
+                                                        <IoVideo />
+                                                    </div>
                                                     <div className="rce-mitem-bottom-body-top">
                                                         {x.event.title}
                                                         <div className="rce-mitem-body--top-time">
@@ -201,7 +219,7 @@ MeetingMessage.defaultProps = {
     dateString: '',
     title: '',
     subject: '',
-    altTitle: '',
+    collapseTitle: '',
     participantsLimit: 3,
     avatarFlexible: false,
     dataSource: [],

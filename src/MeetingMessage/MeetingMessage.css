@@ -4,8 +4,8 @@
     justify-content: center;
     align-content: center;
     padding-bottom: 13px;
-    min-width: 500px;
-    max-width: 500px;
+    min-width: 425px;
+    max-width: 425px;
 }
 
 .rce-mtmg {
@@ -17,6 +17,13 @@
     margin: 5px 0px;
     float: left;
     border-radius: 2px;
+}
+
+.rce-mtmg-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 300px;
 }
 
 .rce-mtmg-subject {
@@ -54,7 +61,6 @@
 .rce-mtmg-item > svg {
     width: 23px;
     height: 23px;
-    padding: 10px;
 }
 
 .rce-mtmg-content {
@@ -83,12 +89,9 @@
     align-items: center;
 }
 
-.rce-mtmg-bottom--tptitle > svg{
+.rce-mtmg-bottom--tptitle > svg,
+.rce-mtmg-body-bottom--bttitle > svg {
     color: #6264a7a1;
-}
-
-.rce-mtmg-body-bottom--bttitle > span {
-    padding: 0 0 0 6px;
 }
 
 .rce-mtmg-toogleContent {
@@ -117,6 +120,7 @@
 
 .rce-mitem {
     display: flex;
+    padding: 10px 8px;
 }
 
 .rce-mitem:hover,
@@ -129,7 +133,12 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding: 8px;
+}
+
+.rce-mitem-body-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .rce-mitem-body--top {
@@ -149,7 +158,6 @@
 .rce-mitem-body--top-title:hover {
     cursor: pointer;
     text-decoration: underline;
-    color: #6264a7;
 }
 
 .rce-mitem-body--bottom-title {
@@ -165,11 +173,48 @@
 
 .rce-mitem-bottom-body {
     padding: 10px 8px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.rce-mitem-body.avatar {
+    padding: 8px 10px 0 0;
+}
+
+.rce-mitem.avatar {
+    padding: 8px 5px 0 0;
+}
+
+.rce-mitem.no-avatar {
+    padding: 8px 10px 0 0;
+}
+
+.rce-mitem.no-avatar > svg {
+    width: 19px;
+    height: 19px;
+}
+
+.rce-mitem.avatar img {
+    width: 22px;
+    height: 22px;
+    border: none !important;
+    background: #ccc;
+    border-radius: 100%;
+}
+
+.rce-mitem-body.avatar > svg {
+    width: 19px;
+    height: 19px;
 }
 
 .rce-mitem-bottom-body-top {
     display: flex;
     flex-direction: column;
+}
+
+.rce-mitem-bottom-body-top-title > svg {
+    padding: 0 7px 0 0;
 }
 
 .rce-mitem-avatar-content {
@@ -214,6 +259,7 @@
     width: 100% !important;
     height: 100% !important;
     background: #ccc;
+    cursor: pointer;
 }
 
 .rce-mtmg-call-body-title {
