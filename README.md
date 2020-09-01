@@ -632,7 +632,9 @@ import { MeetingItem } from 'react-chat-elements'
 <MeetingItem
     subject={'New Release!!!'}
     avatars={[
-        src: 'https://facebook.github.io/react/img/logo.svg'
+        {
+            src: 'https://facebook.github.io/react/img/logo.svg'
+        }
     ]}
     onMeetingClick={console.log}
     onShareClick={console.log}/>
