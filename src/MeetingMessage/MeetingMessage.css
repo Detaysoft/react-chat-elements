@@ -1,5 +1,4 @@
 .rce-mbox-mtmg {
-    user-select: none;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -128,6 +127,10 @@
     background: #ececec;
 }
 
+.rce-mitem-event {
+    user-select:  none;
+}
+
 .rce-mitem-body {
     display: flex;
     justify-content: center;
@@ -145,6 +148,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 2px;
+    user-select: none;
 }
 
 .rce-mitem-body--top-title {
