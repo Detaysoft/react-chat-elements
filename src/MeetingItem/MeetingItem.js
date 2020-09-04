@@ -32,8 +32,15 @@ export class MeetingItem extends Component {
                 onClick={this.props.onClick}
                 onContextMenu={this.props.onContextMenu}>
                 <div className="rce-mtitem">
-                    <div className="rce-mtitem-subject">
-                        {subject}
+                    <div className="rce-mtitem-top">
+                        <div className="rce-mtitem-subject">
+                            {subject}
+                        </div>
+                        <div
+                            className="rce-mtitem-share"
+                            onClick={this.props.onShareClick}>
+                            <MdLink />
+                        </div>
                     </div>
                     <div className="rce-mtitem-body">
                         <div className="rce-mtitem-body--avatars">
@@ -90,11 +97,6 @@ export class MeetingItem extends Component {
                         </div>
                     </div>
                     <div className="rce-mtitem-footer">
-                        <div
-                            className="rce-mtitem-share"
-                            onClick={this.props.onShareClick}>
-                            <MdLink />
-                        </div>
                         <span className='rce-mtitem-date'>
                             {dateText}
                         </span>
