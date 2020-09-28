@@ -77,7 +77,6 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    display: flex;
     justify-content: center;
     padding-right: 15px;
     border-bottom: 1px solid rgba(0,0,0,.05);
