@@ -82,7 +82,7 @@ export class Avatar extends Component {
                     <div
                         className="rce-avatar-letter-background"
                         style={{ backgroundColor: this.stringToColour(this.props.letterItem.id)}}>
-                        <span class="rce-avatar-letter">
+                        <span className="rce-avatar-letter">
                             {this.props.letterItem.letter}
                         </span>
                     </div>
