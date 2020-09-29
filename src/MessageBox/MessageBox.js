@@ -145,7 +145,7 @@ export class MessageBox extends Component {
                                 }
                                 {
                                     this.props.type==="markup"&&
-                                    <div className="rce-mbox-text" dangerouslySetInnerHTML={this.createMarkup(this.props.markup)} />
+                                    <div className="rce-mbox-text" dangerouslySetInnerHTML={this.createMarkup(this.props.markup?this.props.markup:"<p></p>")} />
                                 }
 
                                 {
