@@ -88,11 +88,15 @@ export class App extends Component {
                     case 4:
                         type = 'spotify';
                         break;
+                    case 5:
+                        type= 'markup';
+                        break;
                     default:
                         type = 'text';
                         status = 'read';
                         break;
                 }
+             
 
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
@@ -110,6 +114,7 @@ export class App extends Component {
                     title: loremIpsum({ count: 2, units: 'words' }),
                     titleColor: this.getRandomColor(),
                     text: type === 'spotify' ? 'spotify:track:7wGoVu4Dady5GV0Sv4UIsx' : loremIpsum({ count: 1, units: 'sentences' }),
+                    markup: type==='markup'?"<code>This is a code</code>":"",
                     data: {
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
@@ -291,6 +296,7 @@ export class App extends Component {
                             </span>
                         } />
                 </div>
+                
                 <div
                     className='right-panel'>
                     <MessageList

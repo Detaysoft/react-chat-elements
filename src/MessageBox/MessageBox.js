@@ -37,6 +37,11 @@ export class MessageBox extends Component {
         }
     }
 
+    createMarkup(markup){
+        return {__html: markup};
+    }
+    
+
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
         var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
@@ -135,8 +140,12 @@ export class MessageBox extends Component {
                                 {
                                     this.props.type === 'text' &&
                                     <div className="rce-mbox-text">
-                                        {this.props.text}
+                                      {this.props.text}
                                     </div>
+                                }
+                                {
+                                    this.props.type==="markup"&&
+                                    <div className="rce-mbox-text" dangerouslySetInnerHTML={this.createMarkup(this.props.markup)} />
                                 }
 
                                 {
