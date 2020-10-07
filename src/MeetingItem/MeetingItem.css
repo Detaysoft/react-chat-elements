@@ -21,6 +21,12 @@
     background: #fbfbfb;
 }
 
+.rce-mtitem-top {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+}
 
 .rce-mtitem-subject {
     padding: 0 10px;
@@ -51,7 +57,7 @@
 }
 
 .rce-mtitem-body--functions {
-    width: 60px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -66,7 +72,7 @@
 }
 
 .rce-mtitem-body--avatars .rce-avatar-container {
-    margin-left: -15px;
+    margin-left: -10px;
     border: 2px solid #fff;
 }
 
@@ -94,6 +100,23 @@
     transition: 300ms;
 }
 
+.rce-mtitem-closable {
+    font-size: 25px;
+    color: #fff;
+    background:#ff4a4f;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 3px;
+    margin-right: 7px;
+}
+
+.rce-mtitem:hover .rce-mtitem-closable {
+    display: flex;
+    cursor: pointer;
+}
+
 .rce-mtitem-share {
     font-size: 30px;
     display: flex;
@@ -102,8 +125,9 @@
     color: #5ba7c5;
     margin: -10px 0;
     transition: 300ms;
+    position: relative;
+    left: -10px;
 }
-
 
 .rce-mtitem-button:hover,
 .rce-mtitem-share:hover {
