@@ -637,7 +637,8 @@ import { MeetingItem } from 'react-chat-elements'
         }
     ]}
     onMeetingClick={console.log}
-    onShareClick={console.log}/>
+    onShareClick={console.log}
+    onCloseClick={console.log}/>
 ```
 #### MeetingItem props
 
@@ -648,9 +649,11 @@ import { MeetingItem } from 'react-chat-elements'
 | date | none | date | MeetingItem date |
 | dateString | none | string | MeetingItem represents dateString or timeagojs(now, date) |
 | lazyLoadingImage | none | image path | lazy loading image |
+| closable | true | boolean | MeetingItem closable |
 | onClick | none | function | MeetingItem on click |
 | onMeetingClick | none | function | MeetingItem on meeting click |
 | onShareClick | none | function | MeetingItem on share click |
+| onCloseClick | none | function | MeetingItem on close click |
 | avatars | none | date | MeetingItem avatars |
 | avatarLimit | 5 | date | MeetingItem avatars limit |
 
@@ -658,6 +661,8 @@ import { MeetingItem } from 'react-chat-elements'
 ## MeetingList Component
 
 ![meetingList-photo](https://user-images.githubusercontent.com/15075759/90499889-ce201b80-e152-11ea-9cdb-7c3ef0e04b4e.png)
+
+![meetingClosable](https://user-images.githubusercontent.com/53093667/90954468-2588f900-e47d-11ea-865e-10522e05f23f.gif)
 
 ```javascript
 import { MeetingList } from 'react-chat-elements'
@@ -688,6 +693,7 @@ import { MeetingList } from 'react-chat-elements'
 | onClick | none | function | meeting list item on click (meeting(object) is returned) |
 | onMeetingClick | none | function | meeting list item on meeting click (meeting(object) is returned) |
 | onShareClick | none | function | meeting list item on share click (meeting(object) is returned) |
+| onCloseClick | none | function | meeting list item on close click (meeting(object) is returned) |
 | onContextMenu | none | function | meeting list item on context menu (meeting(object) is returned) |
 | onAvatarError | none | function | meeting list item on error avatar img |
 | lazyLoadingImage | none | image path | lazy loading image |

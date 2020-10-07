@@ -231,6 +231,7 @@ export class App extends Component {
                     avatars: Array(this.token() + 2).fill(1).map(x => ({
                         src: `data:image/png;base64,${this.photo()}`,
                     })),
+                    closable: true,
                 };
         }
     }
