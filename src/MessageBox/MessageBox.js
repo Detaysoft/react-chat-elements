@@ -7,6 +7,7 @@ import SystemMessage from '../SystemMessage/SystemMessage';
 import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 import ReplyMessage from '../ReplyMessage/ReplyMessage';
+import MeetingMessage from '../MeetingMessage/MeetingMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -39,8 +40,7 @@ export class MessageBox extends Component {
 
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
-
+        var thatAbsoluteTime = !/(text|file|meeting)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
@@ -184,6 +184,22 @@ export class MessageBox extends Component {
                                         view={this.props.view}
                                         data={this.props.data}
                                         uri={this.props.uri || this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'meeting' &&
+                                    this.props.meeting &&
+                                    <MeetingMessage
+                                        subject={this.props.meeting.subject}
+                                        title={this.props.meeting.title}
+                                        date={this.props.meeting.date}
+                                        dateString={this.props.meeting.dateString}
+                                        collapseTitle={this.props.meeting.collapseTitle}
+                                        participants={this.props.meeting.participants}
+                                        dataSource={this.props.meeting.dataSource}
+                                        onMeetingMessageClick={this.props.onMeetingMessageClick}
+                                        onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
+                                        onMeetingTitleClick={this.props.onMeetingTitleClick} />
                                 }
 
                                 <div

@@ -88,6 +88,9 @@ export class App extends Component {
                     case 4:
                         type = 'spotify';
                         break;
+                    case 5:
+                        type = 'meeting';
+                        break;
                     default:
                         type = 'text';
                         status = 'read';
@@ -103,6 +106,36 @@ export class App extends Component {
                         title: loremIpsum({ count: 2, units: 'words' }),
                         titleColor: this.getRandomColor(),
                         message: loremIpsum({ count: 1, units: 'sentences' }),
+                    }) : null,
+                    meeting: this.token() >= 1 ? ({
+                        subject: loremIpsum({ count: 2, units: 'words' }),
+                        title: loremIpsum({ count: 2, units: 'words' }),
+                        date: +new Date(),
+                        collapseTitle: loremIpsum({ count: 2, units: 'words' }),
+                        participants: Array(this.token() + 6).fill(1).map(x => ({
+                            id: parseInt(Math.random() * 10 % 6),
+                            title: loremIpsum({ count: 1, units: 'words' }),
+                        })),
+                        dataSource: Array(this.token() + 5).fill(1).map(x => ({
+                            id: String(Math.random()),
+                            avatar: `data:image/png;base64,${this.photo()}`,
+                            message: loremIpsum({ count: 1, units: 'sentences' }),
+                            title: loremIpsum({ count: 2, units: 'words' }),
+                            avatarFlexible: true,
+                            date: +new Date(),
+                            event: {
+                                title: loremIpsum({ count: 2, units: 'words' }),
+                                avatars: Array(this.token() + 2).fill(1).map(x => ({
+                                    src: `data:image/png;base64,${this.photo()}`,
+                                })),
+                            },
+                            record: {
+                                avatar: `data:image/png;base64,${this.photo()}`,
+                                title: loremIpsum({ count: 1, units: 'words' }),
+                                savedBy: 'Kaydeden: ' + loremIpsum({ count: 2, units: 'words' }),
+                                time: new Date().toLocaleString(),
+                            },
+                        })),
                     }) : null,
                     type: type,
                     theme: 'white',

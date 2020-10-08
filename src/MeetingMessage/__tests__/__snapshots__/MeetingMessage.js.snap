@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeetingMessage component should render without issues 1`] = `
+<div
+  className="rce-mbox-mtmg"
+>
+  <div
+    className="rce-mtmg"
+  >
+    <div
+      className="rce-mtmg-subject"
+    >
+      Unknown Meeting
+    </div>
+    <div
+      className="rce-mtmg-body"
+      onClick={[Function]}
+    >
+      <div
+        className="rce-mtmg-item"
+      >
+        <FaCalendar />
+        <div
+          className="rce-mtmg-content"
+        >
+          <span
+            className="rce-mtmg-title"
+          />
+          <span
+            className="rce-mtmg-date"
+          >
+            just now
+          </span>
+        </div>
+      </div>
+      <div
+        className="rce-mtmg-right-icon"
+      >
+        <MdMoreHoriz />
+      </div>
+    </div>
+    <div
+      className="rce-mtmg-body-bottom"
+      onClick={[Function]}
+    >
+      <div
+        className="rce-mtmg-body-bottom--bttitle"
+      />
+    </div>
+    <div
+      className="rce-mtmg-toogleContent"
+    />
+  </div>
+</div>
+`;

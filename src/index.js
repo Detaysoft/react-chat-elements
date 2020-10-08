@@ -13,6 +13,7 @@ import Popup from './Popup/Popup';
 import ReplyMessage from './ReplyMessage/ReplyMessage';
 import MeetingItem from './MeetingItem/MeetingItem';
 import MeetingList from './MeetingList/MeetingList';
+import MeetingMessage from './MeetingMessage/MeetingMessage';
 
 
 export {
@@ -31,4 +32,5 @@ export {
     ReplyMessage,
     MeetingItem,
     MeetingList,
+    MeetingMessage,
 };
