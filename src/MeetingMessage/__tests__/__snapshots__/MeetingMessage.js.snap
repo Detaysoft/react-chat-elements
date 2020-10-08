@@ -45,7 +45,10 @@ exports[`MeetingMessage component should render without issues 1`] = `
     >
       <div
         className="rce-mtmg-body-bottom--bttitle"
-      />
+      >
+        <FaCaretRight />
+        <span />
+      </div>
     </div>
     <div
       className="rce-mtmg-toogleContent"
