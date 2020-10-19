@@ -656,6 +656,7 @@ import { MeetingItem } from 'react-chat-elements'
 | onCloseClick | none | function | MeetingItem on close click |
 | avatars | none | date | MeetingItem avatars |
 | avatarLimit | 5 | date | MeetingItem avatars limit |
+| meetSoundPlay| null | object | MeetingItem to add sound |
 
 
 ## MeetingList Component
