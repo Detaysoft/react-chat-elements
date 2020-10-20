@@ -31,6 +31,13 @@ export class MeetingItem extends Component {
                 className={classNames('rce-container-mtitem', this.props.className)}
                 onClick={this.props.onClick}
                 onContextMenu={this.props.onContextMenu}>
+
+                <audio
+                    autoPlay
+                    loop
+                    muted={this.props.audioMuted}
+                    src={this.props.audioSource}/>
+
                 <div className="rce-mtitem">
                     <div className="rce-mtitem-top">
                         <div className="rce-mtitem-subject">
@@ -121,6 +128,8 @@ MeetingItem.defaultProps = {
     lazyLoadingImage: undefined,
     avatarLimit: 5,
     avatars: [],
+    audioMuted: true,
+    audioSource: null,
     onAvatarError: () => void(0),
     onMeetingClick: () => void(0),
     onShareClick: () => void(0),
