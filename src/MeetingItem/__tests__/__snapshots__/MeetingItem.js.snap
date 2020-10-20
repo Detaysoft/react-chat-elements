@@ -5,6 +5,12 @@ exports[`MeetingItem component should render without issues 1`] = `
   className="rce-container-mtitem"
   onClick={null}
 >
+  <audio
+    autoPlay={true}
+    loop={true}
+    muted={true}
+    src={null}
+  />
   <div
     className="rce-mtitem"
   >
