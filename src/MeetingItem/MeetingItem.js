@@ -15,32 +15,6 @@ import classNames from 'classnames';
 
 export class MeetingItem extends Component {
 
-    componentDidMount() {
-        if (this.props.meetSoundPlay && this.props.meetSoundPlay.play)
-            this.playSound();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.meetSoundPlay) {
-            if (nextProps.meetSoundPlay.play)
-                this.playSound();
-            else
-                this.closeSound();
-        }
-    }
-
-    playSound() {
-        var meetSound = this.refs['meetSound'];
-        meetSound.autoplay = true;
-        meetSound.loop = true;
-    };
-
-    closeSound() {
-        var meetSound = this.refs['meetSound'];
-        meetSound.pause();
-        meetSound.currentTime = 0;
-    }
-
     render() {
         const statusColorType = this.props.statusColorType;
         const AVATAR_LIMIT = this.props.avatarLimit;
@@ -59,9 +33,11 @@ export class MeetingItem extends Component {
                 onContextMenu={this.props.onContextMenu}>
 
                 <audio
+                    autoPlay
+                    loop
                     ref="meetSound"
-                    src={this.props.meetSoundPlay && this.props.meetSoundPlay.src}
-                    autoPlay/>
+                    muted={this.props.audioMuted}
+                    src={this.props.audioSource}/>
 
                 <div className="rce-mtitem">
                     <div className="rce-mtitem-top">
@@ -153,7 +129,8 @@ MeetingItem.defaultProps = {
     lazyLoadingImage: undefined,
     avatarLimit: 5,
     avatars: [],
-    meetSoundPlay: null,
+    audioMuted: true,
+    audioSource: null,
     onAvatarError: () => void(0),
     onMeetingClick: () => void(0),
     onShareClick: () => void(0),
