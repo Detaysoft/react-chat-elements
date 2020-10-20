@@ -35,7 +35,6 @@ export class MeetingItem extends Component {
                 <audio
                     autoPlay
                     loop
-                    ref="meetSound"
                     muted={this.props.audioMuted}
                     src={this.props.audioSource}/>
 
