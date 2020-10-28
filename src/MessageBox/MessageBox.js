@@ -25,7 +25,7 @@ import {
 import classNames from 'classnames';
 
 export class MessageBox extends Component {
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.focus !== this.props.focus && nextProps.focus === true) {
             if (this.refs['message']) {
                 this.refs['message'].scrollIntoView({
