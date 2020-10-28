@@ -89,14 +89,17 @@ export class App extends Component {
                         type = 'spotify';
                         break;
                     case 5:
-                        type= 'markup';
+                        type= 'meeting';
+                        break;
+                    case 6:
+                        type="markup";
                         break;
                     default:
                         type = 'text';
                         status = 'read';
                         break;
                 }
-             
+
 
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
@@ -296,7 +299,7 @@ export class App extends Component {
                             </span>
                         } />
                 </div>
-                
+
                 <div
                     className='right-panel'>
                     <MessageList
