@@ -3,6 +3,7 @@ import './MeetingItem.css';
 
 import MdVideoCall from 'react-icons/lib/md/video-call';
 import MdLink from 'react-icons/lib/md/link';
+import MdCall from 'react-icons/lib/md/call';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -30,14 +31,28 @@ export class MeetingItem extends Component {
                 className={classNames('rce-container-mtitem', this.props.className)}
                 onClick={this.props.onClick}
                 onContextMenu={this.props.onContextMenu}>
+
+                <audio
+                    autoPlay
+                    loop
+                    muted={this.props.audioMuted}
+                    src={this.props.audioSource}/>
+
                 <div className="rce-mtitem">
-                    <div className="rce-mtitem-subject">
-                        {subject}
+                    <div className="rce-mtitem-top">
+                        <div className="rce-mtitem-subject">
+                            {subject}
+                        </div>
+                        <div
+                            className="rce-mtitem-share"
+                            onClick={this.props.onShareClick}>
+                            <MdLink />
+                        </div>
                     </div>
                     <div className="rce-mtitem-body">
                         <div className="rce-mtitem-body--avatars">
                             {
-                                this.props.avatars.slice(0, 5).map((x, i) => x instanceof Avatar ? x : (
+                                this.props.avatars.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
                                     <Avatar
                                         key={i}
                                         src={x.src}
@@ -67,12 +82,20 @@ export class MeetingItem extends Component {
                                 this.props.avatars.length > AVATAR_LIMIT &&
                                 <div className='rce-avatar-container circle small rce-mtitem-letter'>
                                     <span>
-                                        {'+' + AVATAR_LIMIT}
+                                        {'+' + (this.props.avatars.length - AVATAR_LIMIT)}
                                     </span>
                                 </div>
                             }
                         </div>
                         <div className="rce-mtitem-body--functions">
+                            {
+                                this.props.closable &&
+                                <div
+                                    className="rce-mtitem-closable"
+                                    onClick={this.props.onCloseClick}>
+                                    <MdCall />
+                                </div>
+                            }
                             <div
                                 className='rce-mtitem-button'
                                 onClick={this.props.onMeetingClick}>
@@ -81,11 +104,6 @@ export class MeetingItem extends Component {
                         </div>
                     </div>
                     <div className="rce-mtitem-footer">
-                        <div
-                            className="rce-mtitem-share"
-                            onClick={this.props.onShareClick}>
-                            <MdLink />
-                        </div>
                         <span className='rce-mtitem-date'>
                             {dateText}
                         </span>
@@ -110,6 +128,8 @@ MeetingItem.defaultProps = {
     lazyLoadingImage: undefined,
     avatarLimit: 5,
     avatars: [],
+    audioMuted: true,
+    audioSource: null,
     onAvatarError: () => void(0),
     onMeetingClick: () => void(0),
     onShareClick: () => void(0),

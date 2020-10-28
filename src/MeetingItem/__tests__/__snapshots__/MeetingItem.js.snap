@@ -5,12 +5,28 @@ exports[`MeetingItem component should render without issues 1`] = `
   className="rce-container-mtitem"
   onClick={null}
 >
+  <audio
+    autoPlay={true}
+    loop={true}
+    muted={true}
+    src={null}
+  />
   <div
     className="rce-mtitem"
   >
     <div
-      className="rce-mtitem-subject"
-    />
+      className="rce-mtitem-top"
+    >
+      <div
+        className="rce-mtitem-subject"
+      />
+      <div
+        className="rce-mtitem-share"
+        onClick={[Function]}
+      >
+        <MdLink />
+      </div>
+    </div>
     <div
       className="rce-mtitem-body"
     >
@@ -31,12 +47,6 @@ exports[`MeetingItem component should render without issues 1`] = `
     <div
       className="rce-mtitem-footer"
     >
-      <div
-        className="rce-mtitem-share"
-        onClick={[Function]}
-      >
-        <MdLink />
-      </div>
       <span
         className="rce-mtitem-date"
       >

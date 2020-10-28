@@ -144,6 +144,9 @@ import { MessageBox } from 'react-chat-elements'
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | onReplyClick | none | function | message reply on click event |
+| onMeetingMessageClick | none | function | meeting message on click event |
+| onMeetingTitleClick | none | function | meeting title message on click event |
+| onMeetingVideoLinkClick | none | function | meeting video link message on click event |
 | onReplyMessageClick | none | function | reply message on click event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
@@ -177,6 +180,66 @@ import { MessageBox } from 'react-chat-elements'
 
 ![reply-message](https://user-images.githubusercontent.com/15075759/80224625-9dbbeb00-8652-11ea-994f-022be0cffe30.png)
 
+
+## MeetingMessage Component
+
+```javascript
+import { MeetingMessage } from 'react-chat-elements'
+
+<MeetingMessage
+    subject={'New Release'}
+    title={'in ullamco'}
+    date={new Date()}
+    collapseTitle={'Commodo aliquip'}
+    participants={[
+        {
+            id: '1',
+            title: 'Facebook',
+        },
+        .
+        .
+        .
+    ]}
+    dataSource={[
+        {
+            id: '1',
+            avatar: 'https://facebook.github.io/react/img/logo.svg',
+            message: 'Lorem ipsum dolor sit amet.',
+            title: 'Elit magna',
+            avatarFlexible: true,
+            date: new Date(),
+            event: {[
+                title: 'Toplantı sona erdi!',
+                avatars={[
+                    src: 'https://facebook.github.io/react/img/logo.svg'
+                ]}
+            ]}
+            record: {[
+                avatar: 'https://facebook.github.io/react/img/logo.svg',
+                title: 'Arama',
+                savedBy: 'Kaydeden: Elit magna',
+                time: new Date(),
+            ]}
+        },
+        .
+        .
+        .
+    ]} />
+```
+
+#### MeetingMessage props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| subject | none | string | Meeting messagee |
+| title | none | string | Meeting title |
+| date | new Date() | Date | Meeting date |
+| collapseTitle | none | string | Meeting subtitle |
+| participants | [] | array | Meeting participant array |
+| dataSource | [] | array | meeting list array |
+| onMeetingMessageClick | none | function | meeting message on click event (message(object) is returned) |
+| onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
+| onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
 
 ## SystemMessage Component
 
@@ -570,10 +633,13 @@ import { MeetingItem } from 'react-chat-elements'
 <MeetingItem
     subject={'New Release!!!'}
     avatars={[
-        src: 'https://facebook.github.io/react/img/logo.svg'
+        {
+            src: 'https://facebook.github.io/react/img/logo.svg'
+        }
     ]}
     onMeetingClick={console.log}
-    onShareClick={console.log}/>
+    onShareClick={console.log}
+    onCloseClick={console.log}/>
 ```
 #### MeetingItem props
 
@@ -584,16 +650,22 @@ import { MeetingItem } from 'react-chat-elements'
 | date | none | date | MeetingItem date |
 | dateString | none | string | MeetingItem represents dateString or timeagojs(now, date) |
 | lazyLoadingImage | none | image path | lazy loading image |
+| closable | true | boolean | MeetingItem closable |
 | onClick | none | function | MeetingItem on click |
 | onMeetingClick | none | function | MeetingItem on meeting click |
 | onShareClick | none | function | MeetingItem on share click |
+| onCloseClick | none | function | MeetingItem on close click |
 | avatars | none | date | MeetingItem avatars |
 | avatarLimit | 5 | date | MeetingItem avatars limit |
+| audioMuted| true | boolean | MeetingItem audio muted |
+| audioSource| null | string | MeetingItem audio source |
 
 
 ## MeetingList Component
 
 ![meetingList-photo](https://user-images.githubusercontent.com/15075759/90499889-ce201b80-e152-11ea-9cdb-7c3ef0e04b4e.png)
+
+![meetingClosable](https://user-images.githubusercontent.com/53093667/90954468-2588f900-e47d-11ea-865e-10522e05f23f.gif)
 
 ```javascript
 import { MeetingList } from 'react-chat-elements'
@@ -624,6 +696,7 @@ import { MeetingList } from 'react-chat-elements'
 | onClick | none | function | meeting list item on click (meeting(object) is returned) |
 | onMeetingClick | none | function | meeting list item on meeting click (meeting(object) is returned) |
 | onShareClick | none | function | meeting list item on share click (meeting(object) is returned) |
+| onCloseClick | none | function | meeting list item on close click (meeting(object) is returned) |
 | onContextMenu | none | function | meeting list item on context menu (meeting(object) is returned) |
 | onAvatarError | none | function | meeting list item on error avatar img |
 | lazyLoadingImage | none | image path | lazy loading image |
