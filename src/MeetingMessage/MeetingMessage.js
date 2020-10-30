@@ -37,7 +37,7 @@ export class MeetingMessage extends Component {
             dateString,
             title,
             subject,
-            onMeetingMessageClick,
+            onClick,
             collapseTitle,
             dataSource,
             participants,
@@ -58,7 +58,7 @@ export class MeetingMessage extends Component {
                     </div>
                     <div
                         className="rce-mtmg-body"
-                        onClick={onMeetingMessageClick}>
+                        onClick={onClick}>
                         <div className="rce-mtmg-item">
                             <FaCalendar />
                             <div className="rce-mtmg-content">
@@ -224,7 +224,7 @@ MeetingMessage.defaultProps = {
     avatarFlexible: false,
     dataSource: [],
     participants: [],
-    onMeetingMessageClick: () => void(0),
+    onClick: () => void(0),
     onMeetingTitleClick: () => void(0),
     onMeetingVideoLinkClick: () => void(0),
     onAvatarError: () => void(0),

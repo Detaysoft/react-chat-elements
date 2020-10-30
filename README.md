@@ -143,7 +143,7 @@ import { MessageBox } from 'react-chat-elements'
 | onTitleClick | none | function | message title on click event |
 | onForwardClick | none | function | message forward on click event |
 | onReplyClick | none | function | message reply on click event |
-| onMeetingMessageClick | none | function | meeting message on click event |
+| onClick | none | function | meeting message on click event |
 | onMeetingTitleClick | none | function | meeting title message on click event |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event |
 | onReplyMessageClick | none | function | reply message on click event |
@@ -236,7 +236,7 @@ import { MeetingMessage } from 'react-chat-elements'
 | collapseTitle | none | string | Meeting subtitle |
 | participants | [] | array | Meeting participant array |
 | dataSource | [] | array | meeting list array |
-| onMeetingMessageClick | none | function | meeting message on click event (message(object) is returned) |
+| onClick | none | function | meeting message on click event (message(object) is returned) |
 | onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
 
