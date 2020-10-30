@@ -146,7 +146,7 @@ export class MessageList extends Component {
     }
 
     onMeetingContextMenu(item, i, e) {
-        if (this.props.onContextMenu instanceof Function)
+        if (this.props.onMeetingContextMenu instanceof Function)
             this.props.onMeetingContextMenu(item, i, e);
     }
 
