@@ -236,7 +236,7 @@ import { MeetingMessage } from 'react-chat-elements'
 | collapseTitle | none | string | Meeting subtitle |
 | participants | [] | array | Meeting participant array |
 | dataSource | [] | array | meeting list array |
-| onMeetingMessageClick | none | function | meeting message on click event (message(object) is returned) |
+| onClick | none | function | meeting message on click event (message(object) is returned) |
 | onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
 
