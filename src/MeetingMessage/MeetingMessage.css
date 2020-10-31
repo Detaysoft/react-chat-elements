@@ -105,11 +105,14 @@
 }
 
 .rce-mtmg-right-icon {
-    display: flex;
-    align-items: center;
-    position: relative;
     right: 10px;
     cursor: pointer;
+    height: 100%;
+    background: transparent;
+}
+
+.rce-mtmg-body .rce-dropdown-container {
+    height: 100%;
 }
 
 .rce-mtmg-right-icon > svg {
