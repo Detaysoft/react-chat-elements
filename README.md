@@ -300,6 +300,8 @@ import { MessageList } from 'react-chat-elements'
 | onDownButtonClick | none | function | message list onDownButtonClick |
 | onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
 | onPhotoError | none | function | message list item on error photo |
+| onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
+| moreItems | none | array | archived message more items |
 
 ## ChatList Component
 
