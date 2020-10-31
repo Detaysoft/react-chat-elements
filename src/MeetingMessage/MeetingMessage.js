@@ -38,7 +38,7 @@ export class MeetingMessage extends Component {
             title,
             subject,
             onClick,
-            onMeetingContextMenu,
+            onMeetingMoreClick,
             collapseTitle,
             dataSource,
             participants,
@@ -73,7 +73,7 @@ export class MeetingMessage extends Component {
                         </div>
                         <div
                             className="rce-mtmg-right-icon"
-                            onClick={onMeetingContextMenu}>
+                            onClick={onMeetingMoreClick}>
                             <MdMoreHoriz/>
                         </div>
                     </div>
@@ -228,7 +228,7 @@ MeetingMessage.defaultProps = {
     dataSource: [],
     participants: [],
     onClick: () => void(0),
-    onMeetingContextMenu: () => void(0),
+    onMeetingMoreClick: () => void(0),
     onMeetingTitleClick: () => void(0),
     onMeetingVideoLinkClick: () => void(0),
     onAvatarError: () => void(0),

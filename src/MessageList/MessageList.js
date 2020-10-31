@@ -145,9 +145,9 @@ export class MessageList extends Component {
         }
     }
 
-    onMeetingContextMenu(item, i, e) {
-        if (this.props.onMeetingContextMenu instanceof Function)
-            this.props.onMeetingContextMenu(item, i, e);
+    onMeetingMoreClick(item, i, e) {
+        if (this.props.onMeetingMoreClick instanceof Function)
+            this.props.onMeetingMoreClick(item, i, e);
     }
 
     render() {
@@ -172,7 +172,7 @@ export class MessageList extends Component {
                                 onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
-                                onMeetingContextMenu={this.props.onMeetingContextMenu && ((e) => this.onMeetingContextMenu(x, i, e))}
+                                onMeetingMoreClick={this.props.onMeetingMoreClick && ((e) => this.onMeetingMoreClick(x, i, e))}
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                                 onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
                                 onMeetingTitleClick={this.props.onMeetingTitleClick}
