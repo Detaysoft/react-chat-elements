@@ -13,6 +13,7 @@ import {
 } from'timeago.js';
 
 import Avatar from '../Avatar/Avatar';
+import Dropdown from '../Dropdown/Dropdown';
 
 import classNames from 'classnames';
 
@@ -38,7 +39,8 @@ export class MeetingMessage extends Component {
             title,
             subject,
             onClick,
-            onMeetingMoreClick,
+            onMeetingMoreSelect,
+            moreItems,
             collapseTitle,
             dataSource,
             participants,
@@ -71,10 +73,19 @@ export class MeetingMessage extends Component {
                                 </span>
                             </div>
                         </div>
-                        <div
-                            className="rce-mtmg-right-icon"
-                            onClick={onMeetingMoreClick}>
-                            <MdMoreHoriz/>
+                        <div>
+                            <Dropdown
+                                animationType="bottom"
+                                animationPosition="norteast"
+                                buttonProps={{
+                                    className:'rce-mtmg-right-icon',
+                                    icon: {
+                                        component: <MdMoreHoriz/>,
+                                        size: 24,
+                                    },
+                                }}
+                                items={moreItems}
+                                onSelect={onMeetingMoreSelect}/>
                         </div>
                     </div>
                     <div
@@ -228,7 +239,7 @@ MeetingMessage.defaultProps = {
     dataSource: [],
     participants: [],
     onClick: () => void(0),
-    onMeetingMoreClick: () => void(0),
+    onMeetingMoreSelect: () => void(0),
     onMeetingTitleClick: () => void(0),
     onMeetingVideoLinkClick: () => void(0),
     onAvatarError: () => void(0),

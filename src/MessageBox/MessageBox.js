@@ -198,7 +198,8 @@ export class MessageBox extends Component {
                                         participants={this.props.meeting.participants}
                                         dataSource={this.props.meeting.dataSource}
                                         onClick={this.props.onMeetingMessageClick}
-                                        onMeetingMoreClick={this.props.onMeetingMoreClick}
+                                        onMeetingMoreSelect={this.props.onMeetingMoreSelect}
+                                        moreItems={this.props.moreItems}
                                         onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
                                         onMeetingTitleClick={this.props.onMeetingTitleClick} />
                                 }
