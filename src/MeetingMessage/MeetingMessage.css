@@ -108,7 +108,7 @@
     right: 10px;
     cursor: pointer;
     height: 100%;
-    background: transparent;
+    background: transparent !important;
 }
 
 .rce-mtmg-body .rce-dropdown-container {
