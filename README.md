@@ -147,6 +147,7 @@ import { MessageBox } from 'react-chat-elements'
 | onMeetingTitleClick | none | function | meeting title message on click event |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event |
 | onReplyMessageClick | none | function | reply message on click event |
+| onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
 | replyButton | none | boolean | message reply icon |
@@ -235,10 +236,12 @@ import { MeetingMessage } from 'react-chat-elements'
 | date | new Date() | Date | Meeting date |
 | collapseTitle | none | string | Meeting subtitle |
 | participants | [] | array | Meeting participant array |
+| moreItems | none | array | message more items |
 | dataSource | [] | array | meeting list array |
 | onClick | none | function | meeting message on click event (message(object) is returned) |
 | onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
+| onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
 
 ## SystemMessage Component
 

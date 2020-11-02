@@ -145,6 +145,11 @@ export class MessageList extends Component {
         }
     }
 
+    onMeetingMoreSelect(item, i, e) {
+        if (this.props.onMeetingMoreSelect instanceof Function)
+            this.props.onMeetingMoreSelect(item, i, e);
+    }
+
     render() {
         return (
             <div
@@ -167,6 +172,7 @@ export class MessageList extends Component {
                                 onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
+                                onMeetingMoreSelect={this.props.onMeetingMoreSelect && ((e) => this.onMeetingMoreSelect(x, i, e))}
                                 onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
                                 onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
                                 onMeetingTitleClick={this.props.onMeetingTitleClick}
