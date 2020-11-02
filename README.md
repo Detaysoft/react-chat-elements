@@ -158,6 +158,7 @@ import { MessageBox } from 'react-chat-elements'
 | focus | false | boolean | used in message focus feature in MessageList component, makes style of the component focused |
 | onMessageFocused | none | function | makes focus value false after the message becomes focus |
 | reply | none | object | reply data |
+| onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
 
 ## Reply Message Component
 
@@ -239,6 +240,7 @@ import { MeetingMessage } from 'react-chat-elements'
 | onClick | none | function | meeting message on click event (message(object) is returned) |
 | onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
+| moreItems | none | array | message more items |
 
 ## SystemMessage Component
 
@@ -300,8 +302,6 @@ import { MessageList } from 'react-chat-elements'
 | onDownButtonClick | none | function | message list onDownButtonClick |
 | onContextMenu | none | function | message list item onContextMenu event, gets 3 parameters: message item, index of item, event |
 | onPhotoError | none | function | message list item on error photo |
-| onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
-| moreItems | none | array | message more items |
 
 ## ChatList Component
 

@@ -196,10 +196,10 @@ export class MessageBox extends Component {
                                         dateString={this.props.meeting.dateString}
                                         collapseTitle={this.props.meeting.collapseTitle}
                                         participants={this.props.meeting.participants}
+                                        moreItems={this.props.meeting.moreItems}
                                         dataSource={this.props.meeting.dataSource}
                                         onClick={this.props.onMeetingMessageClick}
                                         onMeetingMoreSelect={this.props.onMeetingMoreSelect}
-                                        moreItems={this.props.moreItems}
                                         onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
                                         onMeetingTitleClick={this.props.onMeetingTitleClick} />
                                 }
