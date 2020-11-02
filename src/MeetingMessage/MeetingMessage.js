@@ -175,6 +175,7 @@ export class MeetingMessage extends Component {
                                                                         ))
                                                                     }
                                                                     {
+                                                                        x.event.avatars && x.event.avatarsLimit &&
                                                                         x.event.avatars.length > x.event.avatarsLimit &&
                                                                         <div className='rce-mitem-length rce-mitem-tooltip' tooltip={x.event.avatars.slice(x.event.avatarsLimit, x.event.avatars.length).map(avatar => avatar.title).join(",")}>
                                                                             <span className="rce-mitem-tooltip-text" >
