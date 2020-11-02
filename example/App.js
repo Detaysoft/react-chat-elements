@@ -127,7 +127,9 @@ export class App extends Component {
                                 title: loremIpsum({ count: 2, units: 'words' }),
                                 avatars: Array(this.token() + 2).fill(1).map(x => ({
                                     src: `data:image/png;base64,${this.photo()}`,
+                                    title: "react, rce"
                                 })),
+                                avatarsLimit: 5,
                             },
                             record: {
                                 avatar: `data:image/png;base64,${this.photo()}`,
