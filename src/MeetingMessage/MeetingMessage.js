@@ -165,13 +165,24 @@ export class MeetingMessage extends Component {
                                                         </div>
                                                         <div className="rce-mitem-avatar-content">
                                                             {
-                                                                x.event.avatars &&
-                                                                x.event.avatars.map((x, i) => x instanceof Avatar ? x : (
-                                                                    <div key={i} className="rce-mitem-avatar">
-                                                                        <Avatar
-                                                                            src={x.src}/>
-                                                                    </div>
-                                                                ))
+                                                                <div className="rce-mitem-avatar">
+                                                                    {
+                                                                        x.event.avatars &&
+                                                                        x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => x instanceof Avatar ? x : (
+                                                                            <Avatar
+                                                                                key={i}
+                                                                                src={x.src} />
+                                                                        ))
+                                                                    }
+                                                                    {
+                                                                        x.event.avatars.length > x.event.avatarsLimit &&
+                                                                        <div className='rce-mitem-length rce-mitem-tooltip' tooltip={x.event.avatars.slice(x.event.avatarsLimit, x.event.avatars.length).map(avatar => avatar.title).join(",")}>
+                                                                            <span className="rce-mitem-tooltip-text" >
+                                                                                {'+' + (x.event.avatars.length - x.event.avatarsLimit)}
+                                                                            </span>
+                                                                        </div>
+                                                                    }
+                                                                </div>
                                                             }
                                                         </div>
                                                         {

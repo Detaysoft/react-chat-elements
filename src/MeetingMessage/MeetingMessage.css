@@ -229,6 +229,66 @@
 
 .rce-mitem-avatar {
     padding: 0 3px 0 0;
+    display: flex;
+}
+
+.rce-mitem-tooltip {
+    display: inline;
+    position: relative;
+}
+
+.rce-mitem-tooltip-text {
+    margin: 5px
+}
+
+.rce-mitem-tooltip-text:after{
+    content: "";
+    left: 15%;
+    top: 29px;
+    position: absolute;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 11px solid #444;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+.rce-mitem-tooltip[tooltip]:after {
+    display: flex;
+    justify-content: center;
+    background: #444;
+    border-radius: 8px;
+    color: #fff;
+    content: attr(tooltip);
+    font-size: 14px;
+    padding: 5px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    min-width: 415px;
+    max-width: 415px;
+    top: 40px;
+    right: -13px;
+    z-index: 1;
+}
+
+.rce-mitem-tooltip-text:hover:after,
+.rce-mitem-tooltip[tooltip]:hover:after {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.rce-mitem-length {
+    color: #fff;
+    font-size: 14px;
+    background: #e48989;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    border-radius: 50%;
 }
 
 .rce-mitem-avatar img {
