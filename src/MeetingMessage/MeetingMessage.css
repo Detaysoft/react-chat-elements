@@ -282,6 +282,10 @@
     transition: opacity 0.8s linear  0.1s;
 }
 
+.rce-mitem-tooltip[tooltip]:hover .rce-mitem-tooltip-text:after {
+    opacity: 1;
+}
+
 .rce-mitem-length {
     color: #fff;
     font-size: 14px;
