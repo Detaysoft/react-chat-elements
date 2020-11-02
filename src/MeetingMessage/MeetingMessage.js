@@ -38,14 +38,15 @@ export class MeetingMessage extends Component {
             dateString,
             title,
             subject,
-            onClick,
-            onMeetingMoreSelect,
-            moreItems,
             collapseTitle,
-            dataSource,
+            moreItems,
             participants,
+            dataSource,
+
+            onClick,
             onMeetingTitleClick,
             onMeetingVideoLinkClick,
+            onMeetingMoreSelect,
         } = this.props;
 
         const PARTICIPANT_LIMIT = this.props.participantsLimit;
@@ -73,20 +74,25 @@ export class MeetingMessage extends Component {
                                 </span>
                             </div>
                         </div>
-                        <div>
-                            <Dropdown
-                                animationType="bottom"
-                                animationPosition="norteast"
-                                buttonProps={{
-                                    className:'rce-mtmg-right-icon',
-                                    icon: {
-                                        component: <MdMoreHoriz/>,
-                                        size: 24,
-                                    },
-                                }}
-                                items={moreItems}
-                                onSelect={onMeetingMoreSelect}/>
-                        </div>
+
+                        {
+                            moreItems &&
+                            moreItems.length > 0 &&
+                            <div>
+                                <Dropdown
+                                    animationType="bottom"
+                                    animationPosition="norteast"
+                                    buttonProps={{
+                                        className:'rce-mtmg-right-icon',
+                                        icon: {
+                                            component: <MdMoreHoriz/>,
+                                            size: 24,
+                                        },
+                                    }}
+                                    items={moreItems}
+                                    onSelect={onMeetingMoreSelect}/>
+                            </div>
+                        }
                     </div>
                     <div
                         className="rce-mtmg-body-bottom"
@@ -248,6 +254,7 @@ MeetingMessage.defaultProps = {
     collapseTitle: '',
     participantsLimit: 3,
     avatarFlexible: false,
+    moreItems: [],
     dataSource: [],
     participants: [],
     onClick: () => void(0),
