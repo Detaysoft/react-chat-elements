@@ -8,6 +8,7 @@ import LocationMessage from '../LocationMessage/LocationMessage';
 import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 import ReplyMessage from '../ReplyMessage/ReplyMessage';
 import MeetingMessage from '../MeetingMessage/MeetingMessage';
+import VideoMessage from '../VideoMessage/VideoMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -40,7 +41,7 @@ export class MessageBox extends Component {
 
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = !/(text|file|meeting)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
+        var thatAbsoluteTime = !/(text|video|file|meeting)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
@@ -156,6 +157,19 @@ export class MessageBox extends Component {
                                 {
                                     this.props.type === 'photo' &&
                                     <PhotoMessage
+                                        onOpen={this.props.onOpen}
+                                        onDownload={this.props.onDownload}
+                                        onLoad={this.props.onLoad}
+                                        onPhotoError={this.props.onPhotoError}
+                                        data={this.props.data}
+                                        width={this.props.width}
+                                        height={this.props.height}
+                                        text={this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'video' &&
+                                    <VideoMessage
                                         onOpen={this.props.onOpen}
                                         onDownload={this.props.onDownload}
                                         onLoad={this.props.onLoad}

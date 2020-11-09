@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoMessage component should render without issues 1`] = `
+<div
+  className="rce-mbox-video padding-time"
+>
+  <div
+    className="rce-mbox-video--video"
+  >
+    <img
+      onClick={null}
+      onError={null}
+      onLoad={null}
+    />
+  </div>
+</div>
+`;
