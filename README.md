@@ -101,9 +101,9 @@ import { ChatItem } from 'react-chat-elements'
 
 ## MessageBox Component
 
-| file | photo | text | location |
-| ---- | ---- | ---- | ---- |
-| ![file-message](https://user-images.githubusercontent.com/15075759/29243524-786baf8c-7fa9-11e7-92b2-3960cc34fcf4.png) | ![photo-message](https://user-images.githubusercontent.com/15075759/29243556-1368c4e8-7faa-11e7-9fdd-57b67542c381.png) | ![text-message](https://user-images.githubusercontent.com/15075759/29243573-a809456e-7faa-11e7-97b4-d258bc6a7728.png) | ![location-message](https://user-images.githubusercontent.com/15075759/30582943-2b3338aa-9d2e-11e7-93d5-8614563b9217.png)
+| file | photo | text | location | video |
+| ---- | ---- | ---- | ---- | ---- |
+| ![file-message](https://user-images.githubusercontent.com/15075759/29243524-786baf8c-7fa9-11e7-92b2-3960cc34fcf4.png) | ![photo-message](https://user-images.githubusercontent.com/15075759/29243556-1368c4e8-7faa-11e7-9fdd-57b67542c381.png) | ![text-message](https://user-images.githubusercontent.com/15075759/29243573-a809456e-7faa-11e7-97b4-d258bc6a7728.png) | ![location-message](https://user-images.githubusercontent.com/15075759/30582943-2b3338aa-9d2e-11e7-93d5-8614563b9217.png) | ![](https://user-images.githubusercontent.com/15075759/98530021-74ca1300-228f-11eb-88ab-5ae5ae33616d.png)
 
 
 ```javascript
@@ -128,7 +128,7 @@ import { MessageBox } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | id | i (index) | string | message box id |
 | position | left | string | message box position |
-| type | text | string | message type (text, photo, file, location, spotify) |
+| type | text | string | message type (text, photo, file, location, spotify, video) |
 | text | none | string | message text |
 | title | none | string | message title |
 | titleColor | none | string(color) | message title color |
