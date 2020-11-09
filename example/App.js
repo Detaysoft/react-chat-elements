@@ -38,10 +38,12 @@ export class App extends Component {
             list: 'chat',
             messageList: [],
         };
+
+        this.addMessage = this.addMessage.bind(this);
     }
 
     UNSAFE_componentWillMount() {
-        // setInterval(this.addMessage.bind(this), 3000);
+        this.addMessage(6)
     }
 
     getRandomColor() {
@@ -54,7 +56,7 @@ export class App extends Component {
     }
 
     token() {
-        return (parseInt(Math.random() * 10 % 6));
+        return (parseInt(Math.random() * 10 % 7));
     }
 
     photo(size) {
@@ -64,35 +66,39 @@ export class App extends Component {
         }).toString()
     }
 
-    random(type) {
+    random(type, mtype) {
         switch (type) {
             case 'message':
-                var type = this.token();
+                mtype = mtype || this.token();
                 var status = 'waiting';
-                switch (type) {
+                switch (mtype) {
                     case 0:
-                        type = 'photo';
+                        mtype = 'photo';
                         status = 'sent';
                         break;
                     case 1:
-                        type = 'file';
+                        mtype = 'file';
                         status = 'sent';
                         break;
                     case 2:
-                        type = 'system';
+                        mtype = 'system';
                         status = 'received';
                         break;
                     case 3:
-                        type = 'location';
+                        mtype = 'location';
                         break;
                     case 4:
-                        type = 'spotify';
+                        mtype = 'spotify';
                         break;
                     case 5:
-                        type = 'meeting';
+                        mtype = 'meeting';
+                        break;
+                    case 6:
+                        mtype = 'video';
+                        status = 'sent';
                         break;
                     default:
-                        type = 'text';
+                        mtype = 'text';
                         status = 'read';
                         break;
                 }
@@ -139,17 +145,19 @@ export class App extends Component {
                             },
                         })),
                     }) : null,
-                    type: type,
+                    type: mtype,
                     theme: 'white',
                     view: 'list',
                     title: loremIpsum({ count: 2, units: 'words' }),
                     titleColor: this.getRandomColor(),
-                    text: type === 'spotify' ? 'spotify:track:7wGoVu4Dady5GV0Sv4UIsx' : loremIpsum({ count: 1, units: 'sentences' }),
+                    text: mtype === 'spotify' ? 'spotify:track:0QjjaCaXE45mvhCnV3C0TA' : loremIpsum({ count: 1, units: 'sentences' }),
                     data: {
+                        videoURL: this.token() >= 1 ? 'https://www.w3schools.com/html/mov_bbb.mp4' : 'http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4',
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
                             click: true,
-                            loading: .5,
+                            loading: 0.5,
+                            download: mtype === 'video',
                         },
                         size: "100MB",
                         width: 300,
@@ -238,9 +246,9 @@ export class App extends Component {
         }
     }
 
-    addMessage() {
+    addMessage(mtype) {
         var list = this.state.messageList;
-        list.push(this.random('message'));
+        list.push(this.random('message', mtype));
         this.setState({
             messageList: list,
         });
@@ -355,7 +363,7 @@ export class App extends Component {
                         rightButtons={
                             <Button
                                 text='Gönder'
-                                onClick={this.addMessage.bind(this)} />
+                                onClick={() => this.addMessage()} />
                         } />
                 </div>
             </div>
