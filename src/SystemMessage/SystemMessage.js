@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SystemMessage.css';
 
 const classNames = require('classnames');
 
-export class SystemMessage extends Component {
+export class SystemMessage extends React.PureComponent {
     render() {
         return (
             <div className={classNames("rce-container-smsg", this.props.className)}>

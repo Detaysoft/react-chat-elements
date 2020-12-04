@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './LocationMessage.css';
 
 const classNames = require('classnames');
@@ -6,7 +6,7 @@ const classNames = require('classnames');
 const STATIC_URL = 'https://maps.googleapis.com/maps/api/staticmap?markers=color:MARKER_COLOR|LATITUDE,LONGITUDE&zoom=ZOOM&size=270x200&scale=2&key=KEY';
 const MAP_URL = 'https://www.google.com/maps/search/?api=1&query=LATITUDE,LONGITUDE&zoom=ZOOM';
 
-export class LocationMessage extends Component {
+export class LocationMessage extends React.PureComponent {
     constructor(props) {
         super(props);
 

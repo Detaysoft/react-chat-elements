@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './MeetingMessage.css';
 
 import FaCalendar from 'react-icons/lib/fa/calendar';
@@ -17,7 +17,7 @@ import Dropdown from '../Dropdown/Dropdown';
 
 import classNames from 'classnames';
 
-export class MeetingMessage extends Component {
+export class MeetingMessage extends React.PureComponent {
     constructor(props) {
         super(props);
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './PhotoMessage.css';
 
@@ -8,7 +8,7 @@ import FaError from 'react-icons/lib/fa/exclamation-triangle';
 const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
 
-export class PhotoMessage extends Component {
+export class PhotoMessage extends React.PureComponent {
     render() {
         var progressOptions = {
             strokeWidth: 2.3,

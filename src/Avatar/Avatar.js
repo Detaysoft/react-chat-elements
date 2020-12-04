@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Avatar.css';
 
 const classNames = require('classnames');
 
 const loadedAvatars = [];
 
-export class Avatar extends Component {
+export class Avatar extends React.PureComponent {
     constructor(props) {
         super(props);
 

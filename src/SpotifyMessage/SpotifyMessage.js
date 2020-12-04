@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SpotifyMessage.css';
 
 const classNames = require('classnames');
 
-export class SpotifyMessage extends Component {
+export class SpotifyMessage extends React.PureComponent {
     toUrl() {
         var formBody = [];
         var data = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './FileMessage.css';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
@@ -8,7 +8,7 @@ import FaFile from 'react-icons/lib/fa/file';
 const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;
 
-export class FileMessage extends Component {
+export class FileMessage extends React.PureComponent {
 
     onClick(e) {
         if (!this.props.data.status)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './MessageBox.css';
 
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
@@ -25,7 +25,7 @@ import {
 
 import classNames from 'classnames';
 
-export class MessageBox extends Component {
+export class MessageBox extends React.PureComponent {
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.focus !== this.props.focus && nextProps.focus === true) {
             if (this.refs['message']) {
