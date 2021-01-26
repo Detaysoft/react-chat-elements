@@ -14,7 +14,7 @@ import ReplyMessage from './ReplyMessage/ReplyMessage';
 import MeetingItem from './MeetingItem/MeetingItem';
 import MeetingList from './MeetingList/MeetingList';
 import MeetingMessage from './MeetingMessage/MeetingMessage';
-
+import AudioMessage from './AudioMessage/AudioMessage';
 
 export {
     MessageBox,
@@ -33,4 +33,5 @@ export {
     MeetingItem,
     MeetingList,
     MeetingMessage,
+    AudioMessage,
 };

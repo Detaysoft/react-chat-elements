@@ -43,7 +43,7 @@ export class App extends Component {
     }
 
     UNSAFE_componentWillMount() {
-        this.addMessage(6)
+        this.addMessage(7)
     }
 
     getRandomColor() {
@@ -56,7 +56,7 @@ export class App extends Component {
     }
 
     token() {
-        return (parseInt(Math.random() * 10 % 7));
+        return (parseInt(Math.random() * 10 % 8));
     }
 
     photo(size) {
@@ -97,6 +97,9 @@ export class App extends Component {
                         mtype = 'video';
                         status = 'sent';
                         break;
+                    case 7:
+                        mtype = 'audio';
+                        break;
                     default:
                         mtype = 'text';
                         status = 'read';
@@ -119,7 +122,7 @@ export class App extends Component {
                         date: +new Date(),
                         collapseTitle: loremIpsum({ count: 2, units: 'words' }),
                         participants: Array(this.token() + 6).fill(1).map(x => ({
-                            id: parseInt(Math.random() * 10 % 6),
+                            id: parseInt(Math.random() * 10 % 7),
                             title: loremIpsum({ count: 1, units: 'words' }),
                         })),
                         dataSource: Array(this.token() + 5).fill(1).map(x => ({
@@ -153,6 +156,7 @@ export class App extends Component {
                     text: mtype === 'spotify' ? 'spotify:track:0QjjaCaXE45mvhCnV3C0TA' : loremIpsum({ count: 1, units: 'sentences' }),
                     data: {
                         videoURL: this.token() >= 1 ? 'https://www.w3schools.com/html/mov_bbb.mp4' : 'http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4',
+                        audioURL: 'https://www.w3schools.com/html/horse.mp3',
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
                             click: true,
