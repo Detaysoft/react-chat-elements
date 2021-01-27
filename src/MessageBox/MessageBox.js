@@ -220,7 +220,9 @@ export class MessageBox extends React.PureComponent {
                                 }
                                 {
                                     this.props.type === 'audio' &&
-                                    <AudioMessage audioURL={this.props.data.audioURL}/>
+                                    <AudioMessage 
+                                        audioURL={this.props.data.audioURL}
+                                        text={this.props.text} />
                                 }
 
                                 <div
