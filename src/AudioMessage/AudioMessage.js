@@ -6,7 +6,7 @@ export default class AudioMessage extends React.PureComponent {
     render() {
         return (
             <div className={'rce-mbox-audio'}>
-                <audio controls controlsList="nodownload">
+                <audio controls controlsList={this.props.download ? "download" : "nodownload"}>
                     <source src={this.props.audioURL} type="audio/mp3"/>
                     Your browser does not support the audio element.
                 </audio>
@@ -24,4 +24,5 @@ export default class AudioMessage extends React.PureComponent {
 
 AudioMessage.defaultProps = {
     audioURL: null,
+    download: false,
 };
