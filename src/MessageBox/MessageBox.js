@@ -9,6 +9,7 @@ import SpotifyMessage from '../SpotifyMessage/SpotifyMessage';
 import ReplyMessage from '../ReplyMessage/ReplyMessage';
 import MeetingMessage from '../MeetingMessage/MeetingMessage';
 import VideoMessage from '../VideoMessage/VideoMessage';
+import AudioMessage from '../AudioMessage/AudioMessage';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -41,7 +42,7 @@ export class MessageBox extends React.PureComponent {
 
     render() {
         var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = !/(text|video|file|meeting)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
+        var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
             this.props.dateString ||
@@ -216,6 +217,15 @@ export class MessageBox extends React.PureComponent {
                                         onMeetingMoreSelect={this.props.onMeetingMoreSelect}
                                         onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
                                         onMeetingTitleClick={this.props.onMeetingTitleClick} />
+                                }
+                                {
+                                    this.props.type === 'audio' &&
+                                    <AudioMessage
+                                        onOpen={this.props.onOpen}
+                                        onDownload={this.props.onDownload}
+                                        onLoad={this.props.onLoad}
+                                        data={this.props.data}
+                                        text={this.props.text} />
                                 }
 
                                 <div

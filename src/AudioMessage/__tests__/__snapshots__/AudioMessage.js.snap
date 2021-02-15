@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AudioMessage component should render without issues 1`] = `
+<div
+  className="rce-mbox-audio"
+>
+  <audio
+    controls={true}
+    controlsList="nodownload"
+  >
+    <source
+      type="audio/mp3"
+    />
+    Your browser does not support the audio element.
+  </audio>
+</div>
+`;
