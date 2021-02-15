@@ -11,7 +11,6 @@ export default class AudioMessage extends React.PureComponent {
                     Your browser does not support the audio element.
                 </audio>
                 {
-                    this.props.showText === true &&
                     this.props.text &&
                     <div className='rce-mbox-text'>
                         {this.props.text}
@@ -25,5 +24,4 @@ export default class AudioMessage extends React.PureComponent {
 AudioMessage.defaultProps = {
     audioURL: null,
     download: false,
-    showText: false,
 };
