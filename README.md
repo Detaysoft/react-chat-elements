@@ -128,7 +128,7 @@ import { MessageBox } from 'react-chat-elements'
 | ---- | ---- | ---- | ---- |
 | id | i (index) | string | message box id |
 | position | left | string | message box position |
-| type | text | string | message type (text, photo, file, location, spotify, video) |
+| type | text | string | message type (text, photo, file, location, spotify, video, audio) |
 | text | none | string | message text |
 | title | none | string | message title |
 | titleColor | none | string(color) | message title color |
