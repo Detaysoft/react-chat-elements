@@ -19,6 +19,7 @@ import IoDoneAll from 'react-icons/lib/io/android-done-all';
 import MdIosTime from 'react-icons/lib/md/access-time';
 import MdCheck from 'react-icons/lib/md/check';
 import MdMessage from 'react-icons/lib/md/message';
+import MdErrorOutline from 'react-icons/lib/md/error-outline';
 
 import {
     format,
@@ -265,6 +266,11 @@ export class MessageBox extends React.PureComponent {
                                             {
                                                 this.props.status === 'read' &&
                                                 <IoDoneAll color='#4FC3F7'/>
+                                            }
+
+                                            {
+                                                this.props.status === 'error' &&
+                                                <MdErrorOutline color='#e91e63'/>
                                             }
                                         </span>
                                     }
