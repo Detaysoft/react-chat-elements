@@ -19,6 +19,7 @@ import IoDoneAll from 'react-icons/lib/io/android-done-all';
 import MdIosTime from 'react-icons/lib/md/access-time';
 import MdCheck from 'react-icons/lib/md/check';
 import MdMessage from 'react-icons/lib/md/message';
+import MdRemove from 'react-icons/lib/md/delete';
 
 import {
     format,
@@ -100,6 +101,19 @@ export class MessageBox extends React.PureComponent {
                                         )}
                                         onClick={this.props.onReplyClick}>
                                             <MdMessage />
+                                    </div>
+                                }
+
+                                {
+                                    this.props.removeButton === true &&
+                                    <div
+                                        className={classNames(
+                                            'rce-mbox-remove',
+                                            { 'rce-mbox-remove-right': this.props.position === 'left' },
+                                            { 'rce-mbox-remove-left': this.props.position === 'right' }
+                                        )}
+                                        onClick={this.props.onRemoveMessageClick}>
+                                            <MdRemove />
                                     </div>
                                 }
 
@@ -314,6 +328,7 @@ MessageBox.defaultProps = {
     onTitleClick: null,
     onForwardClick: null,
     onReplyClick: null,
+    onRemoveMessageClick: null,
     onReplyMessageClick: null,
     date: new Date(),
     data: {},

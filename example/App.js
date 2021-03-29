@@ -110,6 +110,7 @@ export class App extends Component {
                     position: (this.token() >= 1 ? 'right' : 'left'),
                     forwarded: true,
                     replyButton: true,
+                    removeButton: true,
                     reply: this.token() >= 1 ? ({
                         photoURL: this.token() >= 1 ? `data:image/png;base64,${this.photo(150)}` : null,
                         title: loremIpsum({ count: 2, units: 'words' }),
@@ -176,6 +177,9 @@ export class App extends Component {
                     status: status,
                     date: +new Date(),
                     onReplyMessageClick: () => {
+                        console.log('onReplyMessageClick');
+                    },
+                    onRemoveMessageClick: () => {
                         console.log('onReplyMessageClick');
                     },
                     avatar: `data:image/png;base64,${this.photo()}`,
