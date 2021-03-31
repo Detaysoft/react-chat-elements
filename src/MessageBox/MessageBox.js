@@ -20,6 +20,7 @@ import MdIosTime from 'react-icons/lib/md/access-time';
 import MdCheck from 'react-icons/lib/md/check';
 import MdMessage from 'react-icons/lib/md/message';
 import MdRemove from 'react-icons/lib/md/delete';
+import MdBlock from 'react-icons/lib/md/block';
 
 import {
     format,
@@ -105,12 +106,17 @@ export class MessageBox extends React.PureComponent {
                                 }
 
                                 {
+                                    this.props.retracted === false &&
                                     this.props.removeButton === true &&
                                     <div
-                                        className={classNames(
+                                        className={this.props.forwarded === true ? classNames(
                                             'rce-mbox-remove',
                                             { 'rce-mbox-remove-right': this.props.position === 'left' },
                                             { 'rce-mbox-remove-left': this.props.position === 'right' }
+                                        ) : classNames(
+                                            'rce-mbox-forward',
+                                            { 'rce-mbox-reply-btn-right': this.props.position === 'left' },
+                                            { 'rce-mbox-reply-btn-left': this.props.position === 'right' }
                                         )}
                                         onClick={this.props.onRemoveMessageClick}>
                                             <MdRemove />
@@ -150,7 +156,15 @@ export class MessageBox extends React.PureComponent {
 
                                 {
                                     this.props.type === 'text' &&
-                                    <div className="rce-mbox-text">
+                                    <div className={classNames('rce-mbox-text', {
+                                        'rce-mbox-text-retracted': this.props.retracted,
+                                        'left': this.props.position === 'left',
+                                        'right': this.props.position === 'right',
+                                    })}>
+                                        {
+                                            this.props.retracted &&
+                                            <MdBlock />
+                                        }
                                         {this.props.text}
                                     </div>
                                 }

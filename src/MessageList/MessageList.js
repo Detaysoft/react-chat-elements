@@ -89,6 +89,11 @@ export class MessageList extends Component {
             this.props.onReplyMessageClick(item, i, e);
     }
 
+    onRemoveMessageClick(item, i, e) {
+        if (this.props.onRemoveMessageClick instanceof Function)
+            this.props.onRemoveMessageClick(item, i, e);
+    }
+
     onContextMenu(item, i, e) {
         if (this.props.onContextMenu instanceof Function)
             this.props.onContextMenu(item, i, e);

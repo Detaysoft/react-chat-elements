@@ -8,6 +8,7 @@ import {
 } from'timeago.js';
 
 import classNames from 'classnames';
+import MdBlock from 'react-icons/lib/md/block';
 
 export class ChatItem extends Component {
 
