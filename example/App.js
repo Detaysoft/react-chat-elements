@@ -181,7 +181,7 @@ export class App extends Component {
                         console.log('onReplyMessageClick');
                     },
                     onRemoveMessageClick: () => {
-                        console.log('onReplyMessageClick');
+                        console.log('onRemoveMessageClick');
                     },
                     avatar: `data:image/png;base64,${this.photo()}`,
                 };
