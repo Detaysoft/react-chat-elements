@@ -106,7 +106,7 @@ export class MessageBox extends React.PureComponent {
                                 }
 
                                 {
-                                    this.props.retracted === false &&
+                                    !this.props.retracted &&
                                     this.props.removeButton === true &&
                                     <div
                                         className={this.props.forwarded === true ? classNames(
