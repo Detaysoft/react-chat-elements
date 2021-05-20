@@ -76,6 +76,7 @@ export class MessageBox extends React.PureComponent {
                                 className='rce-mbox-body'
                                 onContextMenu={this.props.onContextMenu}>
                                 {
+                                    !this.props.retracted &&
                                     this.props.forwarded === true &&
                                     <div
                                         className={classNames(
@@ -89,6 +90,7 @@ export class MessageBox extends React.PureComponent {
                                 }
 
                                 {
+                                    !this.props.retracted &&
                                     this.props.replyButton === true &&
                                     <div
                                         className={this.props.forwarded !== true ? classNames(
