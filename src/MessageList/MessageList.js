@@ -89,6 +89,11 @@ export class MessageList extends Component {
             this.props.onReplyMessageClick(item, i, e);
     }
 
+    onRemoveMessageClick(item, i, e) {
+        if (this.props.onRemoveMessageClick instanceof Function)
+            this.props.onRemoveMessageClick(item, i, e);
+    }
+
     onContextMenu(item, i, e) {
         if (this.props.onContextMenu instanceof Function)
             this.props.onContextMenu(item, i, e);
@@ -170,6 +175,7 @@ export class MessageList extends Component {
                                 onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
                                 onReplyClick={this.props.onReplyClick && ((e) => this.onReplyClick(x, i, e))}
                                 onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
+                                onRemoveMessageClick={this.props.onRemoveMessageClick && ((e) => this.onRemoveMessageClick(x, i, e))}
                                 onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
                                 onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
                                 onMeetingMoreSelect={this.props.onMeetingMoreSelect && ((e) => this.onMeetingMoreSelect(x, i, e))}

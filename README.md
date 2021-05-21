@@ -147,10 +147,12 @@ import { MessageBox } from 'react-chat-elements'
 | onMeetingTitleClick | none | function | meeting title message on click event |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event |
 | onReplyMessageClick | none | function | reply message on click event |
+| onRemoveMessageClick | none | function | message remove on click event |
 | onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
 | replyButton | none | boolean | message reply icon |
+| removeButton | none | boolean | message remove icon |
 | status | none | string | message status info (waiting, sent, received, read) |
 | notch | true | boolean | message box notch |
 | avatar | none | url | message box avatar url |
@@ -159,6 +161,7 @@ import { MessageBox } from 'react-chat-elements'
 | focus | false | boolean | used in message focus feature in MessageList component, makes style of the component focused |
 | onMessageFocused | none | function | makes focus value false after the message becomes focus |
 | reply | none | object | reply data |
+| retracted | none | boolean | message deleted or retracted |
 
 ## Reply Message Component
 

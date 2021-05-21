@@ -2,7 +2,7 @@
     flex-direction: column;
     display: block;
     overflow-x: hidden;
-    min-width: 200px;
+    min-width: 300px;
 }
 
 .rce-mbox-forward {
@@ -58,6 +58,49 @@
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-right {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rce-mbox-remove {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background: #fff;
+    position: absolute;
+    /*display: none;*/
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.rce-mbox-remove-left {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    left: -120px;
+}
+
+.rce-mbox-remove-right {
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    right: -120px;
+}
+
+.rce-container-mbox:hover .rce-mbox-remove-left {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rce-container-mbox:hover .rce-mbox-remove-right {
     opacity: 1;
     visibility: visible;
 }
@@ -131,6 +174,25 @@
 .rce-mbox-text {
     font-size: 13.6px;
     word-break: break-word;
+}
+
+.rce-mbox-text-retracted {
+    font-style: italic;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+.rce-mbox-text.rce-mbox-text-retracted svg {
+    margin-right: 3px;
+}
+
+.rce-mbox-text-retracted.left {
+    color: #555555b3 !important;
+}
+
+.rce-mbox-text-retracted.right {
+    color: #efefefb3 !important;
 }
 
 .rce-mbox-text:after {
