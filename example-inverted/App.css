@@ -1,0 +1,52 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, ubuntu;
+    background: navajowhite;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+input,
+button {
+    font-family: verdana, ubuntu;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.chat-list {
+    min-width: 240px;
+    max-width: 380px;
+    overflow: auto;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-list {
+    flex: 1;
+    min-width: 140px;
+    overflow: auto;
+}
+
+.input-area {
+    height: 50px;
+    background: red;
+}

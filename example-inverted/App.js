@@ -12,7 +12,6 @@ import {
     SideBar,
     Dropdown,
     Popup,
-    MeetingList,
 } from '../src';
 
 import FaSearch from 'react-icons/lib/fa/search';
@@ -35,15 +34,12 @@ export class App extends Component {
 
         this.state = {
             show: true,
-            list: 'chat',
             messageList: [],
         };
-
-        this.addMessage = this.addMessage.bind(this);
     }
 
-    UNSAFE_componentWillMount() {
-        this.addMessage(7)
+    componentWillMount() {
+        // setInterval(this.addMessage.bind(this), 3000);
     }
 
     getRandomColor() {
@@ -56,7 +52,7 @@ export class App extends Component {
     }
 
     token() {
-        return (parseInt(Math.random() * 10 % 8));
+        return (parseInt(Math.random() * 10 % 6));
     }
 
     photo(size) {
@@ -66,42 +62,32 @@ export class App extends Component {
         }).toString()
     }
 
-    random(type, mtype) {
+    random(type) {
         switch (type) {
             case 'message':
-                mtype = mtype || this.token();
+                var type = this.token();
                 var status = 'waiting';
-                switch (mtype) {
+                switch (type) {
                     case 0:
-                        mtype = 'photo';
+                        type = 'photo';
                         status = 'sent';
                         break;
                     case 1:
-                        mtype = 'file';
+                        type = 'file';
                         status = 'sent';
                         break;
                     case 2:
-                        mtype = 'system';
+                        type = 'system';
                         status = 'received';
                         break;
                     case 3:
-                        mtype = 'location';
+                        type = 'location';
                         break;
                     case 4:
-                        mtype = 'spotify';
-                        break;
-                    case 5:
-                        mtype = 'meeting';
-                        break;
-                    case 6:
-                        mtype = 'video';
-                        status = 'sent';
-                        break;
-                    case 7:
-                        mtype = 'audio';
+                        type = 'spotify';
                         break;
                     default:
-                        mtype = 'text';
+                        type = 'text';
                         status = 'read';
                         break;
                 }
@@ -109,61 +95,17 @@ export class App extends Component {
                 return {
                     position: (this.token() >= 1 ? 'right' : 'left'),
                     forwarded: true,
-                    replyButton: true,
-                    removeButton: true,
-                    retracted: false,
-                    reply: this.token() >= 1 ? ({
-                        photoURL: this.token() >= 1 ? `data:image/png;base64,${this.photo(150)}` : null,
-                        title: loremIpsum({ count: 2, units: 'words' }),
-                        titleColor: this.getRandomColor(),
-                        message: loremIpsum({ count: 1, units: 'sentences' }),
-                    }) : null,
-                    meeting: this.token() >= 1 ? ({
-                        subject: loremIpsum({ count: 2, units: 'words' }),
-                        title: loremIpsum({ count: 2, units: 'words' }),
-                        date: +new Date(),
-                        collapseTitle: loremIpsum({ count: 2, units: 'words' }),
-                        participants: Array(this.token() + 6).fill(1).map(x => ({
-                            id: parseInt(Math.random() * 10 % 7),
-                            title: loremIpsum({ count: 1, units: 'words' }),
-                        })),
-                        dataSource: Array(this.token() + 5).fill(1).map(x => ({
-                            id: String(Math.random()),
-                            avatar: `data:image/png;base64,${this.photo()}`,
-                            message: loremIpsum({ count: 1, units: 'sentences' }),
-                            title: loremIpsum({ count: 2, units: 'words' }),
-                            avatarFlexible: true,
-                            date: +new Date(),
-                            event: {
-                                title: loremIpsum({ count: 2, units: 'words' }),
-                                avatars: Array(this.token() + 2).fill(1).map(x => ({
-                                    src: `data:image/png;base64,${this.photo()}`,
-                                    title: "react, rce"
-                                })),
-                                avatarsLimit: 5,
-                            },
-                            record: {
-                                avatar: `data:image/png;base64,${this.photo()}`,
-                                title: loremIpsum({ count: 1, units: 'words' }),
-                                savedBy: 'Kaydeden: ' + loremIpsum({ count: 2, units: 'words' }),
-                                time: new Date().toLocaleString(),
-                            },
-                        })),
-                    }) : null,
-                    type: mtype,
+                    type: type,
                     theme: 'white',
                     view: 'list',
                     title: loremIpsum({ count: 2, units: 'words' }),
                     titleColor: this.getRandomColor(),
-                    text: mtype === 'spotify' ? 'spotify:track:0QjjaCaXE45mvhCnV3C0TA' : loremIpsum({ count: 1, units: 'sentences' }),
+                    text: type === 'spotify' ? 'spotify:track:7wGoVu4Dady5GV0Sv4UIsx' : loremIpsum({ count: 1, units: 'sentences' }),
                     data: {
-                        videoURL: this.token() >= 1 ? 'https://www.w3schools.com/html/mov_bbb.mp4' : 'http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4',
-                        audioURL: 'https://www.w3schools.com/html/horse.mp3',
                         uri: `data:image/png;base64,${this.photo(150)}`,
                         status: {
                             click: true,
-                            loading: 0.5,
-                            download: mtype === 'video',
+                            loading: .5,
                         },
                         size: "100MB",
                         width: 300,
@@ -177,12 +119,6 @@ export class App extends Component {
                     },
                     status: status,
                     date: +new Date(),
-                    onReplyMessageClick: () => {
-                        console.log('onReplyMessageClick');
-                    },
-                    onRemoveMessageClick: () => {
-                        console.log('onRemoveMessageClick');
-                    },
                     avatar: `data:image/png;base64,${this.photo()}`,
                 };
             case 'chat':
@@ -240,24 +176,12 @@ export class App extends Component {
                             ]} />
                     ),
                 };
-            case 'meeting':
-                return {
-                    id: String(Math.random()),
-                    lazyLoadingImage: `data:image/png;base64,${this.photo()}`,
-                    avatarFlexible: true,
-                    subject: loremIpsum({ count: 1, units: 'sentences' }),
-                    date: new Date(),
-                    avatars: Array(this.token() + 2).fill(1).map(x => ({
-                        src: `data:image/png;base64,${this.photo()}`,
-                    })),
-                    closable: true,
-                };
         }
     }
 
-    addMessage(mtype) {
+    addMessage() {
         var list = this.state.messageList;
-        list.push(this.random('message', mtype));
+        list.push(this.random('message'));
         this.setState({
             messageList: list,
         });
@@ -269,7 +193,6 @@ export class App extends Component {
             arr.push(i);
 
         var chatSource = arr.map(x => this.random('chat'));
-        var meetingSource = arr.map(x => this.random('meeting'));
 
         return (
             <div className='container'>
@@ -277,52 +200,34 @@ export class App extends Component {
                     className='chat-list'>
                     <SideBar
                         top={
-                            <div>
-                                <Popup
-                                    // show={this.state.show}
-                                    header='Lorem ipsum dolor sit amet.'
-                                    headerButtons={[{
-                                        type: 'transparent',
-                                        color: 'black',
-                                        onClick: () => {
-                                            this.setState({ show: false })
-                                        },
-                                        icon: {
-                                            component: <FaClose />,
-                                            size: 18
-                                        }
-                                    }]}
-                                    text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
-                                    footerButtons={[{
-                                        color: 'white',
-                                        backgroundColor: '#ff5e3e',
-                                        text: "Vazgeç",
-                                    }, {
-                                        color: 'white',
-                                        backgroundColor: 'lightgreen',
-                                        text: "Tamam",
-                                    }]} />
-
-                                <Button
-                                    type='transparent'
-                                    color='black'
-                                    text={this.state.list === 'chat' ? 'MeetingList' : 'ChatList'}
-                                    onClick={() => {
-                                        this.setState({
-                                            list: this.state.list === 'chat' ? 'meeeting' : 'chat',
-                                        });
-                                    }}/>
-                            </div>
+                            <Popup
+                                // show={this.state.show}
+                                header='Lorem ipsum dolor sit amet.'
+                                headerButtons={[{
+                                    type: 'transparent',
+                                    color: 'black',
+                                    onClick: () => {
+                                        this.setState({ show: false })
+                                    },
+                                    icon: {
+                                        component: <FaClose />,
+                                        size: 18
+                                    }
+                                }]}
+                                text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!'
+                                footerButtons={[{
+                                    color: 'white',
+                                    backgroundColor: '#ff5e3e',
+                                    text: "Vazgeç",
+                                }, {
+                                    color: 'white',
+                                    backgroundColor: 'lightgreen',
+                                    text: "Tamam",
+                                }]} />
                         }
                         center={
-                            this.state.list === 'chat' ?
                             <ChatList
                                 dataSource={chatSource} />
-                            :
-                            <MeetingList
-                                onMeetingClick={console.log}
-                                onShareClick={console.log}
-                                dataSource={meetingSource} />
                         }
                         bottom={
                             <span>
@@ -346,13 +251,6 @@ export class App extends Component {
                 </div>
                 <div
                     className='right-panel'>
-                    <MessageList
-                        className='message-list'
-                        lockable={false}
-                        loadMoreButton={true}
-                        onLoadMoreClick={()=>console.log('Load-More Button Clicked')}
-                        downButtonBadge={10}
-                        dataSource={this.state.messageList} />
                     <Input
                         placeholder="Mesajınızı buraya yazınız."
                         defaultValue=""
@@ -373,8 +271,16 @@ export class App extends Component {
                         rightButtons={
                             <Button
                                 text='Gönder'
-                                onClick={() => this.addMessage()} />
+                                onClick={this.addMessage.bind(this)} />
                         } />
+                    <MessageList
+                        className='message-list'
+                        lockable={false} 
+                        isInverted={true}
+                        loadMoreButton={true}
+                        onLoadMoreClick={()=>console.log('Load-More Button Clicked2')}
+                        downButtonBadge={10}
+                        dataSource={this.state.messageList} />
                 </div>
             </div>
         );
