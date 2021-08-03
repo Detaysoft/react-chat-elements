@@ -47,3 +47,71 @@
     color: #fff;
     font-weight: 700;
 }
+
+.chat-bubble-open{
+    animation: open-typing-bubble;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.chat-bubble-close{
+    animation: close-typing-bubble;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.chat-bubble-close,
+.chat-bubble-open
+{
+    display: flex;
+    opacity: 1;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .2);
+    margin-left: 40px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    background-color: white;
+}
+
+.bubble-content{
+    margin: 5px;
+    animation: typing 3s infinite;
+    background: rgb(24, 23, 23);
+    border-radius: 100%;
+    width: 8px;
+    height: 8px;
+}
+
+.bubble-content:nth-child(1){
+    animation-delay: 0s;
+}
+
+.bubble-content:nth-child(2){
+    animation-delay: 0.2s;
+}
+
+.bubble-content:nth-child(3){
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    from,
+    50%,
+    to {opacity: 0.8;}
+    25%,
+    75% {opacity: 0.2;}
+}
+
+@keyframes open-typing-bubble {
+    0%   {width: 0px; height: 0px;}
+    100%  {width:  75px;height: 35px;}
+}
+
+@keyframes close-typing-bubble {
+    0%   {width: 75px; height: 35px; opacity: 1;}
+    100%  {width: 0px; height: 0px; opacity: 0;}
+}

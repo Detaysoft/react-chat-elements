@@ -186,6 +186,15 @@ export class MessageList extends Component {
                             />
                         ))
                     }
+                    {
+                        this.props.isTypingBubbleOpen &&
+                        <div
+                            className={classNames([`chat-bubble-${this.props.composing ? 'open' : 'close'}` , this.props.composingStyle])}>
+                            <div className="bubble-content"> </div>
+                            <div className="bubble-content"> </div>
+                            <div className="bubble-content"> </div>
+                        </div>
+                    }
                 </div>
                 {
                     this.props.downButton === true &&

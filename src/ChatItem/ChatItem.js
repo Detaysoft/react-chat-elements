@@ -68,9 +68,19 @@ export class ChatItem extends Component {
                         </div>
 
                         <div className="rce-citem-body--bottom">
-                            <div className="rce-citem-body--bottom-title">
-                                {this.props.subtitle}
-                            </div>
+                            {
+                                this.props.composing === true ?
+                                <div className = "citem-typing-container">
+                                    <span className="citem-typing-text">yazıyor</span>
+                                    <span className="citem-typing-element"> </span>
+                                    <span className="citem-typing-element"> </span>
+                                    <span className="citem-typing-element"> </span>
+                                </div>
+                                :
+                                <div className="rce-citem-body--bottom-title">
+                                    {this.props.subtitle}
+                                </div>
+                            }
                             <div className="rce-citem-body--bottom-status">
                                 {
                                     this.props.unread > 0 &&

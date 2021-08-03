@@ -350,6 +350,8 @@ export class App extends Component {
                         className='message-list'
                         lockable={true}
                         downButtonBadge={10}
+                        composing={false}
+                        isTypingBubbleOpen={false}
                         dataSource={this.state.messageList} />
 
                     <Input
