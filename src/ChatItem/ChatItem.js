@@ -8,7 +8,8 @@ import {
 } from'timeago.js';
 
 import classNames from 'classnames';
-import MdBlock from 'react-icons/lib/md/block';
+
+import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/lib/md';
 
 export class ChatItem extends Component {
 
@@ -70,6 +71,38 @@ export class ChatItem extends Component {
                         <div className="rce-citem-body--bottom">
                             <div className="rce-citem-body--bottom-title">
                                 {this.props.subtitle}
+                            </div>
+                            <div className="rce-citem-body--bottom-tools">
+                                {
+                                    this.props.onClickMute instanceof Function &&
+                                    <div className="rce-citem-body--bottom-tools-item"
+                                        onClick={this.props.onClickMute}>
+                                        {
+                                            this.props.muted === true &&
+                                            <MdVolumeOff />
+                                        }
+                                        {
+                                            this.props.muted === false &&
+                                            <MdVolumeUp />
+                                        }
+                                    </div>
+                                }
+                                {
+                                    this.props.onClickVideoCall instanceof Function &&
+                                    <div className="rce-citem-body--bottom-tools-item"
+                                        onClick={this.props.onClickVideoCall}>
+                                        <MdVideoCall />
+                                    </div>
+                                }
+                            </div>
+                            <div className="rce-citem-body--bottom-tools-item-hidden-hover">
+                                {
+                                    this.props.onClickMute instanceof Function &&
+                                    this.props.muted &&
+                                    <div className="rce-citem-body--bottom-tools-item">
+                                        <MdVolumeOff />
+                                    </div>
+                                }
                             </div>
                             <div className="rce-citem-body--bottom-status">
                                 {

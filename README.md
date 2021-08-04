@@ -95,7 +95,9 @@ import { ChatItem } from 'react-chat-elements'
 | statusColor | none | color | ChatItem status color |
 | statusColorType | badge | string | ChatItem status color type (encircle, badge) |
 | statusText | none | color | ChatItem status text |
-| lazyLoadingImage | none | image path | lazy loading image |
+| muted | false | bool | chat mute info |
+| onClickMute | none | function | mute button |
+| onClickVideoCall | none | function | video call button |
 
 
 
