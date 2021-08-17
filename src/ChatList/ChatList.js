@@ -12,16 +12,6 @@ export class ChatList extends Component {
             this.props.onClick(item, i, e);
     }
 
-    onClickMute(item, i, e) {
-        if (this.props.onClickMute instanceof Function)
-            this.props.onClickMute(item, i, e);
-    }
-
-    onClickVideoCall(item, i, e) {
-        if (this.props.onClickVideoCall instanceof Function)
-            this.props.onClickVideoCall(item, i, e);
-    }
-
     onContextMenu(item, i, e) {
         e.preventDefault();
         if (this.props.onContextMenu instanceof Function)
@@ -48,8 +38,8 @@ export class ChatList extends Component {
                             onAvatarError={(e) => this.onAvatarError(x, i, e)}
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
                             onClick={(e) => this.onClick(x, i, e)}
-                            onClickMute={(e) => this.onClickMute(x, i, e)}
-                            onClickVideoCall={(e) => this.onClickVideoCall(x, i, e)}/>
+                            onClickMute={(e) => this.props.onClickMute(x, i, e)}
+                            onClickVideoCall={(e) => this.props.onClickVideoCall(x, i, e)}/>
                     ))
                 }
             </div>
@@ -61,6 +51,9 @@ ChatList.defaultProps = {
     dataSource: [],
     onClick: null,
     lazyLoadingImage: undefined,
+    mute: null,
+    onClickMute: null,
+    onClickVideoCall: null,
 };
 
 export default ChatList;

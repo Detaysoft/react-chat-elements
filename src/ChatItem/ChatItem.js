@@ -13,13 +13,45 @@ import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/lib/md';
 
 export class ChatItem extends Component {
 
+    constructor(p) {
+        super(p);
+        this.state = {
+            onHoverTool: false,
+        };
+
+        this.handleOnMouseEnter = this.handleOnMouseEnter.bind(this);
+        this.handleOnMouseLeave = this.handleOnMouseLeave.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
+    }
+
+    handleOnMouseEnter() {
+        this.setState({
+            onHoverTool: true,
+        });
+    }
+
+    handleOnMouseLeave() {
+        this.setState({
+            onHoverTool: false,
+        });
+    }
+
+    handleOnClick(e) {
+        e.preventDefault();
+
+        if (this.state.onHoverTool === true)
+            return;
+
+        this.props.onClick();
+    }
+
     render() {
         const statusColorType = this.props.statusColorType;
 
         return (
             <div
                 className={classNames('rce-container-citem', this.props.className)}
-                onClick={this.props.onClick}
+                onClick={this.handleOnClick}
                 onContextMenu={this.props.onContextMenu}>
                 <div className="rce-citem">
                     <div className={classNames(
@@ -72,9 +104,9 @@ export class ChatItem extends Component {
                             <div className="rce-citem-body--bottom-title">
                                 {this.props.subtitle}
                             </div>
-                            <div className="rce-citem-body--bottom-tools">
+                            <div className="rce-citem-body--bottom-tools" onMouseEnter={this.handleOnMouseEnter} onMouseLeave={this.handleOnMouseLeave}>
                                 {
-                                    this.props.onClickMute instanceof Function &&
+                                    this.props.showMute &&
                                     <div className="rce-citem-body--bottom-tools-item"
                                         onClick={this.props.onClickMute}>
                                         {
@@ -88,7 +120,7 @@ export class ChatItem extends Component {
                                     </div>
                                 }
                                 {
-                                    this.props.onClickVideoCall instanceof Function &&
+                                    this.props.showVideoCall &&
                                     <div className="rce-citem-body--bottom-tools-item"
                                         onClick={this.props.onClickVideoCall}>
                                         <MdVideoCall />
@@ -97,7 +129,7 @@ export class ChatItem extends Component {
                             </div>
                             <div className="rce-citem-body--bottom-tools-item-hidden-hover">
                                 {
-                                    this.props.onClickMute instanceof Function &&
+                                    this.props.showMute &&
                                     this.props.muted &&
                                     <div className="rce-citem-body--bottom-tools-item">
                                         <MdVolumeOff />
@@ -134,6 +166,8 @@ ChatItem.defaultProps = {
     dateString: null,
     lazyLoadingImage: undefined,
     onAvatarError: () => void(0),
+    showMute: null,
+    showVideoCall: null,
 }
 
 export default ChatItem;
