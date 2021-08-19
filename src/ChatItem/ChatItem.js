@@ -72,9 +72,11 @@ export class ChatItem extends Component {
                                 this.props.composing === true ?
                                 <div className = "citem-typing-container">
                                     <span className="citem-typing-text">yazıyor</span>
-                                    <span className="citem-typing-element"> </span>
-                                    <span className="citem-typing-element"> </span>
-                                    <span className="citem-typing-element"> </span>
+                                    <div className="citem-typing-content">
+                                        <span className="citem-typing-element"> </span>
+                                        <span className="citem-typing-element"> </span>
+                                        <span className="citem-typing-element"> </span>
+                                    </div>
                                 </div>
                                 :
                                 <div className="rce-citem-body--bottom-title">
