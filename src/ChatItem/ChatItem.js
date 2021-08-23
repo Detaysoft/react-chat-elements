@@ -8,9 +8,42 @@ import {
 } from'timeago.js';
 
 import classNames from 'classnames';
-import MdBlock from 'react-icons/lib/md/block';
+
+import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/lib/md';
 
 export class ChatItem extends Component {
+
+    constructor(p) {
+        super(p);
+        this.state = {
+            onHoverTool: false,
+        };
+
+        this.handleOnMouseEnter = this.handleOnMouseEnter.bind(this);
+        this.handleOnMouseLeave = this.handleOnMouseLeave.bind(this);
+        this.handleOnClick = this.handleOnClick.bind(this);
+    }
+
+    handleOnMouseEnter() {
+        this.setState({
+            onHoverTool: true,
+        });
+    }
+
+    handleOnMouseLeave() {
+        this.setState({
+            onHoverTool: false,
+        });
+    }
+
+    handleOnClick(e) {
+        e.preventDefault();
+
+        if (this.state.onHoverTool === true)
+            return;
+
+        this.props.onClick();
+    }
 
     render() {
         const statusColorType = this.props.statusColorType;
@@ -18,7 +51,7 @@ export class ChatItem extends Component {
         return (
             <div
                 className={classNames('rce-container-citem', this.props.className)}
-                onClick={this.props.onClick}
+                onClick={this.handleOnClick}
                 onContextMenu={this.props.onContextMenu}>
                 <div className="rce-citem">
                     <div className={classNames(
@@ -71,6 +104,38 @@ export class ChatItem extends Component {
                             <div className="rce-citem-body--bottom-title">
                                 {this.props.subtitle}
                             </div>
+                            <div className="rce-citem-body--bottom-tools" onMouseEnter={this.handleOnMouseEnter} onMouseLeave={this.handleOnMouseLeave}>
+                                {
+                                    this.props.showMute &&
+                                    <div className="rce-citem-body--bottom-tools-item"
+                                        onClick={this.props.onClickMute}>
+                                        {
+                                            this.props.muted === true &&
+                                            <MdVolumeOff />
+                                        }
+                                        {
+                                            this.props.muted === false &&
+                                            <MdVolumeUp />
+                                        }
+                                    </div>
+                                }
+                                {
+                                    this.props.showVideoCall &&
+                                    <div className="rce-citem-body--bottom-tools-item"
+                                        onClick={this.props.onClickVideoCall}>
+                                        <MdVideoCall />
+                                    </div>
+                                }
+                            </div>
+                            <div className="rce-citem-body--bottom-tools-item-hidden-hover">
+                                {
+                                    this.props.showMute &&
+                                    this.props.muted &&
+                                    <div className="rce-citem-body--bottom-tools-item">
+                                        <MdVolumeOff />
+                                    </div>
+                                }
+                            </div>
                             <div className="rce-citem-body--bottom-status">
                                 {
                                     this.props.unread > 0 &&
@@ -101,6 +166,8 @@ ChatItem.defaultProps = {
     dateString: null,
     lazyLoadingImage: undefined,
     onAvatarError: () => void(0),
+    showMute: null,
+    showVideoCall: null,
 }
 
 export default ChatItem;

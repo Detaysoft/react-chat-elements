@@ -197,6 +197,9 @@ export class App extends Component {
                     date: new Date(),
                     subtitle: loremIpsum({ count: 1, units: 'sentences' }),
                     unread: parseInt(Math.random() * 10 % 3),
+                    muted: parseInt(Math.random() * 10 % 2) === 1,
+                    showMute: parseInt(Math.random() * 10 % 2) === 1,
+                    showVideoCall: parseInt(Math.random() * 10 % 2) === 1,
                     dropdownMenu: (
                         <Dropdown
                             animationPosition="norteast"
@@ -317,7 +320,9 @@ export class App extends Component {
                         center={
                             this.state.list === 'chat' ?
                             <ChatList
-                                dataSource={chatSource} />
+                                dataSource={chatSource}
+                                onClickMute={({...props}) => console.log(props)}
+                                onClickVideoCall={({...props}) => console.log(props)} />
                             :
                             <MeetingList
                                 onMeetingClick={console.log}

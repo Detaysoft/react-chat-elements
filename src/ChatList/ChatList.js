@@ -37,7 +37,9 @@ export class ChatList extends Component {
                             {...x}
                             onAvatarError={(e) => this.onAvatarError(x, i, e)}
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
-                            onClick={(e) => this.onClick(x, i, e)}/>
+                            onClick={(e) => this.onClick(x, i, e)}
+                            onClickMute={(e) => this.props.onClickMute(x, i, e)}
+                            onClickVideoCall={(e) => this.props.onClickVideoCall(x, i, e)}/>
                     ))
                 }
             </div>
@@ -49,6 +51,9 @@ ChatList.defaultProps = {
     dataSource: [],
     onClick: null,
     lazyLoadingImage: undefined,
+    mute: null,
+    onClickMute: null,
+    onClickVideoCall: null,
 };
 
 export default ChatList;
