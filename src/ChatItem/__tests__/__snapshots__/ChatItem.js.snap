@@ -3,7 +3,7 @@
 exports[`ChatItem component should render without issues 1`] = `
 <div
   className="rce-container-citem"
-  onClick={null}
+  onClick={[Function]}
 >
   <div
     className="rce-citem"
@@ -41,6 +41,14 @@ exports[`ChatItem component should render without issues 1`] = `
       >
         <div
           className="rce-citem-body--bottom-title"
+        />
+        <div
+          className="rce-citem-body--bottom-tools"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        />
+        <div
+          className="rce-citem-body--bottom-tools-item-hidden-hover"
         />
         <div
           className="rce-citem-body--bottom-status"

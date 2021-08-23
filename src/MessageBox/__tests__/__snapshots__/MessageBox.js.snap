@@ -13,7 +13,7 @@ exports[`MessageBox component should render without issues 1`] = `
       onContextMenu={null}
     >
       <div
-        className="rce-mbox-text"
+        className="rce-mbox-text left"
       />
       <div
         className="rce-mbox-time non-copiable"
