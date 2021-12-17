@@ -71,7 +71,7 @@ export class ChatItem extends Component {
                                 <span
                                     className='rce-citem-status'
                                     style={statusColorType === 'encircle' ? {
-                                        boxShadow: `inset 0 0 0 2px ${this.props.statusColor}, inset 0 0 0 5px #FFFFFF`
+                                        border: `solid 2px ${this.props.statusColor}`
                                     } : {
                                         backgroundColor: this.props.statusColor,
                                     }}>
