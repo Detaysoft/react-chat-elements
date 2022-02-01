@@ -10,6 +10,7 @@ import ReplyMessage from '../ReplyMessage/ReplyMessage';
 import MeetingMessage from '../MeetingMessage/MeetingMessage';
 import VideoMessage from '../VideoMessage/VideoMessage';
 import AudioMessage from '../AudioMessage/AudioMessage';
+import MeetingLink from '../MeetingLink/MeetingLink';
 
 import Avatar from '../Avatar/Avatar';
 
@@ -256,6 +257,14 @@ export class MessageBox extends React.PureComponent {
                                         onLoad={this.props.onLoad}
                                         data={this.props.data}
                                         text={this.props.text} />
+                                }
+
+                                {
+                                    this.props.type === 'meetingLink' &&
+                                    <MeetingLink
+                                        meetingID={this.props.meetingID}
+                                        title={this.props.text}
+                                        onMeetingMoreSelect={this.props.onMeetingLinkClick}/>
                                 }
 
                                 <div

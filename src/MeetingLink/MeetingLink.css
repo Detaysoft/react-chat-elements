@@ -1,0 +1,45 @@
+.rce-mtlink {
+  padding-bottom: 15px;
+  min-width: 400px;
+}
+
+.rce-mtlink-content {
+  background-color: #e2dfec;
+  border-radius: 100px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.rce-mtlink-item {
+  color: #6c687c;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 240px;
+  justify-content: flex-start;
+}
+
+.rce-mtlink-title {
+  color: #07030a;
+  padding-left: 7px;
+  font-size: 15px;
+}
+
+.rce-mtlink-btn {
+  background: #ededed;
+  border-radius: 50%;
+  margin-left: 15px;
+  display: flex;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.rce-mtlink-svg {
+  color: #585858;
+  font-size: 16px;
+}

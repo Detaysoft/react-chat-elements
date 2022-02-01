@@ -155,6 +155,11 @@ export class MessageList extends Component {
             this.props.onMeetingMoreSelect(item, i, e);
     }
 
+    onMeetingLinkClick(item, i, e) {
+        if (this.props.onMeetingLinkClick instanceof Function)
+            this.props.onMeetingLinkClick(item, i, e);
+    }
+
     render() {
         return (
             <div
@@ -183,6 +188,7 @@ export class MessageList extends Component {
                                 onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
                                 onMeetingTitleClick={this.props.onMeetingTitleClick}
                                 onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
+                                onMeetingLinkClick={this.props.onMeetingLinkClick && ((e) => this.onMeetingLinkClick(x, i, e))}
                             />
                         ))
                     }
