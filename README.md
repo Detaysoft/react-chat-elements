@@ -62,6 +62,7 @@ import { MessageBox } from 'react-chat-elements/native';
 14. [SpotifyMessage](#spotifymessage-component)
 15. [MeetingItem](#meetingitem-component)
 16. [MeetingList](#meetinglist-component)
+17. [MeetingLink](#meetinglink-component)
 
 ## ChatItem Component
 
@@ -154,6 +155,7 @@ import { MessageBox } from 'react-chat-elements'
 | onReplyMessageClick | none | function | reply message on click event |
 | onRemoveMessageClick | none | function | message remove on click event |
 | onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
+| onMeetingLinkClick | none | function | meeting link on click event |
 | onContextMenu | none | function | message contextmenu click event |
 | forwarded | none | boolean | message forward icon |
 | replyButton | none | boolean | message reply icon |
@@ -250,6 +252,26 @@ import { MeetingMessage } from 'react-chat-elements'
 | onMeetingTitleClick | none | function | meeting title message on click event (message(object) is returned) |
 | onMeetingVideoLinkClick | none | function | meeting video link message on click event (message(object) is returned) |
 | onMeetingMoreSelect | none | function | message list item onMeetingMoreSelect event, gets 3 parameters: message item, index of item, event |
+
+
+## MeetingLink Component
+
+![meetinglink-photo](https://user-images.githubusercontent.com/53093667/152175228-4fcb5d83-8a54-4378-8cb3-c85f939e510f.png)
+
+```javascript
+import { MeetingLink } from 'react-chat-elements'
+<MeetingLink
+    meetingID='1'
+    title='Lorem ipsum dolor sit amet.'/>
+```
+
+#### MeetingLink props
+
+| prop | default | type | description |
+| ---- | ---- | ---- | ---- |
+| meetingID | none | string | Meeting Link id |
+| title | none | string | Meeting Link title |
+| onMeetingLinkClick | none | function | meeting link on click event |
 
 ## SystemMessage Component
 
