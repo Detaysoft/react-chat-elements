@@ -23,6 +23,7 @@ export class ChatItem extends Component {
         this.handleOnMouseEnter = this.handleOnMouseEnter.bind(this);
         this.handleOnMouseLeave = this.handleOnMouseLeave.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
+        this.onDragEnter = this.onDragEnter.bind(this);
         this.onDragOver = this.onDragOver.bind(this);
         this.onDragLeave = this.onDragLeave.bind(this);
         this.onDrop = this.onDrop.bind(this);
@@ -53,10 +54,15 @@ export class ChatItem extends Component {
         e.preventDefault();
         if (this.props.onDragOver instanceof Function)
             this.props.onDragOver(e, this.props.id)
+    }
+
+    onDragEnter(e) {
+        e.preventDefault();
+        if (this.props.onDragEnter instanceof Function)
+            this.props.onDragEnter(e, this.props.id)
         if (!this.state.onDrag)
             this.setState({ onDrag: true })
     }
-
 
     onDragLeave (e) {
         e.preventDefault();
@@ -84,6 +90,7 @@ export class ChatItem extends Component {
                 onContextMenu={this.props.onContextMenu}>
                 <div className="rce-citem"
                     onDragOver={this.onDragOver}
+                    onDragEnter={this.onDragEnter}
                     onDragLeave={this.onDragLeave}
                     onDrop={this.onDrop}>
                     {

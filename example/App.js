@@ -326,10 +326,10 @@ export class App extends Component {
                                 dataSource={chatSource}
                                 onClickMute={({...props}) => console.log(props)}
                                 onClickVideoCall={({...props}) => console.log(props)}
-                                onDragOver={(e, id) => console.log(id, 'onDragOver')}
+                                onDragEnter={(e, id) => console.log(id, 'onDragEnter')}
                                 onDragLeave={(e, id) => console.log(id, 'onDragLeave')}
                                 onDrop={(e, id) => console.log(e, id, 'onDrop')}
-                                onDragComponent={(id)=> <div>{'component ' + id}</div>} />
+                                onDragComponent={(id)=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
                             :
                             <MeetingList
                                 onMeetingClick={console.log}
@@ -362,8 +362,11 @@ export class App extends Component {
                         className='message-list'
                         lockable={true}
                         downButtonBadge={10}
-                        dataSource={this.state.messageList} />
-
+                        dataSource={this.state.messageList}
+                        onDragEnter={(e) => console.log(e, 'onDragEnter')}
+                        onDragLeave={(e) => console.log(e, 'onDragLeave')}
+                        onDrop={(e) => console.log(e, 'onDrop')}
+                        onDragComponent={()=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
                     <Input
                         placeholder="Mesajınızı buraya yazınız."
                         defaultValue=""

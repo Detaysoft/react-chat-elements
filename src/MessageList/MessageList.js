@@ -14,10 +14,15 @@ export class MessageList extends Component {
         this.state = {
             scrollBottom: 0,
             downButton: false,
+            onDrag: false,
         };
 
         this.loadRef = this.loadRef.bind(this);
         this.onScroll = this.onScroll.bind(this);
+        this.onDragEnter = this.onDragEnter.bind(this);
+        this.onDragOver = this.onDragOver.bind(this);
+        this.onDragLeave = this.onDragLeave.bind(this);
+        this.onDrop = this.onDrop.bind(this);
     }
 
     checkScroll() {
@@ -160,55 +165,101 @@ export class MessageList extends Component {
             this.props.onMeetingLinkClick(item, i, e);
     }
 
+    onDragOver(e) {
+        e.preventDefault();
+        if (this.props.onDragOver instanceof Function)
+            this.props.onDragOver(e)
+    }
+
+    onDragEnter(e) {
+        e.preventDefault();
+        if (this.props.onDragEnter instanceof Function)
+            this.props.onDragEnter(e)
+        if (!this.state.onDrag)
+            this.setState({ onDrag: true })
+    }
+
+
+    onDragLeave (e) {
+        e.preventDefault();
+        if (this.props.onDragLeave instanceof Function)
+            this.props.onDragLeave(e)
+        if (this.state.onDrag)
+            this.setState({ onDrag: false })
+    }
+
+    onDrop (e) {
+        e.preventDefault();
+        if (this.props.onDrop instanceof Function)
+            this.props.onDrop(e)
+        if (this.state.onDrag)
+            this.setState({ onDrag: false })
+    }
+
     render() {
         return (
             <div
-                className={classNames(['rce-container-mlist', this.props.className])}>
-                <div
-                    ref={this.loadRef}
-                    onScroll={this.onScroll}
-                    className='rce-mlist'>
-                    {
-                        this.props.dataSource.map((x, i) => (
-                            <MessageBox
-                                key={i}
-                                {...x}
-                                onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
-                                onPhotoError={this.props.onPhotoError && ((e) => this.onPhotoError(x, i, e))}
-                                onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
-                                onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
-                                onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
-                                onReplyClick={this.props.onReplyClick && ((e) => this.onReplyClick(x, i, e))}
-                                onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
-                                onRemoveMessageClick={this.props.onRemoveMessageClick && ((e) => this.onRemoveMessageClick(x, i, e))}
-                                onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
-                                onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
-                                onMeetingMoreSelect={this.props.onMeetingMoreSelect && ((e) => this.onMeetingMoreSelect(x, i, e))}
-                                onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
-                                onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
-                                onMeetingTitleClick={this.props.onMeetingTitleClick}
-                                onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
-                                onMeetingLinkClick={this.props.onMeetingLinkClick && ((e) => this.onMeetingLinkClick(x, i, e))}
-                            />
-                        ))
-                    }
-                </div>
+                className={classNames(['rce-container-mlist', this.props.className])}
+                onDragOver={this.onDragOver}
+                onDragEnter={this.onDragEnter}
+                onDragLeave={this.onDragLeave}
+                onDrop={this.onDrop}>
                 {
-                    this.props.downButton === true &&
-                    this.state.downButton &&
-                    this.props.toBottomHeight !== '100%' &&
-                    <div
-                        className='rce-mlist-down-button'
-                        onClick={this.toBottom.bind(this)}>
-                        <FaChevronDown/>
-                        {
-                            this.props.downButtonBadge &&
-                            <span
-                                className='rce-mlist-down-button--badge'>
-                                {this.props.downButtonBadge}
-                            </span>
-                        }
-                    </div>
+                    !!this.props.onDragComponent && this.state.onDrag &&
+                    this.props.onDragComponent()
+                }
+                {
+                    ((this.state.onDrag && !this.props.onDragComponent) || !this.state.onDrag) &&
+                    [
+                        <div
+                        ref={this.loadRef}
+                        onScroll={this.onScroll}
+                        className='rce-mlist'
+                        onDragOver={this.onDragOver}
+                        onDragEnter={this.onDragEnter}
+                        onDragLeave={this.onDragLeave}
+                        onDrop={this.onDrop}>
+                            {
+                                this.props.dataSource.map((x, i) => (
+                                    <MessageBox
+                                        key={i}
+                                        {...x}
+                                        onOpen={this.props.onOpen && ((e) => this.onOpen(x, i, e))}
+                                        onPhotoError={this.props.onPhotoError && ((e) => this.onPhotoError(x, i, e))}
+                                        onDownload={this.props.onDownload && ((e) => this.onDownload(x, i, e))}
+                                        onTitleClick={this.props.onTitleClick && ((e) => this.onTitleClick(x, i, e))}
+                                        onForwardClick={this.props.onForwardClick && ((e) => this.onForwardClick(x, i, e))}
+                                        onReplyClick={this.props.onReplyClick && ((e) => this.onReplyClick(x, i, e))}
+                                        onReplyMessageClick={this.props.onReplyMessageClick && ((e) => this.onReplyMessageClick(x, i, e))}
+                                        onRemoveMessageClick={this.props.onRemoveMessageClick && ((e) => this.onRemoveMessageClick(x, i, e))}
+                                        onClick={this.props.onClick && ((e) => this.onClick(x, i, e))}
+                                        onContextMenu={this.props.onContextMenu && ((e) => this.onContextMenu(x, i, e))}
+                                        onMeetingMoreSelect={this.props.onMeetingMoreSelect && ((e) => this.onMeetingMoreSelect(x, i, e))}
+                                        onMessageFocused={this.props.onMessageFocused && ((e) => this.onMessageFocused(x, i, e))}
+                                        onMeetingMessageClick={this.props.onMeetingMessageClick && ((e) => this.onMeetingMessageClick(x, i, e))}
+                                        onMeetingTitleClick={this.props.onMeetingTitleClick}
+                                        onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
+                                        onMeetingLinkClick={this.props.onMeetingLinkClick && ((e) => this.onMeetingLinkClick(x, i, e))}
+                                    />
+                                ))
+                            }
+                        </div>,
+                        this.props.downButton === true &&
+                        this.state.downButton &&
+                        this.props.toBottomHeight !== '100%' &&
+                            <div
+                                className='rce-mlist-down-button'
+                                onClick={this.toBottom.bind(this)}>
+                                <FaChevronDown/>
+                                {
+                                    this.props.downButtonBadge &&
+                                    <span
+                                        className='rce-mlist-down-button--badge'>
+                                        {this.props.downButtonBadge}
+                                    </span>
+                                }
+                            </div>
+                    ]
                 }
             </div>
         );
@@ -231,6 +282,11 @@ MessageList.defaultProps = {
     toBottomHeight: 300,
     downButton: true,
     downButtonBadge: null,
+    onDragOver: () => void(0),
+    onDrop: () => void(0),
+    onDragEnter: () => void(0),
+    onDragLeave: () => void(0),
+    onDragComponent: null,
 };
 
 export default MessageList;
