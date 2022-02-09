@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './ChatList.css';
 
 import ChatItem from '../ChatItem/ChatItem';
-import { MdSignalCellularNull } from 'react-icons/lib/md';
 
 const classNames = require('classnames');
 
