@@ -325,7 +325,11 @@ export class App extends Component {
                             <ChatList
                                 dataSource={chatSource}
                                 onClickMute={({...props}) => console.log(props)}
-                                onClickVideoCall={({...props}) => console.log(props)} />
+                                onClickVideoCall={({...props}) => console.log(props)}
+                                onDragOver={(e, id) => console.log(id, 'onDragOver')}
+                                onDragLeave={(e, id) => console.log(id, 'onDragLeave')}
+                                onDrop={(e, id) => console.log(e, id, 'onDrop')}
+                                onDragComponent={(id)=> <div>{'component ' + id}</div>} />
                             :
                             <MeetingList
                                 onMeetingClick={console.log}

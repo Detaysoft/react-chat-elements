@@ -39,7 +39,11 @@ export class ChatList extends Component {
                             onContextMenu={(e) => this.onContextMenu(x, i, e)}
                             onClick={(e) => this.onClick(x, i, e)}
                             onClickMute={(e) => this.props.onClickMute(x, i, e)}
-                            onClickVideoCall={(e) => this.props.onClickVideoCall(x, i, e)}/>
+                            onClickVideoCall={(e) => this.props.onClickVideoCall(x, i, e)}
+                            onDragOver={this.props.onDragOver}
+                            onDrop={this.props.onDrop}
+                            onDragLeave={this.props.onDragLeave}
+                            onDragComponent={this.props.onDragComponent} />
                     ))
                 }
             </div>
@@ -54,6 +58,10 @@ ChatList.defaultProps = {
     mute: null,
     onClickMute: null,
     onClickVideoCall: null,
+    onDrop: () => void(0),
+    onDragOver: () => void(0),
+    onDragLeave: () => void(0),
+    onDragComponent: null
 };
 
 export default ChatList;
