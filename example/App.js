@@ -420,7 +420,7 @@ export class App extends Component {
                                     onDrop={(e, id) => {
                                         console.log(e, id, 'onDrop');
                                     }}
-                                    onDragComponent={(id)=> <div>{'hellö ' + id}</div>}
+                                    onDragComponent={(id)=> <div>{'component ' + id}</div>}
                                 />
                             ) : (
                                 <MeetingList

@@ -87,11 +87,11 @@ export class ChatItem extends Component {
                     onDragLeave={this.onDragLeave}
                     onDrop={this.onDrop}>
                     {
-                        this.state.onDrag && this.props.onDragComponent &&
+                        !!this.props.onDragComponent && this.state.onDrag &&
                         this.props.onDragComponent(this.props.id)
                     }
                     {
-                        !this.state.onDrag &&
+                        ((this.state.onDrag && !this.props.onDragComponent) || !this.state.onDrag) &&
                         [
                             <div className={classNames(
                                     "rce-citem-avatar",
