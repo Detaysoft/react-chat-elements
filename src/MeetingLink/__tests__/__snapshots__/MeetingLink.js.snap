@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeetingLink component should render without issues 1`] = `
+<div
+  className="rce-mtlink"
+>
+  <div
+    className="rce-mtlink-content"
+  >
+    <div
+      className="rce-mtlink-item"
+    >
+      <div
+        className="rce-mtlink-title"
+      />
+    </div>
+    <div
+      className="rce-mtlink-btn"
+      onClick={[Function]}
+    >
+      <MdVideoCall
+        className="rce-mtlink-svg"
+      />
+    </div>
+  </div>
+</div>
+`;

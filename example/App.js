@@ -48,7 +48,7 @@ export class App extends Component {
     }
 
     UNSAFE_componentWillMount() {
-        this.addMessage(7);
+        this.addMessage(8)
     }
 
     getRandomColor() {
@@ -104,6 +104,9 @@ export class App extends Component {
                         break;
                     case 7:
                         mtype = "audio";
+                        break;
+                    case 8:
+                        mtype = 'meetingLink';
                         break;
                     default:
                         mtype = "text";
