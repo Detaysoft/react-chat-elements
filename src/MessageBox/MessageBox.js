@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import './MessageBox.css';
 
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
@@ -29,319 +29,315 @@ import {
 
 import classNames from 'classnames';
 
-export class MessageBox extends React.PureComponent {
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.focus !== this.props.focus && nextProps.focus === true) {
-            if (this.refs['message']) {
-                this.refs['message'].scrollIntoView({
+export default function MessageBox(props) {
+    const refs = useRef(null);
+    var positionCls = classNames('rce-mbox', { 'rce-mbox-right': props.position === 'right' });
+    var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(props.type) && !(props.type === 'location' && props.text);
+
+    const dateText = props.date && !isNaN(props.date) && (props.dateString || format(props.date));
+
+    useEffect(() => {
+        if (props.focus === true) {
+            if (refs) {
+                refs.scrollIntoView({
                     block: "center",
                     behavior: 'smooth'
                 })
 
-                this.props.onMessageFocused(nextProps);
+                props.onMessageFocused(props);
             }
         }
-    }
+    }, [props.focus]);
 
-    render() {
-        var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(this.props.type) && !(this.props.type === 'location' && this.props.text);
-
-        const dateText = this.props.date && !isNaN(this.props.date) && (
-            this.props.dateString ||
-            format(this.props.date)
-        );
-
-        return (
-            <div
-                ref='message'
-                className={classNames('rce-container-mbox', this.props.className)}
-                onClick={this.props.onClick}>
-                {
-                    this.props.renderAddCmp instanceof Function &&
-                    this.props.renderAddCmp()
-                }
-                {
-                    this.props.type === 'system' ?
-                        <SystemMessage
-                            text={this.props.text} />
-                        :
+    return (
+        <div
+            ref={refs}
+            className={classNames('rce-container-mbox', props.className)}
+            onClick={props.onClick}>
+            {
+                props.renderAddCmp instanceof Function &&
+                props.renderAddCmp()
+            }
+            {
+                props.type === 'system' ?
+                    <SystemMessage
+                        text={props.text} />
+                    :
+                    <div
+                        className={classNames(
+                            positionCls,
+                            {'rce-mbox--clear-padding': thatAbsoluteTime},
+                            {'rce-mbox--clear-notch': !props.notch},
+                            { 'message-focus': props.focus},
+                        )}>
                         <div
-                            className={classNames(
-                                positionCls,
-                                {'rce-mbox--clear-padding': thatAbsoluteTime},
-                                {'rce-mbox--clear-notch': !this.props.notch},
-                                { 'message-focus': this.props.focus},
-                            )}>
-                            <div
-                                className='rce-mbox-body'
-                                onContextMenu={this.props.onContextMenu}>
-                                {
-                                    !this.props.retracted &&
-                                    this.props.forwarded === true &&
-                                    <div
-                                        className={classNames(
-                                            'rce-mbox-forward',
-                                            { 'rce-mbox-forward-right': this.props.position === 'left' },
-                                            { 'rce-mbox-forward-left': this.props.position === 'right' }
-                                        )}
-                                        onClick={this.props.onForwardClick}>
-                                            <FaForward />
-                                    </div>
-                                }
-
-                                {
-                                    !this.props.retracted &&
-                                    this.props.replyButton === true &&
-                                    <div
-                                        className={this.props.forwarded !== true ? classNames(
-                                            'rce-mbox-forward',
-                                            { 'rce-mbox-forward-right': this.props.position === 'left' },
-                                            { 'rce-mbox-forward-left': this.props.position === 'right' }
-                                        ) : classNames(
-                                            'rce-mbox-forward',
-                                            { 'rce-mbox-reply-btn-right': this.props.position === 'left' },
-                                            { 'rce-mbox-reply-btn-left': this.props.position === 'right' }
-                                        )}
-                                        onClick={this.props.onReplyClick}>
-                                            <MdMessage />
-                                    </div>
-                                }
-
-                                {
-                                    !this.props.retracted &&
-                                    this.props.removeButton === true &&
-                                    <div
-                                        className={this.props.forwarded === true ? classNames(
-                                            'rce-mbox-remove',
-                                            { 'rce-mbox-remove-right': this.props.position === 'left' },
-                                            { 'rce-mbox-remove-left': this.props.position === 'right' }
-                                        ) : classNames(
-                                            'rce-mbox-forward',
-                                            { 'rce-mbox-reply-btn-right': this.props.position === 'left' },
-                                            { 'rce-mbox-reply-btn-left': this.props.position === 'right' }
-                                        )}
-                                        onClick={this.props.onRemoveMessageClick}>
-                                            <MdRemove />
-                                    </div>
-                                }
-
-                                {
-                                    (this.props.title || this.props.avatar) &&
-                                    <div
-                                        style={this.props.titleColor && { color: this.props.titleColor }}
-                                        onClick={this.props.onTitleClick}
-                                        className={classNames('rce-mbox-title', {
-                                            'rce-mbox-title--clear': this.props.type === 'text',
-                                        })}>
-                                        {
-                                            this.props.avatar &&
-                                            <Avatar
-                                                letterItem={this.props.letterItem}
-                                                src={this.props.avatar}/>
-                                        }
-                                        {
-                                            this.props.title &&
-                                            <span>{this.props.title}</span>
-                                        }
-                                    </div>
-                                }
-
-                                {
-                                    this.props.reply &&
-                                    <ReplyMessage
-                                        photoURL={this.props.reply.photoURL}
-                                        title={this.props.reply.title}
-                                        titleColor={this.props.reply.titleColor}
-                                        message={this.props.reply.message}
-                                        onClick={this.props.onReplyMessageClick}/>
-                                }
-
-                                {
-                                    this.props.type === 'text' &&
-                                    <div className={classNames('rce-mbox-text', {
-                                        'rce-mbox-text-retracted': this.props.retracted,
-                                        'left': this.props.position === 'left',
-                                        'right': this.props.position === 'right',
-                                    })}>
-                                        {
-                                            this.props.retracted &&
-                                            <MdBlock />
-                                        }
-                                        {this.props.text}
-                                    </div>
-                                }
-
-                                {
-                                    this.props.type === 'location' &&
-                                    <LocationMessage
-                                        onOpen={this.props.onOpen}
-                                        data={this.props.data}
-                                        target={this.props.target}
-                                        href={this.props.href}
-                                        apiKey={this.props.apiKey}
-                                        src={this.props.src}
-                                        zoom={this.props.zoom}
-                                        markerColor={this.props.markerColor}
-                                        text={this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'photo' &&
-                                    <PhotoMessage
-                                        onOpen={this.props.onOpen}
-                                        onDownload={this.props.onDownload}
-                                        onLoad={this.props.onLoad}
-                                        onPhotoError={this.props.onPhotoError}
-                                        data={this.props.data}
-                                        width={this.props.width}
-                                        height={this.props.height}
-                                        text={this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'video' &&
-                                    <VideoMessage
-                                        onOpen={this.props.onOpen}
-                                        onDownload={this.props.onDownload}
-                                        onLoad={this.props.onLoad}
-                                        onPhotoError={this.props.onPhotoError}
-                                        data={this.props.data}
-                                        width={this.props.width}
-                                        height={this.props.height}
-                                        text={this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'file' &&
-                                    <FileMessage
-                                        onOpen={this.props.onOpen}
-                                        onDownload={this.props.onDownload}
-                                        data={this.props.data}
-                                        text={this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'spotify' &&
-                                    <SpotifyMessage
-                                        width={this.props.width}
-                                        height={this.props.height}
-                                        theme={this.props.theme}
-                                        view={this.props.view}
-                                        data={this.props.data}
-                                        uri={this.props.uri || this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'meeting' &&
-                                    this.props.meeting &&
-                                    <MeetingMessage
-                                        subject={this.props.meeting.subject}
-                                        title={this.props.meeting.title}
-                                        date={this.props.meeting.date}
-                                        dateString={this.props.meeting.dateString}
-                                        collapseTitle={this.props.meeting.collapseTitle}
-                                        participants={this.props.meeting.participants}
-                                        moreItems={this.props.meeting.moreItems}
-                                        dataSource={this.props.meeting.dataSource}
-                                        onClick={this.props.onMeetingMessageClick}
-                                        onMeetingMoreSelect={this.props.onMeetingMoreSelect}
-                                        onMeetingVideoLinkClick={this.props.onMeetingVideoLinkClick}
-                                        onMeetingTitleClick={this.props.onMeetingTitleClick} />
-                                }
-                                {
-                                    this.props.type === 'audio' &&
-                                    <AudioMessage
-                                        onOpen={this.props.onOpen}
-                                        onDownload={this.props.onDownload}
-                                        onLoad={this.props.onLoad}
-                                        data={this.props.data}
-                                        text={this.props.text} />
-                                }
-
-                                {
-                                    this.props.type === 'meetingLink' &&
-                                    <MeetingLink
-                                        meetingID={this.props.meetingID}
-                                        title={this.props.text}
-                                        onMeetingMoreSelect={this.props.onMeetingLinkClick}/>
-                                }
-
+                            className='rce-mbox-body'
+                            onContextMenu={props.onContextMenu}>
+                            {
+                                !props.retracted &&
+                                props.forwarded === true &&
                                 <div
                                     className={classNames(
-                                        'rce-mbox-time',
-                                        { 'rce-mbox-time-block': thatAbsoluteTime },
-                                        { 'non-copiable': !this.props.copiableDate },
+                                        'rce-mbox-forward',
+                                        { 'rce-mbox-forward-right': props.position === 'left' },
+                                        { 'rce-mbox-forward-left': props.position === 'right' }
                                     )}
-                                    data-text={this.props.copiableDate ? undefined : dateText}>
-                                    {
-                                        this.props.copiableDate &&
-                                        this.props.date &&
-                                        !isNaN(this.props.date) &&
-                                        (
-                                            this.props.dateString ||
-                                            format(this.props.date)
-                                        )
-                                    }
-                                    {
-                                        this.props.status &&
-                                        <span className='rce-mbox-status'>
-                                            {
-                                                this.props.status === 'waiting' &&
-                                                <MdIosTime />
-                                            }
-
-                                            {
-                                                this.props.status === 'sent' &&
-                                                <MdCheck />
-                                            }
-
-                                            {
-                                                this.props.status === 'received' &&
-                                                <IoDoneAll />
-                                            }
-
-                                            {
-                                                this.props.status === 'read' &&
-                                                <IoDoneAll color='#4FC3F7'/>
-                                            }
-                                        </span>
-                                    }
+                                    onClick={props.onForwardClick}>
+                                        <FaForward />
                                 </div>
-                            </div>
+                            }
 
                             {
-                                this.props.notch &&
-                                (this.props.position === 'right' ?
-                                    <svg className={classNames(
-                                        "rce-mbox-right-notch",
-                                        { 'message-focus': this.props.focus},
-                                    )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path d="M0 0v20L20 0" />
-                                    </svg>
-                                    :
-                                    <div>
-                                        <svg className={classNames(
-                                                "rce-mbox-left-notch",
-                                                { 'message-focus': this.props.focus},
-                                            )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <defs>
-                                                <filter id="filter1" x="0" y="0">
-                                                    <feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
-                                                    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
-                                                    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-                                                </filter>
-                                            </defs>
-                                            <path d="M20 0v20L0 0" filter="url(#filter1)" />
-                                        </svg>
-                                    </div>
-                                )
+                                !props.retracted &&
+                                props.replyButton === true &&
+                                <div
+                                    className={props.forwarded !== true ? classNames(
+                                        'rce-mbox-forward',
+                                        { 'rce-mbox-forward-right': props.position === 'left' },
+                                        { 'rce-mbox-forward-left': props.position === 'right' }
+                                    ) : classNames(
+                                        'rce-mbox-forward',
+                                        { 'rce-mbox-reply-btn-right': props.position === 'left' },
+                                        { 'rce-mbox-reply-btn-left': props.position === 'right' }
+                                    )}
+                                    onClick={props.onReplyClick}>
+                                        <MdMessage />
+                                </div>
                             }
+
+                            {
+                                !props.retracted &&
+                                props.removeButton === true &&
+                                <div
+                                    className={props.forwarded === true ? classNames(
+                                        'rce-mbox-remove',
+                                        { 'rce-mbox-remove-right': props.position === 'left' },
+                                        { 'rce-mbox-remove-left': props.position === 'right' }
+                                    ) : classNames(
+                                        'rce-mbox-forward',
+                                        { 'rce-mbox-reply-btn-right': props.position === 'left' },
+                                        { 'rce-mbox-reply-btn-left': props.position === 'right' }
+                                    )}
+                                    onClick={props.onRemoveMessageClick}>
+                                        <MdRemove />
+                                </div>
+                            }
+
+                            {
+                                (props.title || props.avatar) &&
+                                <div
+                                    style={props.titleColor && { color: props.titleColor }}
+                                    onClick={props.onTitleClick}
+                                    className={classNames('rce-mbox-title', {
+                                        'rce-mbox-title--clear': props.type === 'text',
+                                    })}>
+                                    {
+                                        props.avatar &&
+                                        <Avatar
+                                            letterItem={props.letterItem}
+                                            src={props.avatar}/>
+                                    }
+                                    {
+                                        props.title &&
+                                        <span>{props.title}</span>
+                                    }
+                                </div>
+                            }
+
+                            {
+                                props.reply &&
+                                <ReplyMessage
+                                    photoURL={props.reply.photoURL}
+                                    title={props.reply.title}
+                                    titleColor={props.reply.titleColor}
+                                    message={props.reply.message}
+                                    onClick={props.onReplyMessageClick}/>
+                            }
+
+                            {
+                                props.type === 'text' &&
+                                <div className={classNames('rce-mbox-text', {
+                                    'rce-mbox-text-retracted': props.retracted,
+                                    'left': props.position === 'left',
+                                    'right': props.position === 'right',
+                                })}>
+                                    {
+                                        props.retracted &&
+                                        <MdBlock />
+                                    }
+                                    {props.text}
+                                </div>
+                            }
+
+                            {
+                                props.type === 'location' &&
+                                <LocationMessage
+                                    onOpen={props.onOpen}
+                                    data={props.data}
+                                    target={props.target}
+                                    href={props.href}
+                                    apiKey={props.apiKey}
+                                    src={props.src}
+                                    zoom={props.zoom}
+                                    markerColor={props.markerColor}
+                                    text={props.text} />
+                            }
+
+                            {
+                                props.type === 'photo' &&
+                                <PhotoMessage
+                                    onOpen={props.onOpen}
+                                    onDownload={props.onDownload}
+                                    onLoad={props.onLoad}
+                                    onPhotoError={props.onPhotoError}
+                                    data={props.data}
+                                    width={props.width}
+                                    height={props.height}
+                                    text={props.text} />
+                            }
+
+                            {
+                                props.type === 'video' &&
+                                <VideoMessage
+                                    onOpen={props.onOpen}
+                                    onDownload={props.onDownload}
+                                    onLoad={props.onLoad}
+                                    onPhotoError={props.onPhotoError}
+                                    data={props.data}
+                                    width={props.width}
+                                    height={props.height}
+                                    text={props.text} />
+                            }
+
+                            {
+                                props.type === 'file' &&
+                                <FileMessage
+                                    onOpen={props.onOpen}
+                                    onDownload={props.onDownload}
+                                    data={props.data}
+                                    text={props.text} />
+                            }
+
+                            {
+                                props.type === 'spotify' &&
+                                <SpotifyMessage
+                                    width={props.width}
+                                    height={props.height}
+                                    theme={props.theme}
+                                    view={props.view}
+                                    data={props.data}
+                                    uri={props.uri || props.text} />
+                            }
+
+                            {
+                                props.type === 'meeting' &&
+                                props.meeting &&
+                                <MeetingMessage
+                                    subject={props.meeting.subject}
+                                    title={props.meeting.title}
+                                    date={props.meeting.date}
+                                    dateString={props.meeting.dateString}
+                                    collapseTitle={props.meeting.collapseTitle}
+                                    participants={props.meeting.participants}
+                                    moreItems={props.meeting.moreItems}
+                                    dataSource={props.meeting.dataSource}
+                                    onClick={props.onMeetingMessageClick}
+                                    onMeetingMoreSelect={props.onMeetingMoreSelect}
+                                    onMeetingVideoLinkClick={props.onMeetingVideoLinkClick}
+                                    onMeetingTitleClick={props.onMeetingTitleClick} />
+                            }
+                            {
+                                props.type === 'audio' &&
+                                <AudioMessage
+                                    onOpen={props.onOpen}
+                                    onDownload={props.onDownload}
+                                    onLoad={props.onLoad}
+                                    data={props.data}
+                                    text={props.text} />
+                            }
+
+                            {
+                                props.type === 'meetingLink' &&
+                                <MeetingLink
+                                    meetingID={props.meetingID}
+                                    title={props.text}
+                                    onMeetingMoreSelect={props.onMeetingLinkClick}/>
+                            }
+
+                            <div
+                                className={classNames(
+                                    'rce-mbox-time',
+                                    { 'rce-mbox-time-block': thatAbsoluteTime },
+                                    { 'non-copiable': !props.copiableDate },
+                                )}
+                                data-text={props.copiableDate ? undefined : dateText}>
+                                {
+                                    props.copiableDate &&
+                                    props.date &&
+                                    !isNaN(props.date) &&
+                                    (
+                                        props.dateString ||
+                                        format(props.date)
+                                    )
+                                }
+                                {
+                                    props.status &&
+                                    <span className='rce-mbox-status'>
+                                        {
+                                            props.status === 'waiting' &&
+                                            <MdIosTime />
+                                        }
+
+                                        {
+                                            props.status === 'sent' &&
+                                            <MdCheck />
+                                        }
+
+                                        {
+                                            props.status === 'received' &&
+                                            <IoDoneAll />
+                                        }
+
+                                        {
+                                            props.status === 'read' &&
+                                            <IoDoneAll color='#4FC3F7'/>
+                                        }
+                                    </span>
+                                }
+                            </div>
                         </div>
-                }
-            </div>
-        );
-    }
+
+                        {
+                            props.notch &&
+                            (props.position === 'right' ?
+                                <svg className={classNames(
+                                    "rce-mbox-right-notch",
+                                    { 'message-focus': props.focus},
+                                )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M0 0v20L20 0" />
+                                </svg>
+                                :
+                                <div>
+                                    <svg className={classNames(
+                                            "rce-mbox-left-notch",
+                                            { 'message-focus': props.focus},
+                                        )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <defs>
+                                            <filter id="filter1" x="0" y="0">
+                                                <feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
+                                                <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+                                                <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                                            </filter>
+                                        </defs>
+                                        <path d="M20 0v20L0 0" filter="url(#filter1)" />
+                                    </svg>
+                                </div>
+                            )
+                        }
+                    </div>
+            }
+        </div>
+    );
 }
 
 MessageBox.defaultProps = {
@@ -374,6 +370,3 @@ MessageBox.defaultProps = {
     focus: false,
     onMessageFocused: null,
 };
-
-
-export default MessageBox;
