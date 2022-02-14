@@ -37,6 +37,8 @@ export class App extends Component {
             show: true,
             list: 'chat',
             messageList: [],
+            isShowChild: false,
+            preview: false,
         };
 
         this.addMessage = this.addMessage.bind(this);
@@ -363,10 +365,43 @@ export class App extends Component {
                         lockable={true}
                         downButtonBadge={10}
                         dataSource={this.state.messageList}
-                        onDragEnter={(e) => console.log(e, 'onDragEnter')}
-                        onDragLeave={(e) => console.log(e, 'onDragLeave')}
-                        onDrop={(e) => console.log(e, 'onDrop')}
-                        onDragComponent={()=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
+                        sendMessagePreview={true}
+                        isShowChild={this.state.isShowChild}
+                        customProps={{
+                            onDragEnter: (e) => {
+                                e.preventDefault()
+                                console.log('onDragEnter')
+                                this.setState({ isShowChild: true })
+                            }
+                        }} >
+                            {
+                                this.state.preview ?
+                                    <div
+                                    className="on-drag-mlist"
+                                    onClick={()=> {
+                                        this.setState({ isShowChild: false, preview: false })
+                                    }}>preview click and finish</div>
+                                :
+                                <div
+                                    className="on-drag-mlist"
+                                    onDragOver={(e) => {
+                                        e.preventDefault()
+                                        console.log('onDragOver')
+                                    }}
+                                    onDragLeave={(e) => {
+                                        e.preventDefault()
+                                        console.log('onDragLeave')
+                                        this.setState({ isShowChild: false })
+                                    }}
+                                    onDrop={(e) => {
+                                        e.preventDefault()
+                                        console.log(e.dataTransfer.files, 'onDrop')
+                                        this.setState({ preview: true })
+                                    }}>
+                                    {loremIpsum({ count: 4, units: 'words' })}
+                                </div>
+                            }
+                        </MessageList>
                     <Input
                         placeholder="Mesajınızı buraya yazınız."
                         defaultValue=""
