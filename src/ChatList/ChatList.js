@@ -1,59 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ChatList.css';
 
 import ChatItem from '../ChatItem/ChatItem';
 
 const classNames = require('classnames');
+function ChatList(props) {
 
-export class ChatList extends Component {
+  const onClick = (item, i, e) => {
+    if (props.onClick instanceof Function)
+      props.onClick(item, i, e);
+  }
 
-    onClick(item, i, e) {
-        if (this.props.onClick instanceof Function)
-            this.props.onClick(item, i, e);
-    }
+  const onContextMenu = (item, i, e) => {
+    e.preventDefault();
+    if (props.onContextMenu instanceof Function)
+      props.onContextMenu(item, i, e);
+  }
 
-    onContextMenu(item, i, e) {
-        e.preventDefault();
-        if (this.props.onContextMenu instanceof Function)
-            this.props.onContextMenu(item, i, e);
-    }
+  const onAvatarError = (item, i, e) => {
+    if (props.onAvatarError instanceof Function)
+      props.onAvatarError(item, i, e);
+  }
 
-    onAvatarError(item, i, e) {
-        if (this.props.onAvatarError instanceof Function)
-            this.props.onAvatarError(item, i, e);
-    }
-
-    render() {
-        return (
-            <div
-                ref={this.props.cmpRef}
-                className={classNames('rce-container-clist', this.props.className)}>
-                {
-                    this.props.dataSource.map((x, i) => (
-                        <ChatItem
-                            id={x.id || i}
-                            key={i}
-                            lazyLoadingImage={this.props.lazyLoadingImage}
-                            {...x}
-                            onAvatarError={(e) => this.onAvatarError(x, i, e)}
-                            onContextMenu={(e) => this.onContextMenu(x, i, e)}
-                            onClick={(e) => this.onClick(x, i, e)}
-                            onClickMute={(e) => this.props.onClickMute(x, i, e)}
-                            onClickVideoCall={(e) => this.props.onClickVideoCall(x, i, e)}/>
-                    ))
-                }
-            </div>
-        );
-    }
+  return (
+    <div
+      ref={props.cmpRef}
+      className={classNames('rce-container-clist', props.className)}>
+      {
+        props.dataSource.map((x, i) => (
+          <ChatItem
+            id={x.id || i}
+            key={i}
+            lazyLoadingImage={props.lazyLoadingImage}
+            {...x}
+            onAvatarError={(e) => onAvatarError(x, i, e)}
+            onContextMenu={(e) => onContextMenu(x, i, e)}
+            onClick={(e) => onClick(x, i, e)}
+            onClickMute={(e) => props.onClickMute(x, i, e)}
+            onClickVideoCall={(e) => props.onClickVideoCall(x, i, e)}/>
+        ))
+      }
+    </div>
+  );
 }
 
 ChatList.defaultProps = {
-    dataSource: [],
-    onClick: null,
-    lazyLoadingImage: undefined,
-    mute: null,
-    onClickMute: null,
-    onClickVideoCall: null,
+  dataSource: [],
+  onClick: null,
+  lazyLoadingImage: undefined,
+  mute: null,
+  onClickMute: null,
+  onClickVideoCall: null,
 };
 
 export default ChatList;

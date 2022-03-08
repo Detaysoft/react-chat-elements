@@ -1,72 +1,70 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './MeetingList.css';
 
 import MeetingItem from '../MeetingItem/MeetingItem';
 
 const classNames = require('classnames');
 
-export class MeetingList extends Component {
+function MeetingList(props) {
 
-    onClick(item, i, e) {
-        if (this.props.onClick instanceof Function)
-            this.props.onClick(item, i, e);
-    }
+  const onClick = (item, i, e) => {
+    if (props.onClick instanceof Function)
+      props.onClick(item, i, e);
+  }
 
-    onContextMenu(item, i, e) {
-        e.preventDefault();
-        if (this.props.onContextMenu instanceof Function)
-            this.props.onContextMenu(item, i, e);
-    }
+  const onContextMenu = (item, i, e) => {
+    e.preventDefault();
+    if (props.onContextMenu instanceof Function)
+      props.onContextMenu(item, i, e);
+  }
 
-    onAvatarError(item, i, e) {
-        if (this.props.onAvatarError instanceof Function)
-            this.props.onAvatarError(item, i, e);
-    }
+  const onAvatarError = (item, i, e) => {
+    if (props.onAvatarError instanceof Function)
+      props.onAvatarError(item, i, e);
+  }
 
-    onMeetingClick(item, i, e) {
-        if (this.props.onMeetingClick instanceof Function)
-            this.props.onMeetingClick(item, i, e);
-    }
+  const onMeetingClick = (item, i, e) => {
+    if (props.onMeetingClick instanceof Function)
+      props.onMeetingClick(item, i, e);
+  }
 
-    onShareClick(item, i, e) {
-        if (this.props.onShareClick instanceof Function)
-            this.props.onShareClick(item, i, e);
-    }
+  const onShareClick = (item, i, e) => {
+    if (props.onShareClick instanceof Function)
+      props.onShareClick(item, i, e);
+  }
 
-    onCloseClick(item, i, e) {
-        if (this.props.onCloseClick instanceof Function)
-            this.props.onCloseClick(item, i, e);
-    }
+  const onCloseClick = (item, i, e) => {
+    if (props.onCloseClick instanceof Function)
+      props.onCloseClick(item, i, e);
+  }
 
-    render() {
-        return (
-            <div
-                ref={this.props.cmpRef}
-                className={classNames('rce-container-mtlist', this.props.className)}>
-                {
-                    this.props.dataSource.map((x, i) => (
-                        <MeetingItem
-                            id={x.id || i}
-                            key={i}
-                            lazyLoadingImage={this.props.lazyLoadingImage}
-                            {...x}
-                            onAvatarError={(e) => this.onAvatarError(x, i, e)}
-                            onContextMenu={(e) => this.onContextMenu(x, i, e)}
-                            onClick={(e) => this.onClick(x, i, e)}
-                            onMeetingClick={(e) => this.onMeetingClick(x, i, e)}
-                            onShareClick={(e) => this.onShareClick(x, i, e)}
-                            onCloseClick={(e) => this.onCloseClick(x, i, e)}/>
-                    ))
-                }
-            </div>
-        );
-    }
+  return (
+    <div
+      ref={props.cmpRef}
+      className={classNames('rce-container-mtlist', props.className)}>
+      {
+        props.dataSource.map((x, i) => (
+          <MeetingItem
+            id={x.id || i}
+            key={i}
+            lazyLoadingImage={props.lazyLoadingImage}
+            {...x}
+            onAvatarError={(e) => onAvatarError(x, i, e)}
+            onContextMenu={(e) => onContextMenu(x, i, e)}
+            onClick={(e) => onClick(x, i, e)}
+            onMeetingClick={(e) => onMeetingClick(x, i, e)}
+            onShareClick={(e) => onShareClick(x, i, e)}
+            onCloseClick={(e) => onCloseClick(x, i, e)}/>
+        ))
+      }
+    </div>
+  );
 }
 
 MeetingList.defaultProps = {
-    dataSource: [],
-    onClick: null,
-    lazyLoadingImage: undefined,
+  dataSource: [],
+  onClick: null,
+  lazyLoadingImage: undefined,
 };
 
 export default MeetingList;
