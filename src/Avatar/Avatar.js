@@ -3,28 +3,28 @@ import './Avatar.css';
 
 const classNames = require('classnames');
 function Avatar(props) {
-	const [loadedAvatars, setLoadedAvatars] = useState([]);
-	const [loading, setLoading] = useState(false);
-	const [src, setSrc] = useState(props.src);
-	const [isLazyImage, setIsLazyImage] = useState(false);
 
+	let loadedAvatars = [];
+	let loading = false;
+	let src = props.src;
+	let isLazyImage = false;
 	let _isMounted = false;
 
 	useEffect(() => {
 		_isMounted = true;
 
 		if (props.lazyLoadingImage) {
-			setIsLazyImage(true);
+			isLazyImage = true;
 
 			if (!isLoaded(src)) {
-				setSrc(props.lazyLoadingImage);
+				src = props.lazyLoadingImage;
 
 				if (!loading) {
 					requestImage(props.src);
 				}
 			}
 			else {
-				setIsLazyImage(false);
+				isLazyImage = false;
 			}
 		}
 
@@ -38,11 +38,11 @@ function Avatar(props) {
 	}
 
 	const requestImage = (src) => {
-		setLoading(true);
+		loading = true;
 
 		var loaded = () => {
-			setLoadedAvatars(loadedAvatars.concat(src));
-			setLoading(false);
+			loadedAvatars.push(src);
+			loading = false;
 		};
 
 		var img = document.createElement('img');
