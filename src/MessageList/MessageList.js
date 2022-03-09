@@ -145,7 +145,11 @@ export default function MessageList(props) {
 
   return (
     <div
-        className={classNames(['rce-container-mlist', props.className])}>
+      className={classNames(['rce-container-mlist', props.className])} {...props.customProps}>
+        {
+          !!props.children && props.isShowChild &&
+          props.children
+        }
         <div
           ref={props.referance}
           onScroll={onScroll}

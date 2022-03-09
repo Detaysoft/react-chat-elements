@@ -35,6 +35,8 @@ function App() {
   const [messageList, setMessageList] = useState([]);
   const [chatSource, setChatSource] = useState([]);
   const [meetingSource, setMeetingSource] = useState([]);
+  const [isShowChild, setIsShowChild] = useState(false);
+  const [preview, setPreview] = useState(false);
 
   useEffect(() => {
     addMessage(8);
@@ -268,6 +270,7 @@ function App() {
     var list = messageList;
     list.push(random('message', mtype));
     setMessageList(list);
+    clearRef();
     forceUpdate();
   }
 
@@ -316,7 +319,11 @@ function App() {
             <ChatList
               dataSource={chatSource}
               onClickMute={({...props}) => console.log(props)}
-              onClickVideoCall={({...props}) => console.log(props)} />
+              onClickVideoCall={({...props}) => console.log(props)}
+              onDragEnter={(e, id) => console.log(id, 'onDragEnter')}
+              onDragLeave={(e, id) => console.log(id, 'onDragLeave')}
+              onDrop={(e, id) => console.log(e, id, 'onDrop')}
+              onDragComponent={(id)=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
             :
             <MeetingList
               onMeetingClick={console.log}
@@ -349,7 +356,45 @@ function App() {
         className='message-list'
         lockable={true}
         downButtonBadge={10}
-        dataSource={messageList} />
+        dataSource={messageList}
+        sendMessagePreview={true}
+        isShowChild={isShowChild}
+        customProps={{
+          onDragEnter: (e) => {
+            e.preventDefault()
+            console.log('onDragEnter')
+            setIsShowChild(true);
+          }
+        }} >
+        {
+          preview ?
+              <div
+              className="on-drag-mlist"
+              onClick={()=> {
+                setIsShowChild(false);
+                setPreview(false);
+              }}>preview click and finish</div>
+          :
+          <div
+              className="on-drag-mlist"
+              onDragOver={(e) => {
+                e.preventDefault()
+                console.log('onDragOver')
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault()
+                console.log('onDragLeave')
+                setIsShowChild(false);
+              }}
+              onDrop={(e) => {
+                e.preventDefault()
+                console.log(e.dataTransfer.files, 'onDrop')
+                setPreview(true);
+              }}>
+              {loremIpsum({ count: 4, units: 'words' })}
+          </div>
+        }
+      </MessageList>
 
       <Input
         placeholder="Mesajınızı buraya yazınız."
