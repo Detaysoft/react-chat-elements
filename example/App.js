@@ -270,6 +270,7 @@ function App() {
     var list = messageList;
     list.push(random('message', mtype));
     setMessageList(list);
+    clearRef();
     forceUpdate();
   }
 

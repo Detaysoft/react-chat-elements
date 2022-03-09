@@ -29,8 +29,8 @@ function ChatList(props) {
       {
         props.dataSource.map((x, i) => (
           <ChatItem
-            id={x.id || i}
             key={i}
+            id={x.id || i}
             lazyLoadingImage={props.lazyLoadingImage}
             {...x}
             onAvatarError={(e) => onAvatarError(x, i, e)}
