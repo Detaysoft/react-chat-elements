@@ -6,68 +6,59 @@ const classNames = require('classnames');
 const STATIC_URL = 'https://maps.googleapis.com/maps/api/staticmap?markers=color:MARKER_COLOR|LATITUDE,LONGITUDE&zoom=ZOOM&size=270x200&scale=2&key=KEY';
 const MAP_URL = 'https://www.google.com/maps/search/?api=1&query=LATITUDE,LONGITUDE&zoom=ZOOM';
 
-export class LocationMessage extends React.PureComponent {
-    constructor(props) {
-        super(props);
+function LocationMessage(props) {
+  const data = props.data || {};
 
-        this.className = this.className.bind(this);
+  const buildURL = (url) => {
+    var center = props.data || {};
+
+    return url.replace(/LATITUDE/g, center.latitude)
+              .replace(/LONGITUDE/g, center.longitude)
+              .replace('MARKER_COLOR', props.markerColor)
+              .replace('ZOOM', props.zoom)
+              .replace('KEY', props.apiKey);
+  }
+  const className = () => {
+    var _className = classNames('rce-mbox-location', props.className);
+
+    if (props.text) {
+      _className = classNames(_className, 'rce-mbox-location-has-text');
     }
 
-    buildURL(url) {
-        var center = this.props.data || {};
+    return _className;
+  }
 
-        return url.replace(/LATITUDE/g, center.latitude)
-                  .replace(/LONGITUDE/g, center.longitude)
-                  .replace('MARKER_COLOR', this.props.markerColor)
-                  .replace('ZOOM', this.props.zoom)
-                  .replace('KEY', this.props.apiKey);
-    }
-
-    className() {
-        var className = classNames('rce-mbox-location', this.props.className);
-
-        if (this.props.text) {
-            className = classNames(className, 'rce-mbox-location-has-text');
-        }
-
-        return className;
-    }
-
-    render() {
-        const data = this.props.data || {};
-
-        return (
-            <div className='rce-container-lmsg'>
-                <a
-                    onClick={this.props.onOpen}
-                    target={this.props.target}
-                    href={this.props.href || this.props.src || this.buildURL(data.mapURL || MAP_URL)}
-                    className={this.className()}>
-                    <img
-                        onError={this.props.onError}
-                        className='rce-mbox-location-img'
-                        src={
-                            this.props.src ||
-                            this.buildURL(data.staticURL || STATIC_URL)
-                        }/>
-                </a>
-                {
-                    this.props.text &&
-                    <div className="rce-mbox-text rce-mbox-location-text">
-                        {this.props.text}
-                    </div>
-                }
-            </div>
-        );
-    }
+  return (
+    <div className='rce-container-lmsg'>
+      <a
+        onClick={props.onOpen}
+        target={props.target}
+        href={props.href || props.src || buildURL(data.mapURL || MAP_URL)}
+        className={className()}>
+        <img
+          onError={props.onError}
+          className='rce-mbox-location-img'
+          src={
+            props.src ||
+            buildURL(data.staticURL || STATIC_URL)
+          }/>
+      </a>
+      {
+        props.text &&
+        <div className='rce-mbox-text rce-mbox-location-text'>
+          {props.text}
+        </div>
+      }
+    </div>
+  );
 }
 
 LocationMessage.defaultProps = {
-    target: '_blank',
-    apiKey: '',
-    zoom: 14,
-    markerColor: 'red',
-    onError: () => void(0),
+  target: '_blank',
+  apiKey: '',
+  zoom: 14,
+  markerColor: 'red',
+  onError: () => void(0),
 }
 
 export default LocationMessage;
