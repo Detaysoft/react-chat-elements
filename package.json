@@ -1,6 +1,6 @@
 {
   "name": "react-chat-elements",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
@@ -23,7 +23,7 @@
     "lorem-ipsum": "^1.0.4",
     "nwb": "^0.23.0",
     "react": "^17.0.2",
-    "react-dom": "^16.3.0",
+    "react-dom": "17.0.2",
     "react-native": "0.49.5",
     "react-scripts": "^1.0.10",
     "react-test-renderer": "^17.0.2",
