@@ -2,8 +2,7 @@ import React from 'react';
 
 import './PhotoMessage.css';
 
-import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
-import FaError from 'react-icons/lib/fa/exclamation-triangle';
+import { FaCloudDownload, FaExclamationTriangle} from 'react-icons/fa';
 
 const ProgressBar = require('progressbar.js');
 const Circle = ProgressBar.Circle;
@@ -47,7 +46,7 @@ function PhotoMessage(props) {
           <div className='rce-mbox-photo--img__block'>
             <span
               className='rce-mbox-photo--img__block-item rce-mbox-photo--error'>
-              <FaError/>
+              <FaExclamationTriangle/>
             </span>
           </div>
         }

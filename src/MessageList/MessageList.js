@@ -3,7 +3,7 @@ import './MessageList.css';
 
 import MessageBox from '../MessageBox/MessageBox';
 
-import FaChevronDown from 'react-icons/lib/fa/chevron-down';
+import {FaChevronDown} from 'react-icons/fa';
 
 const classNames = require('classnames');
 

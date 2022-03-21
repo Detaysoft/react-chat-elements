@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import './VideoMessage.css';
 
-import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
-import FaError from 'react-icons/lib/fa/exclamation-triangle';
+import { FaCloudDownload, FaExclamationTriangle} from 'react-icons/fa';
 
 import classNames from 'classnames';
 
@@ -66,7 +65,7 @@ function VideoMessage(props) {
           <div className='rce-mbox-video--video__block'>
             <span
               className='rce-mbox-video--video__block-item rce-mbox-video--error'>
-              <FaError/>
+              <FaExclamationTriangle/>
             </span>
           </div>
         }
