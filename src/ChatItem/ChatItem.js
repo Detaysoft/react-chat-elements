@@ -9,7 +9,7 @@ import {
 
 import classNames from 'classnames';
 
-import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/lib/md';
+import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md';
 
 function ChatItem(props) {
   const [onHoverTool, setOnHoverTool] = useState(false);

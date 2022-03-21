@@ -10,11 +10,8 @@ import {
     MeetingList,
 } from '../src';
 
-import FaSearch from 'react-icons/lib/fa/search';
-import FaComments from 'react-icons/lib/fa/comments';
-import FaClose from 'react-icons/lib/fa/close';
-import FaMenu from 'react-icons/lib/md/more-vert';
-import FaSquare from 'react-icons/lib/md/crop-square';
+import { FaSearch, FaComments, FaTimes, FaSquare } from 'react-icons/fa';
+import { MdOutlineMoreVert } from 'react-icons/md'
 
 import loremIpsum from 'lorem-ipsum';
 import Identicon from 'identicon.js';
@@ -214,7 +211,7 @@ function App() {
                 type: "transparent",
                 color: "#cecece",
                 icon: {
-                  component: <FaMenu />,
+                  component: <MdOutlineMoreVert />,
                   size: 24,
                 }
               }}
@@ -290,7 +287,7 @@ function App() {
                     setShow(false);
                   },
                   icon: {
-                    component: <FaClose />,
+                    component: <FaTimes />,
                     size: 18
                   }
                 }]}

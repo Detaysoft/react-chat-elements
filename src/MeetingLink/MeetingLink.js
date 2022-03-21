@@ -1,7 +1,7 @@
 import React from 'react';
 import './MeetingLink.css';
 
-import MdOutlineVideoCameraFront from 'react-icons/lib/md/video-call';
+import { MdOutlineVideoCameraFront } from 'react-icons/md';
 
 function MeetingLink({meetingID, title, onMeetingMoreSelect}) {
   const onHandleClick = () => {
