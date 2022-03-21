@@ -5,7 +5,7 @@ import './PhotoMessage.css';
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
 import FaError from 'react-icons/lib/fa/exclamation-triangle';
 
-const ProgressBar = require('react-progress-bar.js');
+const ProgressBar = require('progressbar.js');
 const Circle = ProgressBar.Circle;
 
 function PhotoMessage(props) {

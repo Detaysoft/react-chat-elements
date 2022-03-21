@@ -7,7 +7,7 @@ import FaError from 'react-icons/lib/fa/exclamation-triangle';
 
 import classNames from 'classnames';
 
-const ProgressBar = require('react-progress-bar.js');
+const ProgressBar = require('progressbar.js');
 const Circle = ProgressBar.Circle;
 
 function VideoMessage(props) {

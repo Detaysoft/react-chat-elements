@@ -1,12 +1,11 @@
 import React from 'react';
 import './FileMessage.css';
 
-import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
-import FaError from 'react-icons/lib/fa/exclamation-triangle';
-import FaFile from 'react-icons/lib/fa/file';
+import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 
-const ProgressBar = require('react-progress-bar.js');
+const ProgressBar = require('progressbar.js');
 const Circle = ProgressBar.Circle;
+
 function FileMessage(props) {
   var progressOptions = {
     strokeWidth: 5,
@@ -54,7 +53,7 @@ function FileMessage(props) {
           {
             error &&
             <span className='rce-error-button'>
-              <FaError
+              <FaExclamationTriangle
                   color='#ff3d3d'/>
             </span>
           }
@@ -63,7 +62,7 @@ function FileMessage(props) {
             props.data.status &&
             !props.data.status.download &&
             !props.data.status.click &&
-            <FaCloudDownload
+            <FaCloudDownloadAlt
               color='#aaa'/>
           }
           {
