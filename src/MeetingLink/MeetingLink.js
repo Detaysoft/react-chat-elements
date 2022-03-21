@@ -1,7 +1,7 @@
 import React from 'react';
 import './MeetingLink.css';
 
-import { MdOutlineVideoCameraFront } from 'react-icons/md';
+import { MdOutlineVideoCall } from 'react-icons/md';
 
 function MeetingLink({meetingID, title, onMeetingMoreSelect}) {
   const onHandleClick = () => {
@@ -17,7 +17,7 @@ function MeetingLink({meetingID, title, onMeetingMoreSelect}) {
           </div>
         </div>
         <div className='rce-mtlink-btn' onClick={onHandleClick}>
-          <MdOutlineVideoCameraFront className='rce-mtlink-svg'/>
+          <MdOutlineVideoCall className='rce-mtlink-svg'/>
         </div>
       </div>
     </div>

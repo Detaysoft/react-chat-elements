@@ -2,9 +2,7 @@ import React from 'react';
 import './FileMessage.css';
 
 import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
-
-const ProgressBar = require('progressbar.js');
-const Circle = ProgressBar.Circle;
+import ProgressCircle from '../Circle/Circle';
 
 function FileMessage(props) {
   var progressOptions = {
@@ -70,11 +68,10 @@ function FileMessage(props) {
             props.data.status &&
             typeof props.data.status.loading === 'number' &&
             props.data.status.loading !== 0 &&
-            <Circle
-              progress={props.data.status.loading}
-              options={progressOptions}
-              initialAnimate={true}
-              containerClassName={'rce-mbox-file--loading'} />
+            <ProgressCircle
+              animate={props.data.status.loading}
+              className='rce-mbox-file--loading'
+              progressOptions={progressOptions} />
           }
         </div>
       </button>

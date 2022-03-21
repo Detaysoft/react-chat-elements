@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 
 import './VideoMessage.css';
 
-import { FaCloudDownload, FaExclamationTriangle} from 'react-icons/fa';
+import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 
 import classNames from 'classnames';
-
-const ProgressBar = require('progressbar.js');
-const Circle = ProgressBar.Circle;
-
+import ProgressCircle from '../Circle/Circle';
 function VideoMessage(props) {
   var progressOptions = {
     strokeWidth: 2.3,
@@ -79,17 +76,16 @@ function VideoMessage(props) {
               <button
                 onClick={props.onDownload}
                 className='rce-mbox-video--video__block-item rce-mbox-video--download'>
-                <FaCloudDownload/>
+                <FaCloudDownloadAlt />
               </button>
             }
             {
               typeof props.data.status.loading === 'number' &&
               props.data.status.loading !== 0 &&
-              <Circle
-                progress={props.data.status.loading}
-                options={progressOptions}
-                initialAnimate={true}
-                containerClassName={'rce-mbox-video--video__block-item'} />
+              <ProgressCircle
+                animate={props.data.status.loading}
+                className='rce-mbox-video--video__block-item'
+                progressOptions={progressOptions} />
             }
           </div>
         }

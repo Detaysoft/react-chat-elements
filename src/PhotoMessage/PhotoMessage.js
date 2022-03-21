@@ -2,10 +2,8 @@ import React from 'react';
 
 import './PhotoMessage.css';
 
-import { FaCloudDownload, FaExclamationTriangle} from 'react-icons/fa';
-
-const ProgressBar = require('progressbar.js');
-const Circle = ProgressBar.Circle;
+import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
+import ProgressCircle from '../Circle/Circle';
 
 function PhotoMessage(props) {
   var progressOptions = {
@@ -60,18 +58,17 @@ function PhotoMessage(props) {
               <button
                 onClick={props.onDownload}
                 className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
-                <FaCloudDownload/>
+                <FaCloudDownloadAlt />
               </button>
             }
             {
               typeof props.data.status.loading === 'number' &&
               props.data.status.loading !== 0 &&
-              <Circle
-                progress={props.data.status.loading}
-                options={progressOptions}
-                initialAnimate={true}
-                containerClassName={'rce-mbox-photo--img__block-item'} />
-            }
+              <ProgressCircle
+                animate={props.data.status.loading}
+                progressOptions={progressOptions}
+                className='rce-mbox-photo--img__block-item' />
+}
           </div>
         }
       </div>
