@@ -1,9 +1,7 @@
 import React from 'react';
 import './MeetingItem.css';
 
-import MdVideoCall from 'react-icons/lib/md/video-call';
-import MdLink from 'react-icons/lib/md/link';
-import MdCall from 'react-icons/lib/md/call';
+import { MdVideoCall, MdLink, MdCall } from 'react-icons/md';
 
 import Avatar from '../Avatar/Avatar';
 

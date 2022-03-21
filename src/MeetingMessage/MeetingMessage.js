@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './MeetingMessage.css';
 
-import FaCalendar from 'react-icons/lib/fa/calendar';
-import MdMoreHoriz from 'react-icons/lib/md/more-horiz';
-import FaCaretDown from 'react-icons/lib/fa/caret-down';
-import FaCaretRight from 'react-icons/lib/fa/caret-right';
-import IoVideo from 'react-icons/lib/io/ios-videocam-outline';
-import IoChatboxes from 'react-icons/lib/io/ios-chatboxes-outline';
+import { FaCalendar, FaCaretDown, FaCaretRight } from 'react-icons/fa';
+import { MdMoreHoriz } from 'react-icons/md';
+import { IoMdChatboxes } from 'react-icons/io';
+import { HiOutlineVideoCamera } from 'react-icons/hi';
 
 import {
   format,
@@ -129,7 +127,7 @@ function MeetingMessage({
                         {
                           x.avatar ?
                             <Avatar src={x.avatar}/>
-                            : <IoChatboxes />
+                            : <IoMdChatboxes />
                         }
                       </div>
                       <div className='rce-mitem-body'>
@@ -161,7 +159,7 @@ function MeetingMessage({
                     <div className='rce-mitem-event'>
                       <div className='rce-mitem-bottom-body'>
                         <div className='rce-mitem-body avatar'>
-                          <IoVideo />
+                          <HiOutlineVideoCamera />
                         </div>
                         <div className='rce-mitem-bottom-body-top'>
                           {x.event.title}

@@ -14,14 +14,9 @@ import MeetingLink from '../MeetingLink/MeetingLink';
 
 import Avatar from '../Avatar/Avatar';
 
-import FaForward from 'react-icons/lib/fa/mail-forward';
-
-import IoDoneAll from 'react-icons/lib/io/android-done-all';
-import MdIosTime from 'react-icons/lib/md/access-time';
-import MdCheck from 'react-icons/lib/md/check';
-import MdMessage from 'react-icons/lib/md/message';
-import MdRemove from 'react-icons/lib/md/delete';
-import MdBlock from 'react-icons/lib/md/block';
+import { RiShareForwardFill } from 'react-icons/ri';
+import { IoIosDoneAll } from 'react-icons/io';
+import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock } from 'react-icons/md';
 
 import {
   format,
@@ -83,7 +78,7 @@ export default function MessageBox(props) {
                   { 'rce-mbox-forward-left': props.position === 'right' }
                 )}
                 onClick={props.onForwardClick}>
-                  <FaForward />
+                  <RiShareForwardFill />
               </div>
             }
 
@@ -119,7 +114,7 @@ export default function MessageBox(props) {
                   { 'rce-mbox-reply-btn-left': props.position === 'right' }
                 )}
                 onClick={props.onRemoveMessageClick}>
-                  <MdRemove />
+                  <MdDelete />
               </div>
             }
 
@@ -285,7 +280,7 @@ export default function MessageBox(props) {
                 <span className='rce-mbox-status'>
                   {
                     props.status === 'waiting' &&
-                    <MdIosTime />
+                    <MdAccessTime />
                   }
 
                   {
@@ -295,12 +290,12 @@ export default function MessageBox(props) {
 
                   {
                     props.status === 'received' &&
-                    <IoDoneAll />
+                    <IoIosDoneAll />
                   }
 
                   {
                     props.status === 'read' &&
-                    <IoDoneAll color='#4FC3F7'/>
+                    <IoIosDoneAll color='#4FC3F7'/>
                   }
                 </span>
               }
