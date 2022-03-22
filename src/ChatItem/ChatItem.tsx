@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Key, useState } from 'react';
 import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md';
 
-function ChatItem(props) {
+const ChatItem = (props: IChatItemProps) => {
   const [onHoverTool, setOnHoverTool] = useState(false);
   const statusColorType = props.statusColorType;
   const [onDrag, setOnDrag] = useState(false);
@@ -24,48 +24,48 @@ function ChatItem(props) {
     setOnHoverTool(false);
   }
 
-  const handleOnClick = (e) => {
+  const handleOnClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
     if (onHoverTool === true)
         return;
 
-    props.onClick();
+    props.onClick?.(e);
   }
 
-  const onDragOver = (e) => {
+  const onDragOver = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragOver instanceof Function)
-      props.onDragOver(e, props.id)
+      props.onDragOver(e, props.chat.id)
   }
 
-  const onDragEnter = (e) => {
+  const onDragEnter = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragEnter instanceof Function)
-        props.onDragEnter(e, props.id)
+        props.onDragEnter(e, props.chat.id)
     if (!onDrag)
       setOnDrag(true);
   }
 
-  const onDragLeave = (e) => {
+  const onDragLeave = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragLeave instanceof Function)
-        props.onDragLeave(e, props.id)
+        props.onDragLeave(e, props.chat.id)
     if (onDrag)
       setOnDrag(false);
   }
 
-  const onDrop = (e) => {
+  const onDrop = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDrop instanceof Function)
-        props.onDrop(e, props.id)
+        props.onDrop(e, props.chat.id)
     if (onDrag)
       setOnDrag(false);
   }
 
   return (
     <div
-      key={props.id}
+      key={props.chat.id as Key}
       className={classNames('rce-container-citem', props.className)}
       onClick={handleOnClick}
       onContextMenu={props.onContextMenu}>
@@ -76,7 +76,7 @@ function ChatItem(props) {
         onDrop={onDrop}>
         {
           !!props.onDragComponent && onDrag &&
-          props.onDragComponent(props.id)
+          props.onDragComponent(props.chat.id)
         }
         {((onDrag && !props.onDragComponent) || !onDrag) && [
           <div className={classNames("rce-citem-avatar", { 'rce-citem-status-encircle': statusColorType === 'encircle' })}>
@@ -111,7 +111,7 @@ function ChatItem(props) {
                   <div className="rce-citem-body--top-time">
                       {
                           props.date &&
-                          !isNaN(props.date) &&
+                          props.chat.date &&
                           (
                               props.dateString ||
                               format(props.date)
@@ -158,8 +158,8 @@ function ChatItem(props) {
                 </div>
                 <div className="rce-citem-body--bottom-status">
                   {
-                    props.unread > 0 &&
-                    <span>{props.unread}</span>
+                    props.chat.unread > 0 &&
+                    <span>{props.chat.unread}</span>
                   }
                 </div>
             </div>
@@ -168,26 +168,6 @@ function ChatItem(props) {
       </div>
     </div>
   );
-}
-
-ChatItem.defaultProps = {
-  id: '',
-  onClick: null,
-  avatar: '',
-  avatarFlexible: false,
-  alt: '',
-  title: '',
-  subtitle: '',
-  date: new Date(),
-  unread: 0,
-  statusColor: null,
-  statusColorType: 'badge',
-  statusText: null,
-  dateString: null,
-  lazyLoadingImage: undefined,
-  onAvatarError: () => void(0),
-  showMute: null,
-  showVideoCall: null,
 }
 
 export default ChatItem;

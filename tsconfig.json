@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "sourceMap": true,
+    "allowJs": true,                    // todo: make this false when all .js files have been converted to .ts/.tsx
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "rootDirs": ["src"],
+    "forceConsistentCasingInFileNames": true,
+    //    "noImplicitReturns": true,    // todo: enable this when all .js files have been converted to .ts/.tsx
+    //    "noImplicitThis": true,       // todo: enable this when all .js files have been converted to .ts/.tsx
+    //    "noImplicitAny": true,        // todo: enable this when all .js files have been converted to .ts/.tsx
+    //    "strictNullChecks": true,     // todo: enable this when all .js files have been converted to .ts/.tsx
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "declaration": false,               // todo: make this true when all .js files have been converted to .ts/.tsx
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "outDir": "build",
+    "skipLibCheck": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "build/lib",
+    "scripts",
+    "es",
+    "lib",
+    "tests/**",
+    ".storybook/**",
+    ".idea",
+    ".html",
+    "src/**/*.test.js",
+    "src/**/*.test.ts",
+    "src/**/*.stories.js",
+    "src/**/*.stories.ts"
+  ]
+}
