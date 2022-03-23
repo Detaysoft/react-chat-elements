@@ -7,6 +7,7 @@
   "devDependencies": {
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
+    "copyfiles": "^2.4.1",
     "css-loader": "^0.28.5",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
@@ -51,13 +52,12 @@
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
     "start": "nwb serve-react-app ./example/index.tsx",
+    "copy-files": "copyfiles -u 1 src/**/*.css build/",
     "start:native": "node node_modules/react-native/local-cli/cli.js start",
-    "build": "webpack --progress --profile --colors",
+    "build": "node node_modules/typescript/bin/tsc && yarn copy-files && webpack --progress --profile --colors",
     "test": "react-scripts test --env=jsdom",
-    "nwbbuild": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
     "nwbstart": "nwb serve-react-demo",
-    "start:typesc": "tsc start",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },
   "dependencies": {
