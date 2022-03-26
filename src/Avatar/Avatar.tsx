@@ -5,7 +5,7 @@ import classNames from 'classnames'
 interface IAvatarProps {
 	src: string;
 	lazyLoadingImage?: string;
-	letterItem: ILetterItem;
+	letterItem?: ILetterItem;
 	type?: string;
 	size?: string;
 	className?: string;
@@ -19,16 +19,16 @@ interface ILetterItem {
 	letter?: React.ReactChild;
 }
 
+// kontrol et
+
 function Avatar(props : IAvatarProps) {
 
 	let loadedAvatars: string[] = [];
 	let loading: boolean = false;
 	let src: string = props.src;
 	let isLazyImage: boolean = false;
-	let _isMounted: boolean = false;
 
 	useEffect(() => {
-		_isMounted = true;
 
 		if (props.lazyLoadingImage) {
 			isLazyImage = true;
@@ -45,9 +45,6 @@ function Avatar(props : IAvatarProps) {
 			}
 		}
 
-		return () => {
-			_isMounted = false;
-		}
 	}, []);
 
 	const isLoaded = (src: string) => {

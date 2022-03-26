@@ -1,12 +1,18 @@
-import React, { useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import { Circle } from 'progressbar.js';
 
-let wrapper;
-const ProgressCircle = ({ animate, progressOptions, className }) => {
+interface ICircleProps {
+  animate: number;
+  progressOptions?: Object;
+  className?: string;
+}
+
+let wrapper: HTMLDivElement;
+const ProgressCircle: React.FC<ICircleProps> = ({ animate, progressOptions, className }) => {
   const bar = useMemo(
     () => {
       wrapper = document.createElement('div');
-      return  new Circle(wrapper, progressOptions)
+      return new Circle(wrapper, progressOptions)
       },
     []
   );

@@ -32,7 +32,7 @@ interface IChatItemProps {
   muted?: Boolean;
   showMute?: Boolean;
   showVideoCall?: Boolean;
-  onAvatarError?: Function;
+  onAvatarError?: React.EventHandler;
   onContextMenu?: React.MouseEventHandler;
   onClick?: React.MouseEventHandler;
   onClickMute?: React.MouseEventHandler;
@@ -42,7 +42,11 @@ interface IChatItemProps {
   onDrop?: Function;
   onDragLeave?: Function;
   onDragComponent?: any;
-  letterItem?: string;
+  letterItem?: ILetterItem;
+}
+interface ILetterItem {
+	id: string;
+	letter?: React.ReactChild;
 }
 
 interface IChatListProps {
