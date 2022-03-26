@@ -1,14 +1,31 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './Avatar.css';
+import classNames from 'classnames'
 
-const classNames = require('classnames');
-function Avatar(props) {
+interface IAvatarProps {
+	src: string;
+	lazyLoadingImage?: string;
+	letterItem: ILetterItem;
+	type?: string;
+	size?: string;
+	className?: string;
+	alt?: string;
+	sideElement?: React.ReactChild;
+	onError?: React.ReactEventHandler;
+}
 
-	let loadedAvatars = [];
-	let loading = false;
-	let src = props.src;
-	let isLazyImage = false;
-	let _isMounted = false;
+interface ILetterItem {
+	id: string;
+	letter?: React.ReactChild;
+}
+
+function Avatar(props : IAvatarProps) {
+
+	let loadedAvatars: string[] = [];
+	let loading: boolean = false;
+	let src: string = props.src;
+	let isLazyImage: boolean = false;
+	let _isMounted: boolean = false;
 
 	useEffect(() => {
 		_isMounted = true;
@@ -33,11 +50,11 @@ function Avatar(props) {
 		}
 	}, []);
 
-	const isLoaded = (src) => {
+	const isLoaded = (src: string) => {
 		return loadedAvatars.indexOf(src) !== -1;
 	}
 
-	const requestImage = (src) => {
+	const requestImage = (src : string) => {
 		loading = true;
 
 		var loaded = () => {
@@ -45,20 +62,20 @@ function Avatar(props) {
 			loading = false;
 		};
 
-		var img = document.createElement('img');
+		var img: HTMLImageElement = document.createElement('img');
 		img.src = src;
 		img.onload = loaded;
 		img.onerror = loaded;
 	}
 
-	const stringToColour = (str) => {
-		var hash = 0;
-		for (let i = 0; i < str.length; i++) {
+	const stringToColour = (str : string) => {
+		var hash: number = 0;
+		for (let i: number = 0; i < str.length; i++) {
 			hash = str.charCodeAt(i) + ((hash << 5) - hash);
 		}
-		var colour = '#';
-		for (let i = 0; i < 3; i++) {
-			var value = (hash >> (i * 8)) & 0xFF;
+		var colour: string = '#';
+		for (let i: number = 0; i < 3; i++) {
+			var value: number = (hash >> (i * 8)) & 0xFF;
 			value = (value % 150) + 50;
 			colour += ('00' + value.toString(16)).substr(-2);
 		}

@@ -1,9 +1,27 @@
-import React from 'react';
 import './Button.css';
+import classNames from 'classnames'
+import { RefObject } from 'react';
 
-const classNames = require('classnames');
+interface IButtonProps {
+  title?: string;
+  text?: string;
+  buttonRef?: RefObject<HTMLButtonElement>;
+  type?: string;
+  className?: string;
+  backgroundColor?: string;
+  color?: string;
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler;
+  icon?: IButtonIcon;
+}
 
-function Button(props) {
+interface IButtonIcon {
+  float?: any;
+  size?: number;
+  component?: React.ReactChild;
+}
+
+function Button(props : IButtonProps) {
   return (
     <button
       ref={props.buttonRef}
