@@ -1,16 +1,51 @@
-import React from 'react';
 import './FileMessage.css';
 
 import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import ProgressCircle from '../Circle/Circle';
+import React from 'react';
 
-function FileMessage(props) {
+interface IFileMessageProps {
+  onDownload?: Function;
+  onOpen?: Function;
+  text?: string;
+  data: IFileMessageData;
+}
+
+interface IFileMessageData extends IMessage {
+  status?: IFileMessageDataStatus;
+  size?: string;
+}
+
+interface IFileMessageDataStatus {
+  error?: boolean; // sor
+  download?: Function;
+  click?: Function;
+  loading?: number;
+}
+
+interface IStepState {
+  color?: string;
+  width?: number;
+}
+
+interface IStepCircle {
+  path: IStepCirclePath;
+  value: Function;
+  setText: Function;
+}
+
+interface IStepCirclePath {
+  setAttribute: Function;
+}
+
+
+function FileMessage(props : IFileMessageProps) {
   var progressOptions = {
     strokeWidth: 5,
     color: '#333',
     trailColor: '#aaa',
     trailWidth: 5,
-    step: (state, circle) => {
+    step: (state : IStepState, circle : IStepCircle) => {
       circle.path.setAttribute('trail', state.color);
       circle.path.setAttribute('trailwidth-width', state.width);
 
@@ -24,7 +59,7 @@ function FileMessage(props) {
 
   const error = props.data.status && props.data.status.error === true;
 
-  const onClick = (e) => {
+  const onClick = (e : React.MouseEvent) => {
     if (!props.data.status)
       return;
 

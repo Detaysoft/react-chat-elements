@@ -1,13 +1,37 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Dropdown.css';
-
+import classNames from 'classnames'
 import Button from '../Button/Button';
 
-const classNames = require('classnames');
-function Dropdown(props) {
-  const [show, setShow] = useState(undefined);
+interface IDropdownProps {
+  className?: string;
+  buttonProps?: Object;
+  animationType?: string;
+  animationPosition?: string;
+  title?: string;
+  items: IDropdownItemType[];
+  onSelect: Function;
+}
 
-  const onBlur = (e) => {
+type IDropdownItemType = IDropdownItem | string;
+
+interface IDropdownItem {
+  icon?: IDropdownItemIcon;
+  text?: string;
+}
+
+interface IDropdownItemIcon {
+  float: any;
+  color: string;
+  size: number;
+  className: string;
+  component: React.ReactChild;
+}
+
+function Dropdown(props : IDropdownProps) {
+  const [show, setShow] = useState<boolean | undefined>(undefined);
+
+  const onBlur = (e : any) => {
     if (show === true)
       setShow(false);
   }
@@ -33,7 +57,7 @@ function Dropdown(props) {
             <span className='rce-dropdown-title'>{props.title}</span>
           }
           {
-            props.items.map((x, i) => (
+            props.items.map((x : IDropdownItemType, i : number) => (
               <li key={i} onMouseDown={(e) => props.onSelect(i)}>
                 {
                   x instanceof Object ?
