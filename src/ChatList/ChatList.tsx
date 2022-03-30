@@ -4,8 +4,7 @@ import './ChatList.css';
 
 import ChatItem from '../ChatItem/ChatItem';
 
-
-const ChatList = (props: IChatListProps) => {
+const ChatList: React.FC<IChatListProps> = (props) => {
 
   const onClick: ChatListEvent = (item, index, event) => {
     if (props.onClick instanceof Function)
@@ -48,6 +47,5 @@ const ChatList = (props: IChatListProps) => {
     </div>
   );
 }
-
 
 export default ChatList;

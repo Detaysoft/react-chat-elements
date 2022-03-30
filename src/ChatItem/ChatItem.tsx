@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md';
 
-const ChatItem = (props: IChatItemProps) => {
+const ChatItem: React.FC<IChatItemProps> = (props) => {
   const [onHoverTool, setOnHoverTool] = useState(false);
   const statusColorType = props.statusColorType;
   const [onDrag, setOnDrag] = useState(false);

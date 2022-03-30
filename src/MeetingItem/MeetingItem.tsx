@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import './MeetingItem.css';
 
 import { MdVideoCall, MdLink, MdCall } from 'react-icons/md';
@@ -10,16 +10,19 @@ import {
 } from'timeago.js';
 
 import classNames from 'classnames';
-function MeetingItem(props) {
+
+const MeetingItem: FC<IMeetingItemProps> = (props) => {
+
   const statusColorType = props.statusColorType;
   const AVATAR_LIMIT = props.avatarLimit;
 
-  const dateText = props.date && !isNaN(props.date) && (
+  const dateText = props.date && (
     props.dateString ||
     format(props.date)
   );
 
-  const subject = props.subject.substring(0, props.subjectLimit) + (props.subject.length > props.subjectLimit ? '...' : '');
+  const subject = props.subject && props.subjectLimit && props.subject.substring(0, props.subjectLimit) + (props.subject.length > props.subjectLimit ? '...' : '');
+
 
   return (
     <div
@@ -47,7 +50,7 @@ function MeetingItem(props) {
         <div className="rce-mtitem-body">
           <div className="rce-mtitem-body--avatars">
             {
-              props.avatars.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
+              props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
                 <Avatar
                   key={i}
                   src={x.src}
@@ -74,6 +77,7 @@ function MeetingItem(props) {
             }
 
             {
+              props.avatars && AVATAR_LIMIT &&
               props.avatars.length > AVATAR_LIMIT &&
               <div className='rce-avatar-container circle small rce-mtitem-letter'>
                 <span>
@@ -84,7 +88,7 @@ function MeetingItem(props) {
           </div>
           <div className="rce-mtitem-body--functions">
             {
-              props.closable &&
+              props.meet?.closable &&
               <div
                 className="rce-mtitem-closable"
                 onClick={props.onCloseClick}>
@@ -106,27 +110,6 @@ function MeetingItem(props) {
       </div>
     </div>
   );
-}
-
-MeetingItem.defaultProps = {
-  id: '',
-  subject: '',
-  subjectLimit: 60,
-  onClick: null,
-  avatarFlexible: false,
-  alt: '',
-  title: '',
-  subtitle: '',
-  date: new Date(),
-  dateString: '',
-  lazyLoadingImage: undefined,
-  avatarLimit: 5,
-  avatars: [],
-  audioMuted: true,
-  audioSource: null,
-  onAvatarError: () => void(0),
-  onMeetingClick: () => void(0),
-  onShareClick: () => void(0),
 }
 
 export default MeetingItem;

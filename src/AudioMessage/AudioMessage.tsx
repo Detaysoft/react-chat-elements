@@ -1,8 +1,6 @@
 import React from 'react'
 import './AudioMessage.css';
 
-import { IAudioMessageProps}  from '../interfaces'
-
 const AudioMessage: React.FC<IAudioMessageProps> = (props) => {
 
   return (

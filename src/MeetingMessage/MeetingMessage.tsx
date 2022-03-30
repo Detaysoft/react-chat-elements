@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import './MeetingMessage.css';
 
 import { FaCalendar, FaCaretDown, FaCaretRight } from 'react-icons/fa';
@@ -15,7 +15,7 @@ import Dropdown from '../Dropdown/Dropdown';
 
 import classNames from 'classnames';
 
-function MeetingMessage({
+const MeetingMessage: FC<IMeetingMessageProps> = ({
   date,
   dateString,
   title,
@@ -30,12 +30,21 @@ function MeetingMessage({
   onMeetingVideoLinkClick,
   onMeetingMoreSelect,
   ...props
-}) {
-
+}) => {
   const [toogle, setToogle] = useState(false);
 
   const PARTICIPANT_LIMIT = props.participantsLimit;
-  const dateText = dateString ? dateString : (date && !isNaN(date) && (format(date)));
+  const dateText = dateString ? dateString : (date && (format(date)));
+
+  const _onMeetingLinkClick: MeetingMessageEvent = (item, index, event) => {
+    if(onMeetingTitleClick instanceof Function)
+      onMeetingTitleClick(item, index, event);
+  }
+
+  const _onMeetingVideoLinkClick: MeetingMessageEvent = (item, index, event) => {
+    if(onMeetingVideoLinkClick instanceof Function)
+      onMeetingVideoLinkClick(item, index, event);
+  }
 
   const toggleClick = () => {
     setToogle(!toogle);
@@ -50,7 +59,7 @@ function MeetingMessage({
         </div>
         <div
           className='rce-mtmg-body'
-          onClick={onClick}>
+          onClick={() => onClick}>
           <div className='rce-mtmg-item'>
             <FaCalendar />
             <div className='rce-mtmg-content'>
@@ -96,10 +105,10 @@ function MeetingMessage({
               <FaCaretRight/>
               <span>
                 {
-                  participants.slice(0, PARTICIPANT_LIMIT).map(x => x.title || 'Unknow').join(', ')
+                  participants?.slice(0, PARTICIPANT_LIMIT).map(x => x.title || 'Unknow').join(', ')
                 }
                 {
-                  participants.length > PARTICIPANT_LIMIT &&
+                  participants && PARTICIPANT_LIMIT && participants.length > PARTICIPANT_LIMIT &&
                     `, +${(participants.length - PARTICIPANT_LIMIT)}`
                 }
               </span>
@@ -134,13 +143,13 @@ function MeetingMessage({
                           <div className='rce-mitem-body--top'>
                               <div
                                 className='rce-mitem-body--top-title'
-                                onClick={(e) => onMeetingTitleClick(x, i, e)}>
+                                onClick={(e: React.MouseEvent<HTMLElement>) => _onMeetingLinkClick(x, i, e)}>
                                 {x.title}
                               </div>
                               <div className='rce-mitem-body--top-time'>
                                 {
                                   x.dateString ? x.dateString : (x.date &&
-                                  !isNaN(x.date) &&
+                                  x.date &&
                                   (format(x.date)))
                                 }
                               </div>
@@ -166,7 +175,6 @@ function MeetingMessage({
                           <div className='rce-mitem-body--top-time'>
                             {
                               x.dateString ? x.dateString : (x.date &&
-                              !isNaN(x.date) &&
                               (format(x.date)))
                             }
                           </div>
@@ -198,7 +206,7 @@ function MeetingMessage({
                             <div className='rce-mtmg-call-record'>
                               <div className='rce-mtmg-call-body'>
                                 <div
-                                  onClick={(e) => onMeetingVideoLinkClick(x, i, e)}
+                                  onClick={(e: React.MouseEvent<HTMLElement>) => _onMeetingVideoLinkClick(x, i, e)}
                                   className='rce-mtmg-call-avatars'>
                                   <Avatar
                                     className={'rce-mtmg-call-avatars'}
@@ -231,23 +239,5 @@ function MeetingMessage({
     </div>
   );
 }
-
-MeetingMessage.defaultProps = {
-  date: new Date(),
-  dateString: '',
-  title: '',
-  subject: '',
-  collapseTitle: '',
-  participantsLimit: 3,
-  avatarFlexible: false,
-  moreItems: [],
-  dataSource: [],
-  participants: [],
-  onClick: () => void(0),
-  onMeetingMoreSelect: () => void(0),
-  onMeetingTitleClick: () => void(0),
-  onMeetingVideoLinkClick: () => void(0),
-  onAvatarError: () => void(0),
-};
 
 export default MeetingMessage;
