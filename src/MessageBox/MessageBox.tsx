@@ -130,8 +130,8 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
                 {
                   props.message.avatar &&
                   <Avatar
-                      letterItem={props.message.letterItem}
-                      src={props.message.avatar}/>
+                    letterItem={props.message.letterItem}
+                    src={props.message.avatar}/>
                 }
                 {
                   props.message.title &&
@@ -141,13 +141,10 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
             }
 
             {
-              props.message.reply &&
+              props.reply &&
               <ReplyMessage
-                photoURL={props.message.reply.photoURL}
-                title={props.message.reply.title}
-                titleColor={props.message.reply.titleColor}
-                message={props.message.reply.message}
-                onClick={props.onReplyMessageClick}/>
+                data={props.reply.data}
+                onClick={() => props.onReplyMessageClick} />
             }
 
             {
@@ -186,10 +183,7 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
                 onDownload={props.onDownload}
                 onLoad={props.onLoad}
                 onPhotoError={props.onPhotoError}
-                data={props.message.data}
-                width={props.messageItem?.width}
-                height={props.messageItem?.height}
-                text={props.messageItem?.text} />
+                data={props.messageItem?.data} />
             }
 
             {
@@ -199,10 +193,7 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
                 onDownload={props.onDownload}
                 onLoad={props.onLoad}
                 onPhotoError={props.onPhotoError}
-                data={props.message.data}
-                width={props.messageItem?.width}
-                height={props.messageItem?.height}
-                text={props.messageItem?.text} />
+                data={props.messageItem?.data} />
             }
 
             {
@@ -217,10 +208,6 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
             {
               props.messageItem?.type === 'spotify' &&
               <SpotifyMessage
-                width={props.messageItem?.width}
-                height={props.messageItem?.height}
-                theme={props.messageItem?.theme}
-                view={props.messageItem?.view}
                 data={props.messageItem?.data}
                 uri={props.messageItem?.uri || props.message.text} />
             }

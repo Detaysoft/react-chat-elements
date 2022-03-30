@@ -3,21 +3,9 @@ import './SideBar.css';
 
 import classNames from 'classnames';
 
-interface ISideBar {
-  top?: React.ReactChild;
-  center?: React.ReactChild;
-  bottom?: React.ReactChild;
-  type?: string;
-  className?: string;
-}
-
-interface ISideBarProps {
-  data?: ISideBar;
-}
-
-const SideBar:React.FC<ISideBarProps> = (props) => {
+const SideBar: React.FC<ISideBarProps> = (props) => {
   return (
-    <div className={classNames('rce-sbar', props.data?.type, props.data?.className)}>
+    <div className={classNames('rce-sbar', props.type, props.data.className)}>
       <div className='rce-sbar-item'>
         {props.data?.top}
       </div>

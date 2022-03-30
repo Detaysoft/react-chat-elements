@@ -5,40 +5,6 @@ import './PhotoMessage.css';
 import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import ProgressCircle from '../Circle/Circle';
 
-interface IProgressOptions {
-  state: {
-    color: string;
-    width: string;
-  };
-  circle: {
-    path:{
-      setAttribute: (arg0: string, arg1: string | undefined) => void;
-    };
-    value: () => number; setText: (arg0: string | number) => void;
-  };
-}
-
-interface IPhotoMessage extends IMessage {
-  status?: {
-    error?: boolean;
-    loading?: number;
-    download?: boolean;
-    click?: boolean;
-  };
-  width?: number;
-  height?: number;
-  uri?: string;
-  alt?: string;
-}
-
-interface IPhotoMessageProps {
-  message?: IPhotoMessage;
-  onDownload?: React.MouseEventHandler;
-  onOpen?: React.MouseEventHandler;
-  onLoad?: React.ReactEventHandler;
-  onPhotoError?: React.ReactEventHandler;
-}
-
 const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
   var progressOptions = {
     strokeWidth: 2.3,
@@ -57,22 +23,22 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
     }
   };
 
-  const error = props.message?.status && props.message?.status.error === true;
+  const error = props.data?.status && props.data?.status.error === true;
 
   return (
     <div className='rce-mbox-photo'>
       <div
         className='rce-mbox-photo--img'
-        style={{...props.message?.width && props.message?.height && {
-          width: props.message.width,
-          height: props.message.height,
+        style={{...props.data?.width && props.data?.height && {
+          width: props.data.width,
+          height: props.data.height,
         }}}>
         <img
-          src={props.message?.uri}
-          alt={props.message?.alt}
-          onClick={props.onOpen}
-          onLoad={props.onLoad}
-          onError={props.onPhotoError}/>
+          src={props.data?.uri}
+          alt={props.data?.alt}
+          onClick={() => props.onOpen}
+          onLoad={() => props.onLoad}
+          onError={() => props.onPhotoError}/>
         {
           error &&
           <div className='rce-mbox-photo--img__block'>
@@ -84,22 +50,22 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
         }
         {
           !error &&
-          props.message?.status &&
-          !props.message?.status?.download &&
+          props.data?.status &&
+          !props.data?.status?.download &&
           <div className='rce-mbox-photo--img__block'>
             {
-              !props.message.status.click &&
+              !props.data.status.click &&
               <button
-                onClick={props.onDownload}
+                onClick={() => props.onDownload}
                 className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
                 <FaCloudDownloadAlt />
               </button>
             }
             {
-              typeof props.message.status.loading === 'number' &&
-              props.message.status.loading !== 0 &&
+              typeof props.data.status.loading === 'number' &&
+              props.data.status.loading !== 0 &&
               <ProgressCircle
-                animate={props.message.status.loading}
+                animate={props.data.status.loading}
                 progressOptions={progressOptions}
                 className='rce-mbox-photo--img__block-item' />
             }
@@ -107,22 +73,13 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
         }
       </div>
       {
-        props.message?.text &&
+        props.data?.text &&
         <div className='rce-mbox-text'>
-          {props.message.text}
+          {props.data.text}
         </div>
       }
     </div>
   );
 }
-
-// PhotoMessage.defaultProps = {
-//   text: '',
-//   data: {},
-//   onDownload: null,
-//   onOpen: null,
-//   onLoad: null,
-//   onPhotoError: null,
-// };
 
 export default PhotoMessage;

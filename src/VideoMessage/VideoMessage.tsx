@@ -7,42 +7,6 @@ import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import classNames from 'classnames';
 import ProgressCircle from '../Circle/Circle';
 
-
-interface IProgressOptions {
-  state: {
-    color: string;
-    width: string;
-  };
-  circle: {
-    path:{
-      setAttribute: (arg0: string, arg1: string | undefined) => void;
-    };
-    value: () => number; setText: (arg0: string | number) => void;
-  };
-}
-
-interface IVideoMessage extends IMessage {
-  status?: { 
-    error?: boolean;
-    download?: boolean;
-    click?: boolean;
-    loading?: number;
-  };
-  width?: number | 0;
-  height?: number | 0;
-  uri?: string;
-  alt?: string;
-  videoURL?: string;
-}
-
-interface IVideoMessageProps {
-  message?: IVideoMessage;
-  onDownload?: React.MouseEventHandler;
-  onOpen?: React.MouseEventHandler;
-  onLoad?: React.ReactEventHandler;
-  onPhotoError?: React.ReactEventHandler;
-}
-
 const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
   var progressOptions = {
     strokeWidth: 2.3,
@@ -61,35 +25,35 @@ const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
     }
   };
 
-  const error = props.message?.status && props.message?.status.error === true;
-  const downloaded = props.message?.status && props.message?.status.download;
+  const error = props.data?.status && props.data?.status.error === true;
+  const downloaded = props.data?.status && props.data?.status.download;
 
   return (
     <div
       className={classNames('rce-mbox-video', {
-          'padding-time': !props.message?.text,
+          'padding-time': !props.data?.text,
       })}>
       <div
         className='rce-mbox-video--video'
-        style={{...props.message?.width && props.message?.height && {
-          width: props.message.width,
-          height: props.message.height,
+        style={{...props.data?.width && props.data?.height && {
+          width: props.data.width,
+          height: props.data.height,
         }}}>
 
         {
           !downloaded &&
           <img
-            src={props.message?.uri}
-            alt={props.message?.alt}
-            onClick={props.onOpen}
-            onLoad={props.onLoad}
-            onError={props.onPhotoError}/>
+            src={props.data?.uri}
+            alt={props.data?.alt}
+            onClick={() => props.onOpen}
+            onLoad={() => props.onLoad}
+            onError={() => props.onPhotoError}/>
         }
 
         {
           downloaded &&
           <video controls>
-            <source src={props.message?.videoURL} type='video/mp4'/>
+            <source src={props.data?.videoURL} type='video/mp4'/>
             Your browser does not support HTML video.
           </video>
         }
@@ -105,22 +69,22 @@ const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
         }
         {
           !error &&
-          props.message?.status &&
+          props.data?.status &&
           !downloaded &&
           <div className='rce-mbox-video--video__block'>
             {
-              !props.message.status.click &&
+              !props.data.status.click &&
               <button
-                onClick={props.onDownload}
+                onClick={() => props.onDownload}
                 className='rce-mbox-video--video__block-item rce-mbox-video--download'>
                 <FaCloudDownloadAlt />
               </button>
             }
             {
-              typeof props.message.status.loading === 'number' &&
-              props.message.status.loading !== 0 &&
+              typeof props.data.status.loading === 'number' &&
+              props.data.status.loading !== 0 &&
               <ProgressCircle
-                animate={props.message.status.loading}
+                animate={props.data.status.loading}
                 className='rce-mbox-video--video__block-item'
                 progressOptions={progressOptions} />
             }
@@ -128,22 +92,13 @@ const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
         }
       </div>
       {
-        props.message?.text &&
+        props.data?.text &&
         <div className='rce-mbox-text'>
-          {props.message.text}
+          {props.data.text}
         </div>
       }
     </div>
   );
 }
-
-// VideoMessage.defaultProps = {
-//   text: '',
-//   data: {},
-//   onDownload: null,
-//   onOpen: null,
-//   onLoad: null,
-//   onPhotoError: null,
-// };
 
 export default VideoMessage;

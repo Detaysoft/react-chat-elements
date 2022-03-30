@@ -31,7 +31,6 @@ interface IMessage {
   renderAddCmp?: Function;
   copiableDate?: Boolean | false;
   focus: boolean | false;
-  reply?: IReply;
   retracted?: Boolean | false;
   className?: string;
   letterItem?: string;
@@ -124,6 +123,7 @@ interface IAudioMessageProps {
 
 interface IMessageItemProps {
   message: IMessage;
+  reply?: IReplyMessageProps;
   messageItem?: MessageItem;
   onOpen?: Function;
   onDownload?: Function;
@@ -179,14 +179,7 @@ interface IMessageListProps {
 }
 
 type MessageListEvent = (item: IMessage, index: Number, event: React.MouseEvent<HTMLElement>) => any;
-type MessageItem = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IMeetingMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps;
-
-interface IReply extends IMessage {
-  photoURL?: string;
-  title?: string;
-  titleColor?: string;
-  message?: string;
-}
+type MessageItem = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IMeetingMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps;
 
 interface ILocationMessageProps extends IMessage {
   target?: string;
@@ -199,28 +192,89 @@ interface ILocationMessageProps extends IMessage {
   type?: 'location';
 }
 
-interface IPhotoMessageProps extends IMessage {
-  width?: string;
-  height?: string;
-  text?: string;
+interface IProgressOptions {
+  state: {
+    color: string;
+    width: string;
+  };
+  circle: {
+    path:{
+      setAttribute: (arg0: string, arg1: string | undefined) => void;
+    };
+    value: () => number; setText: (arg0: string | number) => void;
+  };
+}
+
+interface IPhotoMessage extends IMessage {
+  status?: {
+    error?: boolean;
+    loading?: number;
+    download?: boolean;
+    click?: boolean;
+  };
+  width?: number;
+  height?: number;
+  uri: string;
+  alt?: string;
+}
+
+interface IPhotoMessageProps {
+  data: IPhotoMessage;
+  onDownload?: Function;
+  onOpen?: Function;
+  onLoad?: Function;
+  onPhotoError?: Function;
   type?: 'photo';
 }
 
-interface IVideoMessageProps extends IMessage {
-  width?: string;
-  height?: string;
-  text?: string;
+interface IVideoMessageProps {
   type?: 'video';
+  data: IVideoMessage;
+  onDownload?: Function;
+  onOpen?: Function;
+  onLoad?: Function;
+  onPhotoError?: Function;
 }
 
-interface ISpotifyMessageProps extends IMessage {
-  width?: string;
-  height?: string;
+interface IVideoMessage extends IMessage {
+  videoURL: string;
+  uri: string;
+  width?: number | 0;
+  height?: number | 0;
+  alt?: string;
+  status: {
+    error?: boolean;
+    download?: boolean;
+    click?: boolean;
+    loading?: number;
+  };
+}
+
+interface ISpotifyMessageProps {
+  data: ISpotifyMessage;
+  uri: string;
+  type?: 'spotify';
+}
+
+interface ISpotifyMessage extends IMessage {
   theme?: string;
   view?: string;
-  data?: string;
-  uri?: string;
-  type?: 'spotify';
+  uri: string;
+  width?: number | string;
+  height?: number | string;
+}
+
+interface IReplyMessage extends IMessage {
+  photoURL?: string;
+  title?: string;
+  titleColor?: string;
+  message?: string;
+}
+
+interface IReplyMessageProps {
+  data: IReplyMessage;
+  onClick?: React.MouseEventHandler;
+  type?: 'reply';
 }
 
 interface IMeetingLinkProps {
@@ -294,6 +348,8 @@ interface ITextMessageProps {
 
 interface ISystemMessageProps {
   type?: 'system';
+  text: string;
+  className?: string;
 }
 
 interface IMeeting {
@@ -357,8 +413,42 @@ interface IMeetingItemProps {
 
 interface ISideBarProps {
   type?: string;
-  className?: string;
+  data: ISideBar;
+}
+
+interface ISideBar {
   top?: any;
   center?: any;
-  bottom?: any;
+  bottom?: any
+  className?: string;
+}
+
+interface IPopup {
+  show?: boolean;
+  header?: string;
+  text?: string;
+  footerButtons?: Array<{
+    color?: string;
+    backgroundColor?: string;
+    text?: string;
+  }>
+  headerButtons?: Array<{
+    type?: string;
+    color?: string;
+    icon?: {
+      component?: React.ReactChild;
+      size?: number;
+    };
+    onClick?: Function;
+  }>;
+  renderHeader?: Function;
+  renderContent?: Function;
+  renderFooter?: Function;
+  color?: string;
+}
+
+interface IPopupProps {
+  popup: IPopup;
+  type?: string;
+  className?: string;
 }

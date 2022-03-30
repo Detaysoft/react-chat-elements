@@ -20,8 +20,4 @@ const AudioMessage: React.FC<IAudioMessageProps> = (props) => {
   );
 }
 
-// AudioMessage.defaultProps = {
-//   data: {},
-// };
-
 export default AudioMessage;
