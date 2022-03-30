@@ -1,0 +1,99 @@
+import React from 'react';
+import './Popup.css';
+
+import Button from '../Button/Button';
+
+import classNames from "classnames";
+
+interface IPopup {
+  show?: boolean;
+  header?: string;
+  text?: string;
+  footerButtons?: Array<{
+    color?: string;
+    backgroundColor?: string;
+    text?: string;
+  }>
+  headerButtons?: Array<{
+    type?: string;
+    color?: string;
+    icon?: {
+      component?: React.ReactChild;
+      size?: number;
+    };
+    onClick?: Function;
+  }>;
+  renderHeader?: Function;
+  renderContent?: Function;
+  renderFooter?: Function;
+  color?: string;
+}
+
+interface IPopupProps {
+  popup?: IPopup;
+  type?: string;
+  className?: string;
+}
+
+const Popup: React.FC<IPopupProps> = (props) => {
+  if (props.popup?.show === true)
+  return (
+    <div className={classNames('rce-popup-wrapper', props.type, props.className)}>
+      <div className='rce-popup'>
+        {
+          props.popup.renderHeader ?
+            <div className='rce-popup-header'>
+              {props.popup.renderHeader()}
+            </div>
+          :
+          <div className='rce-popup-header'>
+            <span>{props.popup.header}</span>
+            {
+              props.popup.header &&
+              props.popup.headerButtons?.map((x, i) => (
+                <Button
+                  key={i}
+                  {...x}/>
+              ))
+            }
+          </div>
+        }
+        <div className='rce-popup-content' style={{color: props.popup.color}}>
+          {
+            props.popup.renderContent ?
+              props.popup.renderContent()
+            :
+            props.popup.text
+          }
+        </div>
+        <div className='rce-popup-footer'>
+          {
+            props.popup.renderFooter ?
+              props.popup.renderFooter()
+            :
+            props.popup.footerButtons?.map((x, i) => (
+              <Button
+                key={i}
+                {...x}/>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  );
+  return null;
+}
+
+// Popup.defaultProps = {
+//   show: false,
+//   header: null,
+//   text: null,
+//   headerButtons: [],
+//   footerButtons: [],
+//   renderHeader: null,
+//   renderContent: null,
+//   renderFooter: null,
+//   color: '#333',
+// };
+
+export default Popup;
