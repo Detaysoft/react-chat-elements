@@ -6,7 +6,7 @@ import {
   // Button,
   SideBar,
   // Dropdown,
-  // Popup,
+  Popup,
   MeetingList,
 } from '../src';
 
@@ -278,7 +278,7 @@ const App: FC = (props) => {
         <SideBar
           top={
             <div>
-              {/* <Popup
+              <Popup
                 // show={show}
                 header='Lorem ipsum dolor sit amet.'
                 headerButtons={[{
@@ -301,7 +301,7 @@ const App: FC = (props) => {
                   color: 'white',
                   backgroundColor: 'lightgreen',
                   text: "Tamam",
-                }]} /> */}
+                }]} />
 
               {/* <Button
                 type='transparent'

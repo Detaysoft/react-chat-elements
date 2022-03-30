@@ -9,7 +9,7 @@ import MessageList from './MessageList/MessageList';
 import Navbar from './Navbar/Navbar';
 // import Dropdown from './Dropdown/Dropdown';
 import SideBar from './SideBar/SideBar';
-// import Popup from './Popup/Popup';
+import Popup from './Popup/Popup';
 // import ReplyMessage from './ReplyMessage/ReplyMessage';
 import MeetingItem from './MeetingItem/MeetingItem';
 import MeetingList from './MeetingList/MeetingList';
@@ -28,7 +28,7 @@ export {
     Navbar,
     // Dropdown,
     SideBar,
-    // Popup,
+    Popup,
     // ReplyMessage,
     MeetingItem,
     MeetingList,
