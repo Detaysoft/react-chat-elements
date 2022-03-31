@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import {
-    ChatList,
-    MessageList,
-    Input,
-    Button,
-    SideBar,
-    Dropdown,
-    Popup,
-    MeetingList,
+  ChatList,
+  MessageList,
+  // Input,
+  // Button,
+  SideBar,
+  // Dropdown,
+  Popup,
+  MeetingList,
 } from '../src';
 
 import { FaSearch, FaComments, FaTimes, FaSquare } from 'react-icons/fa';
@@ -23,7 +23,8 @@ function useForceUpdate(){
   return () => setValue(value => value + 1);
 };
 
-function App() {
+const App: FC = (props) => {
+
   const messageListReferance = useRef();
   const inputReferance = useRef();
 
@@ -42,8 +43,8 @@ function App() {
     for (var i = 0; i < 5; i++)
         arr.push(i);
 
-    setChatSource(arr.map(x => random('chat')));
-    setMeetingSource(arr.map(x => random('meeting')));
+    setChatSource(arr.map(x => random('chat', token())));
+    setMeetingSource(arr.map(x => random('meeting', token())));
   }, []);
 
   const getRandomColor = () => {
@@ -56,17 +57,17 @@ function App() {
   }
 
   const token = () => {
-    return (parseInt(Math.random() * 10 % 8));
+    return (Math.floor(Math.random() * 10 % 8));
   }
 
-  const photo = (size) => {
+  const photo = (size: Number) => {
     return new Identicon(String(Math.random()) + String(Math.random()), {
       margin: 0,
       size: size || 20,
     }).toString()
   }
 
-  const random = (type, mtype) => {
+  const random = (type: string, mtype: string | Number) => {
     switch (type) {
       case 'message':
         mtype = mtype || token();
@@ -127,12 +128,12 @@ function App() {
             date: +new Date(),
             collapseTitle: loremIpsum({ count: 2, units: 'words' }),
             participants: Array(token() + 6).fill(1).map(x => ({
-              id: parseInt(Math.random() * 10 % 7),
+              id: Math.floor(Math.random() * 10 % 7),
               title: loremIpsum({ count: 1, units: 'words' }),
             })),
             dataSource: Array(token() + 5).fill(1).map(x => ({
               id: String(Math.random()),
-              avatar: `data:image/png;base64,${photo()}`,
+              avatar: `data:image/png;base64,${photo(20)}`,
               message: loremIpsum({ count: 1, units: 'sentences' }),
               title: loremIpsum({ count: 2, units: 'words' }),
               avatarFlexible: true,
@@ -140,13 +141,13 @@ function App() {
               event: {
                 title: loremIpsum({ count: 2, units: 'words' }),
                 avatars: Array(token() + 2).fill(1).map(x => ({
-                  src: `data:image/png;base64,${photo()}`,
+                  src: `data:image/png;base64,${photo(20)}`,
                   title: "react, rce"
                 })),
                 avatarsLimit: 5,
               },
               record: {
-                avatar: `data:image/png;base64,${photo()}`,
+                avatar: `data:image/png;base64,${photo(20)}`,
                 title: loremIpsum({ count: 1, units: 'words' }),
                 savedBy: 'Kaydeden: ' + loremIpsum({ count: 2, units: 'words' }),
                 time: new Date().toLocaleString(),
@@ -186,75 +187,75 @@ function App() {
           onRemoveMessageClick: () => {
             console.log('onRemoveMessageClick');
           },
-          avatar: `data:image/png;base64,${photo()}`,
+          avatar: `data:image/png;base64,${photo(20)}`,
         };
       case 'chat':
         return {
           id: String(Math.random()),
-          avatar: `data:image/png;base64,${photo()}`,
+          avatar: `data:image/png;base64,${photo(20)}`,
           avatarFlexible: true,
           statusColor: 'lightgreen',
-          statusColorType: parseInt(Math.random() * 100 % 2) === 1 ? 'encircle' : undefined,
+          statusColorType: Math.floor(Math.random() * 100 % 2) === 1 ? 'encircle' : undefined,
           alt: loremIpsum({ count: 2, units: 'words' }),
           title: loremIpsum({ count: 2, units: 'words' }),
           date: new Date(),
           subtitle: loremIpsum({ count: 1, units: 'sentences' }),
-          unread: parseInt(Math.random() * 10 % 3),
-          muted: parseInt(Math.random() * 10 % 2) === 1,
-          showMute: parseInt(Math.random() * 10 % 2) === 1,
-          showVideoCall: parseInt(Math.random() * 10 % 2) === 1,
-          dropdownMenu: (
-            <Dropdown
-              animationPosition="norteast"
-              title='Dropdown Title'
-              buttonProps={{
-                type: "transparent",
-                color: "#cecece",
-                icon: {
-                  component: <MdOutlineMoreVert />,
-                  size: 24,
-                }
-              }}
-              items={[
-                {
-                  icon: {
-                    component: <FaSquare />,
-                    float: 'left',
-                    color: 'red',
-                    size: 22,
-                  },
-                  text: 'Menu Item'
-                },
-                {
-                  icon: {
-                    component: <FaSquare/>,
-                    float: 'left',
-                    color: 'purple',
-                    size: 22,
-                  },
-                  text: 'Menu Item'
-                },
-                {
-                  icon: {
-                    component: <FaSquare/>,
-                    float: 'left',
-                    color: 'yellow',
-                    size: 22,
-                  },
-                  text: 'Menu Item'
-                },
-              ]} />
-          ),
+          unread: Math.floor(Math.random() * 10 % 3),
+          muted: Math.floor(Math.random() * 10 % 2) === 1,
+          showMute: Math.floor(Math.random() * 10 % 2) === 1,
+          showVideoCall: Math.floor(Math.random() * 10 % 2) === 1,
+          // dropdownMenu: (
+          //   <Dropdown
+          //     animationPosition="norteast"
+          //     title='Dropdown Title'
+          //     buttonProps={{
+          //       type: "transparent",
+          //       color: "#cecece",
+          //       icon: {
+          //         component: <MdOutlineMoreVert />,
+          //         size: 24,
+          //       }
+          //     }}
+          //     items={[
+          //       {
+          //         icon: {
+          //           component: <FaSquare />,
+          //           float: 'left',
+          //           color: 'red',
+          //           size: 22,
+          //         },
+          //         text: 'Menu Item'
+          //       },
+          //       {
+          //         icon: {
+          //           component: <FaSquare/>,
+          //           float: 'left',
+          //           color: 'purple',
+          //           size: 22,
+          //         },
+          //         text: 'Menu Item'
+          //       },
+          //       {
+          //         icon: {
+          //           component: <FaSquare/>,
+          //           float: 'left',
+          //           color: 'yellow',
+          //           size: 22,
+          //         },
+          //         text: 'Menu Item'
+          //       },
+          //     ]} />
+          // ),
         };
       case 'meeting':
         return {
           id: String(Math.random()),
-          lazyLoadingImage: `data:image/png;base64,${photo()}`,
+          lazyLoadingImage: `data:image/png;base64,${photo(20)}`,
           avatarFlexible: true,
           subject: loremIpsum({ count: 1, units: 'sentences' }),
           date: new Date(),
           avatars: Array(token() + 2).fill(1).map(x => ({
-            src: `data:image/png;base64,${photo()}`,
+            src: `data:image/png;base64,${photo(20)}`,
           })),
           closable: true,
         };
@@ -263,7 +264,7 @@ function App() {
 
   const forceUpdate = useForceUpdate();
 
-  const addMessage = (mtype) => {
+  const addMessage = (mtype: string | Number) => {
     var list = messageList;
     list.push(random('message', mtype));
     setMessageList(list);
@@ -302,13 +303,13 @@ function App() {
                   text: "Tamam",
                 }]} />
 
-              <Button
+              {/* <Button
                 type='transparent'
                 color='black'
                 text={list === 'chat' ? 'MeetingList' : 'ChatList'}
                 onClick={() => {
                   setList(list === 'chat' ? 'meeeting' : 'chat' );
-                }}/>
+                }}/> */}
             </div>
           }
           center={
@@ -329,7 +330,7 @@ function App() {
           }
           bottom={
             <span>
-              <Button
+              {/* <Button
                 type='transparent'
                 color='black'
                 icon={{
@@ -343,7 +344,7 @@ function App() {
                   component: <FaSearch />,
                   size: 18
                 }} />
-              <Button text="Count"></Button>
+              <Button text="Count"></Button> */}
             </span>
           } />
     </div>
@@ -393,29 +394,29 @@ function App() {
         }
       </MessageList>
 
-      <Input
+      {/* <Input
         placeholder="Mesajınızı buraya yazınız."
         defaultValue=""
         referance={inputReferance}
         clear={(clear) => clearRef = clear}
         // buttonsFloat='left'
-        onKeyPress={(e) => {
+        onKeyPress={(e: any) => {
           if (e.shiftKey && e.charCode === 13) {
             return true;
           }
           if (e.charCode === 13) {
             clearRef();
-            addMessage();
+            addMessage(8);
           }
         }}
         rightButtons={
           <Button
             text='Gönder'
-            onClick={() => addMessage()} />
-        } />
+            onClick={() => addMessage(8)} />
+        } /> */}
       </div>
-  </div>
-  )
+    </div>
+  );
 }
 
 export default App;

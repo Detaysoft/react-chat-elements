@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import App from './App';
 
-const render = Component => {
+// const render = Component => {
     ReactDOM.render(
-        <Component/>,
+        <App/>,
         document.getElementById('app'),
     );
-};
+// };
 
-render(App);
+// render(App);

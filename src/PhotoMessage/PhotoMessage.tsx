@@ -5,40 +5,40 @@ import './PhotoMessage.css';
 import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import ProgressCircle from '../Circle/Circle';
 
-function PhotoMessage(props) {
+const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
   var progressOptions = {
     strokeWidth: 2.3,
     color: '#efe',
     trailColor: '#aaa',
     trailWidth: 1,
-    step: (state, circle) => {
-      circle.path.setAttribute('trail', state.color);
-      circle.path.setAttribute('trailwidth-width', state.width);
+    step: (state: IProgressOptions, circle: IProgressOptions) => {
+      circle.circle.path.setAttribute('trail', state.state.color);
+      circle.circle.path.setAttribute('trailwidth-width', state.state.width);
 
-      var value = Math.round(circle.value() * 100);
+      var value = Math.round(circle.circle.value() * 100);
       if (value === 0)
-        circle.setText('');
+        circle.circle.setText('');
       else
-        circle.setText(value);
+        circle.circle.setText(value);
     }
   };
 
-  const error = props.data.status && props.data.status.error === true;
+  const error = props.data?.status && props.data?.status.error === true;
 
   return (
     <div className='rce-mbox-photo'>
       <div
         className='rce-mbox-photo--img'
-        style={props.data.width && props.data.height && {
+        style={{...props.data?.width && props.data?.height && {
           width: props.data.width,
           height: props.data.height,
-        }}>
+        }}}>
         <img
-          src={props.data.uri}
-          alt={props.data.alt}
-          onClick={props.onOpen}
-          onLoad={props.onLoad}
-          onError={props.onPhotoError}/>
+          src={props.data?.uri}
+          alt={props.data?.alt}
+          onClick={() => props.onOpen}
+          onLoad={() => props.onLoad}
+          onError={() => props.onPhotoError}/>
         {
           error &&
           <div className='rce-mbox-photo--img__block'>
@@ -50,13 +50,13 @@ function PhotoMessage(props) {
         }
         {
           !error &&
-          props.data.status &&
-          !props.data.status.download &&
+          props.data?.status &&
+          !props.data?.status?.download &&
           <div className='rce-mbox-photo--img__block'>
             {
               !props.data.status.click &&
               <button
-                onClick={props.onDownload}
+                onClick={() => props.onDownload}
                 className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
                 <FaCloudDownloadAlt />
               </button>
@@ -68,27 +68,18 @@ function PhotoMessage(props) {
                 animate={props.data.status.loading}
                 progressOptions={progressOptions}
                 className='rce-mbox-photo--img__block-item' />
-}
+            }
           </div>
         }
       </div>
       {
-        props.text &&
+        props.data?.text &&
         <div className='rce-mbox-text'>
-          {props.text}
+          {props.data.text}
         </div>
       }
     </div>
   );
 }
-
-PhotoMessage.defaultProps = {
-  text: '',
-  data: {},
-  onDownload: null,
-  onOpen: null,
-  onLoad: null,
-  onPhotoError: null,
-};
 
 export default PhotoMessage;

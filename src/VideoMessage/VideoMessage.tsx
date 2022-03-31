@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './VideoMessage.css';
 
@@ -6,53 +6,54 @@ import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 
 import classNames from 'classnames';
 import ProgressCircle from '../Circle/Circle';
-function VideoMessage(props) {
+
+const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
   var progressOptions = {
     strokeWidth: 2.3,
     color: '#efe',
     trailColor: '#aaa',
     trailWidth: 1,
-    step: (state, circle) => {
-      circle.path.setAttribute('trail', state.color);
-      circle.path.setAttribute('trailwidth-width', state.width);
+    step: (state: IProgressOptions, circle: IProgressOptions) => {
+      circle.circle.path.setAttribute('trail', state.state.color);
+      circle.circle.path.setAttribute('trailwidth-width', state.state.width);
 
-      var value = Math.round(circle.value() * 100);
+      var value = Math.round(circle.circle?.value() * 100);
       if (value === 0)
-        circle.setText('');
+        circle.circle?.setText('');
       else
-        circle.setText(value);
+        circle.circle?.setText(value);
     }
   };
 
-  const error = props.data.status && props.data.status.error === true;
-  const downloaded = props.data.status && props.data.status.download;
+  const error = props.data?.status && props.data?.status.error === true;
+  const downloaded = props.data?.status && props.data?.status.download;
 
   return (
     <div
       className={classNames('rce-mbox-video', {
-          'padding-time': !props.text,
+          'padding-time': !props.data?.text,
       })}>
       <div
         className='rce-mbox-video--video'
-        style={props.data.width && props.data.height && {
+        style={{...props.data?.width && props.data?.height && {
           width: props.data.width,
           height: props.data.height,
-        }}>
+        }}}>
 
         {
           !downloaded &&
           <img
-            src={props.data.uri}
-            alt={props.data.alt}
-            onClick={props.onOpen}
-            onLoad={props.onLoad}
-            onError={props.onPhotoError}/>
+            src={props.data?.uri}
+            alt={props.data?.alt}
+            onClick={() => props.onOpen}
+            onLoad={() => props.onLoad}
+            onError={() => props.onPhotoError}/>
         }
 
         {
           downloaded &&
           <video controls>
-            <source src={props.data.videoURL} type='video/mp4'/>
+            <source src={props.data?.videoURL} type='video/mp4'/>
             Your browser does not support HTML video.
           </video>
         }
@@ -68,13 +69,13 @@ function VideoMessage(props) {
         }
         {
           !error &&
-          props.data.status &&
+          props.data?.status &&
           !downloaded &&
           <div className='rce-mbox-video--video__block'>
             {
               !props.data.status.click &&
               <button
-                onClick={props.onDownload}
+                onClick={() => props.onDownload}
                 className='rce-mbox-video--video__block-item rce-mbox-video--download'>
                 <FaCloudDownloadAlt />
               </button>
@@ -91,22 +92,13 @@ function VideoMessage(props) {
         }
       </div>
       {
-        props.text &&
+        props.data?.text &&
         <div className='rce-mbox-text'>
-          {props.text}
+          {props.data.text}
         </div>
       }
     </div>
   );
 }
-
-VideoMessage.defaultProps = {
-  text: '',
-  data: {},
-  onDownload: null,
-  onOpen: null,
-  onLoad: null,
-  onPhotoError: null,
-};
 
 export default VideoMessage;

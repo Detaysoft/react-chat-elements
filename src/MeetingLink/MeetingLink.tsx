@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import './MeetingLink.css';
 
 import { MdOutlineVideoCall } from 'react-icons/md';
 
-function MeetingLink({meetingID, title, onMeetingMoreSelect}) {
+const MeetingLink: FC<IMeetingLinkProps> = ({ meetingID, title, onMeetingMoreSelect }) => {
   const onHandleClick = () => {
-    onMeetingMoreSelect(meetingID);
+    onMeetingMoreSelect?.(meetingID);
   }
 
   return (
@@ -23,11 +23,5 @@ function MeetingLink({meetingID, title, onMeetingMoreSelect}) {
     </div>
   );
 }
-
-MeetingLink.defaultProps = {
-  meetingID: '',
-  title: '',
-  onMeetingMoreSelect: () => void(0),
-};
 
 export default MeetingLink;
