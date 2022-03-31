@@ -1,5 +1,4 @@
 import './FileMessage.css';
-
 import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import ProgressCircle from '../Circle/Circle';
 import React from 'react';
@@ -8,7 +7,7 @@ interface IFileMessageProps {
   onDownload?: Function;
   onOpen?: Function;
   text?: string;
-  data: IFileMessageData;
+  data?: IFileMessageData;
 }
 
 interface IFileMessageData extends IMessage {
@@ -17,35 +16,28 @@ interface IFileMessageData extends IMessage {
 }
 
 interface IFileMessageDataStatus {
-  error?: boolean; // sor
+  error?: boolean;
   download?: Function;
   click?: Function;
   loading?: number;
 }
 
-interface IStepState {
-  color?: string;
-  width?: number;
-}
-
-interface IStepCircle {
-  path: IStepCirclePath;
-  value: Function;
-  setText: Function;
-}
-
-interface IStepCirclePath {
-  setAttribute: Function;
-}
-
-
-function FileMessage(props : IFileMessageProps) {
+const FileMessage: React.FC<IFileMessageProps> = (props) => {
   var progressOptions = {
     strokeWidth: 5,
     color: '#333',
     trailColor: '#aaa',
     trailWidth: 5,
-    step: (state : IStepState, circle : IStepCircle) => {
+    step: (state : {
+        color?: string;
+        width?: number;
+      }, circle : {
+        path: {
+          setAttribute: Function;
+        };
+        value: Function;
+        setText: Function;
+      }) => {
       circle.path.setAttribute('trail', state.color);
       circle.path.setAttribute('trailwidth-width', state.width);
 
@@ -57,10 +49,10 @@ function FileMessage(props : IFileMessageProps) {
     }
   };
 
-  const error = props.data.status && props.data.status.error === true;
+  const error = props?.data?.status && props.data.status.error === true;
 
   const onClick = (e : React.MouseEvent) => {
-    if (!props.data.status)
+    if (!props?.data?.status)
       return;
 
     if (!props.data.status.download && props.onDownload instanceof Function)
@@ -76,7 +68,7 @@ function FileMessage(props : IFileMessageProps) {
           <FaFile
             color='#aaa'/>
           <div className='rce-mbox-file--size'>
-            {props.data.size}
+            {props?.data?.size}
           </div>
         </div>
         <div className='rce-mbox-file--text'>
@@ -92,15 +84,15 @@ function FileMessage(props : IFileMessageProps) {
           }
           {
             !error &&
-            props.data.status &&
-            !props.data.status.download &&
+            props?.data?.status &&
+            !props?.data?.status.download &&
             !props.data.status.click &&
             <FaCloudDownloadAlt
               color='#aaa'/>
           }
           {
             !error &&
-            props.data.status &&
+            props?.data?.status &&
             typeof props.data.status.loading === 'number' &&
             props.data.status.loading !== 0 &&
             <ProgressCircle
@@ -113,13 +105,5 @@ function FileMessage(props : IFileMessageProps) {
     </div>
   );
 }
-
-FileMessage.defaultProps = {
-  text: '',
-  data: {},
-  onClick: null,
-  onDownload: null,
-  onOpen: null,
-};
 
 export default FileMessage;

@@ -1,15 +1,36 @@
-import React from 'react';
 import './LocationMessage.css';
+import classNames from 'classnames'
 
-const classNames = require('classnames');
+
+interface ILocationMessageProps {
+  data: ILocationMessageData;
+  markerColor: string;
+  zoom: string;
+  apiKey: string;
+  className?: string;
+  text?: string;
+  src?: string;
+  onOpen?: React.MouseEventHandler;
+  target?: string;
+  href?: string;
+  onError?: React.ReactEventHandler;
+}
+
+interface ILocationMessageData extends IMessage {
+  latitude: string;
+  longitude: string;
+  staticURL?: string;
+  mapURL?: string
+}
+
 
 const STATIC_URL = 'https://maps.googleapis.com/maps/api/staticmap?markers=color:MARKER_COLOR|LATITUDE,LONGITUDE&zoom=ZOOM&size=270x200&scale=2&key=KEY';
 const MAP_URL = 'https://www.google.com/maps/search/?api=1&query=LATITUDE,LONGITUDE&zoom=ZOOM';
 
-function LocationMessage(props) {
+const LocationMessage: React.FC<ILocationMessageProps> = (props) => {
   const data = props.data || {};
 
-  const buildURL = (url) => {
+  const buildURL = (url : string) => {
     var center = props.data || {};
 
     return url.replace(/LATITUDE/g, center.latitude)
@@ -51,14 +72,6 @@ function LocationMessage(props) {
       }
     </div>
   );
-}
-
-LocationMessage.defaultProps = {
-  target: '_blank',
-  apiKey: '',
-  zoom: 14,
-  markerColor: 'red',
-  onError: () => void(0),
 }
 
 export default LocationMessage;

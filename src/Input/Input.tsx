@@ -1,24 +1,54 @@
 import React, { useEffect } from 'react';
 import './Input.css';
+import classNames from 'classnames'
 
-const classNames = require('classnames');
+interface IInputProps {
+  autofocus?: boolean;
+  referance?: any; // sor ve 46.satır
+  clear?: Function;
+  maxlength?: number;
+  maxHeight: number;
+  onMaxLengthExceed?: Function;
+  onChange?: Function;
+  multiline?: boolean;
+  autoHeight?: boolean;
+  minHeight?: number;
+  className?: string;
+  leftButtons?: Object;
+  rightButtons?: Object;
+  type?: React.HTMLInputTypeAttribute;
+  placeholder?: string;
+  defaultValue?: string
+  inputStyle?: Object;
+  onCopy?: React.ClipboardEventHandler;
+  onCut?: React.ClipboardEventHandler;
+  onPaste?: React.ClipboardEventHandler;
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onSelect?: React.ReactEventHandler;
+  onSubmit?: React.FormEventHandler;
+  onReset?: React.FormEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  onKeyPress?: React.KeyboardEventHandler;
+  onKeyUp?: React.KeyboardEventHandler;
+}
 
-function Input(props) {
+const Input: React.FC<IInputProps> = (props) => {
   useEffect(() => {
     if (props.autofocus === true)
-      props.referance.current.focus();
+      props.referance?.current?.focus();
 
     if (props.clear instanceof Function) {
       props.clear(clear);
     }
   }, []);
 
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     if (props.maxlength && (e.target.value || '').length > props.maxlength) {
       if (props.onMaxLengthExceed instanceof Function)
         props.onMaxLengthExceed();
 
-      props.referance.current.value = (e.target.value || '').substring(0, props.maxlength);
+      props.referance?.current?.value == (e.target.value || '').substring(0, props.maxlength);
       return;
     }
 
@@ -47,10 +77,10 @@ function Input(props) {
   const clear = () => {
     var _event = {
       FAKE_EVENT: true,
-      target: props.referance.current,
+      target: props.referance?.current,
     };
 
-    if (props.referance.current.value) {
+    if (props.referance?.current?.value) {
        props.referance.current.value = '';
     }
 
@@ -89,7 +119,6 @@ function Input(props) {
         :
         <textarea
           ref={props.referance}
-          type={props.type}
           className={classNames('rce-input', 'rce-input-textarea')}
           placeholder={props.placeholder}
           defaultValue={props.defaultValue}
@@ -116,23 +145,5 @@ function Input(props) {
     </div>
   );
 }
-
-Input.defaultProps = {
-  type: 'text',
-  placeholder: '',
-  defaultValue: '',
-  onChange: null,
-  rightButtons: null,
-  leftButtons: null,
-  multiline: false,
-  minHeight: 25,
-  maxHeight: 200,
-  autoHeight: true,
-  inputStyle: null,
-  referance: null,
-  maxlength: null,
-  onMaxLengthExceed: null,
-  autofocus: false,
-};
 
 export default Input;

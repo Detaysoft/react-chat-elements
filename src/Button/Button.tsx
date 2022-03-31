@@ -21,7 +21,7 @@ interface IButtonIcon {
   component?: React.ReactChild;
 }
 
-function Button(props : IButtonProps) {
+const Button: React.FC<IButtonProps> = (props) => {
   return (
     <button
       ref={props.buttonRef}
@@ -48,17 +48,4 @@ function Button(props : IButtonProps) {
     </button>
 );
 }
-
-Button.defaultProps = {
-  text: '',
-  disabled: false,
-  type: null,
-  icon: null,
-  backgroundColor: '#3979aa',
-  color: 'white',
-  className: null,
-  buttonRef: null,
-  title: null,
-};
-
 export default Button;

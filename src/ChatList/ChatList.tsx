@@ -42,6 +42,7 @@ const ChatList = (props: IChatListProps) => {
             onDrop={props.onDrop}
             onDragLeave={props.onDragLeave}
             onDragComponent={props.onDragComponent}
+            avatar={x.avatar}
             />
         ))
       }

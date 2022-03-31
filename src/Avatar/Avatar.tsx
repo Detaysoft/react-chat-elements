@@ -19,13 +19,11 @@ interface ILetterItem {
 	letter?: React.ReactChild;
 }
 
-// kontrol et
-
-function Avatar(props : IAvatarProps) {
+const Avatar: React.FC<IAvatarProps> = (props) => {
 
 	let loadedAvatars: string[] = [];
 	let loading: boolean = false;
-	let src: string = props.src;
+	let src = props.src;
 	let isLazyImage: boolean = false;
 
 	useEffect(() => {
@@ -104,15 +102,4 @@ function Avatar(props : IAvatarProps) {
 		</div>
 	);
 }
-
-Avatar.defaultProps = {
-	type: 'default',
-	size: 'default',
-	src: '',
-	alt: '',
-	sideElement: null,
-	lazyLoadingImage: undefined,
-	onError: () => void(0),
-};
-
 export default Avatar;

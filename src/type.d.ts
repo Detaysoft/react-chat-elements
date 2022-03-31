@@ -17,7 +17,7 @@ interface IChat {
 
 interface IChatItemProps {
   chat: IChat;
-  avatar?: string;
+  avatar: string;
   className?: string;
   avatarFlexible?: Boolean;
   alt?: string;

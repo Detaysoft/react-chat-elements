@@ -9,7 +9,7 @@ interface IDropdownProps {
   animationType?: string;
   animationPosition?: string;
   title?: string;
-  items: IDropdownItemType[];
+  items?: IDropdownItemType[];
   onSelect: Function;
 }
 
@@ -21,14 +21,14 @@ interface IDropdownItem {
 }
 
 interface IDropdownItemIcon {
-  float: any;
-  color: string;
-  size: number;
-  className: string;
-  component: React.ReactChild;
+  float?: any;
+  color?: string;
+  size?: number;
+  className?: string;
+  component?: React.ReactChild;
 }
 
-function Dropdown(props : IDropdownProps) {
+const Dropdown: React.FC<IDropdownProps> = (props) => {
   const [show, setShow] = useState<boolean | undefined>(undefined);
 
   const onBlur = (e : any) => {
@@ -57,7 +57,7 @@ function Dropdown(props : IDropdownProps) {
             <span className='rce-dropdown-title'>{props.title}</span>
           }
           {
-            props.items.map((x : IDropdownItemType, i : number) => (
+            props.items?.map((x : IDropdownItemType, i : number) => (
               <li key={i} onMouseDown={(e) => props.onSelect(i)}>
                 {
                   x instanceof Object ?
@@ -80,13 +80,5 @@ function Dropdown(props : IDropdownProps) {
     </div>
   );
 }
-
-Dropdown.defaultProps = {
-  animationType: 'default',
-  animationPosition: 'nortwest',
-  items: [],
-  onSelect: Function,
-  buttonProps: null
-};
 
 export default Dropdown;
