@@ -12,6 +12,11 @@
     memory-fs "^0.4.1"
     resolve "^1.2.0"
 
+"@types/progressbar.js@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@types/progressbar.js/-/progressbar.js-1.1.2.tgz#6d4f72af305bd1215ccbd62bc80a4ed79d346060"
+  integrity sha512-duYBKZ6aRWrJm1rt6HMaS8SYIpOUkstVuGpbIIOAI1UpkOhdOIsptHJxvLxUDYDVnfcapn1bN2mxRMwjAMcvsw==
+
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"

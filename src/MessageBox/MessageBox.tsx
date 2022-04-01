@@ -166,7 +166,7 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
               props.messageItem?.type === 'location' &&
               <LocationMessage
                 onOpen={props.onOpen}
-                data={props.message.data}
+                data={props.messageItem.data}
                 target={props.messageItem?.target}
                 href={props.messageItem?.href}
                 apiKey={props.messageItem?.apiKey}
@@ -201,7 +201,7 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
               <FileMessage
                 onOpen={props.onOpen}
                 onDownload={props.onDownload}
-                data={props.message.data}
+                data={props.messageItem.data}
                 text={props.message.text} />
             }
 

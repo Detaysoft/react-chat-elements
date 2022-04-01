@@ -1,25 +1,6 @@
 import './Button.css';
 import classNames from 'classnames'
-import { RefObject } from 'react';
 
-interface IButtonProps {
-  title?: string;
-  text?: string;
-  buttonRef?: RefObject<HTMLButtonElement>;
-  type?: string;
-  className?: string;
-  backgroundColor?: string;
-  color?: string;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler;
-  icon?: IButtonIcon;
-}
-
-interface IButtonIcon {
-  float?: any;
-  size?: number;
-  component?: React.ReactChild;
-}
 
 const Button: React.FC<IButtonProps> = (props) => {
   return (

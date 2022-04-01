@@ -1,29 +1,6 @@
 import './LocationMessage.css';
 import classNames from 'classnames'
 
-
-interface ILocationMessageProps {
-  data: ILocationMessageData;
-  markerColor: string;
-  zoom: string;
-  apiKey: string;
-  className?: string;
-  text?: string;
-  src?: string;
-  onOpen?: React.MouseEventHandler;
-  target?: string;
-  href?: string;
-  onError?: React.ReactEventHandler;
-}
-
-interface ILocationMessageData extends IMessage {
-  latitude: string;
-  longitude: string;
-  staticURL?: string;
-  mapURL?: string
-}
-
-
 const STATIC_URL = 'https://maps.googleapis.com/maps/api/staticmap?markers=color:MARKER_COLOR|LATITUDE,LONGITUDE&zoom=ZOOM&size=270x200&scale=2&key=KEY';
 const MAP_URL = 'https://www.google.com/maps/search/?api=1&query=LATITUDE,LONGITUDE&zoom=ZOOM';
 

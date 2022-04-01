@@ -2,10 +2,10 @@ import React, { FC, useEffect, useState, useRef } from 'react';
 import {
   ChatList,
   MessageList,
-  // Input,
-  // Button,
+  Input,
+  Button,
   SideBar,
-  // Dropdown,
+  Dropdown,
   Popup,
   MeetingList,
 } from '../src';
@@ -204,48 +204,48 @@ const App: FC = (props) => {
           muted: Math.floor(Math.random() * 10 % 2) === 1,
           showMute: Math.floor(Math.random() * 10 % 2) === 1,
           showVideoCall: Math.floor(Math.random() * 10 % 2) === 1,
-          // dropdownMenu: (
-          //   <Dropdown
-          //     animationPosition="norteast"
-          //     title='Dropdown Title'
-          //     buttonProps={{
-          //       type: "transparent",
-          //       color: "#cecece",
-          //       icon: {
-          //         component: <MdOutlineMoreVert />,
-          //         size: 24,
-          //       }
-          //     }}
-          //     items={[
-          //       {
-          //         icon: {
-          //           component: <FaSquare />,
-          //           float: 'left',
-          //           color: 'red',
-          //           size: 22,
-          //         },
-          //         text: 'Menu Item'
-          //       },
-          //       {
-          //         icon: {
-          //           component: <FaSquare/>,
-          //           float: 'left',
-          //           color: 'purple',
-          //           size: 22,
-          //         },
-          //         text: 'Menu Item'
-          //       },
-          //       {
-          //         icon: {
-          //           component: <FaSquare/>,
-          //           float: 'left',
-          //           color: 'yellow',
-          //           size: 22,
-          //         },
-          //         text: 'Menu Item'
-          //       },
-          //     ]} />
-          // ),
+          dropdownMenu: (
+            <Dropdown
+              animationPosition="norteast"
+              title='Dropdown Title'
+              buttonProps={{
+                type: "transparent",
+                color: "#cecece",
+                icon: {
+                  component: <MdOutlineMoreVert />,
+                  size: 24,
+                }
+              }}
+              items={[
+                {
+                  icon: {
+                    component: <FaSquare />,
+                    float: 'left',
+                    color: 'red',
+                    size: 22,
+                  },
+                  text: 'Menu Item'
+                },
+                {
+                  icon: {
+                    component: <FaSquare/>,
+                    float: 'left',
+                    color: 'purple',
+                    size: 22,
+                  },
+                  text: 'Menu Item'
+                },
+                {
+                  icon: {
+                    component: <FaSquare/>,
+                    float: 'left',
+                    color: 'yellow',
+                    size: 22,
+                  },
+                  text: 'Menu Item'
+                },
+              ]} />
+          ),
         };
       case 'meeting':
         return {
@@ -303,13 +303,13 @@ const App: FC = (props) => {
                   text: "Tamam",
                 }]} />
 
-              {/* <Button
+              <Button
                 type='transparent'
                 color='black'
                 text={list === 'chat' ? 'MeetingList' : 'ChatList'}
                 onClick={() => {
                   setList(list === 'chat' ? 'meeeting' : 'chat' );
-                }}/> */}
+                }}/>
             </div>
           }
           center={
@@ -330,7 +330,7 @@ const App: FC = (props) => {
           }
           bottom={
             <span>
-              {/* <Button
+              <Button
                 type='transparent'
                 color='black'
                 icon={{
@@ -344,7 +344,7 @@ const App: FC = (props) => {
                   component: <FaSearch />,
                   size: 18
                 }} />
-              <Button text="Count"></Button> */}
+              <Button text="Count"></Button>
             </span>
           } />
     </div>
@@ -394,7 +394,7 @@ const App: FC = (props) => {
         }
       </MessageList>
 
-      {/* <Input
+      <Input
         placeholder="Mesajınızı buraya yazınız."
         defaultValue=""
         referance={inputReferance}
@@ -413,7 +413,7 @@ const App: FC = (props) => {
           <Button
             text='Gönder'
             onClick={() => addMessage(8)} />
-        } /> */}
+        } />
       </div>
     </div>
   );

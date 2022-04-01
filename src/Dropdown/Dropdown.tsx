@@ -3,35 +3,10 @@ import './Dropdown.css';
 import classNames from 'classnames'
 import Button from '../Button/Button';
 
-interface IDropdownProps {
-  className?: string;
-  buttonProps?: Object;
-  animationType?: string;
-  animationPosition?: string;
-  title?: string;
-  items?: IDropdownItemType[];
-  onSelect: Function;
-}
-
-type IDropdownItemType = IDropdownItem | string;
-
-interface IDropdownItem {
-  icon?: IDropdownItemIcon;
-  text?: string;
-}
-
-interface IDropdownItemIcon {
-  float?: any;
-  color?: string;
-  size?: number;
-  className?: string;
-  component?: React.ReactChild;
-}
-
 const Dropdown: React.FC<IDropdownProps> = (props) => {
-  const [show, setShow] = useState<boolean | undefined>(undefined);
+  const [show, setShow] = useState<boolean>(false);
 
-  const onBlur = (e : any) => {
+  const onBlur = () => {
     if (show === true)
       setShow(false);
   }

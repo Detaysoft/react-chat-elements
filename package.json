@@ -5,6 +5,7 @@
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
   "devDependencies": {
+    "@types/progressbar.js": "^1.1.2",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
     "copyfiles": "^2.4.1",

@@ -2,23 +2,6 @@ import { useEffect } from 'react';
 import './Avatar.css';
 import classNames from 'classnames'
 
-interface IAvatarProps {
-	src: string;
-	lazyLoadingImage?: string;
-	letterItem?: ILetterItem;
-	type?: string;
-	size?: string;
-	className?: string;
-	alt?: string;
-	sideElement?: React.ReactChild;
-	onError?: React.ReactEventHandler;
-}
-
-interface ILetterItem {
-	id: string;
-	letter?: React.ReactChild;
-}
-
 const Avatar: React.FC<IAvatarProps> = (props) => {
 
 	let loadedAvatars: string[] = [];

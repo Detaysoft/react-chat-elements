@@ -3,24 +3,6 @@ import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/f
 import ProgressCircle from '../Circle/Circle';
 import React from 'react';
 
-interface IFileMessageProps {
-  onDownload?: Function;
-  onOpen?: Function;
-  text?: string;
-  data?: IFileMessageData;
-}
-
-interface IFileMessageData extends IMessage {
-  status?: IFileMessageDataStatus;
-  size?: string;
-}
-
-interface IFileMessageDataStatus {
-  error?: boolean;
-  download?: Function;
-  click?: Function;
-  loading?: number;
-}
 
 const FileMessage: React.FC<IFileMessageProps> = (props) => {
   var progressOptions = {
@@ -28,24 +10,15 @@ const FileMessage: React.FC<IFileMessageProps> = (props) => {
     color: '#333',
     trailColor: '#aaa',
     trailWidth: 5,
-    step: (state : {
-        color?: string;
-        width?: number;
-      }, circle : {
-        path: {
-          setAttribute: Function;
-        };
-        value: Function;
-        setText: Function;
-      }) => {
-      circle.path.setAttribute('trail', state.color);
-      circle.path.setAttribute('trailwidth-width', state.width);
+    step: (state: IProgressOptions, circle: IProgressOptions) => {
+      circle.circle.path.setAttribute('trail', state.state.color);
+      circle.circle.path.setAttribute('trailwidth-width', state.state.width);
 
-      var value = Math.round(circle.value() * 100);
+      var value = Math.round(circle.circle.value() * 100);
       if (value === 0)
-        circle.setText('');
+        circle.circle.setText('');
       else
-        circle.setText(value);
+        circle.circle.setText(value);
     }
   };
 

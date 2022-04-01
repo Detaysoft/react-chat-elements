@@ -4,22 +4,6 @@ interface IMessage {
   text: string;
   title: string;
   titleColor?: string;
-  data?: {
-    videoURL: string;
-    audioURL: string;
-    uri: string;
-    status: {
-      click: Boolean;
-      loading: Number;
-      download: Boolean;
-    };
-    size: string;
-    width: Number;
-    height: Number;
-    latitude: string;
-    longitude: string;
-    staticURL: string;
-  };
   date: Date;
   dateString: string;
   forwarded?: Boolean;
@@ -33,7 +17,7 @@ interface IMessage {
   focus: boolean | false;
   retracted?: Boolean | false;
   className?: string;
-  letterItem?: string;
+  letterItem?: ILetterItem;
 }
 
 interface IChat {
@@ -129,7 +113,7 @@ interface IMessageItemProps {
   message: IMessage;
   reply?: IReplyMessageProps;
   messageItem?: MessageItem;
-  onOpen?: Function;
+  onOpen?: React.MouseEventHandler;
   onDownload?: Function;
   onLoad?: Function;
   onPhotoError?: Function;
@@ -184,17 +168,6 @@ interface IMessageListProps {
 
 type MessageListEvent = (item: IMessage, index: Number, event: React.MouseEvent<HTMLElement>) => any;
 type MessageItem = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IMeetingMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps;
-
-interface ILocationMessageProps extends IMessage {
-  target?: string;
-  href?: string;
-  apiKey?: string;
-  src?: string;
-  zoom?: string;
-  markerColor?: string;
-  text?: string;
-  type?: 'location';
-}
 
 interface IProgressOptions {
   state: {
@@ -415,6 +388,127 @@ interface IMeetingItemProps {
   onCloseClick?: React.MouseEventHandler;
 }
 
+interface ILocationMessageProps {
+  type?: 'location';
+  data: ILocationMessageData;
+  markerColor: string;
+  zoom: string;
+  apiKey: string;
+  className?: string;
+  text?: string;
+  src?: string;
+  onOpen?: React.MouseEventHandler;
+  target?: string;
+  href?: string;
+  onError?: React.ReactEventHandler;
+}
+
+interface ILocationMessageData extends IMessage {
+  latitude: string;
+  longitude: string;
+  staticURL?: string;
+  mapURL?: string
+}
+
+interface IInputProps {
+  autofocus?: boolean;
+  referance?: any; // sor ve 46.satır
+  clear?: Function;
+  maxlength?: number;
+  maxHeight: number;
+  onMaxLengthExceed?: Function;
+  onChange?: Function;
+  multiline?: boolean;
+  autoHeight?: boolean;
+  minHeight?: number;
+  className?: string;
+  leftButtons?: Object;
+  rightButtons?: Object;
+  type?: React.HTMLInputTypeAttribute;
+  placeholder?: string;
+  defaultValue?: string
+  inputStyle?: Object;
+  onCopy?: React.ClipboardEventHandler;
+  onCut?: React.ClipboardEventHandler;
+  onPaste?: React.ClipboardEventHandler;
+  onBlur?: React.FocusEventHandler;
+  onFocus?: React.FocusEventHandler;
+  onSelect?: React.ReactEventHandler;
+  onSubmit?: React.FormEventHandler;
+  onReset?: React.FormEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  onKeyPress?: React.KeyboardEventHandler;
+  onKeyUp?: React.KeyboardEventHandler;
+}
+
+interface IFileMessageProps {
+  onDownload?: Function;
+  onOpen?: Function;
+  text?: string;
+  data?: IFileMessageData;
+}
+
+interface IFileMessageData extends IMessage {
+  status?: IFileMessageDataStatus;
+  size?: string;
+}
+
+interface IFileMessageDataStatus {
+  error?: boolean;
+  download?: Function;
+  click?: Function;
+  loading?: number;
+}
+
+interface IDropdownProps {
+  className?: string;
+  buttonProps?: Object;
+  animationType?: string;
+  animationPosition?: string;
+  title?: string;
+  items?: IDropdownItemType[];
+  onSelect: Function;
+}
+interface ICircleProps {
+  animate: number;
+  progressOptions?: Object;
+  className?: string;
+}
+interface IButtonProps {
+  title?: string;
+  text?: string;
+  buttonRef?: RefObject<HTMLButtonElement>;
+  type?: string;
+  className?: string;
+  backgroundColor?: string;
+  color?: string;
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler;
+  icon?: IButtonIcon;
+}
+
+interface IButtonIcon {
+  float?: any;
+  size?: number;
+  component?: React.ReactChild;
+}
+
+type IDropdownItemType = IDropdownItem | string;
+
+interface IDropdownItem {
+  icon?: IDropdownItemIcon;
+  text?: string;
+}
+
+interface IDropdownItemIcon {
+  float?: any;
+  color?: string;
+  size?: number;
+  className?: string;
+  component?: React.ReactChild;
+}
+
+
 interface ISideBarProps {
   type?: string;
   data: ISideBar;
@@ -455,4 +549,20 @@ interface IPopupProps {
   popup: IPopup;
   type?: string;
   className?: string;
+}
+interface IAvatarProps {
+	src: string;
+	lazyLoadingImage?: string;
+	letterItem?: ILetterItem;
+	type?: string;
+	size?: string;
+	className?: string;
+	alt?: string;
+	sideElement?: React.ReactChild;
+	onError?: React.ReactEventHandler;
+}
+
+interface ILetterItem {
+	id: string;
+	letter?: React.ReactChild;
 }
