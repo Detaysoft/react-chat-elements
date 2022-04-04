@@ -73,6 +73,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
           </div>
 
           {
+            onMeetingMoreSelect &&
             moreItems &&
             moreItems.length > 0 &&
             <div>
@@ -210,7 +211,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                                   className='rce-mtmg-call-avatars'>
                                   <Avatar
                                     className={'rce-mtmg-call-avatars'}
-                                    src={x.record.avatar}/>
+                                    src={x.record.avatar.src}/>
                                   <div className={'rce-mtmg-record-time'}>
                                     {x.record.time}
                                   </div>

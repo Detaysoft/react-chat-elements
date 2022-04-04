@@ -128,7 +128,7 @@ interface IMessageItemProps {
   onReplyMessageClick?: React.MouseEventHandler;
   onRemoveMessageClick?: React.MouseEventHandler;
   onMeetingLinkClick?: React.MouseEventHandler;
-  onMeetingMoreSelect?: Function;
+  onMeetingMoreSelect?: React.ReactEventHandler;
   onContextMenu?: React.MouseEventHandler;
   renderAddCmp?: Function;
   onMessageFocused: any;
@@ -271,14 +271,11 @@ interface IMeetingMessage extends IMessage {
   date?: Date;
   event?: {
     title?: string;
-    avatars?: Array<{
-      src?: string;
-      title?: string;
-    }>;
+    avatars?: IAvatarProps[];
     avatarsLimit?: any;
   };
   record?: {
-    avatar?: string;
+    avatar: IAvatarProps;
     title?: string;
     savedBy?: string;
     time?: Date;
@@ -296,12 +293,12 @@ interface IMeetingMessageProps{
     title?: string;
   }>;
   moreItems?: Array<{
-    text: string,
-    icon: {
+    text?: string,
+    icon?: {
       component?: any;
-      float: string;
-      color: string;
-      size: Number;
+      float?: string;
+      color?: string;
+      size?: number;
     }
   }>;
   dataSource?: IMeetingMessage[];
@@ -332,9 +329,7 @@ interface ISystemMessageProps {
 interface IMeeting {
   id: string | Number;
   avatarFlexible?: Boolean;
-  avatars?: Array<{
-    src?: string;
-  }>
+  avatars?: IAvatarProps[];
   closable?: Boolean;
   date?: Date;
   lazyLoadingImage?: string;
@@ -370,14 +365,7 @@ interface IMeetingItemProps {
   dateString?: string;
   lazyLoadingImage?: string;
   avatarLimit?: number;
-  avatars?: Array<{
-    src?: string;
-    alt?: string;
-    statusColorType?: string;
-    statusColor?: string;
-    letterItem?: string;
-    statusText?: string;
-  }>;
+  avatars?: IAvatarProps[];
   audioMuted?: boolean;
   audioSource?: string;
   onClick?: React.MouseEventHandler;
@@ -508,7 +496,6 @@ interface IDropdownItemIcon {
   component?: React.ReactChild;
 }
 
-
 interface ISideBarProps {
   type?: string;
   data: ISideBar;
@@ -537,7 +524,7 @@ interface IPopup {
       component?: React.ReactChild;
       size?: number;
     };
-    onClick?: Function;
+    onClick?: React.MouseEventHandler;
   }>;
   renderHeader?: Function;
   renderContent?: Function;
@@ -552,6 +539,7 @@ interface IPopupProps {
 }
 interface IAvatarProps {
 	src: string;
+  title?: string;
 	lazyLoadingImage?: string;
 	letterItem?: ILetterItem;
 	type?: string;
@@ -560,6 +548,9 @@ interface IAvatarProps {
 	alt?: string;
 	sideElement?: React.ReactChild;
 	onError?: React.ReactEventHandler;
+  statusColorType?: string;
+  statusColor?: string;
+  statusText?: string;
 }
 
 interface ILetterItem {
