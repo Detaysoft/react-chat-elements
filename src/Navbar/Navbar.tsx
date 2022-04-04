@@ -1,7 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-
-const classNames = require('classnames');
+import classNames from 'classnames';
 
 interface INavbarProps {
   type: string;

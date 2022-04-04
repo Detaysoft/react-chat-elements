@@ -2,8 +2,7 @@ import React, {FC, Key} from 'react';
 import './MeetingList.css';
 
 import MeetingItem from '../MeetingItem/MeetingItem';
-
-const classNames = require('classnames');
+import classNames from 'classnames';
 
 const MeetingList: FC<IMeetingListProps> = (props) => {
 

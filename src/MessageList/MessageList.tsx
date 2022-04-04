@@ -4,9 +4,7 @@ import './MessageList.css';
 import MessageBox from '../MessageBox/MessageBox';
 
 import {FaChevronDown} from 'react-icons/fa';
-
-const classNames = require('classnames');
-
+import classNames from 'classnames';
 
 const MessageList: FC<IMessageListProps> = (props) =>  {
   const [scrollBottom, setScrollBottom] = useState(0);
