@@ -26,15 +26,15 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
   }
 
   useEffect(() => {
-      if (!props.referance)
-        return;
+    if (!props.referance)
+      return;
 
-      if (prevProps.current.dataSource.length !== props.dataSource.length) {
-        setScrollBottom(getBottom(props.referance));
-        checkScroll();
-      }
+    if (prevProps.current.dataSource.length !== props.dataSource.length) {
+      setScrollBottom(getBottom(props.referance));
+      checkScroll();
+    }
 
-      prevProps.current = props;
+    prevProps.current = props;
   }, [prevProps, props.dataSource]);
 
   const getBottom = (e: any) => {
@@ -157,7 +157,7 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
             props.dataSource.map((x, i: Number) => (
               <MessageBox
                 key={i as Key}
-                message={x}
+                data={x}
                 onOpen={props.onOpen && ((e: React.MouseEvent<HTMLElement>) => onOpen(x, i, e))}
                 onPhotoError={props.onPhotoError && ((e: React.MouseEvent<HTMLElement>) => onPhotoError(x, i, e))}
                 onDownload={props.onDownload && ((e: React.MouseEvent<HTMLElement>) => onDownload(x, i, e))}

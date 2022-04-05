@@ -6,9 +6,9 @@ const SpotifyMessage: React.FC<ISpotifyMessageProps> = (props) => {
   const toUrl = () => {
     var formBody: any = [];
     var data = {
-      uri: props.data.uri,
-      theme: props.data.theme,
-      view: props.data.view,
+      uri: props.data?.uri || props.data.text,
+      theme: props.data?.theme,
+      view: props.data?.view,
     };
     for (var property in data) {
       var encodedKey = encodeURIComponent(property);
@@ -19,7 +19,7 @@ const SpotifyMessage: React.FC<ISpotifyMessageProps> = (props) => {
     return formBody;
   }
 
-  if (!props.data.uri)
+  if (!props.data?.uri)
     return null;
   return (
     <div className='rce-mbox-spotify'>

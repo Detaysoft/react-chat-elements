@@ -36,9 +36,9 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
         <img
           src={props.data?.uri}
           alt={props.data?.alt}
-          onClick={() => props.onOpen}
-          onLoad={() => props.onLoad}
-          onError={() => props.onPhotoError}/>
+          onClick={props.onOpen}
+          onLoad={props.onLoad}
+          onError={props.onPhotoError}/>
         {
           error &&
           <div className='rce-mbox-photo--img__block'>
@@ -56,7 +56,7 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
             {
               !props.data.status.click &&
               <button
-                onClick={() => props.onDownload}
+                onClick={props.onDownload}
                 className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
                 <FaCloudDownloadAlt />
               </button>

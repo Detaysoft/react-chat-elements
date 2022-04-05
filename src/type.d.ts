@@ -3,18 +3,18 @@ interface IMessage {
   position: string;
   text: string;
   title: string;
-  titleColor?: string;
-  date: Date;
+  focus: boolean | false;
+  date: number;
   dateString: string;
+  avatar: string;
+  titleColor?: string;
   forwarded?: Boolean;
   replyButton?: Boolean;
   removeButton?: Boolean;
   status?: string;
   notch?: Boolean;
-  avatar: string;
   renderAddCmp?: Function;
   copiableDate?: Boolean | false;
-  focus: boolean | false;
   retracted?: Boolean | false;
   className?: string;
   letterItem?: ILetterItem;
@@ -98,62 +98,62 @@ interface IAudioMessage extends IMessage {
 }
 
 interface IAudioMessageProps {
-  message: IAudioMessage;
+  data: IAudioMessage;
   audioProps?: {
     [key: string]: unknown;
   };
   customStyle?: any;
   type?: 'audio';
-  onOpen?: Function;
-  onDownload?: Function;
-  onLoad?: Function;
+  onOpen?: React.MouseEventHandler;
+  onDownload?: React.MouseEventHandler;
+  onLoad?: React.ReactEventHandler;
 }
 
 interface IMessageItemProps {
-  message: IMessage;
-  reply?: IReplyMessageProps;
+  data: IMessage;
   messageItem?: MessageItem;
-  onOpen?: React.MouseEventHandler;
-  onDownload?: Function;
-  onLoad?: Function;
-  onPhotoError?: Function;
-  toBottomHeight?: Number | String;
+  reply?: IReplyMessage;
+  meeting?: IMeetingMessage;
+  onMessageFocused?: any;
   onClick?: React.MouseEventHandler;
-  onTitleClick?: React.MouseEventHandler;
+  renderAddCmp?: Function;
+  onOpen?: React.MouseEventHandler;
+  onPhotoError?: React.MouseEventHandler;
+  onContextMenu?: React.MouseEventHandler;
   onForwardClick?: React.MouseEventHandler;
   onReplyClick?: React.MouseEventHandler;
-  onMeetingMessageClick?: React.MouseEventHandler;
-  onMeetingTitleClick?: Function;
-  onMeetingVideoLinkClick?: Function;
-  onReplyMessageClick?: React.MouseEventHandler;
   onRemoveMessageClick?: React.MouseEventHandler;
+  onTitleClick?: React.MouseEventHandler;
+  onReplyMessageClick?: React.MouseEventHandler;
+  onMeetingMessageClick?: React.MouseEventHandler;
+  onDownload?: React.MouseEventHandler;
+  onMeetingMoreSelect?: React.MouseEventHandler;
   onMeetingLinkClick?: React.MouseEventHandler;
-  onMeetingMoreSelect?: React.ReactEventHandler;
-  onContextMenu?: React.MouseEventHandler;
-  renderAddCmp?: Function;
-  onMessageFocused: any;
+  onMeetingTitleClick?: React.MouseEventHandler;
+  onMeetingVideoLinkClick?: React.MouseEventHandler;
 }
 
 interface IMessageListProps {
-  dataSource: IMessage[];
-  referance: RefObject<HTMLElement>;
   className?: string;
+  customProps?: {
+    [key: string]: unknown;
+  };
+  children?: React.ReactNode;
+  isShowChild?: Boolean;
+  referance: RefObject<HTMLElement>;
+  dataSource: IMessage[];
   lockable: Boolean;
   toBottomHeight?: String | Number;
   downButton: Boolean;
   downButtonBadge: Boolean;
-  customProps?: {
-    [key: string]: unknown;
-  };
-  isShowChild?: Boolean;
+  onScroll?: React.UIEventHandler;
   onContextMenu?: MessageListEvent;
   onDownButtonClick?: RefObject<HTMLButtonElement>;
-  onOpen?: Function;
-  onDownload?: Function;
-  onScroll?: Function;
-  onPhotoError?: Function;
-  onMeetingMoreSelect?: Function;
-  onMessageFocused?: Function;
+  onOpen?: MessageListEvent;
+  onDownload?: MessageListEvent;
+  onPhotoError?: MessageListEvent;
+  onMeetingMoreSelect?: MessageListEvent;
+  onMessageFocused?: MessageListEvent;
   onClick?: MessageListEvent;
   onForwardClick?: MessageListEvent;
   onReplyClick?: MessageListEvent;
@@ -161,8 +161,8 @@ interface IMessageListProps {
   onTitleClick?: MessageListEvent;
   onRemoveMessageClick?: MessageListEvent;
   onMeetingMessageClick?: MessageListEvent;
-  onMeetingTitleClick?: MessageListEvent;
-  onMeetingVideoLinkClick?: MessageListEvent;
+  onMeetingTitleClick?: React.MouseEventHandler;
+  onMeetingVideoLinkClick?: React.MouseEventHandler;
   onMeetingLinkClick?: MessageListEvent;
 }
 
@@ -197,20 +197,20 @@ interface IPhotoMessage extends IMessage {
 
 interface IPhotoMessageProps {
   data: IPhotoMessage;
-  onDownload?: Function;
-  onOpen?: Function;
-  onLoad?: Function;
-  onPhotoError?: Function;
+  onDownload?: React.MouseEventHandler;
+  onOpen?: React.MouseEventHandler;
+  onLoad?: React.ReactEventHandler;
+  onPhotoError?: React.ReactEventHandler;
   type?: 'photo';
 }
 
 interface IVideoMessageProps {
   type?: 'video';
   data: IVideoMessage;
-  onDownload?: Function;
-  onOpen?: Function;
-  onLoad?: Function;
-  onPhotoError?: Function;
+  onDownload?: React.MouseEventHandler;
+  onOpen?: React.MouseEventHandler;
+  onLoad?: React.ReactEventHandler;
+  onPhotoError?: React.ReactEventHandler;
 }
 
 interface IVideoMessage extends IMessage {
@@ -229,14 +229,13 @@ interface IVideoMessage extends IMessage {
 
 interface ISpotifyMessageProps {
   data: ISpotifyMessage;
-  uri: string;
   type?: 'spotify';
 }
 
 interface ISpotifyMessage extends IMessage {
+  uri: string;
   theme?: string;
   view?: string;
-  uri: string;
   width?: number | string;
   height?: number | string;
 }
@@ -258,8 +257,8 @@ interface IMeetingLinkProps {
   meetingID?: Messagestring;
   title?: string;
   type?: 'meetingLink';
-  onMeetingLinkClick?: Function;
-  onMeetingMoreSelect?: Function;
+  onMeetingLinkClick?: React.MouseEventHandler;
+  onMeetingMoreSelect?: React.MouseEventHandler;
 }
 
 interface IMeetingMessage extends IMessage {
@@ -303,7 +302,7 @@ interface IMeetingMessageProps{
   }>;
   dataSource?: IMeetingMessage[];
   participantsLimit?: number;
-  onClick?: Function;
+  onClick?: React.MouseEventHandler;
   onMeetingTitleClick?: MeetingMessageEvent;
   onMeetingVideoLinkClick?: MeetingMessageEvent;
   onMeetingMoreSelect?: Function;
@@ -311,10 +310,6 @@ interface IMeetingMessageProps{
 }
 
 type MeetingMessageEvent = (item: IMeetingMessage, index: Number , event: React.MouseEvent<HTMLElement>) => any;
-
-interface IFileMessageProps {
-  type?: 'file';
-}
 
 interface ITextMessageProps {
   type?: 'text';
@@ -431,9 +426,10 @@ interface IInputProps {
 
 interface IFileMessageProps {
   onDownload?: Function;
-  onOpen?: Function;
+  onOpen?: React.MouseEventHandler;
   text?: string;
   data?: IFileMessageData;
+  type?: 'file';
 }
 
 interface IFileMessageData extends IMessage {

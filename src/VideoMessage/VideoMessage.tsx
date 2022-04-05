@@ -45,9 +45,9 @@ const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
           <img
             src={props.data?.uri}
             alt={props.data?.alt}
-            onClick={() => props.onOpen}
-            onLoad={() => props.onLoad}
-            onError={() => props.onPhotoError}/>
+            onClick={props.onOpen}
+            onLoad={props.onLoad}
+            onError={props.onPhotoError}/>
         }
 
         {
@@ -75,7 +75,7 @@ const VideoMessage: React.FC<IVideoMessageProps> = (props) => {
             {
               !props.data.status.click &&
               <button
-                onClick={() => props.onDownload}
+                onClick={props.onDownload}
                 className='rce-mbox-video--video__block-item rce-mbox-video--download'>
                 <FaCloudDownloadAlt />
               </button>

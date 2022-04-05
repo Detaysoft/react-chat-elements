@@ -1,5 +1,5 @@
 import React, { Key } from 'react';
-import classNames from 'classnames'
+import classNames from 'classnames';
 import './ChatList.css';
 
 import ChatItem from '../ChatItem/ChatItem';

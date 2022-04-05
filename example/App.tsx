@@ -318,10 +318,10 @@ const App: FC = (props) => {
               dataSource={chatSource}
               onClickMute={({...props}) => console.log(props)}
               onClickVideoCall={({...props}) => console.log(props)}
-              onDragEnter={(e, id) => console.log(id, 'onDragEnter')}
-              onDragLeave={(e, id) => console.log(id, 'onDragLeave')}
-              onDrop={(e, id) => console.log(e, id, 'onDrop')}
-              onDragComponent={(id)=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
+              onDragEnter={(e: React.DragEventHandler, id: Number) => console.log(e, id, 'onDragEnter')}
+              onDragLeave={(e: React.DragEventHandler, id: Number) => console.log(e, id, 'onDragLeave')}
+              onDrop={(e: React.DragEventHandler, id: Number) => console.log(e, id, 'onDrop')}
+              onDragComponent={()=> <div className="on-drag-mlist">{loremIpsum({ count: 4, units: 'words' })}</div>} />
             :
             <MeetingList
               onMeetingClick={console.log}
@@ -398,7 +398,7 @@ const App: FC = (props) => {
         placeholder="Mesajınızı buraya yazınız."
         defaultValue=""
         referance={inputReferance}
-        clear={(clear) => clearRef = clear}
+        clear={(clear: any) => clearRef = clear}
         // buttonsFloat='left'
         onKeyPress={(e: any) => {
           if (e.shiftKey && e.charCode === 13) {

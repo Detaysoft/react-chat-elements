@@ -59,7 +59,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
         </div>
         <div
           className='rce-mtmg-body'
-          onClick={() => onClick}>
+          onClick={onClick}>
           <div className='rce-mtmg-item'>
             <FaCalendar />
             <div className='rce-mtmg-content'>
