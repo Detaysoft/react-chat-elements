@@ -1,8 +1,8 @@
 import loremIpsum from "lorem-ipsum";
 import { useEffect, useRef, useState } from "react";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
-import MessageList from "../../components/MessageList/MessageList";
+import Button from "../../src/Button/Button";
+import Input from "../../src/Input/Input";
+import MessageList from "../../src/MessageList/MessageList";
 import { getRandomColor, photo, token } from "../utils/common";
 
 let clearRef = () => {};

@@ -1,5 +1,5 @@
 import loremIpsum from 'lorem-ipsum';
-import MeetingList from '../../components/MeetingList/MeetingList';
+import MeetingList from '../../src/MeetingList/MeetingList';
 import { photo, token } from '../utils/common';
 
 function MeetingListExample() {

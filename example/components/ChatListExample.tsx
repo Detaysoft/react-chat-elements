@@ -3,9 +3,9 @@ import loremIpsum from "lorem-ipsum";
 import React, { useEffect, useState } from "react";
 import { FaSquare } from "react-icons/fa";
 import { MdOutlineMoreVert } from "react-icons/md";
-import ChatList from "../../components/ChatList/ChatList";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import SideBar from "../../components/SideBar/SideBar";
+import ChatList from "../../src/ChatList/ChatList";
+import Dropdown from "../../src/Dropdown/Dropdown";
+import SideBar from "../../src/SideBar/SideBar";
 
 function ChatListExample() {
   const photo = (size: number) => {

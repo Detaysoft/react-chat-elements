@@ -1,6 +1,6 @@
 import { FaSquare } from 'react-icons/fa';
 import { MdOutlineMoreVert } from 'react-icons/md';
-import Dropdown from '../../components/Dropdown/Dropdown';
+import Dropdown from '../../src/Dropdown/Dropdown';
 
 function DropdownExample() {
   return (

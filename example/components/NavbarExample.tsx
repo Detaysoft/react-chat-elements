@@ -1,9 +1,9 @@
 import { FaCircle, FaMapMarkerAlt, FaVideo } from "react-icons/fa";
 import { MdOutlineMoreVert } from "react-icons/md";
-import Avatar from "../../components/Avatar/Avatar";
-import Button from "../../components/Button/Button";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import Navbar from "../../components/Navbar/Navbar";
+import Avatar from "../../src/Avatar/Avatar";
+import Button from "../../src/Button/Button";
+import Dropdown from "../../src/Dropdown/Dropdown";
+import Navbar from "../../src/Navbar/Navbar";
 import { photo } from "../utils/common";
 
 function NavbarExample() {

@@ -1,4 +1,4 @@
-import Avatar from '../../components/Avatar/Avatar';
+import Avatar from '../../src/Avatar/Avatar';
 import { photo } from '../utils/common';
 
 function AvatarExample() {

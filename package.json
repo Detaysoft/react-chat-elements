@@ -37,7 +37,8 @@
     "react-test-renderer": "^17.0.2",
     "typescript": "^4.6.4",
     "webpack-cli": "^3.3.0",
-    "webpack-node-externals": "^1.6.0"
+    "webpack-node-externals": "^1.6.0",
+    "ts-loader": "^8.2.0"
   },
   "repository": {
     "type": "git",
@@ -65,10 +66,10 @@
   },
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
-    "start": "nwb serve-react-app ./example/index.js",
+    "start": "nwb serve-react-app ./example/index.tsx",
     "start:native": "node node_modules/react-native/local-cli/cli.js start",
     "build": "node node_modules/typescript/bin/tsc && yarn copy-files && webpack --progress --profile --colors",
-    "copy-files": "copyfiles -u 1 src/**/**/**/*.css build/",
+    "copy-files": "copyfiles -u 1 src/**/*.css build/",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },
