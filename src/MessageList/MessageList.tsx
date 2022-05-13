@@ -154,10 +154,11 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
           onScroll={onScroll}
           className='rce-mlist'>
           {
-            props.dataSource.map((x, i: Number) => (
+            props.dataSource.map((x, i: number) => (
               <MessageBox
                 key={i as Key}
-                data={x}
+                {...x}
+                // data={x}
                 onOpen={props.onOpen && ((e: React.MouseEvent<HTMLElement>) => onOpen(x, i, e))}
                 onPhotoError={props.onPhotoError && ((e: React.MouseEvent<HTMLElement>) => onPhotoError(x, i, e))}
                 onDownload={props.onDownload && ((e: React.MouseEvent<HTMLElement>) => onDownload(x, i, e))}
@@ -187,10 +188,10 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
           onClick={toBottom}>
           <FaChevronDown/>
           {
-            props.downButtonBadge &&
+            props.downButtonBadge > 0 &&
             <span
               className='rce-mlist-down-button--badge'>
-              {props.downButtonBadge}
+              {props.downButtonBadge.toString()}
             </span>
           }
         </div>

@@ -184,7 +184,8 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                               <div className='rce-mitem-avatar'>
                                 {
                                   x.event.avatars &&
-                                  x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => x instanceof Avatar ? x : (
+                                  // x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => x instanceof Avatar ? x : (
+                                  x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => (
                                     <Avatar
                                       key={i}
                                       src={x.src} />
@@ -211,7 +212,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                                   className='rce-mtmg-call-avatars'>
                                   <Avatar
                                     className={'rce-mtmg-call-avatars'}
-                                    src={x.record.avatar.src}/>
+                                    src={x.record.avatar}/>
                                   <div className={'rce-mtmg-record-time'}>
                                     {x.record.time}
                                   </div>

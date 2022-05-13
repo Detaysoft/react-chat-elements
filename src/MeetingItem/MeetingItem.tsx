@@ -50,7 +50,8 @@ const MeetingItem: FC<IMeetingItemProps> = (props) => {
         <div className="rce-mtitem-body">
           <div className="rce-mtitem-body--avatars">
             {
-              props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
+              // props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
+              props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => (
                 <Avatar
                   key={i}
                   src={x.src}
@@ -88,7 +89,7 @@ const MeetingItem: FC<IMeetingItemProps> = (props) => {
           </div>
           <div className="rce-mtitem-body--functions">
             {
-              props.meet?.closable &&
+              props.closable &&
               <div
                 className="rce-mtitem-closable"
                 onClick={props.onCloseClick}>

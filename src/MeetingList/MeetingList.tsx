@@ -46,7 +46,7 @@ const MeetingList: FC<IMeetingListProps> = (props) => {
           <MeetingItem
             key={i as Key}
             lazyLoadingImage={props.lazyLoadingImage}
-            meet={x}
+            {...x}
             onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(x, i, e)}
             onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(x, i, e)}
             onClick={(e: React.MouseEvent<HTMLElement>) => onClick(x, i, e)}

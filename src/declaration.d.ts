@@ -5,5 +5,3 @@ declare module 'react' {
     tooltip?: any;
   }
 }
-
-

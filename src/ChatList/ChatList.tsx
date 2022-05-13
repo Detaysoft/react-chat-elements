@@ -26,11 +26,11 @@ const ChatList: React.FC<IChatListProps> = (props) => {
     <div
       className={classNames('rce-container-clist', props.className)}>
       {
-        props.dataSource.map((x, i: Number) => (
+        props.dataSource.map((x, i: number) => (
           <ChatItem
+            {...x}
             key={i as Key}
             lazyLoadingImage={props.lazyLoadingImage}
-            chat={x}
             onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(x, i, e)}
             onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(x, i, e)}
             onClick={(e: React.MouseEvent<HTMLElement>) => onClick(x, i, e)}
@@ -41,7 +41,6 @@ const ChatList: React.FC<IChatListProps> = (props) => {
             onDrop={props.onDrop}
             onDragLeave={props.onDragLeave}
             onDragComponent={props.onDragComponent}
-            avatar={x.avatar}
             />
         ))
       }

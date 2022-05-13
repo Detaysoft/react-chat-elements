@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import './Avatar.css';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 const Avatar: React.FC<IAvatarProps> = (props) => {
 

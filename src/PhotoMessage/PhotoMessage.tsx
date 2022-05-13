@@ -11,31 +11,31 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
     color: '#efe',
     trailColor: '#aaa',
     trailWidth: 1,
-    step: (state: IProgressOptions, circle: IProgressOptions) => {
-      circle.circle.path.setAttribute('trail', state.state.color);
-      circle.circle.path.setAttribute('trailwidth-width', state.state.width);
+    step: (state: IProgressOptions, circle: { path: { setAttribute: (arg0: string, arg1: any) => void; }; value: () => number; setText: (arg0: string | number) => void; }) => {
+      circle.path.setAttribute('trail', state?.state?.color);
+      circle.path.setAttribute('trailwidth-width', state?.state?.width);
 
-      var value = Math.round(circle.circle.value() * 100);
+      var value = Math.round(circle.value() * 100);
       if (value === 0)
-        circle.circle.setText('');
+          circle.setText('');
       else
-        circle.circle.setText(value);
-    }
+          circle.setText(value);
+  }
   };
 
-  const error = props.data?.status && props.data?.status.error === true;
+  const error = props.message?.status && props.message?.status.error === true;
 
   return (
     <div className='rce-mbox-photo'>
       <div
         className='rce-mbox-photo--img'
-        style={{...props.data?.width && props.data?.height && {
-          width: props.data.width,
-          height: props.data.height,
+        style={{...props.message?.width && props.message?.height && {
+          width: props.message.width,
+          height: props.message.height,
         }}}>
         <img
-          src={props.data?.uri}
-          alt={props.data?.alt}
+          src={props.message?.uri}
+          alt={props.message?.alt}
           onClick={props.onOpen}
           onLoad={props.onLoad}
           onError={props.onPhotoError}/>
@@ -50,11 +50,11 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
         }
         {
           !error &&
-          props.data?.status &&
-          !props.data?.status?.download &&
+          props.message?.status &&
+          !props.message?.status?.download &&
           <div className='rce-mbox-photo--img__block'>
             {
-              !props.data.status.click &&
+              !props.message.status.click &&
               <button
                 onClick={props.onDownload}
                 className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
@@ -62,10 +62,10 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
               </button>
             }
             {
-              typeof props.data.status.loading === 'number' &&
-              props.data.status.loading !== 0 &&
+              typeof props.message.status.loading === 'number' &&
+              props.message.status.loading !== 0 &&
               <ProgressCircle
-                animate={props.data.status.loading}
+                animate={props.message.status.loading}
                 progressOptions={progressOptions}
                 className='rce-mbox-photo--img__block-item' />
             }
@@ -73,9 +73,9 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = (props) => {
         }
       </div>
       {
-        props.data?.text &&
+        props.message?.text &&
         <div className='rce-mbox-text'>
-          {props.data.text}
+          {props.message.text}
         </div>
       }
     </div>

@@ -13,7 +13,7 @@ module.exports = {
   },
   webpack: {
     extra: {
-      entry: './example/index.tsx',
+      entry: './src/index.tsx',
       output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),

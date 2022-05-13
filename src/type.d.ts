@@ -1,41 +1,9 @@
-interface IMessage {
-  id: string | Number;
-  position: string;
-  text: string;
-  title: string;
-  focus: boolean | false;
-  date: number;
-  dateString: string;
-  avatar: string;
-  titleColor?: string;
-  forwarded?: Boolean;
-  replyButton?: Boolean;
-  removeButton?: Boolean;
-  status?: string;
-  notch?: Boolean;
-  renderAddCmp?: Function;
-  copiableDate?: Boolean | false;
-  retracted?: Boolean | false;
-  className?: string;
-  letterItem?: ILetterItem;
-}
-
-interface IChat {
-  id: string | Number;
-  avatar: string;
-  avatarFlexible: Boolean;
-  alt: string;
-  title: string;
-  subtitle: string;
-  date: Date;
-  unread: number | 0;
-}
-
 interface IChatItemProps {
-  chat: IChat;
+  id: string | number;
   avatar: string;
+  unread?: number;
   className?: string;
-  avatarFlexible?: Boolean;
+  avatarFlexible?: boolean;
   alt?: string;
   title?: string;
   subtitle?: string;
@@ -45,10 +13,10 @@ interface IChatItemProps {
   statusColorType?: string;
   statusText?: string;
   lazyLoadingImage?: string;
-  muted?: Boolean;
-  showMute?: Boolean;
-  showVideoCall?: Boolean;
-  onAvatarError?: React.EventHandler;
+  muted?: boolean;
+  showMute?: boolean;
+  showVideoCall?: boolean;
+  onAvatarError?: React.MouseEventHandler;
   onContextMenu?: React.MouseEventHandler;
   onClick?: React.MouseEventHandler;
   onClickMute?: React.MouseEventHandler;
@@ -66,24 +34,24 @@ interface ILetterItem {
 }
 
 interface IChatListProps {
-  id: string | Number;
-  dataSource: IChat[];
-  cmpRef?: Ref<HTMLButtonElement>;
+  id: string | number;
+  dataSource: IChatItemProps[];
+  cmpRef?: React.Ref<HTMLButtonElement>;
   onAvatarError?: ChatListEvent;
   onContextMenu?: ChatListEvent;
   onClick?: ChatListEvent;
   onClickMute?: ChatListEvent;
   onClickVideoCall?: ChatListEvent;
-  onDragOver?: React.DragEventHandler;
-  onDragEnter?: React.DragEventHandler;
-  onDrop?: React.DragEventHandler;
-  onDragLeave?: React.DragEventHandler;
-  onDragComponent?: React.ReactChild;
+  onDragOver?: Function;
+  onDragEnter?: Function;
+  onDrop?: Function;
+  onDragLeave?: Function;
+  onDragComponent?: Function;
   lazyLoadingImage: string;
   className?: string;
 }
 
-type ChatListEvent = (item: IChat, index: Number, event: React.MouseEvent<HTMLElement>) => any;
+type ChatListEvent = (item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any;
 
 interface IDefaultProps {
   style: {
@@ -92,31 +60,214 @@ interface IDefaultProps {
   onClick: Function;
 }
 
+interface IMessage {
+  id: string | number;
+  position: string;
+  text: string;
+  title: string;
+  focus: boolean;
+  date: number | Date;
+  dateString?: string;
+  avatar?: string;
+  titleColor: string;
+  forwarded: boolean;
+  replyButton: boolean;
+  removeButton: boolean;
+  status: string;
+  notch: boolean;
+  copiableDate?: boolean;
+  retracted: boolean;
+  className?: string;
+  letterItem?: ILetterItem;
+  reply?: IReplyMessage;
+}
+
+interface IPhotoMessage extends Omit<IMessage, "status"> {
+  type: 'photo';
+  status?: {
+    error?: boolean;
+    loading?: number;
+    download?: boolean;
+    click?: boolean;
+  };
+  width?: number;
+  height?: number;
+  uri: string;
+  alt?: string;
+}
+
+interface IPhotoMessageProps {
+  type: 'photo';
+  message: IPhotoMessage;
+  onDownload?: React.MouseEventHandler;
+  onOpen?: React.MouseEventHandler;
+  onLoad?: React.ReactEventHandler;
+  onPhotoError?: React.ReactEventHandler;
+}
+
+interface IReplyMessage extends IMessage {
+  type: 'reply';
+  photoURL?: string;
+  message?: string;
+}
+
+interface IReplyMessageProps {
+  type: 'reply';
+  message: IReplyMessage;
+  onClick?: React.MouseEventHandler;
+}
+
+interface IMeetingMessage extends IMessage {
+  type: 'meeting';
+  message?: string;
+  avatarFlexible?: boolean;
+  event?: {
+    title?: string;
+    avatars?: IAvatarProps[];
+    avatarsLimit?: any;
+  };
+  record?: {
+    avatar: string;
+    title?: string;
+    savedBy?: string;
+    time?: string;
+  };
+}
+
+interface IMeetingMessageProps {
+  type: 'meeting';
+  subject?: string;
+  title?: string;
+  date?: Date;
+  dateString?: string;
+  collapseTitle?: string;
+  participants?: Array<{
+    id?: number | string;
+    title?: string;
+  }>;
+  moreItems?: Array<{
+    text?: string,
+    icon?: {
+      component?: any;
+      float?: string;
+      color?: string;
+      size?: number;
+    }
+  }>;
+  dataSource?: IMeetingMessage[];
+  participantsLimit?: number;
+  onClick?: React.MouseEventHandler;
+  onMeetingTitleClick?: MeetingMessageEvent;
+  onMeetingVideoLinkClick?: MeetingMessageEvent;
+  onMeetingMoreSelect?: Function;
+}
+
+interface IVideoMessage extends Omit<IMessage, "status"> {
+  type: 'video';
+  videoURL: string;
+  uri: string;
+  width?: number | 0;
+  height?: number | 0;
+  alt?: string;
+  status: {
+    error?: boolean;
+    download?: boolean;
+    click?: boolean;
+    loading?: number;
+  };
+}
+
+interface IVideoMessageProps {
+  type: 'video';
+  message: IVideoMessage;
+  onDownload?: React.MouseEventHandler;
+  onOpen?: React.MouseEventHandler;
+  onLoad?: React.ReactEventHandler;
+  onPhotoError?: React.ReactEventHandler;
+}
+
+interface ISystemMessage extends IMessage {
+  type: 'system';
+  text: string;
+}
+
 interface IAudioMessage extends IMessage {
+  type: 'audio';
   audioURL: string;
-  audioType: string;
+  audioType?: string;
+  controlsList?: string;
 }
 
 interface IAudioMessageProps {
-  data: IAudioMessage;
+  type: 'audio';
+  message: IAudioMessage;
   audioProps?: {
     [key: string]: unknown;
   };
   customStyle?: any;
-  type?: 'audio';
   onOpen?: React.MouseEventHandler;
   onDownload?: React.MouseEventHandler;
   onLoad?: React.ReactEventHandler;
 }
 
-interface IMessageItemProps {
-  data: IMessage;
-  messageItem?: MessageItem;
-  reply?: IReplyMessage;
-  meeting?: IMeetingMessage;
+interface IFileMessage extends Omit<IMessage, "status"> {
+  type: 'file';
+  status?: IFileMessageDataStatus;
+  size?: string;
+}
+
+interface IFileMessageProps {
+  type: 'file';
+  message: IFileMessage;
+  onDownload?: Function;
+  onOpen?: React.MouseEventHandler;
+  text?: string;
+}
+
+interface ILocationMessage extends IMessage {
+  type: 'location';
+  latitude: string;
+  longitude: string;
+  staticURL: string;
+}
+
+interface ILocationMessageProps {
+  type: 'location';
+  message: ILocationMessageData;
+  markerColor: string;
+  zoom: string;
+  apiKey: string;
+  className?: string;
+  text?: string;
+  src?: string;
+  onOpen?: React.MouseEventHandler;
+  target?: string;
+  href?: string;
+  onError?: React.ReactEventHandler;
+}
+
+interface ISpotifyMessage extends IMessage {
+  type: 'spotify';
+  uri: string;
+  theme?: string;
+  view?: string;
+  width?: number | string;
+  height?: number | string;
+  text?: string;
+}
+
+interface ISpotifyMessageProps {
+  message: ISpotifyMessage;
+  type: 'spotify';
+}
+
+type MessageType = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessage | IMeetingMessageProps;
+
+interface IMessageBoxProps {
+  data: MessageType;
   onMessageFocused?: any;
   onClick?: React.MouseEventHandler;
-  renderAddCmp?: Function;
+  renderAddCmp?: React.Component;
   onOpen?: React.MouseEventHandler;
   onPhotoError?: React.MouseEventHandler;
   onContextMenu?: React.MouseEventHandler;
@@ -139,16 +290,17 @@ interface IMessageListProps {
     [key: string]: unknown;
   };
   children?: React.ReactNode;
-  isShowChild?: Boolean;
-  referance: RefObject<HTMLElement>;
-  dataSource: IMessage[];
-  lockable: Boolean;
-  toBottomHeight?: String | Number;
-  downButton: Boolean;
-  downButtonBadge: Boolean;
+  isShowChild?: boolean;
+  referance: React.Ref;
+  dataSource: IMessageBoxProps[];
+  lockable: boolean;
+  toBottomHeight?: String | number;
+  downButton: boolean;
+  downButtonBadge: number;
+  sendMessagePreview: boolean
   onScroll?: React.UIEventHandler;
   onContextMenu?: MessageListEvent;
-  onDownButtonClick?: RefObject<HTMLButtonElement>;
+  onDownButtonClick?: React.RefObject<HTMLButtonElement>;
   onOpen?: MessageListEvent;
   onDownload?: MessageListEvent;
   onPhotoError?: MessageListEvent;
@@ -166,153 +318,37 @@ interface IMessageListProps {
   onMeetingLinkClick?: MessageListEvent;
 }
 
-type MessageListEvent = (item: IMessage, index: Number, event: React.MouseEvent<HTMLElement>) => any;
-type MessageItem = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IMeetingMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps;
+type MessageListEvent = (item: IMessageBoxProps, index: number, event: React.MouseEvent<HTMLElement>) => any;
 
 interface IProgressOptions {
   state: {
     color: string;
     width: string;
   };
-  circle: {
-    path:{
-      setAttribute: (arg0: string, arg1: string | undefined) => void;
-    };
-    value: () => number; setText: (arg0: string | number) => void;
-  };
 }
 
-interface IPhotoMessage extends IMessage {
-  status?: {
-    error?: boolean;
-    loading?: number;
-    download?: boolean;
-    click?: boolean;
-  };
-  width?: number;
-  height?: number;
-  uri: string;
-  alt?: string;
-}
-
-interface IPhotoMessageProps {
-  data: IPhotoMessage;
-  onDownload?: React.MouseEventHandler;
-  onOpen?: React.MouseEventHandler;
-  onLoad?: React.ReactEventHandler;
-  onPhotoError?: React.ReactEventHandler;
-  type?: 'photo';
-}
-
-interface IVideoMessageProps {
-  type?: 'video';
-  data: IVideoMessage;
-  onDownload?: React.MouseEventHandler;
-  onOpen?: React.MouseEventHandler;
-  onLoad?: React.ReactEventHandler;
-  onPhotoError?: React.ReactEventHandler;
-}
-
-interface IVideoMessage extends IMessage {
-  videoURL: string;
-  uri: string;
-  width?: number | 0;
-  height?: number | 0;
-  alt?: string;
-  status: {
-    error?: boolean;
-    download?: boolean;
-    click?: boolean;
-    loading?: number;
-  };
-}
-
-interface ISpotifyMessageProps {
-  data: ISpotifyMessage;
-  type?: 'spotify';
-}
-
-interface ISpotifyMessage extends IMessage {
-  uri: string;
-  theme?: string;
-  view?: string;
-  width?: number | string;
-  height?: number | string;
-}
-
-interface IReplyMessage extends IMessage {
-  photoURL?: string;
+interface IMeetingLinkMessage extends IMessage {
+  meetingID?: string;
   title?: string;
-  titleColor?: string;
-  message?: string;
 }
 
-interface IReplyMessageProps {
-  data: IReplyMessage;
-  onClick?: React.MouseEventHandler;
-  type?: 'reply';
-}
-
-interface IMeetingLinkProps {
-  meetingID?: Messagestring;
-  title?: string;
-  type?: 'meetingLink';
+interface IMeetingLinkMessageProps {
+  type: 'meetingLink';
+  message: IMeetingLinkMessage;
   onMeetingLinkClick?: React.MouseEventHandler;
-  onMeetingMoreSelect?: React.MouseEventHandler;
+  onMeetingMoreSelect?: React.MouseEventHandler<T, T>;
 }
 
-interface IMeetingMessage extends IMessage {
-  id?: string;
-  avatar?: string;
-  message?: string;
-  title?: string;
-  avatarFlexible?: Boolean;
-  date?: Date;
-  event?: {
-    title?: string;
-    avatars?: IAvatarProps[];
-    avatarsLimit?: any;
-  };
-  record?: {
-    avatar: IAvatarProps;
-    title?: string;
-    savedBy?: string;
-    time?: Date;
-  };
-}
+type MeetingMessageEvent = (item: IMeetingMessage, index: number , event: React.MouseEvent<HTMLElement>) => any;
 
-interface IMeetingMessageProps{
-  subject?: string;
-  title?: string;
-  date?: Date;
-  dateString?: string;
-  collapseTitle?: string;
-  participants?: Array<{
-    id?: Number | string;
-    title?: string;
-  }>;
-  moreItems?: Array<{
-    text?: string,
-    icon?: {
-      component?: any;
-      float?: string;
-      color?: string;
-      size?: number;
-    }
-  }>;
-  dataSource?: IMeetingMessage[];
-  participantsLimit?: number;
-  onClick?: React.MouseEventHandler;
-  onMeetingTitleClick?: MeetingMessageEvent;
-  onMeetingVideoLinkClick?: MeetingMessageEvent;
-  onMeetingMoreSelect?: Function;
-  type?: 'meeting';
+interface ITextMessage extends IMessage {
+  type?: 'text';
 }
-
-type MeetingMessageEvent = (item: IMeetingMessage, index: Number , event: React.MouseEvent<HTMLElement>) => any;
 
 interface ITextMessageProps {
   type?: 'text';
+  message: ITextMessage;
+  // copyClipboard: function;
 }
 
 interface ISystemMessageProps {
@@ -321,20 +357,10 @@ interface ISystemMessageProps {
   className?: string;
 }
 
-interface IMeeting {
-  id: string | Number;
-  avatarFlexible?: Boolean;
-  avatars?: IAvatarProps[];
-  closable?: Boolean;
-  date?: Date;
-  lazyLoadingImage?: string;
-  subject?: string;
-}
-
 interface IMeetingListProps {
-  cmpRef?: RefObject<HTMLElement>;
+  cmpRef?: React.LegacyRef;
   className?: string;
-  dataSource?: IMeeting[];
+  dataSource?: IMeetingItemProps[];
   lazyLoadingImage?: string;
   onClick?: MeetingListEvent;
   onMeetingClick?: MeetingListEvent;
@@ -344,18 +370,19 @@ interface IMeetingListProps {
   onAvatarError?: MeetingListEvent;
 }
 
-type MeetingListEvent = (item: IMeeting, index: number, event: React.MouseEvent<HTMLElement>) => any;
+type MeetingListEvent = (item: IMeetingItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any;
 
 interface IMeetingItemProps {
-  meet?: IMeeting;
+  id: string | number;
+  closable?: boolean;
+  date?: any;
   subject?: string;
   subjectLimit?: number;
-  avatarFlexible?: Boolean;
+  avatarFlexible?: boolean;
   alt?: string;
   title?: string;
   subtitle?: string;
   statusColorType?: string;
-  date?: Date;
   className?: string;
   dateString?: string;
   lazyLoadingImage?: string;
@@ -369,21 +396,6 @@ interface IMeetingItemProps {
   onShareClick?: React.MouseEventHandler;
   onContextMenu?: React.MouseEventHandler;
   onCloseClick?: React.MouseEventHandler;
-}
-
-interface ILocationMessageProps {
-  type?: 'location';
-  data: ILocationMessageData;
-  markerColor: string;
-  zoom: string;
-  apiKey: string;
-  className?: string;
-  text?: string;
-  src?: string;
-  onOpen?: React.MouseEventHandler;
-  target?: string;
-  href?: string;
-  onError?: React.ReactEventHandler;
 }
 
 interface ILocationMessageData extends IMessage {
@@ -405,8 +417,8 @@ interface IInputProps {
   autoHeight?: boolean;
   minHeight?: number;
   className?: string;
-  leftButtons?: Object;
-  rightButtons?: Object;
+  leftButtons?: React.ReactNode;
+  rightButtons?: React.ReactNode;
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   defaultValue?: string
@@ -424,19 +436,6 @@ interface IInputProps {
   onKeyUp?: React.KeyboardEventHandler;
 }
 
-interface IFileMessageProps {
-  onDownload?: Function;
-  onOpen?: React.MouseEventHandler;
-  text?: string;
-  data?: IFileMessageData;
-  type?: 'file';
-}
-
-interface IFileMessageData extends IMessage {
-  status?: IFileMessageDataStatus;
-  size?: string;
-}
-
 interface IFileMessageDataStatus {
   error?: boolean;
   download?: Function;
@@ -450,8 +449,12 @@ interface IDropdownProps {
   animationType?: string;
   animationPosition?: string;
   title?: string;
-  items?: IDropdownItemType[];
+  items: IDropdownItemType[];
   onSelect: Function;
+  style?: {
+    color?: string;
+    borderColor?: string;
+  }
 }
 interface ICircleProps {
   animate: number;
@@ -461,7 +464,7 @@ interface ICircleProps {
 interface IButtonProps {
   title?: string;
   text?: string;
-  buttonRef?: RefObject<HTMLButtonElement>;
+  buttonRef?: React.RefObject<HTMLButtonElement>;
   type?: string;
   className?: string;
   backgroundColor?: string;
@@ -498,7 +501,7 @@ interface ISideBarProps {
 }
 
 interface ISideBar {
-  top?: any;
+  top?:  any;
   center?: any;
   bottom?: any
   className?: string;
@@ -512,6 +515,7 @@ interface IPopup {
     color?: string;
     backgroundColor?: string;
     text?: string;
+    onClick?: React.MouseEventHandler;
   }>
   headerButtons?: Array<{
     type?: string;
@@ -539,7 +543,7 @@ interface IAvatarProps {
 	lazyLoadingImage?: string;
 	letterItem?: ILetterItem;
 	type?: string;
-	size?: string;
+	size?: Object;
 	className?: string;
 	alt?: string;
 	sideElement?: React.ReactChild;
@@ -549,7 +553,10 @@ interface IAvatarProps {
   statusText?: string;
 }
 
-interface ILetterItem {
-	id: string;
-	letter?: React.ReactChild;
+interface INavbarProps {
+  type?: string;
+  className?: string;
+  left?: any;
+  center?: any;
+  right?: any;
 }

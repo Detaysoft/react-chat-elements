@@ -1,5 +1,5 @@
 import './Button.css';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 
 const Button: React.FC<IButtonProps> = (props) => {
