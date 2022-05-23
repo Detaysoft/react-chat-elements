@@ -3,7 +3,19 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../../src/Button/Button";
 import Input from "../../src/Input/Input";
 import MessageList from "../../src/MessageList/MessageList";
-import { getRandomColor, photo, token } from "../utils/common";
+import { token } from "../utils/common";
+import {
+  audioMessage,
+  fileMessage,
+  locationMessage,
+  meetingLinkMessage,
+  meetingMessage,
+  photoMessage,
+  spotifyMessage,
+  systemMessage,
+  textMessage,
+  videoMessage,
+} from "../utils/messageTypes";
 
 let clearRef = () => {};
 
@@ -13,19 +25,6 @@ function useForceUpdate() {
 }
 
 function MessageListExample() {
-  const [mtype, setMtype] = useState<any>([
-    "spotify",
-    "reply",
-    "meeting",
-    "meetingLink",
-    "photo",
-    "system",
-    "audio",
-    "video",
-    "file",
-    "text",
-    "location",
-  ]);
 
   const [messageListArray, setMessageListArray] = useState<any>([]);
   const [status, setStatus] = useState<string>('');
@@ -75,170 +74,39 @@ function MessageListExample() {
     }
 
     setMessageListArray([...messageListArray, randomMessage(Addmtype)]);
-    setMtype([...mtype, Addmtype]);
     clearRef();
     forceUpdate();
   };
 
-  const randomMessage = (_mtype: string) => {
-    return {
-      id: String(Math.random()),
-      notch: true,
-      position: token() <= 1 ? "right" : "left",
-      forwarded: true,
-      replyButton: true,
-      removeButton: true,
-      retracted: false,
-      status: status,
-      date: +new Date(),
-      type: _mtype,
-      title: loremIpsum({ count: 2, units: "words" }),
-      titleColor: getRandomColor(),
-      text:
-        _mtype === "spotify"
-          ? "spotify:track:0QjjaCaXE45mvhCnV3C0TA"
-          : loremIpsum({ count: 1, units: "sentences" }),
-      reply:
-        token() >= 1
-          ? {
-              photoURL:
-                token() >= 1 ? `data:image/png;base64,${photo(150)}` : null,
-              title: loremIpsum({ count: 2, units: "words" }),
-              titleColor: getRandomColor(),
-              message: loremIpsum({ count: 1, units: "sentences" }),
-            }
-          : null,
-      meeting:
-        token() >= 1
-          ? {
-              subject: loremIpsum({ count: 2, units: "words" }),
-              title: loremIpsum({ count: 2, units: "words" }),
-              date: +new Date(),
-              collapseTitle: loremIpsum({ count: 2, units: "words" }),
-              participants: Array(token() + 6)
-                .fill(1)
-                .map((x) => ({
-                  id: Math.floor((Math.random() * 10) % 7),
-                  title: loremIpsum({ count: 1, units: "words" }),
-                })),
-              dataSource: Array(token() + 5)
-                .fill(1)
-                .map((x) => ({
-                  id: String(Math.random()),
-                  avatar: `data:image/png;base64,${photo(20)}`,
-                  message: loremIpsum({ count: 1, units: "sentences" }),
-                  title: loremIpsum({ count: 2, units: "words" }),
-                  avatarFlexible: true,
-                  date: +new Date(),
-                  event: {
-                    title: loremIpsum({ count: 2, units: "words" }),
-                    avatars: Array(token() + 2)
-                      .fill(1)
-                      .map((x) => ({
-                        src: `data:image/png;base64,${photo(20)}`,
-                        title: "react, rce",
-                      })),
-                    avatarsLimit: 5,
-                  },
-                  record: {
-                    avatar: `data:image/png;base64,${photo(20)}`,
-                    title: loremIpsum({ count: 1, units: "words" }),
-                    savedBy:
-                      "Kaydeden: " + loremIpsum({ count: 2, units: "words" }),
-                    time: new Date().toLocaleString(),
-                  },
-                })),
-            }
-          : null,
-      photoMsg: {
-        data: {
-          uri: `data:image/png;base64,${photo(150)}`,
-          status: {
-            click: true,
-            loading: 0.5,
-            download: _mtype === "video",
-          },
-          width: 300,
-          height: 300,
-        },
-        onLoad: () => {
-          console.log("Photo loaded");
-        },
-      },
-      videoMsg: {
-        data: {
-          videoURL:
-            token() >= 1
-              ? "https://www.w3schools.com/html/mov_bbb.mp4"
-              : "http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4",
-          uri: `data:image/png;base64,${photo(150)}`,
-          status: {
-            click: true,
-            loading: 0.5,
-            download: _mtype === "video",
-          },
-          width: 300,
-          height: 300,
-        },
-        onLoad: () => {
-          console.log("Video loaded");
-        },
-      },
-      systemMsg: {
-        text: loremIpsum({ count: 2, units: "words" }),
-      },
-      audioMsg: {
-        data: {
-          audioURL: "https://www.w3schools.com/html/horse.mp3",
-          audioType: "audio/mp3",
-          controlsList: "nodownload",
-        },
-      },
-      fileMsg: {
-        data: {
-          status: {
-            click: true,
-            loading: 0.5,
-            download: _mtype === "video",
-          },
-          size: "100MB",
-        },
-      },
-      locationMsg: {
-        data: {
-          latitude: "37.773972",
-          longitude: "-122.431297",
-          staticURL:
-            "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-circle+FF0000(LONGITUDE,LATITUDE)/LONGITUDE,LATITUDE,ZOOM/270x200@2x?access_token=KEY",
-        },
-      },
-      spotifyMsg: {
-        data: {
-          theme: "white",
-          view: "list",
-          width: 300,
-          height: 300,
-          uri: "spotify:track:0QjjaCaXE45mvhCnV3C0TA",
-        },
-      },
-      onLoad: () => {
-        console.log("Photo loaded");
-      },
-      onReplyMessageClick: () => {
-        console.log("onReplyMessageClick");
-      },
-      onRemoveMessageClick: () => {
-        console.log("onRemoveMessageClick");
-      },
+  const randomMessage = (type: string) => {
+    switch (type) {
+      case "photo":
+        return photoMessage;
+      case "file":
+        return fileMessage;
+      case "system":
+        return systemMessage;
+      case "location":
+        return locationMessage;
+      case "spotify":
+        return spotifyMessage;
+      case "meeting":
+        return meetingMessage;
+      case "video":
+        return videoMessage;
+      case "audio":
+        return audioMessage;
+      case "meetingLink":
+        return meetingLinkMessage;
+      case "text":
+        return textMessage;
+      default:
+        break;
     }
   };
 
-  useEffect(() => {
-    randomMessage('text');
-  }, []);
-
   return (
-    <div className="right-panel">
+    <div className="right-panel rce-example-messageList">
       <MessageList
         className="message-list"
         referance={messageListReferance}
@@ -260,7 +128,8 @@ function MessageListExample() {
         }}
       >
         <Input
-          placeholder="Mesajınızı buraya yazınız."
+          className="rce-example-input"
+          placeholder="Write your message here."
           defaultValue=""
           referance={inputReferance}
           clear={(clear: any) => (clearRef = clear)}
@@ -276,7 +145,7 @@ function MessageListExample() {
           }}
           rightButtons={
             <Button
-              text='Gönder'
+              text='Submit'
               onClick={() => addMessage(token())} />
           }
         />

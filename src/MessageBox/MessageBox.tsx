@@ -18,9 +18,7 @@ import { RiShareForwardFill } from 'react-icons/ri';
 import { IoIosDoneAll } from 'react-icons/io';
 import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock } from 'react-icons/md';
 
-import {
-  format,
-} from 'timeago.js';
+import { format } from 'timeago.js';
 
 import classNames from 'classnames';
 

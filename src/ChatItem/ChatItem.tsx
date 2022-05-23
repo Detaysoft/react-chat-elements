@@ -3,9 +3,7 @@ import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
 
-import {
-  format,
-} from'timeago.js';
+import { format } from'timeago.js';
 
 import classNames from 'classnames';
 

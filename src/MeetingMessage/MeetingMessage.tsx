@@ -6,9 +6,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 import { IoMdChatboxes } from 'react-icons/io';
 import { HiOutlineVideoCamera } from 'react-icons/hi';
 
-import {
-  format,
-} from'timeago.js';
+import { format } from'timeago.js';
 
 import Avatar from '../Avatar/Avatar';
 import Dropdown from '../Dropdown/Dropdown';

@@ -73,6 +73,7 @@ button {
   justify-content: center;
   margin: 2rem 0;
   border-bottom: 1px solid rgb(214, 213, 213);
+  width: 100%;
 }
 
 .rce-example .rce-example-btn button {
@@ -99,6 +100,18 @@ button {
   width: 60%;
 }
 
-.rce-mlist {
+.rce-example-messageList {
+  background: rgb(246 250 250);
+  border: 1px solid rgb(238, 235, 235);
   height: 70vh;
+}
+
+.rce-example-input textarea {
+  border: 1px solid rgb(214, 213, 213);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.rce-mlist {
+  padding: 1rem 0;
 }

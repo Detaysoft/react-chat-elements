@@ -5,9 +5,7 @@ import { MdVideoCall, MdLink, MdCall } from 'react-icons/md';
 
 import Avatar from '../Avatar/Avatar';
 
-import {
-  format,
-} from'timeago.js';
+import { format } from'timeago.js';
 
 import classNames from 'classnames';
 
