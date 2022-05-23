@@ -25,16 +25,15 @@ import {
 import classNames from 'classnames';
 
 const MessageBox: React.FC<IMessageBoxProps> = (props) => {
-  const prevProps = useRef(props.data as IMessage);
+  const prevProps = useRef(props.data);
   const messageRef = useRef<HTMLDivElement>(null);
 
-  let message = props.data as IMessage
-  var positionCls = classNames('rce-mbox', { 'rce-mbox-right': message.position === 'right' });
+  var positionCls = classNames('rce-mbox', { 'rce-mbox-right': props.data.message.position === 'right' });
   var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(props.data.type || 'text') && !(props.data.type === 'location' && props.data.text);
-  const dateText = message.date && (message.dateString || format(message.date));
+  const dateText = props.data.message.date && (props.data.message.dateString || format(props.data.message.date));
 
   useEffect(() => {
-    if (prevProps.current.focus !== message.focus && prevProps.current.focus === true) {
+    if (prevProps.current.message.focus !== props.data.message.focus && prevProps.current.message.focus === true) {
       if (messageRef) {
         messageRef.current?.scrollIntoView({
           block: "center",
@@ -44,13 +43,13 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
         props.onMessageFocused(prevProps);
       }
     }
-    prevProps.current = props.data as IMessage;
-  }, [message.focus, prevProps]);
+    prevProps.current = props.data;
+  }, [props.data.message.focus, prevProps]);
 
   return (
     <div
       ref={messageRef}
-      className={classNames('rce-container-mbox', message.className)}
+      className={classNames('rce-container-mbox', props.data.message.className)}
       onClick={props.onClick}>
       {
         props.renderAddCmp instanceof Function &&
@@ -59,24 +58,24 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
       {
         props.data.type === 'system' ?
           <SystemMessage
-            text={props.data.text} />
+           type='system' message={props.data.message} />
         :
         <div
           className={classNames(
             positionCls,
             {'rce-mbox--clear-padding': thatAbsoluteTime},
-            {'rce-mbox--clear-notch': !message.notch},
-            { 'message-focus': message.focus},
+            {'rce-mbox--clear-notch': !props.data.message.notch},
+            { 'message-focus': props.data.message.focus},
           )}>
           <div className='rce-mbox-body' onContextMenu={props.onContextMenu}>
             {
-              !message.retracted &&
-              message.forwarded === true &&
+              !props.data.message.retracted &&
+              props.data.message.forwarded === true &&
               <div
                 className={classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-forward-right': message.position === 'left' },
-                  { 'rce-mbox-forward-left': message.position === 'right' }
+                  { 'rce-mbox-forward-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-forward-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onForwardClick}>
                   <RiShareForwardFill />
@@ -84,17 +83,17 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             }
 
             {
-              !message.retracted &&
-              message.replyButton === true &&
+              !props.data.message.retracted &&
+              props.data.message.replyButton === true &&
               <div
-                className={message.forwarded !== true ? classNames(
+                className={props.data.message.forwarded !== true ? classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-forward-right': message.position === 'left' },
-                  { 'rce-mbox-forward-left': message.position === 'right' }
+                  { 'rce-mbox-forward-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-forward-left': props.data.message.position === 'right' }
                 ) : classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-reply-btn-right': message.position === 'left' },
-                  { 'rce-mbox-reply-btn-left': message.position === 'right' }
+                  { 'rce-mbox-reply-btn-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-reply-btn-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onReplyClick}>
                   <MdMessage />
@@ -102,17 +101,17 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             }
 
             {
-              !message.retracted &&
-              message.removeButton === true &&
+              !props.data.message.retracted &&
+              props.data.message.removeButton === true &&
               <div
-                className={message.forwarded === true ? classNames(
+                className={props.data.message.forwarded === true ? classNames(
                   'rce-mbox-remove',
-                  { 'rce-mbox-remove-right': message.position === 'left' },
-                  { 'rce-mbox-remove-left': message.position === 'right' }
+                  { 'rce-mbox-remove-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-remove-left': props.data.message.position === 'right' }
                 ) : classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-reply-btn-right': message.position === 'left' },
-                  { 'rce-mbox-reply-btn-left': message.position === 'right' }
+                  { 'rce-mbox-reply-btn-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-reply-btn-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onRemoveMessageClick}>
                   <MdDelete />
@@ -120,31 +119,31 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             }
 
             {
-              (message.title || message.avatar) &&
+              (props.data.message.title || props.data.message.avatar) &&
               <div
-                style={{...message.titleColor && { color: message.titleColor }}}
+                style={{...props.data.message.titleColor && { color: props.data.message.titleColor }}}
                 onClick={props.onTitleClick}
                 className={classNames('rce-mbox-title', {
                   'rce-mbox-title--clear': props.data.type === 'text',
                 })}>
                 {
-                  message.avatar &&
+                  props.data.message.avatar &&
                   <Avatar
-                      letterItem={message.letterItem}
-                      src={message.avatar}/>
+                      letterItem={props.data.message.letterItem}
+                      src={props.data.message.avatar}/>
                 }
                 {
-                  message.title &&
-                  <span>{message.title}</span>
+                  props.data.message.title &&
+                  <span>{props.data.message.title}</span>
                 }
               </div>
             }
 
             {
-              message.reply &&
+              props.data.message.reply &&
               <ReplyMessage
                 type='reply'
-                message={message.reply}
+                message={props.data.message.reply}
                 onClick={props.onReplyMessageClick}/>
             }
 
@@ -220,6 +219,7 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
               props.data.type === 'meeting' &&
               <MeetingMessage
                 type='meeting'
+                message={props.data.message}
                 subject={props.data.subject}
                 title={props.data.title}
                 date={props.data.date}
@@ -247,7 +247,7 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
               props.data.type === 'meetingLink' &&
               <MeetingLink
                 type='meetingLink'
-                message={props.data}
+                message={props.data.message}
                 onMeetingMoreSelect={props.data.onMeetingLinkClick}/>
             }
 
@@ -255,37 +255,37 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
               className={classNames(
                 'rce-mbox-time',
                 { 'rce-mbox-time-block': thatAbsoluteTime },
-                { 'non-copiable': !message.copiableDate },
+                { 'non-copiable': !props.data.message.copiableDate },
               )}
-              data-text={message.copiableDate ? undefined : dateText}>
+              data-text={props.data.message.copiableDate ? undefined : dateText}>
               {
-                message.copiableDate &&
-                message.date &&
+                props.data.message.copiableDate &&
+                props.data.message.date &&
                 (
-                  message.dateString ||
-                  format(message.date)
+                  props.data.message.dateString ||
+                  format(props.data.message.date)
                 )
               }
               {
-                message.status &&
+                props.data.message.status &&
                 <span className='rce-mbox-status'>
                   {
-                    message.status === 'waiting' &&
+                    props.data.message.status === 'waiting' &&
                     <MdAccessTime />
                   }
 
                   {
-                    message.status === 'sent' &&
+                    props.data.message.status === 'sent' &&
                     <MdCheck />
                   }
 
                   {
-                    message.status === 'received' &&
+                    props.data.message.status === 'received' &&
                     <IoIosDoneAll />
                   }
 
                   {
-                    message.status === 'read' &&
+                    props.data.message.status === 'read' &&
                     <IoIosDoneAll color='#4FC3F7'/>
                   }
                 </span>
@@ -294,11 +294,11 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
           </div>
 
           {
-            message.notch &&
-            (message.position === 'right' ?
+            props.data.message.notch &&
+            (props.data.message.position === 'right' ?
               <svg className={classNames(
                 "rce-mbox-right-notch",
-                { 'message-focus': message.focus},
+                { 'message-focus': props.data.message.focus},
               )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M0 0v20L20 0" />
               </svg>
@@ -306,7 +306,7 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
               <div>
                 <svg className={classNames(
                     "rce-mbox-left-notch",
-                    { 'message-focus': message.focus},
+                    { 'message-focus': props.data.message.focus},
                   )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <defs>
                     <filter id="filter1" x="0" y="0">

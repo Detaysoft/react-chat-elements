@@ -9,7 +9,7 @@ import MessageListExample from "./components/MessageListExample";
 import NavbarExample from "./components/NavbarExample";
 import PopupExample from "./components/PopupExample";
 
-const Example: React.FC = () => {
+const App: React.FC = () => {
   const [showComponent, setShowComponent] = useState("");
 
   const btnClick = (component: String) => {
@@ -188,4 +188,4 @@ const Example: React.FC = () => {
   );
 };
 
-export default Example;
+export default App;

@@ -79,7 +79,7 @@ interface IMessage {
   retracted: boolean;
   className?: string;
   letterItem?: ILetterItem;
-  reply?: IReplyMessage;
+  reply?: IReplyMessage | any;
 }
 
 interface IPhotoMessage extends Omit<IMessage, "status"> {
@@ -154,6 +154,7 @@ interface IMeetingMessageProps {
       size?: number;
     }
   }>;
+  message: IMeetingMessage;
   dataSource?: IMeetingMessage[];
   participantsLimit?: number;
   onClick?: React.MouseEventHandler;
@@ -190,7 +191,11 @@ interface ISystemMessage extends IMessage {
   type: 'system';
   text: string;
 }
-
+interface ISystemMessageProps {
+  type: "system";
+  message: ISystemMessage;
+  className?: string;
+}
 interface IAudioMessage extends IMessage {
   type: 'audio';
   audioURL: string;
@@ -261,7 +266,7 @@ interface ISpotifyMessageProps {
   type: 'spotify';
 }
 
-type MessageType = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IAudioMessageProps | IMeetingLinkProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessage | IMeetingMessageProps;
+type MessageType = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IAudioMessageProps | IMeetingLinkMessageProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps | IMeetingMessageProps;
 
 interface IMessageBoxProps {
   data: MessageType;
@@ -351,12 +356,6 @@ interface ITextMessageProps {
   // copyClipboard: function;
 }
 
-interface ISystemMessageProps {
-  type?: 'system';
-  text: string;
-  className?: string;
-}
-
 interface IMeetingListProps {
   cmpRef?: React.LegacyRef;
   className?: string;
@@ -399,6 +398,7 @@ interface IMeetingItemProps {
 }
 
 interface ILocationMessageData extends IMessage {
+  type: 'location';
   latitude: string;
   longitude: string;
   staticURL?: string;
