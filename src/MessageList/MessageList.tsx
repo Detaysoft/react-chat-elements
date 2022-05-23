@@ -4,9 +4,7 @@ import './MessageList.css';
 import MessageBox from '../MessageBox/MessageBox';
 
 import {FaChevronDown} from 'react-icons/fa';
-
-const classNames = require('classnames');
-
+import classNames from 'classnames';
 
 const MessageList: FC<IMessageListProps> = (props) =>  {
   const [scrollBottom, setScrollBottom] = useState(0);
@@ -28,15 +26,15 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
   }
 
   useEffect(() => {
-      if (!props.referance)
-        return;
+    if (!props.referance)
+      return;
 
-      if (prevProps.current.dataSource.length !== props.dataSource.length) {
-        setScrollBottom(getBottom(props.referance));
-        checkScroll();
-      }
+    if (prevProps.current.dataSource.length !== props.dataSource.length) {
+      setScrollBottom(getBottom(props.referance));
+      checkScroll();
+    }
 
-      prevProps.current = props;
+    prevProps.current = props;
   }, [prevProps, props.dataSource]);
 
   const getBottom = (e: any) => {
@@ -156,10 +154,11 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
           onScroll={onScroll}
           className='rce-mlist'>
           {
-            props.dataSource.map((x, i: Number) => (
+            props.dataSource.map((x, i: number) => (
               <MessageBox
                 key={i as Key}
-                message={x}
+                {...x}
+                // data={x}
                 onOpen={props.onOpen && ((e: React.MouseEvent<HTMLElement>) => onOpen(x, i, e))}
                 onPhotoError={props.onPhotoError && ((e: React.MouseEvent<HTMLElement>) => onPhotoError(x, i, e))}
                 onDownload={props.onDownload && ((e: React.MouseEvent<HTMLElement>) => onDownload(x, i, e))}
@@ -189,10 +188,10 @@ const MessageList: FC<IMessageListProps> = (props) =>  {
           onClick={toBottom}>
           <FaChevronDown/>
           {
-            props.downButtonBadge &&
+            props.downButtonBadge > 0 &&
             <span
               className='rce-mlist-down-button--badge'>
-              {props.downButtonBadge}
+              {props.downButtonBadge.toString()}
             </span>
           }
         </div>

@@ -1,4 +1,4 @@
-import {useEffect, useRef, FC} from 'react';
+import React, { useEffect, useRef } from 'react';
 import './MessageBox.css';
 
 import PhotoMessage from '../PhotoMessage/PhotoMessage';
@@ -18,23 +18,20 @@ import { RiShareForwardFill } from 'react-icons/ri';
 import { IoIosDoneAll } from 'react-icons/io';
 import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock } from 'react-icons/md';
 
-import {
-  format,
-} from 'timeago.js';
+import { format } from 'timeago.js';
 
 import classNames from 'classnames';
 
-const MessageBox: FC<IMessageItemProps> = (props) => {
-  const prevProps = useRef(props);
+const MessageBox: React.FC<IMessageBoxProps> = (props) => {
+  const prevProps = useRef(props.data);
   const messageRef = useRef<HTMLDivElement>(null);
 
-
-  var positionCls = classNames('rce-mbox', { 'rce-mbox-right': props.message.position === 'right' });
-  var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(props.messageItem?.type || 'text') && !(props.messageItem?.type === 'location' && props.message.text);
-  const dateText = props.message.date && props.message.date && (props.message.dateString || format(props.message.date));
+  var positionCls = classNames('rce-mbox', { 'rce-mbox-right': props.data.message.position === 'right' });
+  var thatAbsoluteTime = !/(text|video|file|meeting|audio)/g.test(props.data.type || 'text') && !(props.data.type === 'location' && props.data.text);
+  const dateText = props.data.message.date && (props.data.message.dateString || format(props.data.message.date));
 
   useEffect(() => {
-    if (prevProps.current.message.focus !== props.message.focus && !prevProps.current.message.focus === true) {
+    if (prevProps.current.message.focus !== props.data.message.focus && prevProps.current.message.focus === true) {
       if (messageRef) {
         messageRef.current?.scrollIntoView({
           block: "center",
@@ -44,39 +41,39 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
         props.onMessageFocused(prevProps);
       }
     }
-    prevProps.current = props;
-  }, [props.message.focus, prevProps]);
+    prevProps.current = props.data;
+  }, [props.data.message.focus, prevProps]);
 
   return (
     <div
       ref={messageRef}
-      className={classNames('rce-container-mbox', props.message.className)}
+      className={classNames('rce-container-mbox', props.data.message.className)}
       onClick={props.onClick}>
       {
         props.renderAddCmp instanceof Function &&
         props.renderAddCmp()
       }
       {
-        props.messageItem?.type === 'system' ?
+        props.data.type === 'system' ?
           <SystemMessage
-            text={props.message.text} />
+           type='system' message={props.data.message} />
         :
         <div
           className={classNames(
             positionCls,
             {'rce-mbox--clear-padding': thatAbsoluteTime},
-            {'rce-mbox--clear-notch': !props.message.notch},
-            { 'message-focus': props.message.focus},
+            {'rce-mbox--clear-notch': !props.data.message.notch},
+            { 'message-focus': props.data.message.focus},
           )}>
           <div className='rce-mbox-body' onContextMenu={props.onContextMenu}>
             {
-              !props.message.retracted &&
-              props.message.forwarded === true &&
+              !props.data.message.retracted &&
+              props.data.message.forwarded === true &&
               <div
                 className={classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-forward-right': props.message.position === 'left' },
-                  { 'rce-mbox-forward-left': props.message.position === 'right' }
+                  { 'rce-mbox-forward-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-forward-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onForwardClick}>
                   <RiShareForwardFill />
@@ -84,17 +81,17 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
             }
 
             {
-              !props.message.retracted &&
-              props.message.replyButton === true &&
+              !props.data.message.retracted &&
+              props.data.message.replyButton === true &&
               <div
-                className={props.message.forwarded !== true ? classNames(
+                className={props.data.message.forwarded !== true ? classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-forward-right': props.message.position === 'left' },
-                  { 'rce-mbox-forward-left': props.message.position === 'right' }
+                  { 'rce-mbox-forward-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-forward-left': props.data.message.position === 'right' }
                 ) : classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-reply-btn-right': props.message.position === 'left' },
-                  { 'rce-mbox-reply-btn-left': props.message.position === 'right' }
+                  { 'rce-mbox-reply-btn-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-reply-btn-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onReplyClick}>
                   <MdMessage />
@@ -102,17 +99,17 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
             }
 
             {
-              !props.message.retracted &&
-              props.message.removeButton === true &&
+              !props.data.message.retracted &&
+              props.data.message.removeButton === true &&
               <div
-                className={props.message.forwarded === true ? classNames(
+                className={props.data.message.forwarded === true ? classNames(
                   'rce-mbox-remove',
-                  { 'rce-mbox-remove-right': props.message.position === 'left' },
-                  { 'rce-mbox-remove-left': props.message.position === 'right' }
+                  { 'rce-mbox-remove-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-remove-left': props.data.message.position === 'right' }
                 ) : classNames(
                   'rce-mbox-forward',
-                  { 'rce-mbox-reply-btn-right': props.message.position === 'left' },
-                  { 'rce-mbox-reply-btn-left': props.message.position === 'right' }
+                  { 'rce-mbox-reply-btn-right': props.data.message.position === 'left' },
+                  { 'rce-mbox-reply-btn-left': props.data.message.position === 'right' }
                 )}
                 onClick={props.onRemoveMessageClick}>
                   <MdDelete />
@@ -120,164 +117,173 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
             }
 
             {
-              (props.message.title || props.message.avatar) &&
+              (props.data.message.title || props.data.message.avatar) &&
               <div
-                style={{...props.message.titleColor && { color: props.message.titleColor }}}
+                style={{...props.data.message.titleColor && { color: props.data.message.titleColor }}}
                 onClick={props.onTitleClick}
                 className={classNames('rce-mbox-title', {
-                  'rce-mbox-title--clear': props.messageItem?.type === 'text',
+                  'rce-mbox-title--clear': props.data.type === 'text',
                 })}>
                 {
-                  props.message.avatar &&
+                  props.data.message.avatar &&
                   <Avatar
-                    letterItem={props.message.letterItem}
-                    src={props.message.avatar}/>
+                      letterItem={props.data.message.letterItem}
+                      src={props.data.message.avatar}/>
                 }
                 {
-                  props.message.title &&
-                  <span>{props.message.title}</span>
+                  props.data.message.title &&
+                  <span>{props.data.message.title}</span>
                 }
               </div>
             }
 
             {
-              props.reply &&
+              props.data.message.reply &&
               <ReplyMessage
-                data={props.reply.data}
-                onClick={() => props.onReplyMessageClick} />
+                type='reply'
+                message={props.data.message.reply}
+                onClick={props.onReplyMessageClick}/>
             }
 
             {
-              props.messageItem?.type === 'text' &&
+              props.data.type === 'text' &&
               <div className={classNames('rce-mbox-text', {
-                'rce-mbox-text-retracted': props.message.retracted,
-                'left': props.message.position === 'left',
-                'right': props.message.position === 'right',
+                'rce-mbox-text-retracted': props.data.message.retracted,
+                'left': props.data.message.position === 'left',
+                'right': props.data.message.position === 'right',
               })}>
                 {
-                  props.message.retracted &&
+                  props.data.message.retracted &&
                   <MdBlock />
                 }
-                {props.message.text}
+                {props.data.message.text}
               </div>
             }
 
             {
-              props.messageItem?.type === 'location' &&
+              props.data.type === 'location'  &&
               <LocationMessage
-                onOpen={props.onOpen}
-                data={props.messageItem.data}
-                target={props.messageItem?.target}
-                href={props.messageItem?.href}
-                apiKey={props.messageItem?.apiKey}
-                src={props.messageItem?.src}
-                zoom={props.messageItem?.zoom}
-                markerColor={props.messageItem?.markerColor}
-                text={props.message.text} />
+                type='location'
+                onOpen={props?.onOpen}
+                message={props.data.message}
+                target={props.data.target}
+                href={props.data?.href}
+                apiKey={props.data?.apiKey}
+                src={props.data?.src}
+                zoom={props.data?.zoom}
+                markerColor={props.data?.markerColor}
+                text={props.data?.text} />
             }
 
             {
-              props.messageItem?.type === 'photo' &&
+              props.data.type === 'photo' &&
               <PhotoMessage
-                onOpen={props.onOpen}
-                onDownload={props.onDownload}
-                onLoad={props.onLoad}
-                onPhotoError={props.onPhotoError}
-                data={props.messageItem?.data} />
+                type='photo'
+                message={props.data.message}
+                onOpen={props?.onOpen}
+                onDownload={props.data?.onDownload}
+                onLoad={props.data?.onLoad}
+                onPhotoError={props?.onPhotoError} />
             }
 
             {
-              props.messageItem?.type === 'video' &&
+              props.data.type === 'video' &&
               <VideoMessage
-                onOpen={props.onOpen}
-                onDownload={props.onDownload}
-                onLoad={props.onLoad}
-                onPhotoError={props.onPhotoError}
-                data={props.messageItem?.data} />
+                type='video'
+                onOpen={props?.onOpen}
+                message={ props.data.message}
+                onDownload={ props.data?.onDownload}
+                onLoad={ props.data?.onLoad}
+                onPhotoError={props?.onPhotoError} />
             }
 
             {
-              props.messageItem?.type === 'file' &&
+              props.data.type === 'file' &&
               <FileMessage
-                onOpen={props.onOpen}
-                onDownload={props.onDownload}
-                data={props.messageItem.data}
-                text={props.message.text} />
+                type='file'
+                message={props.data.message}
+                onOpen={props?.onOpen}
+                onDownload={props.data?.onDownload} />
             }
 
             {
-              props.messageItem?.type === 'spotify' &&
+              props.data.type === 'spotify' &&
               <SpotifyMessage
-                data={props.messageItem?.data}
-                uri={props.messageItem?.uri || props.message.text} />
+                type='spotify'
+                message={props.data.message} />
             }
 
             {
-              props.messageItem?.type === 'meeting' &&
+              props.data.type === 'meeting' &&
               <MeetingMessage
-                subject={props.messageItem?.subject}
-                title={props.messageItem?.title}
-                date={props.messageItem?.date}
-                dateString={props.messageItem?.dateString}
-                collapseTitle={props.messageItem?.collapseTitle}
-                participants={props.messageItem?.participants}
-                moreItems={props.messageItem?.moreItems}
-                dataSource={props.messageItem?.dataSource}
+                type='meeting'
+                message={props.data.message}
+                subject={props.data.subject}
+                title={props.data.title}
+                date={props.data.date}
+                dateString={props.data.dateString}
+                collapseTitle={props.data.collapseTitle}
+                participants={props.data.participants}
+                moreItems={props.data.moreItems}
+                dataSource={props.data.dataSource}
                 onClick={props.onMeetingMessageClick}
-                onMeetingMoreSelect={props.onMeetingMoreSelect} />
+                onMeetingMoreSelect={props.data.onMeetingMoreSelect}
+                onMeetingVideoLinkClick={props.data.onMeetingVideoLinkClick}
+                onMeetingTitleClick={props.data.onMeetingTitleClick} />
             }
             {
-              props.messageItem?.type === 'audio' &&
+              props.data.type === 'audio' &&
               <AudioMessage
-                message={props.messageItem?.message}
-                onOpen={props.onOpen}
-                onDownload={props.onDownload}
-                onLoad={props.onLoad} />
+                type='audio'
+                message={props.data.message}
+                onOpen={props?.onOpen}
+                onDownload={props.data.onDownload}
+                onLoad={props.data.onLoad} />
             }
 
             {
-              props.messageItem?.type === 'meetingLink' &&
+              props.data.type === 'meetingLink' &&
               <MeetingLink
-                meetingID={props.messageItem?.meetingID}
-                title={props.message.text}
-                onMeetingMoreSelect={props.onMeetingLinkClick}/>
+                type='meetingLink'
+                message={props.data.message}
+                onMeetingMoreSelect={props.data.onMeetingLinkClick}/>
             }
 
             <div
               className={classNames(
                 'rce-mbox-time',
                 { 'rce-mbox-time-block': thatAbsoluteTime },
-                { 'non-copiable': !props.message.copiableDate },
+                { 'non-copiable': !props.data.message.copiableDate },
               )}
-              data-text={props.message.copiableDate ? undefined : dateText}>
+              data-text={props.data.message.copiableDate ? undefined : dateText}>
               {
-                props.message.copiableDate &&
-                props.message.date &&
+                props.data.message.copiableDate &&
+                props.data.message.date &&
                 (
-                  props.message.dateString ||
-                  format(props.message.date)
+                  props.data.message.dateString ||
+                  format(props.data.message.date)
                 )
               }
               {
-                props.message.status &&
+                props.data.message.status &&
                 <span className='rce-mbox-status'>
                   {
-                    props.message.status === 'waiting' &&
+                    props.data.message.status === 'waiting' &&
                     <MdAccessTime />
                   }
 
                   {
-                    props.message.status === 'sent' &&
+                    props.data.message.status === 'sent' &&
                     <MdCheck />
                   }
 
                   {
-                    props.message.status === 'received' &&
+                    props.data.message.status === 'received' &&
                     <IoIosDoneAll />
                   }
 
                   {
-                    props.message.status === 'read' &&
+                    props.data.message.status === 'read' &&
                     <IoIosDoneAll color='#4FC3F7'/>
                   }
                 </span>
@@ -286,11 +292,11 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
           </div>
 
           {
-            props.message.notch &&
-            (props.message.position === 'right' ?
+            props.data.message.notch &&
+            (props.data.message.position === 'right' ?
               <svg className={classNames(
                 "rce-mbox-right-notch",
-                { 'message-focus': props.message.focus},
+                { 'message-focus': props.data.message.focus},
               )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M0 0v20L20 0" />
               </svg>
@@ -298,7 +304,7 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
               <div>
                 <svg className={classNames(
                     "rce-mbox-left-notch",
-                    { 'message-focus': props.message.focus},
+                    { 'message-focus': props.data.message.focus},
                   )} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <defs>
                     <filter id="filter1" x="0" y="0">
@@ -317,4 +323,5 @@ const MessageBox: FC<IMessageItemProps> = (props) => {
     </div>
   );
 }
+
 export default MessageBox;

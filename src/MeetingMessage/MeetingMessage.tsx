@@ -6,9 +6,7 @@ import { MdMoreHoriz } from 'react-icons/md';
 import { IoMdChatboxes } from 'react-icons/io';
 import { HiOutlineVideoCamera } from 'react-icons/hi';
 
-import {
-  format,
-} from'timeago.js';
+import { format } from'timeago.js';
 
 import Avatar from '../Avatar/Avatar';
 import Dropdown from '../Dropdown/Dropdown';
@@ -59,7 +57,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
         </div>
         <div
           className='rce-mtmg-body'
-          onClick={() => onClick}>
+          onClick={onClick}>
           <div className='rce-mtmg-item'>
             <FaCalendar />
             <div className='rce-mtmg-content'>
@@ -73,6 +71,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
           </div>
 
           {
+            onMeetingMoreSelect &&
             moreItems &&
             moreItems.length > 0 &&
             <div>
@@ -183,7 +182,8 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                               <div className='rce-mitem-avatar'>
                                 {
                                   x.event.avatars &&
-                                  x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => x instanceof Avatar ? x : (
+                                  // x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => x instanceof Avatar ? x : (
+                                  x.event.avatars.slice(0, x.event.avatarsLimit).map((x, i) => (
                                     <Avatar
                                       key={i}
                                       src={x.src} />

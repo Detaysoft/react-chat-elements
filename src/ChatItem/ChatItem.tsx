@@ -3,9 +3,7 @@ import './ChatItem.css';
 
 import Avatar from '../Avatar/Avatar';
 
-import {
-  format,
-} from'timeago.js';
+import { format } from'timeago.js';
 
 import classNames from 'classnames';
 
@@ -28,7 +26,7 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
     e.preventDefault();
 
     if (onHoverTool === true)
-        return;
+      return;
 
     props.onClick?.(e);
   }
@@ -36,13 +34,13 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
   const onDragOver = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragOver instanceof Function)
-      props.onDragOver(e, props.chat.id)
+      props.onDragOver(e, props.id)
   }
 
   const onDragEnter = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragEnter instanceof Function)
-        props.onDragEnter(e, props.chat.id)
+        props.onDragEnter(e, props.id)
     if (!onDrag)
       setOnDrag(true);
   }
@@ -50,7 +48,7 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
   const onDragLeave = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDragLeave instanceof Function)
-        props.onDragLeave(e, props.chat.id)
+        props.onDragLeave(e, props.id)
     if (onDrag)
       setOnDrag(false);
   }
@@ -58,14 +56,14 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
   const onDrop = (e: React.MouseEvent) => {
     e.preventDefault();
     if (props.onDrop instanceof Function)
-        props.onDrop(e, props.chat.id)
+        props.onDrop(e, props.id)
     if (onDrag)
       setOnDrag(false);
   }
 
   return (
     <div
-      key={props.chat.id as Key}
+      key={props.id as Key}
       className={classNames('rce-container-citem', props.className)}
       onClick={handleOnClick}
       onContextMenu={props.onContextMenu}>
@@ -76,7 +74,7 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
         onDrop={onDrop}>
         {
           !!props.onDragComponent && onDrag &&
-          props.onDragComponent(props.chat.id)
+          props.onDragComponent(props.id)
         }
         {((onDrag && !props.onDragComponent) || !onDrag) && [
           <div className={classNames("rce-citem-avatar", { 'rce-citem-status-encircle': statusColorType === 'encircle' })}>
@@ -106,15 +104,14 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
             <div className="rce-citem-body">
               <div className="rce-citem-body--top">
                   <div className="rce-citem-body--top-title">
-                      {props.title}
+                      {props?.title}
                   </div>
                   <div className="rce-citem-body--top-time">
                       {
                           props.date &&
-                          props.chat.date &&
                           (
-                              props.dateString ||
-                              format(props.date)
+                            props.dateString ||
+                            format(props.date)
                           )
                       }
                   </div>
@@ -122,7 +119,7 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
 
               <div className="rce-citem-body--bottom">
                 <div className="rce-citem-body--bottom-title">
-                  {props.subtitle}
+                  {props?.subtitle}
                 </div>
                 <div className="rce-citem-body--bottom-tools" onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
                   {
@@ -158,8 +155,11 @@ const ChatItem: React.FC<IChatItemProps> = (props) => {
                 </div>
                 <div className="rce-citem-body--bottom-status">
                   {
-                    props.chat.unread > 0 &&
-                    <span>{props.chat.unread}</span>
+                    props.unread &&
+                    props.unread > 0 ?
+                    <span>{props.unread}</span>
+                    :
+                    null
                   }
                 </div>
             </div>

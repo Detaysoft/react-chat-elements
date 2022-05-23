@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useCallback } from 'react';
 import { Circle } from 'progressbar.js';
 
-
 let wrapper: HTMLDivElement;
 const ProgressCircle: React.FC<ICircleProps> = ({ animate, progressOptions, className }) => {
   const bar = useMemo(
@@ -12,7 +11,7 @@ const ProgressCircle: React.FC<ICircleProps> = ({ animate, progressOptions, clas
     []
   );
 
-  const node = useCallback(node => {
+  const node = useCallback((node: any) => {
     if (node) {
        node.appendChild(wrapper);
     }

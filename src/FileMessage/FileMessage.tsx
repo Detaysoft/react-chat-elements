@@ -1,8 +1,7 @@
-import './FileMessage.css';
+import React from 'react';
 import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa';
 import ProgressCircle from '../Circle/Circle';
-import React from 'react';
-
+import './FileMessage.css';
 
 const FileMessage: React.FC<IFileMessageProps> = (props) => {
   var progressOptions = {
@@ -10,27 +9,27 @@ const FileMessage: React.FC<IFileMessageProps> = (props) => {
     color: '#333',
     trailColor: '#aaa',
     trailWidth: 5,
-    step: (state: IProgressOptions, circle: IProgressOptions) => {
-      circle.circle.path.setAttribute('trail', state.state.color);
-      circle.circle.path.setAttribute('trailwidth-width', state.state.width);
+    step: (state: { color: string; width: string; }, circle: { path: { setAttribute: (arg0: string, arg1: string) => void; }; value: () => number; setText: (arg0: string | number) => void; }) => {
+      circle.path.setAttribute('trail', state.color);
+      circle.path.setAttribute('trailwidth-width', state.width);
 
-      var value = Math.round(circle.circle.value() * 100);
+      var value = Math.round(circle.value() * 100);
       if (value === 0)
-        circle.circle.setText('');
+        circle.setText('');
       else
-        circle.circle.setText(value);
+        circle.setText(value);
     }
   };
 
-  const error = props?.data?.status && props.data.status.error === true;
+  const error = props?.message?.status && props.message.status.error === true;
 
   const onClick = (e : React.MouseEvent) => {
-    if (!props?.data?.status)
+    if (!props?.message?.status)
       return;
 
-    if (!props.data.status.download && props.onDownload instanceof Function)
+    if (!props.message.status.download && props.onDownload instanceof Function)
       props.onDownload(e);
-    else if (props.data.status.download && props.onOpen instanceof Function)
+    else if (props.message.status.download && props.onOpen instanceof Function)
       props.onOpen(e);
   }
 
@@ -41,7 +40,7 @@ const FileMessage: React.FC<IFileMessageProps> = (props) => {
           <FaFile
             color='#aaa'/>
           <div className='rce-mbox-file--size'>
-            {props?.data?.size}
+            {props?.message?.size}
           </div>
         </div>
         <div className='rce-mbox-file--text'>
@@ -57,19 +56,19 @@ const FileMessage: React.FC<IFileMessageProps> = (props) => {
           }
           {
             !error &&
-            props?.data?.status &&
-            !props?.data?.status.download &&
-            !props.data.status.click &&
+            props?.message?.status &&
+            !props?.message?.status.download &&
+            !props.message.status.click &&
             <FaCloudDownloadAlt
               color='#aaa'/>
           }
           {
             !error &&
-            props?.data?.status &&
-            typeof props.data.status.loading === 'number' &&
-            props.data.status.loading !== 0 &&
+            props?.message?.status &&
+            typeof props.message.status.loading === 'number' &&
+            props.message.status.loading !== 0 &&
             <ProgressCircle
-              animate={props.data.status.loading}
+              animate={props.message.status.loading}
               className='rce-mbox-file--loading'
               progressOptions={progressOptions} />
           }

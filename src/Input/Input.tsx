@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Input.css';
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 const Input: React.FC<IInputProps> = (props) => {
   useEffect(() => {
@@ -17,8 +17,8 @@ const Input: React.FC<IInputProps> = (props) => {
       if (props.onMaxLengthExceed instanceof Function)
         props.onMaxLengthExceed();
 
-      props.referance?.referance.current?.value == (e.target.value || '').substring(0, props.maxlength);
-      return;
+      if (props.referance?.referance.current?.value == (e.target.value || '').substring(0, props.maxlength))
+        return;
     }
 
     if (props.onChange instanceof Function)

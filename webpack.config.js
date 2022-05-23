@@ -5,7 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        'react-chat-elements': './build/index'
+        'react-chat-elements-typescript': './build/index'
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -30,7 +30,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
-                include: path.join(__dirname, 'src')
+                include: path.join(__dirname, 'build')
             },
             {
                 test: /\.css$/,

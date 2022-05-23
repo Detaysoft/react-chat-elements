@@ -3,9 +3,9 @@ import './MeetingLink.css';
 
 import { MdOutlineVideoCall } from 'react-icons/md';
 
-const MeetingLink: FC<IMeetingLinkProps> = ({ meetingID, title, onMeetingMoreSelect }) => {
+const MeetingLink: FC<IMeetingLinkMessageProps> = ({message, onMeetingMoreSelect }) => {
   const onHandleClick = () => {
-    onMeetingMoreSelect?.(meetingID);
+    onMeetingMoreSelect?.(message.meetingID);
   }
 
   return (
@@ -13,7 +13,7 @@ const MeetingLink: FC<IMeetingLinkProps> = ({ meetingID, title, onMeetingMoreSel
       <div className='rce-mtlink-content'>
         <div className='rce-mtlink-item'>
           <div className='rce-mtlink-title'>
-            {title}
+            {message.title}
           </div>
         </div>
         <div className='rce-mtlink-btn' onClick={onHandleClick}>

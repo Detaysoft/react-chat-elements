@@ -3,7 +3,7 @@ import './Popup.css';
 
 import Button from '../Button/Button';
 
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const Popup: React.FC<IPopupProps> = (props) => {
   if (props.popup?.show === true)

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Dropdown.css';
-import classNames from 'classnames'
+import classNames from 'classnames';
 import Button from '../Button/Button';
 
 const Dropdown: React.FC<IDropdownProps> = (props) => {
