@@ -12,7 +12,7 @@ Reactjs chat elements
 npm install react-chat-elements --save
 ```
 
-### For React Native
+### For React Native (Experimental)
 
 Step 1: Install react-chat-elements
 
