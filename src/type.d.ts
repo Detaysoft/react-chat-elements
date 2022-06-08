@@ -80,7 +80,7 @@ interface ILetterItem {
  * @prop onContextMenu The Chat Item's function onContextMenu(item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
  * @prop onClick The Chat Item's function onClick(item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
  * @prop onClickMute The Chat Item's function onClickMute(item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
- * @prop onClickVideoCall The Chat Item's function onClickVideoCall(item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional. 
+ * @prop onClickVideoCall The Chat Item's function onClickVideoCall(item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
  * @prop onDragOver The Chat Item's drag over function and optional.
  * @prop onDragEnter The Chat Item's drag enter function and optional.
  * @prop onDrop The Chat Item's drop function and optional.
@@ -114,7 +114,7 @@ interface IChatListProps {
 type ChatListEvent = (item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any;
 
 /**
- * 
+ *
  */
 interface IDefaultProps {
   style: {
@@ -165,6 +165,7 @@ interface IMessage {
   className?: string;
   letterItem?: ILetterItem;
   reply?: IReplyMessage | any;
+  type: string;
 }
 
 /**
@@ -177,7 +178,6 @@ interface IMessage {
  * @prop alt The Photo Message's alt and optional.
  */
 interface IPhotoMessage extends Omit<IMessage, "status"> {
-  type: 'photo';
   status?: {
     error?: boolean;
     loading?: number;
@@ -200,7 +200,6 @@ interface IPhotoMessage extends Omit<IMessage, "status"> {
  * @prop onError The Photo Message's function onError(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 interface IPhotoMessageProps {
-  type: 'photo';
   message: IPhotoMessage;
   onDownload?: React.MouseEventHandler;
   onOpen?: React.MouseEventHandler;
@@ -210,24 +209,22 @@ interface IPhotoMessageProps {
 
 /**
  * IReplyMessage Interface extends IMessage
- * @prop type The Reply Message's type is "reply" and required. 
+ * @prop type The Reply Message's type is "reply" and required.
  * @prop photoURL The Reply Message's photoURL and optional.
  * @prop message The Reply Message's message and optional.
  */
 interface IReplyMessage extends IMessage {
-  type: 'reply';
   photoURL?: string;
   message?: string;
 }
 
 /**
  * IReplyMessageProps Interface
- * @prop type The Reply Message's type is "reply" and required. 
+ * @prop type The Reply Message's type is "reply" and required.
  * @prop message The Reply Message's message is a IReplyMessage and required.
  * @prop onClick The Reply Message's function onClick(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 interface IReplyMessageProps {
-  type: 'reply';
   message: IReplyMessage;
   onClick?: React.MouseEventHandler;
 }
@@ -241,7 +238,6 @@ interface IReplyMessageProps {
  * @prop record The Meeting Message's record and optional.
  */
 interface IMeetingMessage extends IMessage {
-  type: 'meeting';
   message?: string;
   avatarFlexible?: boolean;
   event?: {
@@ -276,7 +272,6 @@ interface IMeetingMessage extends IMessage {
  * @prop onMeetingMoreSelect The Meeting Message's function onMeetingMoreSelect  and optional.
  */
 interface IMeetingMessageProps {
-  type: 'meeting';
   subject?: string;
   title?: string;
   date?: Date;
@@ -315,7 +310,6 @@ interface IMeetingMessageProps {
  * @prop status The Video Message's status and optional.
  */
 interface IVideoMessage extends Omit<IMessage, "status"> {
-  type: 'video';
   videoURL: string;
   uri: string;
   width?: number | 0;
@@ -336,10 +330,9 @@ interface IVideoMessage extends Omit<IMessage, "status"> {
  * @prop onDownload The Video Message's function onDownload(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onOpen The Video Message's function onOpen(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onLoad The Video Message's function onLoad(event: React.MouseEvent<T, MouseEvent>) and optional.
- * @prop onPhotoError The Video Message's function onPhotoError(event: React.SyntheticEvent<T, Event>) and optional. 
+ * @prop onPhotoError The Video Message's function onPhotoError(event: React.SyntheticEvent<T, Event>) and optional.
 */
 interface IVideoMessageProps {
-  type: 'video';
   message: IVideoMessage;
   onDownload?: React.MouseEventHandler;
   onOpen?: React.MouseEventHandler;
@@ -353,7 +346,6 @@ interface IVideoMessageProps {
  * @prop text The System Message's text and requried.
  */
 interface ISystemMessage extends IMessage {
-  type: 'system';
   text: string;
 }
 
@@ -364,7 +356,6 @@ interface ISystemMessage extends IMessage {
  * @prop className The System Message's className and optional.
  */
 interface ISystemMessageProps {
-  type: "system";
   message: ISystemMessage;
   className?: string;
 }
@@ -377,7 +368,6 @@ interface ISystemMessageProps {
  * @prop controlsList The Audio Message's controls list and optional.
  */
 interface IAudioMessage extends IMessage {
-  type: 'audio';
   audioURL: string;
   audioType?: string;
   controlsList?: string;
@@ -394,7 +384,6 @@ interface IAudioMessage extends IMessage {
  * @prop onLoad The Audio Message's function onLoad(event: React.SyntheticEvent<T, Event>) and optional.
  */
 interface IAudioMessageProps {
-  type: 'audio';
   message: IAudioMessage;
   audioProps?: {
     [key: string]: unknown;
@@ -412,7 +401,6 @@ interface IAudioMessageProps {
  * @prop size The File Message's size and optional.
  */
 interface IFileMessage extends Omit<IMessage, "status"> {
-  type: 'file';
   status?: IFileMessageDataStatus;
   size?: string;
 }
@@ -426,7 +414,6 @@ interface IFileMessage extends Omit<IMessage, "status"> {
  * @prop onOpen The File Message's function onOpen(event: React.MouseEvent<Element, MouseEvent>) and optional.
  */
 interface IFileMessageProps {
-  type: 'file';
   message: IFileMessage;
   text?: string;
   onDownload?: Function;
@@ -442,7 +429,6 @@ interface IFileMessageProps {
  * @prop mapURL The Location Message's map url and optional.
  */
 interface ILocationMessage extends IMessage {
-  type: 'location';
   latitude: string;
   longitude: string;
   staticURL: string;
@@ -465,7 +451,6 @@ interface ILocationMessage extends IMessage {
  * @prop onError The Location Message's function onError(event: React.SyntheticEvent<T, Event>) and optional.
  */
 interface ILocationMessageProps {
-  type: 'location';
   message: ILocationMessage;
   markerColor: string;
   zoom: string;
@@ -489,8 +474,7 @@ interface ILocationMessageProps {
  * @prop height The Spotify Message's height and optional.
  * @prop text The Spotify Message's text and optional.
  */
-interface ISpotifyMessage extends IMessage {
-  type: 'spotify';
+interface ISpotifyMessage extends Omit<IMessage, "text"> {
   uri: string;
   theme?: string;
   view?: string;
@@ -505,25 +489,8 @@ interface ISpotifyMessage extends IMessage {
  * @prop message The Spotify Message's message is a ISpotifyMessage and required.
  */
 interface ISpotifyMessageProps {
-  type: 'spotify';
   message: ISpotifyMessage;
 }
-
-/**
- * MessageType Type 
- * @type ILocationMessageProps
- * @type IPhotoMessageProps
- * @type IVideoMessageProps
- * @type ISpotifyMessageProps
- * @type IAudioMessageProps
- * @type IMeetingLinkMessageProps
- * @type IFileMessageProps
- * @type ITextMessageProps
- * @type ISystemMessageProps
- * @type IReplyMessageProps
- * @type IMeetingMessageProps
- */
-type MessageType = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IAudioMessageProps | IMeetingLinkMessageProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps | IMeetingMessageProps;
 
 /**
  * IMessageBoxProps Interface
@@ -604,7 +571,7 @@ interface IMessageListProps {
   };
   children?: React.ReactNode;
   isShowChild?: boolean;
-  referance: React.Ref;
+  referance: any;
   dataSource: IMessageBoxProps[];
   lockable: boolean;
   toBottomHeight?: String | number;
@@ -632,7 +599,7 @@ interface IMessageListProps {
 }
 
 /**
- * MessageListEvent Type 
+ * MessageListEvent Type
  * @param item The MessageListEvent's item is a IMessageBoxProps.
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
@@ -655,7 +622,7 @@ interface IProgressOptions {
  * @prop meetingID The Meeting Link Message's meeting id and optional.
  * @prop title The Meeting Link Message's title and optional.
  */
-interface IMeetingLinkMessage extends IMessage {
+interface IMeetingLinkMessage extends Omit<IMessage, "title"> {
   meetingID?: string;
   title?: string;
 }
@@ -668,14 +635,13 @@ interface IMeetingLinkMessage extends IMessage {
  * @prop onMeetingMoreSelect The Meeting More Select Message's function onMeetingMoreSelect(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 interface IMeetingLinkMessageProps {
-  type: 'meetingLink';
   message: IMeetingLinkMessage;
-  onMeetingLinkClick?: React.MouseEventHandler;
-  onMeetingMoreSelect?: React.MouseEventHandler<T, T>;
+  onMeetingLinkClick?: (id: string) => void;
+  onMeetingMoreSelect?: (id: string) => void;
 }
 
 /**
- * MeetingMessageEvent Type 
+ * MeetingMessageEvent Type
  * @param item The MessageListEvent's item is a IMeetingMessage.
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
@@ -686,9 +652,7 @@ type MeetingMessageEvent = (item: IMeetingMessage, index: number , event: React.
  * ITextMessage Interface extends IMessage
  * @prop type The Text Message's type is "text" and required.
  */
-interface ITextMessage extends IMessage {
-  type?: 'text';
-}
+interface ITextMessage extends IMessage { }
 
 /**
  * ITextMessageProps Interface
@@ -702,7 +666,7 @@ interface ITextMessageProps {
 }
 
 interface IMeetingListProps {
-  cmpRef?: React.LegacyRef;
+  cmpRef?: any;
   className?: string;
   dataSource?: IMeetingItemProps[];
   lazyLoadingImage?: string;
@@ -715,7 +679,7 @@ interface IMeetingListProps {
 }
 
 /**
- * MeetingListEvent Type 
+ * MeetingListEvent Type
  * @param item The MessageListEvent's item is a IMeetingItemProps.
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
@@ -1078,3 +1042,47 @@ interface INavbarProps {
   center?: any;
   right?: any;
 }
+
+
+/**
+ * MessageType Type
+ * @type ILocationMessageProps
+ * @type IPhotoMessageProps
+ * @type IVideoMessageProps
+ * @type ISpotifyMessageProps
+ * @type IAudioMessageProps
+ * @type IMeetingLinkMessageProps
+ * @type IFileMessageProps
+ * @type ITextMessageProps
+ * @type ISystemMessageProps
+ * @type IReplyMessageProps
+ * @type IMeetingMessageProps
+ */
+type MessageType = |
+{ type: 'location' } & ILocationMessageProps |
+{ type: 'photo' } & IPhotoMessageProps |
+{ type: 'video' } & IVideoMessageProps |
+{ type: 'spotify' } & ISpotifyMessageProps |
+{ type: 'audio' } & IAudioMessageProps |
+{ type: 'meetingLink' } & IMeetingLinkMessageProps |
+{ type: 'file' } & IFileMessageProps |
+{ type: 'text' } & ITextMessageProps |
+{ type: 'system' } & ISystemMessageProps |
+{ type: 'reply' } & IReplyMessageProps |
+{ type: 'meeting' } & IMeetingMessageProps;
+
+/**
+ * MessageType Type
+ * @type ILocationMessageProps
+ * @type IPhotoMessageProps
+ * @type IVideoMessageProps
+ * @type ISpotifyMessageProps
+ * @type IAudioMessageProps
+ * @type IMeetingLinkMessageProps
+ * @type IFileMessageProps
+ * @type ITextMessageProps
+ * @type ISystemMessageProps
+ * @type IReplyMessageProps
+ * @type IMeetingMessageProps
+ */
+ type MessageTypeOld = ILocationMessageProps | IPhotoMessageProps | IVideoMessageProps | ISpotifyMessageProps | IAudioMessageProps | IMeetingLinkMessageProps | IFileMessageProps | ITextMessageProps | ISystemMessageProps | IReplyMessageProps | IMeetingMessageProps;

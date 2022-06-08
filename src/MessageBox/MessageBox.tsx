@@ -56,7 +56,7 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
       {
         props.data.type === 'system' ?
           <SystemMessage
-           type='system' message={props.data.message} />
+           message={props.data.message} />
         :
         <div
           className={classNames(
@@ -140,7 +140,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.message.reply &&
               <ReplyMessage
-                type='reply'
                 message={props.data.message.reply}
                 onClick={props.onReplyMessageClick}/>
             }
@@ -163,7 +162,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'location'  &&
               <LocationMessage
-                type='location'
                 onOpen={props?.onOpen}
                 message={props.data.message}
                 target={props.data.target}
@@ -178,7 +176,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'photo' &&
               <PhotoMessage
-                type='photo'
                 message={props.data.message}
                 onOpen={props?.onOpen}
                 onDownload={props.data?.onDownload}
@@ -189,7 +186,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'video' &&
               <VideoMessage
-                type='video'
                 onOpen={props?.onOpen}
                 message={ props.data.message}
                 onDownload={ props.data?.onDownload}
@@ -200,7 +196,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'file' &&
               <FileMessage
-                type='file'
                 message={props.data.message}
                 onOpen={props?.onOpen}
                 onDownload={props.data?.onDownload} />
@@ -209,14 +204,12 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'spotify' &&
               <SpotifyMessage
-                type='spotify'
                 message={props.data.message} />
             }
 
             {
               props.data.type === 'meeting' &&
               <MeetingMessage
-                type='meeting'
                 message={props.data.message}
                 subject={props.data.subject}
                 title={props.data.title}
@@ -234,7 +227,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'audio' &&
               <AudioMessage
-                type='audio'
                 message={props.data.message}
                 onOpen={props?.onOpen}
                 onDownload={props.data.onDownload}
@@ -244,7 +236,6 @@ const MessageBox: React.FC<IMessageBoxProps> = (props) => {
             {
               props.data.type === 'meetingLink' &&
               <MeetingLink
-                type='meetingLink'
                 message={props.data.message}
                 onMeetingMoreSelect={props.data.onMeetingLinkClick}/>
             }

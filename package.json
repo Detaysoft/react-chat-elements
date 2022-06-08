@@ -4,6 +4,7 @@
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
+  "types": "dist/type.d.ts",
   "devDependencies": {
     "@types/identicon.js": "^2.3.1",
     "@types/jest": "^27.5.1",
@@ -22,21 +23,24 @@
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
     "copyfiles": "^2.4.1",
-    "css-loader": "^0.28.5",
+    "css-loader": "^6.7.1",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "identicon.js": "^2.3.1",
     "jest": "21.2.1",
     "lorem-ipsum": "^1.0.4",
+    "mini-css-extract-plugin": "^2.6.0",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "^5.0.1",
     "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
     "ts-loader": "^9.3.0",
     "typescript": "^4.6.4",
-    "webpack-cli": "3.3.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0",
     "webpack-node-externals": "^1.6.0"
   },
@@ -59,14 +63,19 @@
       "<rootDir>/node_modules/enzyme-to-json/serializer"
     ]
   },
+  "browser": {
+    "[module-name]": false
+  },
   "bugs": {
     "url": "https://github.com/detaysoft/react-chat-elements/issues"
   },
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
-    "start": "webpack serve",
-    "build": "node node_modules/typescript/bin/tsc && yarn copy-files && webpack --progress --profile --config webpack.prod.config.js",
+    "dev-server": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "yarn run clear:build && node node_modules/typescript/bin/tsc -p tsconfig.prod.json && yarn run copy-files && webpack --progress --profile --config webpack.prod.config.js && yarn run move:types",
     "copy-files": "copyfiles -u 1 src/**/*.css build/",
+    "clear:build": "rimraf dist build",
+    "move:types": "copyfiles -u 1 src/type.d.ts dist/",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
   },

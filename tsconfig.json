@@ -1,49 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "outDir": "./dist",
     "sourceMap": true,
-    "removeComments": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "outDir": "build",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react-jsxdev",
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": false,
-    "jsx": "react-jsx"
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "build/lib",
-    "scripts",
-    "es",
-    "lib",
-    "tests/**",
-    ".storybook/**",
-    ".idea",
-    ".html",
-    "src/**/*.test.js",
-    "src/**/*.test.ts",
-    "src/**/*.stories.js",
-    "src/**/*.stories.ts"
-  ]
+    "esModuleInterop": true,
+  }
 }

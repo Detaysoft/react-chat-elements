@@ -4,8 +4,8 @@ import './MeetingLink.css';
 import { MdOutlineVideoCall } from 'react-icons/md';
 
 const MeetingLink: FC<IMeetingLinkMessageProps> = ({message, onMeetingMoreSelect }) => {
-  const onHandleClick = () => {
-    onMeetingMoreSelect?.(message.meetingID);
+  const onHandleClick = (): void => {
+    onMeetingMoreSelect?.(message.meetingID || '');
   }
 
   return (

@@ -1,4 +1,4 @@
-import { loremIpsum } from "lorem-ipsum";
+import loremIpsum from "lorem-ipsum";
 import { getRandomColor, photo, token } from "./common";
 
 export const photoMessage: MessageType = {
@@ -146,7 +146,6 @@ export const systemMessage: MessageType = {
     retracted: false,
     className: "",
   },
-  text: loremIpsum({ count: 2, units: "words" }),
 };
 
 export const spotifyMessage: MessageType = {
@@ -274,7 +273,7 @@ export const audioMessage: MessageType = {
 export const meetingMessage: MessageType = {
   type: "meeting",
   message: {
-    type: "meeting",
+    type: 'location',
     id: String(Math.random()),
     position: token() >= 1 ? "right" : "left",
     text: "spotify:track:0QjjaCaXE45mvhCnV3C0TA",
@@ -354,8 +353,9 @@ export const meetingMessage: MessageType = {
 };
 
 export const meetingLinkMessage: MessageType = {
-  type: "meetingLink",
-  message: {
+    type: "meetingLink",
+    message: {
+    type: "meetingLink",
     id: String(Math.random()),
     position: token() >= 1 ? "right" : "left",
     text: loremIpsum({ count: 1, units: "sentences" }),
@@ -390,6 +390,7 @@ export const meetingLinkMessage: MessageType = {
 export const textMessage: MessageType = {
   type: "text",
   message: {
+    type: "text",
     id: String(Math.random()),
     position: token() >= 1 ? "right" : "left",
     text: loremIpsum({ count: 1, units: "sentences" }),

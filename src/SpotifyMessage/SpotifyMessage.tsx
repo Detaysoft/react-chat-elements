@@ -3,18 +3,19 @@ import './SpotifyMessage.css';
 
 const SpotifyMessage: React.FC<ISpotifyMessageProps> = (props) => {
 
-  const toUrl = () => {
-    var formBody: any = [];
+  const toUrl = (): string => {
+    var formBody: string[] | string = [];
     for (var property in props.message) {
       var encodedKey = encodeURIComponent(property);
+      // @ts-ignore
       var encodedValue = encodeURIComponent(props.message[property]);
       formBody.push(encodedKey + "=" + encodedValue);
     }
-    formBody = formBody.join('&');
-    return formBody;
+
+    return formBody.join('&');;
   }
 
-  if (!props.message?.uri)
+  if (!props.message.uri)
     return null;
   return (
     <div className='rce-mbox-spotify'>

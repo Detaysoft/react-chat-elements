@@ -1,7 +1,7 @@
-var webpack = require('webpack')
+// var webpack = require('webpack')
 var path = require('path')
 var nodeExternals = require('webpack-node-externals')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -29,15 +29,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         include: path.join(__dirname, 'build'),
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader',
-        }),
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
@@ -46,5 +43,5 @@ module.exports = {
       whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
     }),
   ],
-  plugins: [new webpack.optimize.OccurrenceOrderPlugin(), new ExtractTextPlugin('main.css')],
+  plugins: [new MiniCssExtractPlugin({filename: 'main.css'})],
 }

@@ -1,11 +1,19 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   mode: 'development',
+  devtool: "inline-source-map",
   entry: {
-    index: './example/index.tsx',
+    main: path.resolve(__dirname, './example/index.tsx'),
+  },
+  mode: "development",
+  devServer: {
+    hot: true,
+    port: 8090,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    open: true,
   },
   module: {
     rules: [
@@ -14,21 +22,38 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
-    ],
+      {
+        test: /\.html$/,
+        use:{
+            loader: 'html-loader'
+        }
+    },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".ts", ".tsx", ".js", "jsx"],
   },
-  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      filename: "index.html",
+      inject: true
     }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].bundle.[fullhash].css",
+      chunkFilename: "chunks/[id].chunk.[fullhash].css"
+    })
   ],
-  output: {
-    publicPath: '/',
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-}
+  stats: {
+    children: true,
+    errorDetails: true
+  }
+};
