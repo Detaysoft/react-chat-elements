@@ -30,7 +30,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "src/example",
     "node_modules",
     "build",
     "build/lib",
@@ -44,6 +43,7 @@
     "src/**/*.test.js",
     "src/**/*.test.ts",
     "src/**/*.stories.js",
-    "src/**/*.stories.ts"
+    "src/**/*.stories.ts",
+    "src/setupTests.ts"
   ]
 }
