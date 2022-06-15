@@ -1,24 +1,24 @@
 .rce-mbox-location {
-    position: relative;
-    width: 250px;
-    height: 150px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: -3px;
-    margin-right: -6px;
-    margin-left: -6px;
-    border-radius: 5px;
+  position: relative;
+  width: 250px;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3px;
+  margin-right: -6px;
+  margin-left: -6px;
+  border-radius: 5px;
 }
 
 .rce-mbox-location-img {
-    width: 100%;
+  width: 100%;
 }
 
 .rce-mbox-location-text {
-    padding: 5px 0;
-    width: 250px;
-    margin-left: -6px;
-    margin-right: -6px;
+  padding: 5px 0;
+  width: 250px;
+  margin-left: -6px;
+  margin-right: -6px;
 }

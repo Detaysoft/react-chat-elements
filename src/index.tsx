@@ -1,1 +1,1 @@
-import "./example/index";
+import './example/index'

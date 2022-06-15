@@ -1,43 +1,37 @@
-import React, { useEffect } from 'react';
-import './Input.css';
-import classNames from 'classnames';
+import React, { useEffect } from 'react'
+import './Input.css'
+import classNames from 'classnames'
 
-const Input: React.FC<IInputProps> = (props) => {
+const Input: React.FC<IInputProps> = props => {
   useEffect(() => {
-    if (props.autofocus === true)
-      props.referance?.referance.current?.focus();
+    if (props.autofocus === true) props.referance?.referance.current?.focus()
 
     if (props.clear instanceof Function) {
-      props.clear(clear);
+      props.clear(clear)
     }
-  }, []);
+  }, [])
 
   const onChange = (e: any) => {
     if (props.maxlength && (e.target.value || '').length > props.maxlength) {
-      if (props.onMaxLengthExceed instanceof Function)
-        props.onMaxLengthExceed();
+      if (props.onMaxLengthExceed instanceof Function) props.onMaxLengthExceed()
 
-      if (props.referance?.referance.current?.value == (e.target.value || '').substring(0, props.maxlength))
-        return;
+      if (props.referance?.referance.current?.value == (e.target.value || '').substring(0, props.maxlength)) return
     }
 
-    if (props.onChange instanceof Function)
-      props.onChange(e);
+    if (props.onChange instanceof Function) props.onChange(e)
 
     if (props.multiline === true) {
       if (props.autoHeight === true) {
         if (e.target.style.height !== props.minHeight + 'px') {
-          e.target.style.height = props.minHeight + 'px';
+          e.target.style.height = props.minHeight + 'px'
         }
 
-        let height;
-        if (e.target.scrollHeight <= props.maxHeight)
-          height = e.target.scrollHeight + 'px';
-        else
-          height = props.maxHeight + 'px';
+        let height
+        if (e.target.scrollHeight <= props.maxHeight) height = e.target.scrollHeight + 'px'
+        else height = props.maxHeight + 'px'
 
         if (e.target.style.height !== height) {
-          e.target.style.height = height;
+          e.target.style.height = height
         }
       }
     }
@@ -47,25 +41,19 @@ const Input: React.FC<IInputProps> = (props) => {
     var _event = {
       FAKE_EVENT: true,
       target: props.referance?.current,
-    };
-
-    if (props.referance?.current?.value) {
-       props.referance.current.value = '';
     }
 
-    onChange(_event);
+    if (props.referance?.current?.value) {
+      props.referance.current.value = ''
+    }
+
+    onChange(_event)
   }
 
   return (
     <div className={classNames('rce-container-input', props.className)}>
-      {
-        props.leftButtons &&
-        <div className='rce-input-buttons'>
-            {props.leftButtons}
-        </div>
-      }
-      {
-        props.multiline === false ?
+      {props.leftButtons && <div className='rce-input-buttons'>{props.leftButtons}</div>}
+      {props.multiline === false ? (
         <input
           ref={props.referance}
           type={props.type}
@@ -84,8 +72,9 @@ const Input: React.FC<IInputProps> = (props) => {
           onReset={props.onReset}
           onKeyDown={props.onKeyDown}
           onKeyPress={props.onKeyPress}
-          onKeyUp={props.onKeyUp}/>
-        :
+          onKeyUp={props.onKeyUp}
+        />
+      ) : (
         <textarea
           ref={props.referance}
           className={classNames('rce-input', 'rce-input-textarea')}
@@ -103,16 +92,12 @@ const Input: React.FC<IInputProps> = (props) => {
           onReset={props.onReset}
           onKeyDown={props.onKeyDown}
           onKeyPress={props.onKeyPress}
-          onKeyUp={props.onKeyUp}></textarea>
-      }
-      {
-        props.rightButtons &&
-        <div className='rce-input-buttons'>
-          {props.rightButtons}
-        </div>
-      }
+          onKeyUp={props.onKeyUp}
+        ></textarea>
+      )}
+      {props.rightButtons && <div className='rce-input-buttons'>{props.rightButtons}</div>}
     </div>
-  );
+  )
 }
 
-export default Input;
+export default Input

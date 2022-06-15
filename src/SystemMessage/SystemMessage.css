@@ -1,26 +1,26 @@
 .rce-container-smsg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rce-smsg {
-    position: relative;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.2);
-    display: flex;
-    flex-direction: column;
-    margin: 5px 0px;
-    padding: 6px 9px 8px 9px;
-    float: left;
-    max-width: 70%;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px;
+  padding: 6px 9px 8px 9px;
+  float: left;
+  max-width: 70%;
+  align-items: center;
+  justify-content: center;
 }
 
 .rce-smsg-text {
-    text-align: center;
-    display: inline-block;
-    font-size: 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
 }

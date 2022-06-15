@@ -1,1 +1,1 @@
-declare module 'lorem-ipsum';
+declare module 'lorem-ipsum'

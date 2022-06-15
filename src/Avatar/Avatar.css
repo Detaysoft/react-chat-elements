@@ -1,92 +1,92 @@
 .rce-avatar-container {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rce-avatar-container .rce-avatar {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .rce-avatar-container.flexible .rce-avatar {
-    height: auto !important;
-    width: 100% !important;
-    border-radius: unset !important;
-    overflow: unset !important;
+  height: auto !important;
+  width: 100% !important;
+  border-radius: unset !important;
+  overflow: unset !important;
 }
 
-.rce-avatar-container.default{
-    width: 25px;
-    height: 25px;
+.rce-avatar-container.default {
+  width: 25px;
+  height: 25px;
 }
 
-.rce-avatar-container.rounded{
-    border-radius: 5px;
+.rce-avatar-container.rounded {
+  border-radius: 5px;
 }
 
-.rce-avatar-container.circle{
-    border-radius: 100%;
+.rce-avatar-container.circle {
+  border-radius: 100%;
 }
 
-.rce-avatar-container.xsmall{
-    width: 30px;
-    height: 30px;
+.rce-avatar-container.xsmall {
+  width: 30px;
+  height: 30px;
 }
 
-.rce-avatar-container.small{
-    width: 35px;
-    height: 35px;
+.rce-avatar-container.small {
+  width: 35px;
+  height: 35px;
 }
 
-.rce-avatar-container.medium{
-    width: 40px;
-    height: 40px;
+.rce-avatar-container.medium {
+  width: 40px;
+  height: 40px;
 }
 
-.rce-avatar-container.large{
-    width: 45px;
-    height: 45px;
+.rce-avatar-container.large {
+  width: 45px;
+  height: 45px;
 }
 
-.rce-avatar-container.xlarge{
-    width: 55px;
-    height: 55px;
+.rce-avatar-container.xlarge {
+  width: 55px;
+  height: 55px;
 }
 
 @keyframes avatarLazy {
-    0% {
-        opacity:1;
-    }
-    50% {
-        opacity:.5;
-    }
-    100% {
-        opacity:1;
-    }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .rce-avatar-lazy {
-    animation: avatarLazy normal 2s infinite ease-in-out;
+  animation: avatarLazy normal 2s infinite ease-in-out;
 }
 
 .rce-avatar-container.rce-citem-avatar-encircle-status {
-    box-sizing: border-box;
-    position: relative;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .rce-avatar-letter {
-    margin-top: 5px;
-    font-size: 20px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 5px;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.rce-avatar-letter-background{
-    height: 35px;
-    width: 35px;
-    border-radius: 20px;
+.rce-avatar-letter-background {
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
 }

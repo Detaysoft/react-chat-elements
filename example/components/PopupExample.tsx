@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { FaTimes } from "react-icons/fa";
-import Button from "../../src/Button/Button";
-import Popup from "../../src/Popup/Popup";
+import { useState } from 'react'
+import { FaTimes } from 'react-icons/fa'
+import Button from '../../src/Button/Button'
+import Popup from '../../src/Popup/Popup'
 
 function PopupExample() {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false)
   return (
-    <div className="">
-      {" "}
+    <div className=''>
+      {' '}
       <Popup
         popup={{
           show: show,
-          header: "Lorem ipsum dolor sit amet.",
+          header: 'Lorem ipsum dolor sit amet.',
           headerButtons: [
             {
-              type: "transparent",
-              color: "black",
+              type: 'transparent',
+              color: 'black',
               onClick: () => {
-                setShow(false);
+                setShow(false)
               },
               icon: {
                 component: <FaTimes />,
@@ -25,35 +25,35 @@ function PopupExample() {
               },
             },
           ],
-          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!",
+          text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem animi veniam voluptas eius!',
           footerButtons: [
             {
-              color: "white",
-              backgroundColor: "#ff5e3e",
-              text: "Vazgeç",
+              color: 'white',
+              backgroundColor: '#ff5e3e',
+              text: 'Vazgeç',
               onClick: () => {
-                setShow(false);
+                setShow(false)
               },
             },
             {
-              color: "white",
-              backgroundColor: "lightgreen",
-              text: "Tamam",
+              color: 'white',
+              backgroundColor: 'lightgreen',
+              text: 'Tamam',
               onClick: () => {
-                setShow(false);
+                setShow(false)
               },
             },
           ],
         }}
       />
       <Button
-        text="Show Popup"
+        text='Show Popup'
         onClick={() => {
-          setShow(true);
+          setShow(true)
         }}
       />
     </div>
-  );
+  )
 }
 
-export default PopupExample;
+export default PopupExample

@@ -1,176 +1,177 @@
 .rce-container-citem {
-    flex-direction: column;
-    display: block;
-    overflow: hidden;
-    min-width: 240px;
+  flex-direction: column;
+  display: block;
+  overflow: hidden;
+  min-width: 240px;
 }
 
 .rce-container-citem.rce-citem-status-encircle {
-    position: relative;
+  position: relative;
 }
 
 .rce-citem {
-    position: relative;
-    background: white;
-    display: flex;
-    flex-direction: row;
-    height: 72px;
-    cursor: pointer;
-    user-select: none;
-    max-width: 100%;
-    overflow: hidden;
-    min-width: 240px;
+  position: relative;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  height: 72px;
+  cursor: pointer;
+  user-select: none;
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 240px;
 }
 
 .rce-citem:hover {
-    background: #f9f9f9;
+  background: #f9f9f9;
 }
 
 .rce-citem-avatar {
-    position: relative;
-    padding: 0 15px 0 13px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+  position: relative;
+  padding: 0 15px 0 13px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .rce-citem-status {
-    width: 20px;
-    height: 20px;
-    bottom: 10px;
-    right: 10px;
-    position: absolute;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ccc;
+  width: 20px;
+  height: 20px;
+  bottom: 10px;
+  right: 10px;
+  position: absolute;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccc;
 }
 
 .rce-citem-avatar.rce-citem-status-encircle .rce-citem-status {
-    left:0;
-    right:0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    margin: auto;
-    border-radius: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
 }
 
 .rce-citem-avatar img {
-    width: 50px;
-    height: 50px;
-    border: none !important;
-    background: #ccc;
-    border-radius: 100%;
-    overflow: hidden;
-    font-size: 10px;
-    text-align: center;
-    line-height: 50px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  width: 50px;
+  height: 50px;
+  border: none !important;
+  background: #ccc;
+  border-radius: 100%;
+  overflow: hidden;
+  font-size: 10px;
+  text-align: center;
+  line-height: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rce-citem-body {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 15px;
-    border-bottom: 1px solid rgba(0,0,0,.05);
-    overflow: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .rce-citem-body--top {
-    display: flex;
+  display: flex;
 }
 
 .rce-citem-body--bottom {
-    margin-top: 4px;
-    display: flex;
+  margin-top: 4px;
+  display: flex;
 }
 
-.rce-citem-body--bottom-title, .rce-citem-body--top-title {
-    flex: 1;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+.rce-citem-body--bottom-title,
+.rce-citem-body--top-title {
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .rce-citem-body--top-title {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .rce-citem-body--bottom-title {
-    color: #555;
-    font-size: 15px;
+  color: #555;
+  font-size: 15px;
 }
 
 .rce-citem-body--top-time {
-    font-size: 12px;
-    color: rgba(0,0,0,0.4)
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .rce-citem-body--bottom-status {
-    margin-left: 3px;
+  margin-left: 3px;
 }
 
 .rce-citem-body--bottom-status span {
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    border-radius: 100%;
-    background: red;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 100%;
+  background: red;
 }
 
 .rce-citem-body--bottom-tools {
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    display: flex;
-    height: 0;
-    opacity: 0;
-    position: absolute;
-    left: -999px;
-    transition: height .5s ease, opacity 1s ease;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  left: -999px;
+  transition: height 0.5s ease, opacity 1s ease;
 }
 
 .rce-citem:hover .rce-citem-body--bottom-tools {
-    height: 100%;
-    opacity: 1;
-    position: relative;
-    left: 0;
+  height: 100%;
+  opacity: 1;
+  position: relative;
+  left: 0;
 }
 
 .rce-citem-body--bottom-tools-item-hidden-hover {
-    height: 100%;
-    opacity: 0.3;
-    transition: .5s ease;
+  height: 100%;
+  opacity: 0.3;
+  transition: 0.5s ease;
 }
 
 .rce-citem:hover .rce-citem-body--bottom-tools-item-hidden-hover {
-    height: 0;
-    opacity: 0;
-    position: absolute;
-    left: -999px;
-    transition: .5s ease;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  left: -999px;
+  transition: 0.5s ease;
 }
 
 .rce-citem-body--bottom-tools-item {
-    width: 18px;
-    height: 18px;
+  width: 18px;
+  height: 18px;
 }
 
 .rce-citem-body--bottom-tools-item svg {
-    width: 18px;
-    height: 18px;
-    fill: #575757;
+  width: 18px;
+  height: 18px;
+  fill: #575757;
 }
