@@ -1,6 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import classNames from 'classnames'
+import { INavbarProps } from '../type'
 
 const Navbar: React.FC<INavbarProps> = props => {
   return (

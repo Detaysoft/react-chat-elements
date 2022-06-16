@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react'
 import './MeetingMessage.css'
 
 import { FaCalendar, FaCaretDown, FaCaretRight } from 'react-icons/fa'
-import { MdMoreHoriz } from 'react-icons/md'
-import { IoMdChatboxes } from 'react-icons/io'
 import { HiOutlineVideoCamera } from 'react-icons/hi'
+import { IoMdChatboxes } from 'react-icons/io'
+import { MdMoreHoriz } from 'react-icons/md'
 
 import { format } from 'timeago.js'
 
@@ -12,6 +12,7 @@ import Avatar from '../Avatar/Avatar'
 import Dropdown from '../Dropdown/Dropdown'
 
 import classNames from 'classnames'
+import { IMeetingMessageProps, MeetingMessageEvent } from '../type'
 
 const MeetingMessage: FC<IMeetingMessageProps> = ({
   date,

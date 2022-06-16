@@ -8,6 +8,7 @@ import { format } from 'timeago.js'
 import classNames from 'classnames'
 
 import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md'
+import { IChatItemProps } from '../type'
 
 const ChatItem: React.FC<IChatItemProps> = props => {
   const [onHoverTool, setOnHoverTool] = useState(false)

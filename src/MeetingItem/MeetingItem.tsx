@@ -8,6 +8,7 @@ import Avatar from '../Avatar/Avatar'
 import { format } from 'timeago.js'
 
 import classNames from 'classnames'
+import { IMeetingItemProps } from '../type'
 
 const MeetingItem: FC<IMeetingItemProps> = props => {
   const statusColorType = props.statusColorType

@@ -2,6 +2,7 @@ import { FC } from 'react'
 import './MeetingLink.css'
 
 import { MdOutlineVideoCall } from 'react-icons/md'
+import { IMeetingLinkMessageProps } from '../type'
 
 const MeetingLink: FC<IMeetingLinkMessageProps> = ({ message, onMeetingMoreSelect }) => {
   const onHandleClick = (): void => {

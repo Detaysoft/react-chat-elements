@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import './Input.css'
 import classNames from 'classnames'
+import { IInputProps } from '../type'
 
 const Input: React.FC<IInputProps> = props => {
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useCallback } from 'react'
 import { Circle } from 'progressbar.js'
+import { ICircleProps } from '../type'
 
 let wrapper: HTMLDivElement
 const ProgressCircle: React.FC<ICircleProps> = ({ animate, progressOptions, className }) => {

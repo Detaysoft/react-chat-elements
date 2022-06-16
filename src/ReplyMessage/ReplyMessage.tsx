@@ -2,6 +2,7 @@ import React from 'react'
 import './ReplyMessage.css'
 
 import classNames from 'classnames'
+import { IReplyMessageProps } from '../type'
 
 const ReplyMessage: React.FC<IReplyMessageProps> = props => {
   return (

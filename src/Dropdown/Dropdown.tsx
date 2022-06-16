@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Dropdown.css'
 import classNames from 'classnames'
 import Button from '../Button/Button'
+import { IDropdownProps, IDropdownItemType } from '../type'
 
 const Dropdown: React.FC<IDropdownProps> = props => {
   const [show, setShow] = useState<boolean>(false)

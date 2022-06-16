@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import './ChatList.css'
 
 import ChatItem from '../ChatItem/ChatItem'
+import { IChatListProps, ChatListEvent } from '../type'
 
 const ChatList: React.FC<IChatListProps> = props => {
   const onClick: ChatListEvent = (item, index, event) => {

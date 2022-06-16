@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef, FC, Key } from 'react'
+import React, { FC, Key, useEffect, useRef, useState } from 'react'
 import './MessageList.css'
 
 import MessageBox from '../MessageBox/MessageBox'
 
-import { FaChevronDown } from 'react-icons/fa'
 import classNames from 'classnames'
+import { FaChevronDown } from 'react-icons/fa'
+import { IMessageListProps, MessageListEvent } from '../type'
 
 const MessageList: FC<IMessageListProps> = props => {
   const [scrollBottom, setScrollBottom] = useState(0)

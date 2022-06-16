@@ -2,6 +2,7 @@ import React from 'react'
 import './SideBar.css'
 
 import classNames from 'classnames'
+import { ISideBarProps } from '../type'
 
 const SideBar: React.FC<ISideBarProps> = props => {
   return (

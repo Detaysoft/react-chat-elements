@@ -1,11 +1,11 @@
 {
   "name": "react-chat-elements",
-  "version": "11.0.1",
+  "version": "12.0.0",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/index.js",
   "types": "dist/type.d.ts",
-  "module": "dist/indes.es.js",
+  "module": "dist/index.es.js",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/preset-react": "^7.17.12",

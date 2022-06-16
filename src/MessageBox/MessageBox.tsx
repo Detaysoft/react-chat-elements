@@ -21,6 +21,7 @@ import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock } from 'react-icons
 import { format } from 'timeago.js'
 
 import classNames from 'classnames'
+import { IMessageBoxProps } from '../type'
 
 const MessageBox: React.FC<IMessageBoxProps> = props => {
   const prevProps = useRef(props.data)

@@ -2,6 +2,7 @@ import React from 'react'
 import './SystemMessage.css'
 
 import classNames from 'classnames'
+import { ISystemMessageProps } from '../type'
 
 const SystemMessage: React.FC<ISystemMessageProps> = props => {
   return (

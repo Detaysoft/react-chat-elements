@@ -1,4 +1,5 @@
 import React from 'react'
+import { ISpotifyMessageProps } from '../type'
 import './SpotifyMessage.css'
 
 const SpotifyMessage: React.FC<ISpotifyMessageProps> = props => {

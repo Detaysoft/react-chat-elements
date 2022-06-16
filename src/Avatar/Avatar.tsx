@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import './Avatar.css'
 import classNames from 'classnames'
+import { IAvatarProps } from '../type'
 
 const Avatar: React.FC<IAvatarProps> = props => {
   let loadedAvatars: string[] = []
