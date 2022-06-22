@@ -3,13 +3,7 @@ import './Avatar.css'
 import classNames from 'classnames'
 import { IAvatarProps } from '../type'
 
-const Avatar: React.FC<IAvatarProps> = ({
-  type = 'default',
-  size = 'default',
-  sideElement = null,
-  lazyLoadingImage = undefined,
-  ...props
-}) => {
+const Avatar: React.FC<IAvatarProps> = ({ type = 'default', size = 'default', lazyLoadingImage = undefined, ...props }) => {
   let loadedAvatars: string[] = []
   let loading: boolean = false
   let src = props.src
@@ -77,7 +71,7 @@ const Avatar: React.FC<IAvatarProps> = ({
           className={classNames('rce-avatar', { 'rce-avatar-lazy': isLazyImage })}
         />
       )}
-      {sideElement}
+      {props.sideElement}
     </div>
   )
 }

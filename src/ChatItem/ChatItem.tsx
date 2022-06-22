@@ -90,7 +90,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
               size='large'
               letterItem={props.letterItem}
               sideElement={
-                statusColor && (
+                statusColor ? (
                   <span
                     className='rce-citem-status'
                     style={
@@ -105,6 +105,8 @@ const ChatItem: React.FC<IChatItemProps> = ({
                   >
                     {statusText}
                   </span>
+                ) : (
+                  <></>
                 )
               }
               onError={onAvatarError}

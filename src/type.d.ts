@@ -1018,7 +1018,7 @@ export interface IAvatarProps {
   size?: Object
   className?: string
   alt?: string
-  sideElement?: React.ReactChild
+  sideElement?: React.ReactElement
   onError?: React.ReactEventHandler
   statusColorType?: string
   statusColor?: string

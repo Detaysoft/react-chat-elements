@@ -10,29 +10,42 @@ import { format } from 'timeago.js'
 import classNames from 'classnames'
 import { IMeetingItemProps } from '../type'
 
-const MeetingItem: FC<IMeetingItemProps> = props => {
+const MeetingItem: FC<IMeetingItemProps> = ({
+  id = '',
+  subjectLimit = 60,
+  onClick = () => void 0,
+  avatarFlexible = false,
+  alt = '',
+  title = '',
+  subtitle = '',
+  date = new Date(),
+  dateString = '',
+  lazyLoadingImage = undefined,
+  avatarLimit = 5,
+  avatars = [],
+  audioMuted = true,
+  audioSource = '',
+  onAvatarError = () => void 0,
+  onMeetingClick = () => void 0,
+  onShareClick = () => void 0,
+  ...props
+}) => {
   const statusColorType = props.statusColorType
-  const AVATAR_LIMIT = props.avatarLimit
+  const AVATAR_LIMIT = avatarLimit
 
-  const dateText = props.date && (props.dateString || format(props.date))
+  const dateText = date && (dateString || format(date))
 
   const subject =
-    props.subject &&
-    props.subjectLimit &&
-    props.subject.substring(0, props.subjectLimit) + (props.subject.length > props.subjectLimit ? '...' : '')
+    props.subject && subjectLimit && props.subject.substring(0, subjectLimit) + (props.subject.length > subjectLimit ? '...' : '')
 
   return (
-    <div
-      className={classNames('rce-container-mtitem', props.className)}
-      onClick={props.onClick}
-      onContextMenu={props.onContextMenu}
-    >
-      <audio autoPlay loop muted={props.audioMuted} src={props.audioSource} />
+    <div className={classNames('rce-container-mtitem', props.className)} onClick={onClick} onContextMenu={props.onContextMenu}>
+      <audio autoPlay loop muted={audioMuted} src={audioSource} />
 
       <div className='rce-mtitem'>
         <div className='rce-mtitem-top'>
           <div className='rce-mtitem-subject'>{subject}</div>
-          <div className='rce-mtitem-share' onClick={props.onShareClick}>
+          <div className='rce-mtitem-share' onClick={onShareClick}>
             <MdLink />
           </div>
         </div>
@@ -40,7 +53,7 @@ const MeetingItem: FC<IMeetingItemProps> = props => {
           <div className='rce-mtitem-body--avatars'>
             {
               // props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => x instanceof Avatar ? x : (
-              props.avatars?.slice(0, AVATAR_LIMIT).map((x, i) => (
+              avatars?.slice(0, AVATAR_LIMIT).map((x, i) => (
                 <Avatar
                   key={i}
                   src={x.src}
@@ -49,7 +62,7 @@ const MeetingItem: FC<IMeetingItemProps> = props => {
                   size={'small'}
                   letterItem={x.letterItem}
                   sideElement={
-                    x.statusColor && (
+                    x.statusColor ? (
                       <span
                         className='rce-mtitem-status'
                         style={
@@ -64,18 +77,20 @@ const MeetingItem: FC<IMeetingItemProps> = props => {
                       >
                         {x.statusText}
                       </span>
+                    ) : (
+                      <></>
                     )
                   }
-                  onError={props.onAvatarError}
-                  lazyLoadingImage={props.lazyLoadingImage}
-                  type={classNames('circle', { 'flexible': props.avatarFlexible })}
+                  onError={onAvatarError}
+                  lazyLoadingImage={lazyLoadingImage}
+                  type={classNames('circle', { 'flexible': avatarFlexible })}
                 />
               ))
             }
 
-            {props.avatars && AVATAR_LIMIT && props.avatars.length > AVATAR_LIMIT && (
+            {avatars && AVATAR_LIMIT && avatars.length > AVATAR_LIMIT && (
               <div className='rce-avatar-container circle small rce-mtitem-letter'>
-                <span>{'+' + (props.avatars.length - AVATAR_LIMIT)}</span>
+                <span>{'+' + (avatars.length - AVATAR_LIMIT)}</span>
               </div>
             )}
           </div>
@@ -85,7 +100,7 @@ const MeetingItem: FC<IMeetingItemProps> = props => {
                 <MdCall />
               </div>
             )}
-            <div className='rce-mtitem-button' onClick={props.onMeetingClick}>
+            <div className='rce-mtitem-button' onClick={onMeetingClick}>
               <MdVideoCall />
             </div>
           </div>

@@ -23,8 +23,8 @@ import { format } from 'timeago.js'
 import classNames from 'classnames'
 import { MessageBoxType } from '../type'
 
-const MessageBox: React.FC<MessageBoxType> = props => {
-  const prevProps = useRef(props)
+const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...props }) => {
+  const prevProps = useRef(focus)
   const messageRef = useRef<HTMLDivElement>(null)
 
   var positionCls = classNames('rce-mbox', { 'rce-mbox-right': props.position === 'right' })
@@ -33,7 +33,7 @@ const MessageBox: React.FC<MessageBoxType> = props => {
   const dateText = props.date && (props.dateString || format(props.date))
 
   useEffect(() => {
-    if (prevProps.current.focus !== props.focus && prevProps.current.focus === true) {
+    if (prevProps.current !== focus && prevProps.current === true) {
       if (messageRef) {
         messageRef.current?.scrollIntoView({
           block: 'center',
@@ -43,21 +43,21 @@ const MessageBox: React.FC<MessageBoxType> = props => {
         props.onMessageFocused(prevProps)
       }
     }
-    prevProps.current = props
-  }, [props.focus, prevProps])
+    prevProps.current = focus
+  }, [focus, prevProps])
 
   return (
     <div ref={messageRef} className={classNames('rce-container-mbox', props.className)} onClick={props.onClick}>
       {/* {props.renderAddCmp instanceof Function && props.renderAddCmp()} */}
       {props.type === 'system' ? (
-        <SystemMessage {...props} />
+        <SystemMessage {...props} focus={focus} notch={notch} />
       ) : (
         <div
           className={classNames(
             positionCls,
             { 'rce-mbox--clear-padding': thatAbsoluteTime },
-            { 'rce-mbox--clear-notch': !props.notch },
-            { 'message-focus': props.focus }
+            { 'rce-mbox--clear-notch': !notch },
+            { 'message-focus': focus }
           )}
         >
           <div className='rce-mbox-body' onContextMenu={props.onContextMenu}>
@@ -144,20 +144,20 @@ const MessageBox: React.FC<MessageBoxType> = props => {
               </div>
             )}
 
-            {props.type === 'location' && <LocationMessage {...props} />}
+            {props.type === 'location' && <LocationMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'photo' && <PhotoMessage {...props} />}
+            {props.type === 'photo' && <PhotoMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'video' && <VideoMessage {...props} />}
+            {props.type === 'video' && <VideoMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'file' && <FileMessage {...props} />}
+            {props.type === 'file' && <FileMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'spotify' && <SpotifyMessage {...props} />}
+            {props.type === 'spotify' && <SpotifyMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'meeting' && <MeetingMessage {...props} />}
-            {props.type === 'audio' && <AudioMessage {...props} />}
+            {props.type === 'meeting' && <MeetingMessage focus={focus} notch={notch} {...props} />}
+            {props.type === 'audio' && <AudioMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'meetingLink' && <MeetingLink {...props} />}
+            {props.type === 'meetingLink' && <MeetingLink focus={focus} notch={notch} {...props} />}
 
             <div
               className={classNames(
@@ -182,10 +182,10 @@ const MessageBox: React.FC<MessageBoxType> = props => {
             </div>
           </div>
 
-          {props.notch &&
+          {notch &&
             (props.position === 'right' ? (
               <svg
-                className={classNames('rce-mbox-right-notch', { 'message-focus': props.focus })}
+                className={classNames('rce-mbox-right-notch', { 'message-focus': focus })}
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 20 20'
               >
@@ -194,7 +194,7 @@ const MessageBox: React.FC<MessageBoxType> = props => {
             ) : (
               <div>
                 <svg
-                  className={classNames('rce-mbox-left-notch', { 'message-focus': props.focus })}
+                  className={classNames('rce-mbox-left-notch', { 'message-focus': focus })}
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'
                 >

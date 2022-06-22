@@ -149,7 +149,8 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                                     tooltip={x.event.avatars
                                       .slice(x.event.avatarsLimit, x.event.avatars.length)
                                       .map(avatar => avatar.title)
-                                      .join(',')}
+                                      .join(',')
+                                      .toString()}
                                   >
                                     <span className='rce-mitem-tooltip-text'>
                                       {'+' + (x.event.avatars.length - x.event.avatarsLimit)}
