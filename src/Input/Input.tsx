@@ -3,33 +3,50 @@ import './Input.css'
 import classNames from 'classnames'
 import { IInputProps } from '../type'
 
-const Input: React.FC<IInputProps> = props => {
+const Input: React.FC<IInputProps> = ({
+  type = "text",
+  placeholder = "",
+  defaultValue = "",
+  onChange = null,
+  rightButtons = null,
+  leftButtons = null,
+  multiline = false,
+  minHeight = 25,
+  maxHeight = 200,
+  autoHeight = true,
+  inputStyle = null,
+  referance = null,
+  maxlength = null,
+  onMaxLengthExceed = null,
+  autofocus = false,
+  ...props
+}) => {
   useEffect(() => {
-    if (props.autofocus === true) props.referance?.referance.current?.focus()
+    if (autofocus === true) referance?.referance.current?.focus()
 
     if (props.clear instanceof Function) {
       props.clear(clear)
     }
   }, [])
 
-  const onChange = (e: any) => {
-    if (props.maxlength && (e.target.value || '').length > props.maxlength) {
-      if (props.onMaxLengthExceed instanceof Function) props.onMaxLengthExceed()
+  const onChangeEvent = (e: any) => {
+    if (maxlength && (e.target.value || '').length > maxlength) {
+      if (onMaxLengthExceed instanceof Function) onMaxLengthExceed()
 
-      if (props.referance?.referance.current?.value == (e.target.value || '').substring(0, props.maxlength)) return
+      if (referance?.referance.current?.value == (e.target.value || '').substring(0, maxlength)) return
     }
 
-    if (props.onChange instanceof Function) props.onChange(e)
+    if (onChange instanceof Function) onChange(e)
 
-    if (props.multiline === true) {
-      if (props.autoHeight === true) {
-        if (e.target.style.height !== props.minHeight + 'px') {
-          e.target.style.height = props.minHeight + 'px'
+    if (multiline === true) {
+      if (autoHeight === true) {
+        if (e.target.style.height !== minHeight + 'px') {
+          e.target.style.height = minHeight + 'px'
         }
 
         let height
-        if (e.target.scrollHeight <= props.maxHeight) height = e.target.scrollHeight + 'px'
-        else height = props.maxHeight + 'px'
+        if (e.target.scrollHeight <= maxHeight) height = e.target.scrollHeight + 'px'
+        else height = maxHeight + 'px'
 
         if (e.target.style.height !== height) {
           e.target.style.height = height
@@ -41,28 +58,28 @@ const Input: React.FC<IInputProps> = props => {
   const clear = () => {
     var _event = {
       FAKE_EVENT: true,
-      target: props.referance?.current,
+      target: referance?.current,
     }
 
-    if (props.referance?.current?.value) {
-      props.referance.current.value = ''
+    if (referance?.current?.value) {
+      referance.current.value = ''
     }
 
-    onChange(_event)
+    onChangeEvent(_event)
   }
 
   return (
     <div className={classNames('rce-container-input', props.className)}>
-      {props.leftButtons && <div className='rce-input-buttons'>{props.leftButtons}</div>}
-      {props.multiline === false ? (
+      {leftButtons && <div className='rce-input-buttons'>{leftButtons}</div>}
+      {multiline === false ? (
         <input
-          ref={props.referance}
-          type={props.type}
+          ref={referance}
+          type={type}
           className={classNames('rce-input')}
-          placeholder={props.placeholder}
-          defaultValue={props.defaultValue}
-          style={props.inputStyle}
-          onChange={onChange}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          style={inputStyle}
+          onChange={onChangeEvent}
           onCopy={props.onCopy}
           onCut={props.onCut}
           onPaste={props.onPaste}
@@ -77,12 +94,12 @@ const Input: React.FC<IInputProps> = props => {
         />
       ) : (
         <textarea
-          ref={props.referance}
+          ref={referance}
           className={classNames('rce-input', 'rce-input-textarea')}
-          placeholder={props.placeholder}
-          defaultValue={props.defaultValue}
-          style={props.inputStyle}
-          onChange={onChange}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          style={inputStyle}
+          onChange={onChangeEvent}
           onCopy={props.onCopy}
           onCut={props.onCut}
           onPaste={props.onPaste}
@@ -96,7 +113,7 @@ const Input: React.FC<IInputProps> = props => {
           onKeyUp={props.onKeyUp}
         ></textarea>
       )}
-      {props.rightButtons && <div className='rce-input-buttons'>{props.rightButtons}</div>}
+      {rightButtons && <div className='rce-input-buttons'>{rightButtons}</div>}
     </div>
   )
 }
