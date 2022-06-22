@@ -2,7 +2,13 @@ import React from 'react'
 import { ISpotifyMessageProps } from '../type'
 import './SpotifyMessage.css'
 
-const SpotifyMessage: React.FC<ISpotifyMessageProps> = props => {
+const SpotifyMessage: React.FC<ISpotifyMessageProps> = ({
+  theme = 'black',
+  view = 'list',
+  width = 300,
+  height = 380,
+  ...props
+}) => {
   const toUrl = (): string => {
     var formBody: string[] | string = []
     for (var property in props) {
@@ -15,13 +21,13 @@ const SpotifyMessage: React.FC<ISpotifyMessageProps> = props => {
     return formBody.join('&')
   }
 
-  if (!props.uri) return null
+  if (props.uri) return null
   return (
     <div className='rce-mbox-spotify'>
       <iframe
         src={'https://open.spotify.com/embed?' + toUrl()}
-        width={props.width}
-        height={props.height}
+        width={width}
+        height={height}
         frameBorder='0'
         allowTransparency={true}
       ></iframe>

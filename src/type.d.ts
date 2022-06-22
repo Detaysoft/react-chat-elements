@@ -925,7 +925,7 @@ export interface IDropdownItemIcon {
  * @type type The Side Bar's type and optional.
  * @type data The Side Bar's data is ISideBar and optional.
  */
-export interface ISideBarProps {
+export interface ISideBarProps extends ISideBar {
   type?: string
   data: ISideBar
 }
