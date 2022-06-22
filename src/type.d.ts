@@ -777,8 +777,8 @@ export interface IMessageDataStatus {
   status: {
     autoDownload?: boolean
     error?: boolean
-    download?: Function
-    click?: Function
+    download?: Function | boolean
+    click?: Function | boolean
     loading?: boolean | number
   }
 }

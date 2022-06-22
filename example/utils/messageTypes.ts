@@ -1,5 +1,5 @@
 import loremIpsum from 'lorem-ipsum'
-import { IMessageBoxProps, MessageBoxType, MessageType } from '../../src/type'
+import { MessageType } from '../../src/type'
 import { getRandomColor, photo, token } from './common'
 
 export const photoMessage: MessageType = {
@@ -17,11 +17,14 @@ export const photoMessage: MessageType = {
   text: loremIpsum({ count: 1, units: 'sentences' }),
   titleColor: getRandomColor(),
   uri: `data:image/png;base64,${photo(150)}`,
-  status: {
-    click: true,
-    loading: 0.5,
-    download: false, //type === "video",
-    error: false,
+  status: 'sent',
+  data: {
+    status: {
+      click: true,
+      loading: 0.5,
+      download: false, //type === "video",
+      error: false,
+    },
   },
   width: 300,
   height: 300,
@@ -66,12 +69,15 @@ export const locationMessage: MessageType = {
 
 export const fileMessage: MessageType = {
   type: 'file',
-  status: {
-    click: () => {},
-    loading: 0.5,
-    download: () => {}, //item === "video",
-    error: false,
+  data: {
+    status: {
+      click: () => {},
+      loading: 0.5,
+      download: () => {}, //item === "video",
+      error: false,
+    },
   },
+  status: 'read',
   size: '100MB',
   id: String(Math.random()),
   position: token() >= 1 ? 'right' : 'left',
@@ -172,11 +178,14 @@ export const videoMessage: MessageType = {
   removeButton: true,
   videoURL: token() >= 1 ? 'https://www.w3schools.com/html/mov_bbb.mp4' : 'http://www.exit109.com/~dnn/clips/RW20seconds_1.mp4',
   uri: `data:image/png;base64,${photo(150)}`,
-  status: {
-    click: true,
-    loading: 0.5,
-    download: true, //item === "video",
-    error: false,
+  status: 'read',
+  data: {
+    status: {
+      click: true,
+      loading: 0.5,
+      download: true, //item === "video",
+      error: false,
+    },
   },
   width: 300,
   height: 200,
