@@ -168,24 +168,18 @@ export interface IMessage {
   letterItem?: ILetterItem
   reply?: IReplyMessage | any
   type: string
+  data?: IMessageDataStatus
 }
 
 /**
- * IPhotoMessage Interface extends Omit<IMessage, "status">
+ * IPhotoMessage Interface
  * @prop type The Photo Message's type is "photo" and required.
- * @prop status The Photo Message's status and optional.
  * @prop width The Photo Message's width and optional.
  * @prop height The Photo Message's height and optional.
  * @prop uri The Photo Message's uri and required.
  * @prop alt The Photo Message's alt and optional.
  */
-export interface IPhotoMessage extends Omit<IMessage, 'status'> {
-  status?: {
-    error?: boolean
-    loading?: number
-    download?: boolean
-    click?: boolean
-  }
+export interface IPhotoMessage extends IMessage {
   width?: number
   height?: number
   uri: string
@@ -201,8 +195,7 @@ export interface IPhotoMessage extends Omit<IMessage, 'status'> {
  * @prop onLoad The Photo Message's function onLoad(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onError The Photo Message's function onError(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
-export interface IPhotoMessageProps {
-  message: IPhotoMessage
+export interface IPhotoMessageProps extends IPhotoMessage {
   onDownload?: React.MouseEventHandler
   onOpen?: React.MouseEventHandler
   onLoad?: React.ReactEventHandler
@@ -216,8 +209,8 @@ export interface IPhotoMessageProps {
  * @prop message The Reply Message's message and optional.
  */
 export interface IReplyMessage extends IMessage {
-  photoURL?: string
-  message?: string
+  message: string
+  photoURL: string
 }
 
 /**
@@ -226,8 +219,7 @@ export interface IReplyMessage extends IMessage {
  * @prop message The Reply Message's message is a IReplyMessage and required.
  * @prop onClick The Reply Message's function onClick(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
-export interface IReplyMessageProps {
-  message: IReplyMessage
+export interface IReplyMessageProps extends IReplyMessage {
   onClick?: React.MouseEventHandler
 }
 
@@ -273,10 +265,8 @@ export interface IMeetingMessage extends IMessage {
  * @prop onMeetingVideoLinkClick The Meeting Message's function onMeetingVideoLinkClick(item: IMeetingMessage, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
  * @prop onMeetingMoreSelect The Meeting Message's function onMeetingMoreSelect  and optional.
  */
-export interface IMeetingMessageProps {
+export interface IMeetingMessageProps extends IMeetingMessage {
   subject?: string
-  title?: string
-  date?: Date
   dateString?: string
   collapseTitle?: string
   participants?: Array<{
@@ -292,7 +282,6 @@ export interface IMeetingMessageProps {
       size?: number
     }
   }>
-  message: IMeetingMessage
   dataSource?: IMeetingMessage[]
   participantsLimit?: number
   onClick?: React.MouseEventHandler
@@ -302,27 +291,20 @@ export interface IMeetingMessageProps {
 }
 
 /**
- * IVideoMessage Interface extends Omit<IMessage, "status">
+ * IVideoMessage Interface
  * @prop type The Video Message's type is "video" and required.
  * @prop videoURL The Video Message's videoURL and required.
  * @prop uri The Video Message's uri and required.
  * @prop width The Video Message's width and optional.
  * @prop height The Video Message's height and optional.
  * @prop alt The Video Message's alt and optional.
- * @prop status The Video Message's status and optional.
  */
-export interface IVideoMessage extends Omit<IMessage, 'status'> {
+export interface IVideoMessage extends IMessage {
   videoURL: string
   uri: string
   width?: number | 0
   height?: number | 0
   alt?: string
-  status: {
-    error?: boolean
-    download?: boolean
-    click?: boolean
-    loading?: number
-  }
 }
 
 /**
@@ -334,8 +316,7 @@ export interface IVideoMessage extends Omit<IMessage, 'status'> {
  * @prop onLoad The Video Message's function onLoad(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onPhotoError The Video Message's function onPhotoError(event: React.SyntheticEvent<T, Event>) and optional.
  */
-export interface IVideoMessageProps {
-  message: IVideoMessage
+export interface IVideoMessageProps extends IVideoMessage {
   onDownload?: React.MouseEventHandler
   onOpen?: React.MouseEventHandler
   onLoad?: React.ReactEventHandler
@@ -357,8 +338,7 @@ export interface ISystemMessage extends IMessage {
  * @prop message The System Message's message is ISystemMessage and required.
  * @prop className The System Message's className and optional.
  */
-export interface ISystemMessageProps {
-  message: ISystemMessage
+export interface ISystemMessageProps extends ISystemMessage {
   className?: string
 }
 
@@ -385,8 +365,7 @@ export interface IAudioMessage extends IMessage {
  * @prop onDownload The Audio Message's function onDownload(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onLoad The Audio Message's function onLoad(event: React.SyntheticEvent<T, Event>) and optional.
  */
-export interface IAudioMessageProps {
-  message: IAudioMessage
+export interface IAudioMessageProps extends IAudioMessage {
   audioProps?: {
     [key: string]: unknown
   }
@@ -397,13 +376,11 @@ export interface IAudioMessageProps {
 }
 
 /**
- * IFileMessage Interface extends Omit<IMessage, "status">
+ * IFileMessage Interface
  * @prop type The File Message's type is "file" and required.
- * @prop status The File Message's status is a IFileMessageDataStatus and optional.
  * @prop size The File Message's size and optional.
  */
-export interface IFileMessage extends Omit<IMessage, 'status'> {
-  status?: IFileMessageDataStatus
+export interface IFileMessage extends IMessage {
   size?: string
 }
 
@@ -415,15 +392,13 @@ export interface IFileMessage extends Omit<IMessage, 'status'> {
  * @prop onDownload The File Message's function onDownload and optional.
  * @prop onOpen The File Message's function onOpen(event: React.MouseEvent<Element, MouseEvent>) and optional.
  */
-export interface IFileMessageProps {
-  message: IFileMessage
-  text?: string
+export interface IFileMessageProps extends IFileMessage {
   onDownload?: Function
   onOpen?: React.MouseEventHandler
 }
 
 /**
- * ILocationMessage Interface extends IMessage
+ * ILocationMessage Interface
  * @prop type The Location Message's type is "location" and required.
  * @prop latitude The Location Message's latitude and required.
  * @prop longitude The Location Message's longitude and required.
@@ -452,13 +427,11 @@ export interface ILocationMessage extends IMessage {
  * @prop onOpen The Location Message's function onOpen(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onError The Location Message's function onError(event: React.SyntheticEvent<T, Event>) and optional.
  */
-export interface ILocationMessageProps {
-  message: ILocationMessage
+export interface ILocationMessageProps extends ILocationMessage {
   markerColor: string
   zoom: string
   apiKey: string
   className?: string
-  text?: string
   src?: string
   target?: string
   href?: string
@@ -476,13 +449,12 @@ export interface ILocationMessageProps {
  * @prop height The Spotify Message's height and optional.
  * @prop text The Spotify Message's text and optional.
  */
-export interface ISpotifyMessage extends Omit<IMessage, 'text'> {
+export interface ISpotifyMessage extends IMessage {
   uri: string
   theme?: string
   view?: string
   width?: number | string
   height?: number | string
-  text?: string
 }
 
 /**
@@ -490,9 +462,7 @@ export interface ISpotifyMessage extends Omit<IMessage, 'text'> {
  * @prop type The Spotify Message's type is "spotify" and required.
  * @prop message The Spotify Message's message is a ISpotifyMessage and required.
  */
-export interface ISpotifyMessageProps {
-  message: ISpotifyMessage
-}
+export interface ISpotifyMessageProps extends ISpotifyMessage {}
 
 /**
  * IMessageBoxProps Interface
@@ -515,7 +485,6 @@ export interface ISpotifyMessageProps {
  * @prop onMeetingVideoLinkClick The Message Box'es function onMeetingVideoLinkClick(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 export interface IMessageBoxProps {
-  data: MessageType
   onMessageFocused?: any
   renderAddCmp?: React.Component
   onClick?: React.MouseEventHandler
@@ -574,7 +543,7 @@ export interface IMessageListProps {
   children?: React.ReactNode
   isShowChild?: boolean
   referance: any
-  dataSource: IMessageBoxProps[]
+  dataSource: MessageType[]
   lockable: boolean
   toBottomHeight?: String | number
   downButton: boolean
@@ -606,7 +575,7 @@ export interface IMessageListProps {
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
  */
-export type MessageListEvent = (item: IMessageBoxProps, index: number, event: React.MouseEvent<HTMLElement>) => any
+export type MessageListEvent = (item: MessageType, index: number, event: React.MouseEvent<HTMLElement>) => any
 
 /**
  * IProgressOptions Interface
@@ -624,9 +593,8 @@ export interface IProgressOptions {
  * @prop meetingID The Meeting Link Message's meeting id and optional.
  * @prop title The Meeting Link Message's title and optional.
  */
-export interface IMeetingLinkMessage extends Omit<IMessage, 'title'> {
+export interface IMeetingLinkMessage extends IMessage {
   meetingID?: string
-  title?: string
 }
 
 /**
@@ -636,10 +604,8 @@ export interface IMeetingLinkMessage extends Omit<IMessage, 'title'> {
  * @prop onMeetingLinkClick The Meeting Link Message's function onMeetingLinkClick(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onMeetingMoreSelect The Meeting More Select Message's function onMeetingMoreSelect(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
-export interface IMeetingLinkMessageProps {
-  message: IMeetingLinkMessage
+export interface IMeetingLinkMessageProps extends IMeetingLinkMessage {
   onMeetingLinkClick?: (id: string) => void
-  onMeetingMoreSelect?: (id: string) => void
 }
 
 /**
@@ -661,9 +627,7 @@ export interface ITextMessage extends IMessage {}
  * @prop type The Text Message's type is "text" and required.
  * @prop message The Text Message's message is a ITextMessage and required.
  */
-export interface ITextMessageProps {
-  type?: 'text'
-  message: ITextMessage
+export interface ITextMessageProps extends ITextMessage {
   // copyClipboard: function;
 }
 
@@ -809,11 +773,14 @@ export interface IInputProps {
  * @prop click The File Message Data Status's click function and optional.
  * @prop loading The File Message Data Status's loading and optional.
  */
-export interface IFileMessageDataStatus {
-  error?: boolean
-  download?: Function
-  click?: Function
-  loading?: number
+export interface IMessageDataStatus {
+  status: {
+    autoDownload?: boolean
+    error?: boolean
+    download?: Function
+    click?: Function
+    loading?: boolean | number
+  }
 }
 
 /**
@@ -1056,7 +1023,6 @@ export interface INavbarProps {
  * @type IFileMessageProps
  * @type ITextMessageProps
  * @type ISystemMessageProps
- * @type IReplyMessageProps
  * @type IMeetingMessageProps
  */
 export type MessageType =
@@ -1069,8 +1035,9 @@ export type MessageType =
   | ({ type: 'file' } & IFileMessageProps)
   | ({ type: 'text' } & ITextMessageProps)
   | ({ type: 'system' } & ISystemMessageProps)
-  | ({ type: 'reply' } & IReplyMessageProps)
   | ({ type: 'meeting' } & IMeetingMessageProps)
+
+export type MessageBoxType = MessageType & IMessageBoxProps
 
 export class ChatItem extends React.Component<IChatItemProps> {}
 export class ChatList extends React.Component<IChatListProps> {}
@@ -1080,12 +1047,15 @@ export class PhotoMessage extends React.Component<IPhotoMessageProps> {}
 export class VideoMessage extends React.Component<IVideoMessageProps> {}
 export class SpotifyMessage extends React.Component<ISpotifyMessageProps> {}
 export class AudioMessage extends React.Component<IAudioMessageProps> {}
-export class MeetingLinkMessage extends React.Component<IMeetingLinkMessageProps> {}
+export class MeetingLink extends React.Component<IMeetingLinkMessageProps> {}
 export class FileMessage extends React.Component<IFileMessageProps> {}
 export class TextMessage extends React.Component<ITextMessageProps> {}
 export class SystemMessage extends React.Component<ISystemMessageProps> {}
 export class ReplyMessage extends React.Component<IReplyMessageProps> {}
 export class MeetingMessage extends React.Component<IMeetingMessageProps> {}
+export class MeetingItem extends React.Component<IMeetingItemProps> {}
+export class MeetingList extends React.Component<IMeetingListProps> {}
+export class MessageList extends React.Component<IMessageListProps> {}
 
 export class Popup extends React.Component<IPopupProps> {}
 export class Avatar extends React.Component<IAvatarProps> {}

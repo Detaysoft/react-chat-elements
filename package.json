@@ -3,9 +3,9 @@
   "version": "12.0.0",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "types": "dist/type.d.ts",
-  "module": "dist/index.es.js",
+  "module": "dist/main.es.js",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/preset-react": "^7.17.12",

@@ -5,23 +5,23 @@ import './SpotifyMessage.css'
 const SpotifyMessage: React.FC<ISpotifyMessageProps> = props => {
   const toUrl = (): string => {
     var formBody: string[] | string = []
-    for (var property in props.message) {
+    for (var property in props) {
       var encodedKey = encodeURIComponent(property)
       // @ts-ignore
-      var encodedValue = encodeURIComponent(props.message[property])
+      var encodedValue = encodeURIComponent(props[property])
       formBody.push(encodedKey + '=' + encodedValue)
     }
 
     return formBody.join('&')
   }
 
-  if (!props.message.uri) return null
+  if (!props.uri) return null
   return (
     <div className='rce-mbox-spotify'>
       <iframe
         src={'https://open.spotify.com/embed?' + toUrl()}
-        width={props.message.width}
-        height={props.message.height}
+        width={props.width}
+        height={props.height}
         frameBorder='0'
         allowTransparency={true}
       ></iframe>

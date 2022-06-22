@@ -3,15 +3,15 @@ import { IAudioMessageProps } from '../type'
 import './AudioMessage.css'
 
 const AudioMessage: React.FC<IAudioMessageProps> = props => {
-  const controlsList = props.message.controlsList
+  const controlsList = props.controlsList
 
   return (
     <div className={'rce-mbox-audio'} style={props.customStyle}>
       <audio {...props.audioProps} controls controlsList={controlsList ? controlsList : 'nodownload'}>
-        <source src={props.message.audioURL} type={props.message.audioType || 'audio/mp3'} />
+        <source src={props.audioURL} type={props.audioType || 'audio/mp3'} />
         Your browser does not support the audio element.
       </audio>
-      {props.message.text && <div className='rce-mbox-text'>{props.message.text}</div>}
+      {props.text && <div className='rce-mbox-text'>{props.text}</div>}
     </div>
   )
 }

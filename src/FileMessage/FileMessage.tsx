@@ -27,13 +27,13 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
     },
   }
 
-  const error = props?.message?.status && props.message.status.error === true
+  const error = props?.data?.status && props?.data?.status.error === true
 
   const onClick = (e: React.MouseEvent) => {
-    if (!props?.message?.status) return
+    if (!props?.data?.status) return
 
-    if (!props.message.status.download && props.onDownload instanceof Function) props.onDownload(e)
-    else if (props.message.status.download && props.onOpen instanceof Function) props.onOpen(e)
+    if (!props?.data?.status.download && props.onDownload instanceof Function) props.onDownload(e)
+    else if (props?.data?.status.download && props.onOpen instanceof Function) props.onOpen(e)
   }
 
   return (
@@ -41,7 +41,7 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
       <button onClick={onClick}>
         <div className='rce-mbox-file--icon'>
           <FaFile color='#aaa' />
-          <div className='rce-mbox-file--size'>{props?.message?.size}</div>
+          <div className='rce-mbox-file--size'>{props?.size}</div>
         </div>
         <div className='rce-mbox-file--text'>{props.text}</div>
         <div className='rce-mbox-file--buttons'>
@@ -50,15 +50,15 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
               <FaExclamationTriangle color='#ff3d3d' />
             </span>
           )}
-          {!error && props?.message?.status && !props?.message?.status.download && !props.message.status.click && (
+          {!error && props?.data?.status && !props?.data?.status.download && !props?.data?.status.click && (
             <FaCloudDownloadAlt color='#aaa' />
           )}
           {!error &&
-            props?.message?.status &&
-            typeof props.message.status.loading === 'number' &&
-            props.message.status.loading !== 0 && (
+            props?.data?.status &&
+            typeof props?.data?.status.loading === 'number' &&
+            props?.data?.status.loading !== 0 && (
               <ProgressCircle
-                animate={props.message.status.loading}
+                animate={props?.data?.status.loading}
                 className='rce-mbox-file--loading'
                 progressOptions={progressOptions}
               />

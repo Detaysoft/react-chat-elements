@@ -31,38 +31,32 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
     },
   }
 
-  const error = props.message?.status && props.message?.status.error === true
-  const downloaded = props.message?.status && props.message?.status.download
+  const error = props?.data?.status && props?.data?.status.error === true
+  const downloaded = props?.data?.status && props?.data?.status.download
 
   return (
     <div
       className={classNames('rce-mbox-video', {
-        'padding-time': !props.message?.text,
+        'padding-time': !props?.text,
       })}
     >
       <div
         className='rce-mbox-video--video'
         style={{
-          ...(props.message?.width &&
-            props.message?.height && {
-              width: props.message.width,
-              height: props.message.height,
+          ...(props?.width &&
+            props?.height && {
+              width: props.width,
+              height: props.height,
             }),
         }}
       >
         {!downloaded && (
-          <img
-            src={props.message?.uri}
-            alt={props.message?.alt}
-            onClick={props.onOpen}
-            onLoad={props.onLoad}
-            onError={props.onPhotoError}
-          />
+          <img src={props?.uri} alt={props?.alt} onClick={props.onOpen} onLoad={props.onLoad} onError={props.onPhotoError} />
         )}
 
         {downloaded && (
           <video controls>
-            <source src={props.message?.videoURL} type='video/mp4' />
+            <source src={props?.videoURL} type='video/mp4' />
             Your browser does not support HTML video.
           </video>
         )}
@@ -74,16 +68,16 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
             </span>
           </div>
         )}
-        {!error && props.message?.status && !downloaded && (
+        {!error && props?.data?.status && !downloaded && (
           <div className='rce-mbox-video--video__block'>
-            {!props.message.status.click && (
+            {!props.data.status.click && (
               <button onClick={props.onDownload} className='rce-mbox-video--video__block-item rce-mbox-video--download'>
                 <FaCloudDownloadAlt />
               </button>
             )}
-            {typeof props.message.status.loading === 'number' && props.message.status.loading !== 0 && (
+            {typeof props.data.status.loading === 'number' && props.data.status.loading !== 0 && (
               <ProgressCircle
-                animate={props.message.status.loading}
+                animate={props.data.status.loading}
                 className='rce-mbox-video--video__block-item'
                 progressOptions={progressOptions}
               />
@@ -91,7 +85,7 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
           </div>
         )}
       </div>
-      {props.message?.text && <div className='rce-mbox-text'>{props.message.text}</div>}
+      {props?.text && <div className='rce-mbox-text'>{props.text}</div>}
     </div>
   )
 }

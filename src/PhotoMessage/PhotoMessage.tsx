@@ -29,27 +29,21 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
     },
   }
 
-  const error = props.message?.status && props.message?.status.error === true
+  const error = props?.data?.status && props?.data?.status.error === true
 
   return (
     <div className='rce-mbox-photo'>
       <div
         className='rce-mbox-photo--img'
         style={{
-          ...(props.message?.width &&
-            props.message?.height && {
-              width: props.message.width,
-              height: props.message.height,
+          ...(props?.width &&
+            props?.height && {
+              width: props.width,
+              height: props.height,
             }),
         }}
       >
-        <img
-          src={props.message?.uri}
-          alt={props.message?.alt}
-          onClick={props.onOpen}
-          onLoad={props.onLoad}
-          onError={props.onPhotoError}
-        />
+        <img src={props?.uri} alt={props?.alt} onClick={props.onOpen} onLoad={props.onLoad} onError={props.onPhotoError} />
         {error && (
           <div className='rce-mbox-photo--img__block'>
             <span className='rce-mbox-photo--img__block-item rce-mbox-photo--error'>
@@ -57,16 +51,16 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
             </span>
           </div>
         )}
-        {!error && props.message?.status && !props.message?.status?.download && (
+        {!error && props?.data?.status && !props?.data?.status?.download && (
           <div className='rce-mbox-photo--img__block'>
-            {!props.message.status.click && (
+            {!props?.data?.status.click && (
               <button onClick={props.onDownload} className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
                 <FaCloudDownloadAlt />
               </button>
             )}
-            {typeof props.message.status.loading === 'number' && props.message.status.loading !== 0 && (
+            {typeof props?.data?.status.loading === 'number' && props?.data?.status.loading !== 0 && (
               <ProgressCircle
-                animate={props.message.status.loading}
+                animate={props?.data?.status.loading}
                 progressOptions={progressOptions}
                 className='rce-mbox-photo--img__block-item'
               />
@@ -74,7 +68,7 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
           </div>
         )}
       </div>
-      {props.message?.text && <div className='rce-mbox-text'>{props.message.text}</div>}
+      {props?.text && <div className='rce-mbox-text'>{props.text}</div>}
     </div>
   )
 }

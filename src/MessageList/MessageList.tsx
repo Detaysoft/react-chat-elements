@@ -132,7 +132,7 @@ const MessageList: FC<IMessageListProps> = props => {
         {props.dataSource.map((x, i: number) => (
           <MessageBox
             key={i as Key}
-            {...x}
+            {...(x as any)}
             // data={x}
             onOpen={props.onOpen && ((e: React.MouseEvent<HTMLElement>) => onOpen(x, i, e))}
             onPhotoError={props.onPhotoError && ((e: React.MouseEvent<HTMLElement>) => onPhotoError(x, i, e))}

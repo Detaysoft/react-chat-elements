@@ -8,20 +8,20 @@ const ReplyMessage: React.FC<IReplyMessageProps> = props => {
   return (
     <div
       className={classNames('rce-mbox-reply', {
-        'rce-mbox-reply-border': !!props.message.titleColor,
+        'rce-mbox-reply-border': !!props.titleColor,
       })}
-      style={{ ...(props.message.titleColor && { borderColor: props.message.titleColor }) }}
+      style={{ ...(props.titleColor && { borderColor: props.titleColor }) }}
       onClick={props.onClick}
     >
       <div className='rce-mbox-reply-left'>
-        <div style={{ ...(props.message.titleColor && { color: props.message.titleColor }) }} className='rce-mbox-reply-owner'>
-          {props.message.title || 'Unknown'}
+        <div style={{ ...(props.titleColor && { color: props.titleColor }) }} className='rce-mbox-reply-owner'>
+          {props.title || 'Unknown'}
         </div>
-        <div className='rce-mbox-reply-message'>{props.message.message || '...'}</div>
+        <div className='rce-mbox-reply-message'>{props.message || '...'}</div>
       </div>
-      {props.message.photoURL && (
+      {props.photoURL && (
         <div className='rce-mbox-reply-right'>
-          <img src={props.message.photoURL} alt='' />
+          <img src={props.photoURL} alt='' />
         </div>
       )}
     </div>
