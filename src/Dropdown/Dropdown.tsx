@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './Dropdown.css'
 import classNames from 'classnames'
 import Button from '../Button/Button'
 import { IDropdownProps, IDropdownItemType } from '../type'
 
-const Dropdown: React.FC<IDropdownProps> = props => {
-  const [show, setShow] = useState<boolean>(false)
+const Dropdown: React.FC<IDropdownProps> = ({ animationPosition = 'nortwest', animationType = 'default', ...props }) => {
+  const [show, setShow] = useState<boolean>(undefined)
 
   const onBlur = () => {
     if (show === true) setShow(false)
@@ -17,8 +17,8 @@ const Dropdown: React.FC<IDropdownProps> = props => {
       <div
         className={classNames(
           'rce-dropdown',
-          props.animationType,
-          'rce-dropdown-open__' + props.animationPosition,
+          animationType,
+          'rce-dropdown-open__' + animationPosition,
           { 'dropdown-hide': show === false },
           { 'dropdown-show': show === true }
         )}

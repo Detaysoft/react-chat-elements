@@ -41,7 +41,7 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
       <button onClick={onClick}>
         <div className='rce-mbox-file--icon'>
           <FaFile color='#aaa' />
-          <div className='rce-mbox-file--size'>{props?.size}</div>
+          <div className='rce-mbox-file--size'>{props?.data.size}</div>
         </div>
         <div className='rce-mbox-file--text'>{props.text}</div>
         <div className='rce-mbox-file--buttons'>

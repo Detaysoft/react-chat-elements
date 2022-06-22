@@ -168,7 +168,6 @@ export interface IMessage {
   letterItem?: ILetterItem
   reply?: IReplyMessage | any
   type: string
-  data?: IMessageDataStatus
 }
 
 /**
@@ -180,10 +179,17 @@ export interface IMessage {
  * @prop alt The Photo Message's alt and optional.
  */
 export interface IPhotoMessage extends IMessage {
-  width?: number
-  height?: number
-  uri: string
-  alt?: string
+  data?: {
+    status: IMessageDataStatus
+    uri: string
+    width?: number
+    height?: number
+    name?: string
+    extension?: string
+    size?: number
+    id?: string
+    alt?: string
+  }
 }
 
 /**
@@ -300,11 +306,20 @@ export interface IMeetingMessageProps extends IMeetingMessage {
  * @prop alt The Video Message's alt and optional.
  */
 export interface IVideoMessage extends IMessage {
-  videoURL: string
-  uri: string
-  width?: number | 0
-  height?: number | 0
-  alt?: string
+  controlsList: string
+  data: {
+    videoURL?: string
+    thumbnailURL?: string
+    width?: number
+    height?: number
+    name?: string
+    extension?: string
+    size?: string
+    alt?: string
+    id?: string
+    uri?: string
+    status?: IMessageDataStatus
+  }
 }
 
 /**
@@ -350,9 +365,16 @@ export interface ISystemMessageProps extends ISystemMessage {
  * @prop controlsList The Audio Message's controls list and optional.
  */
 export interface IAudioMessage extends IMessage {
-  audioURL: string
-  audioType?: 'audio/mp3' | string
-  controlsList?: string
+  data: {
+    audioURL?: string
+    extension?: string
+    name?: string
+    size?: string
+    duration?: number
+    id?: string
+    audioType?: 'audio/mp3' | string
+    controlsList?: string
+  }
 }
 
 /**
@@ -381,7 +403,14 @@ export interface IAudioMessageProps extends IAudioMessage {
  * @prop size The File Message's size and optional.
  */
 export interface IFileMessage extends IMessage {
-  size?: string
+  data: {
+    name?: string
+    extension?: string
+    size?: string
+    id?: string
+    uri?: string
+    status?: IMessageDataStatus
+  }
 }
 
 /**
@@ -406,10 +435,12 @@ export interface IFileMessageProps extends IFileMessage {
  * @prop mapURL The Location Message's map url and optional.
  */
 export interface ILocationMessage extends IMessage {
-  latitude: string
-  longitude: string
-  staticURL: string
-  mapURL?: string
+  data: {
+    latitude: string
+    longitude: string
+    staticURL: string
+    mapURL?: string
+  }
 }
 
 /**
@@ -767,20 +798,18 @@ export interface IInputProps {
 }
 
 /**
- * IFileMessageDataStatus Interface
+ * IMessageDataStatus Interface
  * @prop error The File Message Data Status's error and optional.
  * @prop download The File Message Data Status's download function and optional.
  * @prop click The File Message Data Status's click function and optional.
  * @prop loading The File Message Data Status's loading and optional.
  */
 export interface IMessageDataStatus {
-  status: {
-    autoDownload?: boolean
-    error?: boolean
-    download?: Function | boolean
-    click?: Function | boolean
-    loading?: boolean | number
-  }
+  autoDownload?: boolean
+  error?: boolean
+  download?: Function | boolean
+  click?: Function | boolean
+  loading?: boolean | number
 }
 
 /**

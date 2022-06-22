@@ -36,14 +36,20 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
       <div
         className='rce-mbox-photo--img'
         style={{
-          ...(props?.width &&
-            props?.height && {
-              width: props.width,
-              height: props.height,
+          ...(props?.data?.width &&
+            props?.data?.height && {
+              width: props.data.width,
+              height: props.data.height,
             }),
         }}
       >
-        <img src={props?.uri} alt={props?.alt} onClick={props.onOpen} onLoad={props.onLoad} onError={props.onPhotoError} />
+        <img
+          src={props?.data?.uri}
+          alt={props?.data?.alt}
+          onClick={props.onOpen}
+          onLoad={props.onLoad}
+          onError={props.onPhotoError}
+        />
         {error && (
           <div className='rce-mbox-photo--img__block'>
             <span className='rce-mbox-photo--img__block-item rce-mbox-photo--error'>
