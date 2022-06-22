@@ -1,5 +1,4 @@
-import loremIpsum from 'lorem-ipsum'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Button from '../../src/Button/Button'
 import Input from '../../src/Input/Input'
 import MessageList from '../../src/MessageList/MessageList'
@@ -15,7 +14,7 @@ import {
   systemMessage,
   textMessage,
   videoMessage,
-} from '../utils/messageTypes'
+} from '../utils/MessageTypes'
 
 let clearRef = () => {}
 
