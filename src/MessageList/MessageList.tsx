@@ -7,34 +7,42 @@ import classNames from 'classnames'
 import { FaChevronDown } from 'react-icons/fa'
 import { IMessageListProps, MessageListEvent } from '../type'
 
-const MessageList: FC<IMessageListProps> = props => {
+const MessageList: FC<IMessageListProps> = ({
+  referance = null,
+  dataSource = [],
+  lockable = false,
+  toBottomHeight = 300,
+  downButton = true,
+  downButtonBadge = null,
+  ...props
+}) => {
   const [scrollBottom, setScrollBottom] = useState(0)
-  const [downButton, setDownButton] = useState(false)
-  const prevProps = useRef(props)
+  const [_downButton, setDownButton] = useState(false)
+  const prevProps = useRef(dataSource)
 
   const checkScroll = () => {
-    var e = props.referance
+    var e = referance
     if (!e || !e.current) return
 
-    if (props.toBottomHeight === '100%' || (props.toBottomHeight && scrollBottom < props.toBottomHeight)) {
+    if (toBottomHeight === '100%' || (toBottomHeight && scrollBottom < toBottomHeight)) {
       e.current.scrollTop = e.current.scrollHeight // scroll to bottom
     } else {
-      if (props.lockable === true) {
+      if (lockable === true) {
         e.current.scrollTop = e.current.scrollHeight - e.current.offsetHeight - scrollBottom
       }
     }
   }
 
   useEffect(() => {
-    if (!props.referance) return
+    if (!referance) return
 
-    if (prevProps.current.dataSource.length !== props.dataSource.length) {
-      setScrollBottom(getBottom(props.referance))
+    if (prevProps.current.length !== dataSource.length) {
+      setScrollBottom(getBottom(referance))
       checkScroll()
     }
 
-    prevProps.current = props
-  }, [prevProps, props.dataSource])
+    prevProps.current = dataSource
+  }, [prevProps, dataSource])
 
   const getBottom = (e: any) => {
     if (e.current) return e.current.scrollHeight - e.current.scrollTop - e.current.offsetHeight
@@ -92,13 +100,13 @@ const MessageList: FC<IMessageListProps> = props => {
   const onScroll = (e: React.UIEvent<HTMLElement>): void => {
     var bottom = getBottom(e.currentTarget)
     setScrollBottom(bottom)
-    if (props.toBottomHeight === '100%' || (props.toBottomHeight && bottom > props.toBottomHeight)) {
-      if (downButton !== true) {
+    if (toBottomHeight === '100%' || (toBottomHeight && bottom > toBottomHeight)) {
+      if (_downButton !== true) {
         setDownButton(true)
         setScrollBottom(bottom)
       }
     } else {
-      if (downButton !== false) {
+      if (_downButton !== false) {
         setDownButton(false)
         setScrollBottom(bottom)
       }
@@ -110,8 +118,8 @@ const MessageList: FC<IMessageListProps> = props => {
   }
 
   const toBottom = (e: any) => {
-    if (!props.referance) return
-    props.referance.current.scrollTop = props.referance.current.scrollHeight
+    if (!referance) return
+    referance.current.scrollTop = referance.current.scrollHeight
     if (props.onDownButtonClick instanceof Function) {
       props.onDownButtonClick(e)
     }
@@ -128,8 +136,8 @@ const MessageList: FC<IMessageListProps> = props => {
   return (
     <div className={classNames(['rce-container-mlist', props.className])} {...props.customProps}>
       {!!props.children && props.isShowChild && props.children}
-      <div ref={props.referance} onScroll={onScroll} className='rce-mlist'>
-        {props.dataSource.map((x, i: number) => (
+      <div ref={referance} onScroll={onScroll} className='rce-mlist'>
+        {dataSource.map((x, i: number) => (
           <MessageBox
             key={i as Key}
             {...(x as any)}
@@ -161,10 +169,10 @@ const MessageList: FC<IMessageListProps> = props => {
           />
         ))}
       </div>
-      {props.downButton === true && downButton && props.toBottomHeight !== '100%' && (
+      {downButton === true && _downButton && toBottomHeight !== '100%' && (
         <div className='rce-mlist-down-button' onClick={toBottom}>
           <FaChevronDown />
-          {props.downButtonBadge > 0 && <span className='rce-mlist-down-button--badge'>{props.downButtonBadge.toString()}</span>}
+          {downButtonBadge > 0 && <span className='rce-mlist-down-button--badge'>{downButtonBadge.toString()}</span>}
         </div>
       )}
     </div>
