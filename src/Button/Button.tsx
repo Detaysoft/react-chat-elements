@@ -11,13 +11,12 @@ const Button: React.FC<IButtonProps> = ({
   color = 'white',
   className = null,
   buttonRef = null,
-  title = null,
   ...props
 }) => {
   return (
     <button
       ref={buttonRef}
-      title={title}
+      title={props.title}
       className={classNames('rce-button', type, className)}
       style={{
         backgroundColor: backgroundColor,

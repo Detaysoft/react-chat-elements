@@ -5,7 +5,7 @@ import Button from '../Button/Button'
 import { IDropdownProps, IDropdownItemType } from '../type'
 
 const Dropdown: React.FC<IDropdownProps> = ({ animationPosition = 'nortwest', animationType = 'default', ...props }) => {
-  const [show, setShow] = useState<boolean>(undefined)
+  const [show, setShow] = useState<boolean | undefined>(undefined)
 
   const onBlur = () => {
     if (show === true) setShow(false)

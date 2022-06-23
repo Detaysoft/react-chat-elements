@@ -13,7 +13,6 @@ const MessageList: FC<IMessageListProps> = ({
   lockable = false,
   toBottomHeight = 300,
   downButton = true,
-  downButtonBadge = null,
   ...props
 }) => {
   const [scrollBottom, setScrollBottom] = useState(0)
@@ -172,7 +171,7 @@ const MessageList: FC<IMessageListProps> = ({
       {downButton === true && _downButton && toBottomHeight !== '100%' && (
         <div className='rce-mlist-down-button' onClick={toBottom}>
           <FaChevronDown />
-          {downButtonBadge > 0 && <span className='rce-mlist-down-button--badge'>{downButtonBadge.toString()}</span>}
+          {props.downButtonBadge > 0 && <span className='rce-mlist-down-button--badge'>{props.downButtonBadge.toString()}</span>}
         </div>
       )}
     </div>
