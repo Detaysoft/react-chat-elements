@@ -4,24 +4,16 @@ import classNames from 'classnames'
 import { IInputProps } from '../type'
 
 const Input: React.FC<IInputProps> = ({
-  type = "text",
-  placeholder = "",
-  defaultValue = "",
-  onChange = null,
-  rightButtons = null,
-  leftButtons = null,
+  type = 'text',
   multiline = false,
   minHeight = 25,
   maxHeight = 200,
   autoHeight = true,
-  referance = null,
-  maxlength = null,
-  onMaxLengthExceed = null,
   autofocus = false,
   ...props
 }) => {
   useEffect(() => {
-    if (autofocus === true) referance?.referance.current?.focus()
+    if (autofocus === true) props.referance?.current?.focus()
 
     if (props.clear instanceof Function) {
       props.clear(clear)
@@ -29,13 +21,13 @@ const Input: React.FC<IInputProps> = ({
   }, [])
 
   const onChangeEvent = (e: any) => {
-    if (maxlength && (e.target.value || '').length > maxlength) {
-      if (onMaxLengthExceed instanceof Function) onMaxLengthExceed()
+    if (props.maxlength && (e.target.value || '').length > props.maxlength) {
+      if (props.onMaxLengthExceed instanceof Function) props.onMaxLengthExceed()
 
-      if (referance?.referance.current?.value == (e.target.value || '').substring(0, maxlength)) return
+      if (props.referance?.current?.value == (e.target.value || '').substring(0, props.maxlength)) return
     }
 
-    if (onChange instanceof Function) onChange(e)
+    if (props.onChange instanceof Function) props.onChange(e)
 
     if (multiline === true) {
       if (autoHeight === true) {
@@ -57,11 +49,11 @@ const Input: React.FC<IInputProps> = ({
   const clear = () => {
     var _event = {
       FAKE_EVENT: true,
-      target: referance?.current,
+      target: props.referance?.current,
     }
 
-    if (referance?.current?.value) {
-      referance.current.value = ''
+    if (props.referance?.current?.value) {
+      props.referance.current.value = ''
     }
 
     onChangeEvent(_event)
@@ -69,14 +61,14 @@ const Input: React.FC<IInputProps> = ({
 
   return (
     <div className={classNames('rce-container-input', props.className)}>
-      {leftButtons && <div className='rce-input-buttons'>{leftButtons}</div>}
+      {props.leftButtons && <div className='rce-input-buttons'>{props.leftButtons}</div>}
       {multiline === false ? (
         <input
-          ref={referance}
+          ref={props.referance}
           type={type}
           className={classNames('rce-input')}
-          placeholder={placeholder}
-          defaultValue={defaultValue}
+          placeholder={props.placeholder}
+          defaultValue={props.defaultValue}
           style={props.inputStyle}
           onChange={onChangeEvent}
           onCopy={props.onCopy}
@@ -93,10 +85,10 @@ const Input: React.FC<IInputProps> = ({
         />
       ) : (
         <textarea
-          ref={referance}
+          ref={props.referance}
           className={classNames('rce-input', 'rce-input-textarea')}
-          placeholder={placeholder}
-          defaultValue={defaultValue}
+          placeholder={props.placeholder}
+          defaultValue={props.defaultValue}
           style={props.inputStyle}
           onChange={onChangeEvent}
           onCopy={props.onCopy}
@@ -112,7 +104,7 @@ const Input: React.FC<IInputProps> = ({
           onKeyUp={props.onKeyUp}
         ></textarea>
       )}
-      {rightButtons && <div className='rce-input-buttons'>{rightButtons}</div>}
+      {props.rightButtons && <div className='rce-input-buttons'>{props.rightButtons}</div>}
     </div>
   )
 }

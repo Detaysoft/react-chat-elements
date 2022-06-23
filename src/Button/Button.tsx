@@ -2,22 +2,12 @@ import './Button.css'
 import classNames from 'classnames'
 import { IButtonProps } from '../type'
 
-const Button: React.FC<IButtonProps> = ({
-  text = '',
-  disabled = false,
-  type = null,
-  icon = null,
-  backgroundColor = '#3979aa',
-  color = 'white',
-  className = null,
-  buttonRef = null,
-  ...props
-}) => {
+const Button: React.FC<IButtonProps> = ({ disabled = false, backgroundColor = '#3979aa', color = 'white', ...props }) => {
   return (
     <button
-      ref={buttonRef}
+      ref={props.buttonRef}
       title={props.title}
-      className={classNames('rce-button', type, className)}
+      className={classNames('rce-button', props.type, props.className)}
       style={{
         backgroundColor: backgroundColor,
         color: color,
@@ -26,18 +16,18 @@ const Button: React.FC<IButtonProps> = ({
       disabled={disabled}
       onClick={props.onClick}
     >
-      {icon ? (
+      {props.icon ? (
         <span className='rce-button-icon--container'>
-          {(icon.float === 'right' || !icon.float) && <span>{text}</span>}
+          {(props.icon.float === 'right' || !props.icon.float) && <span>{props.text}</span>}
 
-          <span style={{ float: icon.float, fontSize: icon.size || 12 }} className='rce-button-icon'>
-            {icon.component}
+          <span style={{ float: props.icon.float, fontSize: props.icon.size || 12 }} className='rce-button-icon'>
+            {props.icon.component}
           </span>
 
-          {icon.float === 'left' && <span>{text}</span>}
+          {props.icon.float === 'left' && <span>{props.text}</span>}
         </span>
       ) : (
-        <span>{text}</span>
+        <span>{props.text}</span>
       )}
     </button>
   )

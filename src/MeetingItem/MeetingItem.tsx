@@ -11,20 +11,14 @@ import classNames from 'classnames'
 import { IMeetingItemProps } from '../type'
 
 const MeetingItem: FC<IMeetingItemProps> = ({
-  id = '',
   subjectLimit = 60,
   onClick = () => void 0,
   avatarFlexible = false,
-  alt = '',
-  title = '',
-  subtitle = '',
   date = new Date(),
-  dateString = '',
   lazyLoadingImage = undefined,
   avatarLimit = 5,
   avatars = [],
   audioMuted = true,
-  audioSource = '',
   onAvatarError = () => void 0,
   onMeetingClick = () => void 0,
   onShareClick = () => void 0,
@@ -33,14 +27,14 @@ const MeetingItem: FC<IMeetingItemProps> = ({
   const statusColorType = props.statusColorType
   const AVATAR_LIMIT = avatarLimit
 
-  const dateText = date && (dateString || format(date))
+  const dateText = date && (props.dateString || format(date))
 
   const subject =
     props.subject && subjectLimit && props.subject.substring(0, subjectLimit) + (props.subject.length > subjectLimit ? '...' : '')
 
   return (
     <div className={classNames('rce-container-mtitem', props.className)} onClick={onClick} onContextMenu={props.onContextMenu}>
-      <audio autoPlay loop muted={audioMuted} src={audioSource} />
+      <audio autoPlay loop muted={audioMuted} src={props.audioSource} />
 
       <div className='rce-mtitem'>
         <div className='rce-mtitem-top'>

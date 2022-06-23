@@ -9,7 +9,6 @@ import { IMessageListProps, MessageListEvent } from '../type'
 
 const MessageList: FC<IMessageListProps> = ({
   referance = null,
-  dataSource = [],
   lockable = false,
   toBottomHeight = 300,
   downButton = true,
@@ -17,7 +16,7 @@ const MessageList: FC<IMessageListProps> = ({
 }) => {
   const [scrollBottom, setScrollBottom] = useState(0)
   const [_downButton, setDownButton] = useState(false)
-  const prevProps = useRef(dataSource)
+  const prevProps = useRef(props)
 
   const checkScroll = () => {
     var e = referance
@@ -35,13 +34,13 @@ const MessageList: FC<IMessageListProps> = ({
   useEffect(() => {
     if (!referance) return
 
-    if (prevProps.current.length !== dataSource.length) {
+    if (prevProps.current.dataSource.length !== props.dataSource.length) {
       setScrollBottom(getBottom(referance))
       checkScroll()
     }
 
-    prevProps.current = dataSource
-  }, [prevProps, dataSource])
+    prevProps.current = props
+  }, [prevProps, props])
 
   const getBottom = (e: any) => {
     if (e.current) return e.current.scrollHeight - e.current.scrollTop - e.current.offsetHeight
@@ -136,7 +135,7 @@ const MessageList: FC<IMessageListProps> = ({
     <div className={classNames(['rce-container-mlist', props.className])} {...props.customProps}>
       {!!props.children && props.isShowChild && props.children}
       <div ref={referance} onScroll={onScroll} className='rce-mlist'>
-        {dataSource.map((x, i: number) => (
+        {props.dataSource.map((x, i: number) => (
           <MessageBox
             key={i as Key}
             {...(x as any)}

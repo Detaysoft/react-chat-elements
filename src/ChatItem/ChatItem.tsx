@@ -11,23 +11,12 @@ import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md'
 import { IChatItemProps } from '../type'
 
 const ChatItem: React.FC<IChatItemProps> = ({
-  id = '',
-  onClick = null,
-  avatar = '',
   avatarFlexible = false,
-  alt = '',
-  title = '',
-  subtitle = '',
   date = new Date(),
   unread = 0,
-  statusColor = null,
   statusColorType = 'badge',
-  statusText = null,
-  dateString = null,
   lazyLoadingImage = undefined,
   onAvatarError = () => void 0,
-  showMute = null,
-  showVideoCall = null,
   ...props
 }) => {
   const [onHoverTool, setOnHoverTool] = useState(false)
@@ -46,64 +35,64 @@ const ChatItem: React.FC<IChatItemProps> = ({
 
     if (onHoverTool === true) return
 
-    onClick?.(e)
+    props.onClick?.(e)
   }
 
   const onDragOver = (e: React.MouseEvent) => {
     e.preventDefault()
-    if (props.onDragOver instanceof Function) props.onDragOver(e, id)
+    if (props.onDragOver instanceof Function) props.onDragOver(e, props.id)
   }
 
   const onDragEnter = (e: React.MouseEvent) => {
     e.preventDefault()
-    if (props.onDragEnter instanceof Function) props.onDragEnter(e, id)
+    if (props.onDragEnter instanceof Function) props.onDragEnter(e, props.id)
     if (!onDrag) setOnDrag(true)
   }
 
   const onDragLeave = (e: React.MouseEvent) => {
     e.preventDefault()
-    if (props.onDragLeave instanceof Function) props.onDragLeave(e, id)
+    if (props.onDragLeave instanceof Function) props.onDragLeave(e, props.id)
     if (onDrag) setOnDrag(false)
   }
 
   const onDrop = (e: React.MouseEvent) => {
     e.preventDefault()
-    if (props.onDrop instanceof Function) props.onDrop(e, id)
+    if (props.onDrop instanceof Function) props.onDrop(e, props.id)
     if (onDrag) setOnDrag(false)
   }
 
   return (
     <div
-      key={id as Key}
+      key={props.id as Key}
       className={classNames('rce-container-citem', props.className)}
       onClick={handleOnClick}
       onContextMenu={props.onContextMenu}
     >
       <div className='rce-citem' onDragOver={onDragOver} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
-        {!!props.onDragComponent && onDrag && props.onDragComponent(id)}
+        {!!props.onDragComponent && onDrag && props.onDragComponent(props.id)}
         {((onDrag && !props.onDragComponent) || !onDrag) && [
           <div className={classNames('rce-citem-avatar', { 'rce-citem-status-encircle': statusColorType === 'encircle' })}>
             <Avatar
-              src={avatar}
-              alt={alt}
+              src={props.avatar}
+              alt={props.alt}
               className={statusColorType === 'encircle' ? 'rce-citem-avatar-encircle-status' : ''}
               size='large'
               letterItem={props.letterItem}
               sideElement={
-                statusColor ? (
+                props.statusColor ? (
                   <span
                     className='rce-citem-status'
                     style={
                       statusColorType === 'encircle'
                         ? {
-                            border: `solid 2px ${statusColor}`,
+                            border: `solid 2px ${props.statusColor}`,
                           }
                         : {
-                            backgroundColor: statusColor,
+                            backgroundColor: props.statusColor,
                           }
                     }
                   >
-                    {statusText}
+                    {props.statusText}
                   </span>
                 ) : (
                   <></>
@@ -116,27 +105,27 @@ const ChatItem: React.FC<IChatItemProps> = ({
           </div>,
           <div className='rce-citem-body'>
             <div className='rce-citem-body--top'>
-              <div className='rce-citem-body--top-title'>{title}</div>
-              <div className='rce-citem-body--top-time'>{date && (dateString || format(date))}</div>
+              <div className='rce-citem-body--top-title'>{props.title}</div>
+              <div className='rce-citem-body--top-time'>{date && (props.dateString || format(date))}</div>
             </div>
 
             <div className='rce-citem-body--bottom'>
-              <div className='rce-citem-body--bottom-title'>{subtitle}</div>
+              <div className='rce-citem-body--bottom-title'>{props.subtitle}</div>
               <div className='rce-citem-body--bottom-tools' onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
-                {showMute && (
+                {props.showMute && (
                   <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickMute}>
                     {props.muted === true && <MdVolumeOff />}
                     {props.muted === false && <MdVolumeUp />}
                   </div>
                 )}
-                {showVideoCall && (
+                {props.showVideoCall && (
                   <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickVideoCall}>
                     <MdVideoCall />
                   </div>
                 )}
               </div>
               <div className='rce-citem-body--bottom-tools-item-hidden-hover'>
-                {showMute && props.muted && (
+                {props.showMute && props.muted && (
                   <div className='rce-citem-body--bottom-tools-item'>
                     <MdVolumeOff />
                   </div>

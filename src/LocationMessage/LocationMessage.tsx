@@ -6,20 +6,14 @@ const STATIC_URL =
   'https://maps.googleapis.com/maps/api/staticmap?markers=color:MARKER_COLOR|LATITUDE,LONGITUDE&zoom=ZOOM&size=270x200&scale=2&key=KEY'
 const MAP_URL = 'https://www.google.com/maps/search/?api=1&query=LATITUDE,LONGITUDE&zoom=ZOOM'
 
-const LocationMessage: React.FC<ILocationMessageProps> = ({
-  apiKey = '',
-  markerColor = 'red',
-  target = '_blank',
-  zoom = '14',
-  ...props
-}) => {
+const LocationMessage: React.FC<ILocationMessageProps> = ({ markerColor = 'red', target = '_blank', zoom = '14', ...props }) => {
   const buildURL = (url: string) => {
     return url
       .replace(/LATITUDE/g, props?.data.latitude)
       .replace(/LONGITUDE/g, props?.data.longitude)
       .replace('MARKER_COLOR', markerColor)
       .replace('ZOOM', zoom)
-      .replace('KEY', apiKey)
+      .replace('KEY', props.apiKey)
   }
   const className = () => {
     var _className = classNames('rce-mbox-location', props.className)
