@@ -4,7 +4,7 @@ import external from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import commonjs from '@rollup/plugin-commonjs'
-// import path from 'path'
+import path from 'path'
 
 export default [
   {
@@ -24,7 +24,7 @@ export default [
       postcss({
         plugins: [],
         minimize: true,
-        // extract: path.resolve('dist/main.css'),
+        extract: path.resolve('dist/main.css'),
       }),
       babel({
         exclude: 'node_modules/**',
