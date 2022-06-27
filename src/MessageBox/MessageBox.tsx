@@ -16,7 +16,7 @@ import Avatar from '../Avatar/Avatar'
 
 import { RiShareForwardFill } from 'react-icons/ri'
 import { IoIosDoneAll } from 'react-icons/io'
-import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock } from 'react-icons/md'
+import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock, MdDoneAll } from 'react-icons/md'
 
 import { format } from 'timeago.js'
 
@@ -176,7 +176,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
 
                   {props.status === 'received' && <IoIosDoneAll />}
 
-                  {props.status === 'read' && <IoIosDoneAll color='#4FC3F7' />}
+                  {props.status === 'read' && <MdDoneAll color='#4FC3F7' />}
                 </span>
               )}
             </div>

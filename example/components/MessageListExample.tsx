@@ -36,7 +36,7 @@ function MessageListExample() {
     switch (data) {
       case 0:
         Addmtype = 'photo'
-        setStatus('sent')
+        setStatus('waiting')
         break
       case 1:
         Addmtype = 'file'
@@ -44,20 +44,22 @@ function MessageListExample() {
         break
       case 2:
         Addmtype = 'system'
-        setStatus('received')
         break
       case 3:
         Addmtype = 'location'
+        setStatus('received')
         break
       case 4:
         Addmtype = 'spotify'
+        setStatus('waiting')
         break
       case 5:
         Addmtype = 'meeting'
+        setStatus('sent')
         break
       case 6:
         Addmtype = 'video'
-        setStatus('sent')
+        setStatus('read')
         break
       case 7:
         Addmtype = 'audio'

@@ -16,7 +16,7 @@ export const photoMessage: MessageType = {
   retracted: false,
   text: loremIpsum({ count: 1, units: 'sentences' }),
   titleColor: getRandomColor(),
-  status: 'sent',
+  status: 'waiting',
   data: {
     uri: `data:image/png;base64,${photo(150)}`,
     status: {
@@ -80,7 +80,7 @@ export const fileMessage: MessageType = {
     },
     size: '100MB',
   },
-  status: 'read',
+  status: 'sent',
   id: String(Math.random()),
   position: token() >= 1 ? 'right' : 'left',
   text: loremIpsum({ count: 1, units: 'sentences' }),
@@ -147,7 +147,7 @@ export const spotifyMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
-  status: 'received',
+  status: 'read',
   theme: 'white',
   view: 'list',
   width: 300,

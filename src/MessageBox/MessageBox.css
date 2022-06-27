@@ -208,10 +208,12 @@
 }
 
 .rce-mbox-time {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   text-align: right;
   color: rgba(0, 0, 0, 0.45);
   font-size: 12px;
-  position: absolute;
   right: -4px;
   bottom: -5px;
 }
@@ -221,7 +223,9 @@
 }
 
 .rce-mbox-time-block {
-  /*position: relative;*/
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   right: 0;
   bottom: 0;
   left: 0;
@@ -320,6 +324,7 @@
 .rce-mbox-status {
   margin-left: 3px;
   font-size: 15px;
+  height: 15px;
 }
 
 .rce-mbox-title > .rce-avatar-container {
