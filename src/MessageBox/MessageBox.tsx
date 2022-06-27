@@ -33,7 +33,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
   const dateText = props.date && (props.dateString || format(props.date))
 
   useEffect(() => {
-    if (prevProps.current !== focus && prevProps.current === true) {
+    if (prevProps.current !== focus && focus === true) {
       if (messageRef) {
         messageRef.current?.scrollIntoView({
           block: 'center',
