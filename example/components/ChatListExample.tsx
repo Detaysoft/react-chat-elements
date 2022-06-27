@@ -157,9 +157,7 @@ function ChatListExample() {
               onDragEnter={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragEnter')}
               onDragLeave={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragLeave')}
               onDrop={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDrop')}
-              onDragComponent={() => {
-                ;<div className='on-drag-mlist'>{loremIpsum({ count: 4, units: 'words' })}</div>
-              }}
+              onDragComponent={() => <div className='on-drag-mlist'>{loremIpsum({ count: 4, units: 'words' })}</div>}
             />
           ),
         }}
