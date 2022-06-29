@@ -129,7 +129,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
               </div>
             )}
 
-            {props.reply && <ReplyMessage {...props.reply} />}
+            {props.reply && <ReplyMessage onClick={props.onReplyMessageClick} {...props.reply} />}
 
             {props.type === 'text' && (
               <div

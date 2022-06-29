@@ -4,14 +4,14 @@ import './ReplyMessage.css'
 import classNames from 'classnames'
 import { IReplyMessageProps } from '../type'
 
-const ReplyMessage: React.FC<IReplyMessageProps> = props => {
+const ReplyMessage: React.FC<IReplyMessageProps> = ({onClick, ...props}) => {
   return (
     <div
       className={classNames('rce-mbox-reply', {
         'rce-mbox-reply-border': !!props.titleColor,
       })}
       style={{ ...(props.titleColor && { borderColor: props.titleColor }) }}
-      onClick={props.onClick}
+      onClick={onClick}
     >
       <div className='rce-mbox-reply-left'>
         <div style={{ ...(props.titleColor && { color: props.titleColor }) }} className='rce-mbox-reply-owner'>
