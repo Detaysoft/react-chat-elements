@@ -1,60 +1,60 @@
 .rce-container-input {
-    display: flex;
-    min-width: 100%;
-    box-sizing: border-box;
-    flex-direction: row;
-    background: #fff;
-    align-items: center;
+  display: flex;
+  min-width: 100%;
+  box-sizing: border-box;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
 }
 
 .rce-input {
-    flex: 1;
-    height: 40px;
-    padding: 0 5px;
-    border: none;
-    border-radius: 5px;
-    color: #333;
-    font-size: 14px;
-    box-sizing: border-box;
-    outline: none;
+  flex: 1;
+  height: 40px;
+  padding: 0 5px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
 }
 
 .rce-input-textarea {
-    height: 37px;
-    padding: 10px 5px;
-    resize: none;
+  height: 37px;
+  padding: 10px 5px;
+  resize: none;
 }
 
 .rce-input-buttons {
-    display: flex;
-    flex-direction: row;
-    margin: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
 }
 
 .rce-input-buttons > * {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .rce-input-buttons .rce-button:nth-child(even) {
-    margin-left: 5px;
-    margin-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .rce-input-buttons .rce-button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .rce-left-padding {
-    padding-left: 10px;
-    padding-right: 0px !important;
+  padding-left: 10px;
+  padding-right: 0px !important;
 }
 
 .rce-right-padding {
-    padding-right: 10px;
-    padding-left: 0px !important;
+  padding-right: 10px;
+  padding-left: 0px !important;
 }
 
 .rce-input::placeholder {
-    color: #afafaf;
+  color: #afafaf;
 }

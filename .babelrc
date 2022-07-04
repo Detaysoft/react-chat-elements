@@ -1,4 +1,0 @@
-{
-    "presets": ["es2015", "react", "react-native"],
-    "plugins": ["transform-remove-strict-mode"]
-}

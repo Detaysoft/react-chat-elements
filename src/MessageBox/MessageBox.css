@@ -1,311 +1,332 @@
 .rce-container-mbox {
-    flex-direction: column;
-    display: block;
-    overflow-x: hidden;
-    min-width: 300px;
+  flex-direction: column;
+  display: block;
+  overflow-x: hidden;
+  min-width: 300px;
 }
 
 .rce-mbox-forward {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    background: #fff;
-    position: absolute;
-    /*display: none;*/
-    flex-direction: row;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background: #fff;
+  position: absolute;
+  /*display: none;*/
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .rce-mbox-forward-left {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    left: -50px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  left: -50px;
 }
 
 .rce-mbox-forward-right {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    right: -50px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  right: -50px;
 }
 
 .rce-mbox-reply-btn-left {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    left: -85px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  left: -85px;
 }
 
 .rce-mbox-reply-btn-right {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    right: -85px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  right: -85px;
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-left {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-container-mbox:hover .rce-mbox-forward-right {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-mbox-remove {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    background: #fff;
-    position: absolute;
-    /*display: none;*/
-    flex-direction: row;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background: #fff;
+  position: absolute;
+  /*display: none;*/
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px 0 rgba(164, 164, 164, 1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .rce-mbox-remove-left {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    left: -120px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  left: -120px;
 }
 
 .rce-mbox-remove-right {
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    right: -120px;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  right: -120px;
 }
 
 .rce-container-mbox:hover .rce-mbox-remove-left {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-container-mbox:hover .rce-mbox-remove-right {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-container-mbox:hover .rce-mbox-reply-btn-left {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-container-mbox:hover .rce-mbox-reply-btn-right {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .rce-mbox {
-    position: relative;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .2);
-    border-top-left-radius: 0px;
-    margin-left: 20px;
-    margin-right: 5px;
-    margin-top: 3px;
-    flex-direction: column;
-    margin-bottom: 3px;
-    padding: 6px 9px 8px 9px;
-    float: left;
-    min-width: 140px;
+  position: relative;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 0px;
+  margin-left: 20px;
+  margin-right: 5px;
+  margin-top: 3px;
+  flex-direction: column;
+  margin-bottom: 3px;
+  padding: 6px 9px 8px 9px;
+  float: left;
+  min-width: 140px;
 }
 
 .rce-mbox.message-focus {
-    animation-iteration-count: 2;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-duration: 1s;
-    animation-name: message-box-default-focus;
-    animation-duration: 1s;
+  animation-iteration-count: 2;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-duration: 1s;
+  animation-name: message-box-default-focus;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes message-box-default-focus {
-    from {background-color: #fff;}
-    to {background-color: #dfdfdf;}
+  from {
+    background-color: #fff;
+  }
+  to {
+    background-color: #dfdfdf;
+  }
 }
 
 .rce-mbox-body {
-    margin: 0;
-    padding: 0;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 .rce-mbox.rce-mbox-right {
-    float: right;
-    margin-left: 5px;
-    margin-right: 20px;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 5px;
+  float: right;
+  margin-left: 5px;
+  margin-right: 20px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 5px;
 }
 
 .rce-mbox.rce-mbox-right.message-focus {
-    animation-iteration-count: 2;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-duration: 1s;
-    animation-name: message-box-right-focus;
-    animation-duration: 1s;
+  animation-iteration-count: 2;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-duration: 1s;
+  animation-name: message-box-right-focus;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes message-box-right-focus {
-    from {background-color: #d4f1fb;}
-    to {background-color: #b8dae6;}
+  from {
+    background-color: #d4f1fb;
+  }
+  to {
+    background-color: #b8dae6;
+  }
 }
 
 .rce-mbox-text {
-    font-size: 13.6px;
-    word-break: break-word;
+  font-size: 13.6px;
+  word-break: break-word;
 }
 
 .rce-mbox-text-retracted {
-    font-style: italic;
-    user-select: none;
-    display: flex;
-    align-items: center;
+  font-style: italic;
+  user-select: none;
+  display: flex;
+  align-items: center;
 }
 
 .rce-mbox-text.rce-mbox-text-retracted svg {
-    margin-right: 3px;
+  margin-right: 3px;
 }
 
 .rce-mbox-text-retracted.left {
-    color: #555555b3 !important;
+  color: #555555b3 !important;
 }
 
 .rce-mbox-text-retracted.right {
-    color: #efefefb3 !important;
+  color: #efefefb3 !important;
 }
 
 .rce-mbox-text:after {
-    content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"
+  content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
 }
 
 .rce-mbox-time {
-    text-align: right;
-    color: rgba(0, 0, 0, 0.45);
-    font-size: 12px;
-    position: absolute;
-    right: -4px;
-    bottom: -5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  right: -4px;
+  bottom: -5px;
 }
 
 .rce-mbox-time.non-copiable:before {
-    content: attr(data-text);
+  content: attr(data-text);
 }
 
 .rce-mbox-time-block {
-    /*position: relative;*/
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin-right: -6px;
-    margin-left: -6px;
-    padding-top: 5px;
-    padding-right: 3px;
-    padding-bottom: 2px;
-    background: linear-gradient(to top, rgba(0,0,0,0.33), transparent);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: -6px;
+  margin-left: -6px;
+  padding-top: 5px;
+  padding-right: 3px;
+  padding-bottom: 2px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.33), transparent);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
 }
 
 .rce-mbox--clear-padding {
-    padding-bottom: 3px;
+  padding-bottom: 3px;
 }
 
 .rce-mbox.rce-mbox--clear-notch {
-    border-radius: 5px 5px 5px 5px !important;
+  border-radius: 5px 5px 5px 5px !important;
 }
 
 .rce-mbox-right-notch {
-    position: absolute;
-    right: -14px;
-    top: 0px;
-    width: 15px;
-    height: 15px;
-    fill: white;
-    filter: drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2));
+  position: absolute;
+  right: -14px;
+  top: 0px;
+  width: 15px;
+  height: 15px;
+  fill: white;
+  filter: drop-shadow(2px 0px 1px rgba(0, 0, 0, 0.2));
 }
 
 .rce-mbox-right-notch.message-focus {
-    animation-iteration-count: 2;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-duration: 1s;
-    animation-name: message-right-notch-focus;
-    animation-duration: 1s;
+  animation-iteration-count: 2;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-duration: 1s;
+  animation-name: message-right-notch-focus;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes message-right-notch-focus {
-    from {fill: #d4f1fb;}
-    to {fill: #b8dae6;}
+  from {
+    fill: #d4f1fb;
+  }
+  to {
+    fill: #b8dae6;
+  }
 }
 
 .rce-mbox-left-notch {
-    position: absolute;
-    left: -14px;
-    top: 0px;
-    width: 15px;
-    height: 15px;
-    fill: white;
+  position: absolute;
+  left: -14px;
+  top: 0px;
+  width: 15px;
+  height: 15px;
+  fill: white;
 }
 
 .rce-mbox-left-notch.message-focus {
-    animation-iteration-count: 2;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-duration: 1s;
-    animation-name: message-left-notch-focus;
-    animation-duration: 1s;
+  animation-iteration-count: 2;
+  -webkit-animation-iteration-count: 2;
+  -webkit-animation-duration: 1s;
+  animation-name: message-left-notch-focus;
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes message-left-notch-focus {
-    from {fill: #fff;}
-    to {fill: #dfdfdf;}
+  from {
+    fill: #fff;
+  }
+  to {
+    fill: #dfdfdf;
+  }
 }
 
 .rce-mbox-title {
-    margin: 0;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 13px;
-    color: #4f81a1;
-    user-select: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+  margin: 0;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #4f81a1;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .rce-mbox-title:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .rce-mbox-title--clear {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .rce-mbox-status {
-    margin-left: 3px;
-    font-size: 15px;
+  margin-left: 3px;
+  font-size: 15px;
+  height: 15px;
 }
 
 .rce-mbox-title > .rce-avatar-container {
-    margin-right: 5px;
+  margin-right: 5px;
 }

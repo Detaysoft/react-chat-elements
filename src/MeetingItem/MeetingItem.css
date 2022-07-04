@@ -1,141 +1,141 @@
 .rce-container-mtitem {
-    flex-direction: column;
-    display: block;
-    overflow: hidden;
-    min-width: 240px;
+  flex-direction: column;
+  display: block;
+  overflow: hidden;
+  min-width: 240px;
 }
 
 .rce-mtitem {
-    position: relative;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    user-select: none;
-    max-width: 100%;
-    overflow: hidden;
-    min-width: 240px;
-    border-bottom: 1px solid rgba(0,0,0,.05);
+  position: relative;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 240px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .rce-mtitem:hover {
-    background: #fbfbfb;
+  background: #fbfbfb;
 }
 
 .rce-mtitem-top {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
 }
 
 .rce-mtitem-subject {
-    padding: 0 10px;
-    margin-top: 5px;
-    font-size: 15px;
-    overflow: hidden;
-    color: #333;
-    max-height: 35px;
-    text-overflow: ellipsis;
+  padding: 0 10px;
+  margin-top: 5px;
+  font-size: 15px;
+  overflow: hidden;
+  color: #333;
+  max-height: 35px;
+  text-overflow: ellipsis;
 }
 
 .rce-mtitem-body {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    display: flex;
-    justify-content: center;
-    padding: 0 10px;
-    overflow: hidden;
-    align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  overflow: hidden;
+  align-items: center;
 }
 
 .rce-mtitem-body--avatars {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    opacity: 0.7;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  opacity: 0.7;
 }
 
 .rce-mtitem-body--functions {
-    width: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .rce-mtitem-footer {
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 5px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .rce-mtitem-body--avatars .rce-avatar-container {
-    margin-left: -10px;
-    border: 2px solid #fff;
+  margin-left: -10px;
+  border: 2px solid #fff;
 }
 
 .rce-mtitem-body--avatars .rce-avatar-container:first-child {
-    margin: 0;
+  margin: 0;
 }
 
 .rce-mtitem-letter {
-    color: #fff;
-    background: #e48989;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: #fff;
+  background: #e48989;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rce-mtitem-button {
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: #5ba7c5;
-    border-radius: 100%;
-    padding: 3px;
-    transition: 300ms;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #5ba7c5;
+  border-radius: 100%;
+  padding: 3px;
+  transition: 300ms;
 }
 
 .rce-mtitem-closable {
-    font-size: 25px;
-    color: #fff;
-    background:#ff4a4f;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    padding: 3px;
-    margin-right: 7px;
+  font-size: 25px;
+  color: #fff;
+  background: #ff4a4f;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding: 3px;
+  margin-right: 7px;
 }
 
 .rce-mtitem:hover .rce-mtitem-closable {
-    display: flex;
-    cursor: pointer;
+  display: flex;
+  cursor: pointer;
 }
 
 .rce-mtitem-share {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #5ba7c5;
-    margin: -10px 0;
-    transition: 300ms;
-    position: relative;
-    left: -10px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5ba7c5;
+  margin: -10px 0;
+  transition: 300ms;
+  position: relative;
+  left: -10px;
 }
 
 .rce-mtitem-button:hover,
 .rce-mtitem-share:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .rce-mtitem-date {
-    color: #9f9f9f;
-    font-size: 13px;
+  color: #9f9f9f;
+  font-size: 13px;
 }

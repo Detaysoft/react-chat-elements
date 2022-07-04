@@ -1,34 +1,48 @@
 {
   "name": "react-chat-elements",
-  "version": "11.0.1",
+  "version": "12.0.0",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
+  "types": "dist/type.d.ts",
+  "module": "dist/main.es.js",
   "devDependencies": {
-    "babel-core": "^6.0.20",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-react": "^7.17.12",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/identicon.js": "^2.3.1",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.34",
+    "@types/progressbar.js": "^1.1.2",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-icons": "^3.0.0",
     "babel-jest": "21.2.0",
-    "babel-loader": "7",
-    "babel-plugin-css-modules-transform": "^1.2.7",
-    "babel-plugin-transform-remove-strict-mode": "0.0.2",
-    "babel-preset-es2015": "^6.0.15",
-    "babel-preset-react": "^6.0.15",
-    "babel-preset-react-native": "4.0.0",
-    "babel-preset-stage-0": "^6.0.15",
-    "css-loader": "^0.28.5",
+    "babel-loader": "^8.2.5",
+    "copyfiles": "^2.4.1",
+    "css-loader": "^6.7.1",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "identicon.js": "^2.3.1",
     "jest": "21.2.1",
     "lorem-ipsum": "^1.0.4",
-    "nwb": "^0.23.0",
+    "mini-css-extract-plugin": "^2.6.0",
     "react": "^17.0.2",
     "react-dom": "17.0.2",
-    "react-native": "0.49.5",
-    "react-scripts": "^1.0.10",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "^17.0.2",
-    "webpack-cli": "^3.3.0",
-    "webpack-node-externals": "^1.6.0"
+    "rimraf": "^3.0.2",
+    "rollup": "^2.75.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   },
   "repository": {
     "type": "git",
@@ -41,9 +55,7 @@
     "css",
     "chat",
     "components",
-    "detaysoft",
-    "native",
-    "react-native"
+    "detaysoft"
   ],
   "license": "MIT",
   "jest": {
@@ -51,24 +63,44 @@
       "<rootDir>/node_modules/enzyme-to-json/serializer"
     ]
   },
+  "browser": {
+    "[module-name]": false
+  },
   "bugs": {
     "url": "https://github.com/detaysoft/react-chat-elements/issues"
   },
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
-    "start": "nwb serve-react-app ./example/index.js",
-    "start:native": "node node_modules/react-native/local-cli/cli.js start",
-    "build": "webpack --progress --profile --colors",
+    "dev-server": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "yarn run clear:build && node node_modules/typescript/bin/tsc -p tsconfig.prod.json && yarn run copy-files",
+    "copy-files": "copyfiles -u 1 src/**/*.css build/",
+    "clear:build": "rimraf dist build",
+    "move:types": "copyfiles -u 1 src/type.d.ts dist/",
     "test": "react-scripts test --env=jsdom",
-    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js"
+    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js",
+    "build:lib": "yarn run build && rollup -c && yarn run move:types"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "17.0.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react-icons": "^2.2.5",
-    "react-native-icons": "^0.7.1",
-    "react-native-vector-icons": "^4.4.2",
-    "react-progress-bar.js": "^0.2.3",
+    "progressbar.js": "^1.1.0",
+    "react-icons": "^4.3.1",
     "react-spinkit": "^3.0.0",
-    "timeago.js": "^4.0.0-beta.2"
+    "timeago.js": "^4.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

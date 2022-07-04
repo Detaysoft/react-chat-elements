@@ -1,87 +1,87 @@
 .rce-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 8px;
-    text-align: center;
-    box-sizing: border-box;
-    background: #3979aa;
-    color: white;
-    transition: all 0.15s ease;
-    user-select: none;
-    border: none;
-    outline: none;
-    border: none;
-    position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  background: #3979aa;
+  color: white;
+  transition: all 0.15s ease;
+  user-select: none;
+  border: none;
+  outline: none;
+  border: none;
+  position: relative;
 }
 
 .rce-button-icon--container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .rce-button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .rce-button:active {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .rce-button.outline {
-    background: rgba(0, 0, 0, 0) !important;
-    border: 1px solid #3979aa;
-    color: #3979aa;
+  background: rgba(0, 0, 0, 0) !important;
+  border: 1px solid #3979aa;
+  color: #3979aa;
 }
 
 .rce-button.outline:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .rce-button.outline:active {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .rce-button.transparent {
-    background: rgba(0, 0, 0, 0) !important;
+  background: rgba(0, 0, 0, 0) !important;
 }
 
 .rce-button.transparent:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .rce-button.transparent:active {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .rce-button-icon {
-    position: relative;
-    font-size: 18px;
-    display: flex;
-    padding: 0 3px;
+  position: relative;
+  font-size: 18px;
+  display: flex;
+  padding: 0 3px;
 }
 
-.rce-button-badge{
-    border-radius: 4px;
-    padding: 4px;
-    background: #f64b34;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: -7px;
-    top:-7px;
-    font-size: 10px;
+.rce-button-badge {
+  border-radius: 4px;
+  padding: 4px;
+  background: #f64b34;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  font-size: 10px;
 }
 
 .rce-button.circle {
-    min-width: 35px;
-    min-height: 35px;
-    border: 1px solid #3979aa;
-    border-radius: 100%;
+  min-width: 35px;
+  min-height: 35px;
+  border: 1px solid #3979aa;
+  border-radius: 100%;
 }
