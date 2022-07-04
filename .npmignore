@@ -1,5 +1,7 @@
 dependencies
 node_modules
+build
+example
 
 # testing
 coverage
@@ -18,4 +20,3 @@ yarn-error.log*
 # examples
 /example
 /example-native
-
