@@ -1,6 +1,7 @@
 .rce-mtlink {
   padding-bottom: 15px;
   min-width: 400px;
+  cursor: pointer;
 }
 
 .rce-mtlink-content {
@@ -36,7 +37,6 @@
   margin-left: 15px;
   display: flex;
   padding: 7px;
-  cursor: pointer;
 }
 
 .rce-mtlink-svg {
