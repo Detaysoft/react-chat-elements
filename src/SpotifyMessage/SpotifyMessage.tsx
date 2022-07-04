@@ -3,8 +3,6 @@ import { ISpotifyMessageProps } from '../type'
 import './SpotifyMessage.css'
 
 const SpotifyMessage: React.FC<ISpotifyMessageProps> = ({
-  theme = 'black',
-  view = 'list',
   width = 300,
   height = 380,
   ...props
