@@ -21,7 +21,7 @@ const SpotifyMessage: React.FC<ISpotifyMessageProps> = ({
     return formBody.join('&')
   }
 
-  if (props.uri) return null
+  if (!props.uri) return null
   return (
     <div className='rce-mbox-spotify'>
       <iframe
