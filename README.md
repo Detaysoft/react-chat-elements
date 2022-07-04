@@ -1,10 +1,16 @@
 [![npm](https://img.shields.io/npm/dt/react-chat-elements.svg?label=npm-install&style=flat)]() [![Github pre-)release](https://img.shields.io/github/release-pre/Detaysoft/react-chat-elements.svg?style=flat)]()
 
 # react-chat-elements
-
 Reactjs chat elements
 
-> **_Important changes on new version:_** [CHANGELOG](https://github.com/Detaysoft/react-chat-elements/blob/master/CHANGELOG.md).
+[Documentation](https://detaysoft.github.io/docs-react-chat-elements/)
+
+
+<details>
+<summary> 11.0.1 < Versions</summary>
+<br>
+
+> **_Important changes on 11.0.1 version:_** [CHANGELOG](https://github.com/Detaysoft/react-chat-elements/blob/master/CHANGELOG.md).
 
 ## Install
 
@@ -729,3 +735,5 @@ import { MeetingList } from 'react-chat-elements'
 | onContextMenu    | none    | function   | meeting list item on context menu (meeting(object) is returned)  |
 | onAvatarError    | none    | function   | meeting list item on error avatar img                            |
 | lazyLoadingImage | none    | image path | lazy loading image                                               |
+
+</details>
