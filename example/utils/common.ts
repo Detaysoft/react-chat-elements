@@ -18,7 +18,7 @@ export const getRandomColor = () => {
 }
 
 export const token = () => {
-  return Math.floor((Math.random() * 10) % 8)
+  return Math.floor((Math.random() * 10) % 9)
 }
 
 export function useForceUpdate() {
