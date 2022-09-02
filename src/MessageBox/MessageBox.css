@@ -216,6 +216,7 @@
   font-size: 12px;
   right: -4px;
   bottom: -5px;
+  user-select: none;
 }
 
 .rce-mbox-time.non-copiable:before {

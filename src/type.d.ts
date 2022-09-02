@@ -628,6 +628,14 @@ export interface IMeetingLinkMessage extends IMessage {
   meetingID?: string
 }
 
+export type TActionButton = React.FunctionComponent<any>
+
+export interface MeetingLinkActionButtons {
+  // return meeting id
+  onClickButton: (id: string) => void
+  Component: TActionButton
+}
+
 /**
  * IMeetingLinkMessageProps Interface
  * @prop type The Meeting Link Message's type is "meetingLink" and required.
@@ -636,7 +644,7 @@ export interface IMeetingLinkMessage extends IMessage {
  * @prop onMeetingMoreSelect The Meeting More Select Message's function onMeetingMoreSelect(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 export interface IMeetingLinkMessageProps extends IMeetingLinkMessage {
-  onMeetingLinkClick?: (id: string) => void
+  actionButtons?: MeetingLinkActionButtons[]
 }
 
 /**
