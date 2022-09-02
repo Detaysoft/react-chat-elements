@@ -11,9 +11,9 @@ const MeetingLink: FC<IMeetingLinkMessageProps> = props => {
           <div className='rce-mtlink-title'>{props.text}</div>
         </div>
         <div className='rce-mtlink-btn'>
-          {props.actionButtons.map((Item: MeetingLinkActionButtons) => {
+          {props?.actionButtons?.map((Item: MeetingLinkActionButtons) => {
             return (
-              <div className='rce-mtlink-btn-content' onClick={() => Item.onClickButton(props.meetingID)}>
+              <div className='rce-mtlink-btn-content' onClick={() => Item.onClickButton(props?.meetingID ?? '')}>
                 <Item.Component />
               </div>
             )
