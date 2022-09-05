@@ -157,7 +157,9 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
             {props.type === 'meeting' && <MeetingMessage focus={focus} notch={notch} {...props} />}
             {props.type === 'audio' && <AudioMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'meetingLink' && <MeetingLink focus={focus} notch={notch} {...props} />}
+            {props.type === 'meetingLink' && (
+              <MeetingLink focus={focus} notch={notch} {...props} actionButtons={props?.actionButtons} />
+            )}
 
             <div
               className={classNames(

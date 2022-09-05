@@ -164,6 +164,7 @@ const MessageList: FC<IMessageListProps> = ({
             onMeetingTitleClick={props.onMeetingTitleClick}
             onMeetingVideoLinkClick={props.onMeetingVideoLinkClick}
             onMeetingLinkClick={props.onMeetingLinkClick && ((e: React.MouseEvent<HTMLElement>) => onMeetingLinkClick(x, i, e))}
+            actionButtons={props.actionButtons}
           />
         ))}
       </div>

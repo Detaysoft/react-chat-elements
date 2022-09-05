@@ -575,6 +575,7 @@ export interface IMessageListProps {
   isShowChild?: boolean
   referance: any
   dataSource: MessageType[]
+  actionButtons?: MeetingLinkActionButtons[]
   lockable: boolean
   toBottomHeight?: String | number
   downButton: boolean
