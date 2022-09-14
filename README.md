@@ -4,7 +4,7 @@
 
 ## Reactjs chat elements
 
-## **[Full Documetation](https://detaysoft.github.io/docs-react-chat-elements/)**, **[Changelog](https://github.com/Detaysoft/react-chat-elements/blob/master/CHANGELOG.md)**
+## **[Full Documentation](https://detaysoft.github.io/docs-react-chat-elements/)**, **[Changelog](https://github.com/Detaysoft/react-chat-elements/blob/master/CHANGELOG.md)**
 
 ## Install
 
