@@ -11,7 +11,7 @@ const MessageList: FC<IMessageListProps> = ({
   referance = null,
   lockable = false,
   toBottomHeight = 300,
-  downButton = true,
+  downButton,
   ...props
 }) => {
   const [scrollBottom, setScrollBottom] = useState(0)
@@ -165,13 +165,17 @@ const MessageList: FC<IMessageListProps> = ({
             onMeetingVideoLinkClick={props.onMeetingVideoLinkClick}
             onMeetingLinkClick={props.onMeetingLinkClick && ((e: React.MouseEvent<HTMLElement>) => onMeetingLinkClick(x, i, e))}
             actionButtons={props.actionButtons}
+            styles={props.messageBoxStyles}
+            notchStyle={props.notchStyle}
           />
         ))}
       </div>
       {downButton === true && _downButton && toBottomHeight !== '100%' && (
         <div className='rce-mlist-down-button' onClick={toBottom}>
           <FaChevronDown />
-          {props.downButtonBadge > 0 && <span className='rce-mlist-down-button--badge'>{props.downButtonBadge.toString()}</span>}
+          {props.downButtonBadge !== undefined ? (
+            <span className='rce-mlist-down-button--badge'>{props.downButtonBadge.toString()}</span>
+          ) : null}
         </div>
       )}
     </div>

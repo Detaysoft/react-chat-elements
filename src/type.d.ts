@@ -59,6 +59,7 @@ export interface IChatItemProps {
   onDragLeave?: Function
   onDragComponent?: any
   letterItem?: ILetterItem
+  customStatusComponents?: React.ElementType<any>[]
 }
 
 /**
@@ -533,6 +534,8 @@ export interface IMessageBoxProps {
   onMeetingLinkClick?: React.MouseEventHandler
   onMeetingTitleClick?: React.MouseEventHandler
   onMeetingVideoLinkClick?: React.MouseEventHandler
+  styles?: React.CSSProperties
+  notchStyle?: React.CSSProperties
 }
 
 /**
@@ -578,9 +581,9 @@ export interface IMessageListProps {
   actionButtons?: MeetingLinkActionButtons[]
   lockable: boolean
   toBottomHeight?: String | number
-  downButton: boolean
-  downButtonBadge: number
-  sendMessagePreview: boolean
+  downButton?: boolean
+  downButtonBadge?: number
+  sendMessagePreview?: boolean
   onScroll?: React.UIEventHandler
   onContextMenu?: MessageListEvent
   onDownButtonClick?: React.RefObject<HTMLButtonElement>
@@ -599,6 +602,8 @@ export interface IMessageListProps {
   onMeetingTitleClick?: React.MouseEventHandler
   onMeetingVideoLinkClick?: React.MouseEventHandler
   onMeetingLinkClick?: MessageListEvent
+  messageBoxStyles?: React.CSSProperties
+  notchStyle?: React.CSSProperties
 }
 
 /**

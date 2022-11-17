@@ -132,6 +132,16 @@
   background: red;
 }
 
+.rce-citem-body--bottom-status-icon {
+  position: relative;
+  margin-left: 3px;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .rce-citem-body--bottom-tools {
   align-items: center;
   justify-content: center;

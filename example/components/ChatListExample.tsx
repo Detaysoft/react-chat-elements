@@ -1,11 +1,35 @@
 import Identicon from 'identicon.js'
 import loremIpsum from 'lorem-ipsum'
 import React, { useEffect, useState } from 'react'
-import { FaSquare } from 'react-icons/fa'
-import { MdOutlineMoreVert } from 'react-icons/md'
+import { BsListTask } from 'react-icons/bs'
 import ChatList from '../../src/ChatList/ChatList'
-import Dropdown from '../../src/Dropdown/Dropdown'
 import SideBar from '../../src/SideBar/SideBar'
+import { IChatItemProps } from '../../src/type'
+
+function Test(params: any) {
+  return (
+    <div className='rce-citem-body--bottom-status-icon' onClick={() => console.log('clicked')}>
+      <span
+        style={{
+          'fontSize': '10px',
+          'position': 'absolute',
+          'padding': '2px',
+          'right': '-12px',
+          'top': '-6px',
+          'background': 'red',
+          'color': 'white',
+          'borderRadius': '100%',
+          'width': '12px',
+          'height': '12px',
+          'textAlign': 'center',
+        }}
+      >
+        {Math.ceil(Math.random() * 9) + 1}
+      </span>
+      <BsListTask />
+    </div>
+  )
+}
 
 function ChatListExample() {
   const photo = (size: number) => {
@@ -15,7 +39,7 @@ function ChatListExample() {
     }).toString()
   }
 
-  const [chatListAray, setChatListAray] = useState([
+  const [chatListAray, setChatListAray] = useState<IChatItemProps[]>([
     {
       id: String(Math.random()),
       avatar: `data:image/png;base64,${photo(20)}`,
@@ -30,50 +54,7 @@ function ChatListExample() {
       muted: Math.floor((Math.random() * 10) % 2) === 1,
       showMute: Math.floor((Math.random() * 10) % 2) === 1,
       showVideoCall: Math.floor((Math.random() * 10) % 2) === 1,
-      dropdownMenu: (
-        <Dropdown
-          onSelect={() => {}}
-          animationPosition='norteast'
-          title='Dropdown Title'
-          buttonProps={{
-            type: 'transparent',
-            color: '#cecece',
-            icon: {
-              component: <MdOutlineMoreVert />,
-              size: 24,
-            },
-          }}
-          items={[
-            {
-              icon: {
-                component: <FaSquare />,
-                float: 'left',
-                color: 'red',
-                size: 22,
-              },
-              text: 'Menu Item',
-            },
-            {
-              icon: {
-                component: <FaSquare />,
-                float: 'left',
-                color: 'purple',
-                size: 22,
-              },
-              text: 'Menu Item',
-            },
-            {
-              icon: {
-                component: <FaSquare />,
-                float: 'left',
-                color: 'yellow',
-                size: 22,
-              },
-              text: 'Menu Item',
-            },
-          ]}
-        />
-      ),
+      customStatusComponents: [Test],
     },
   ])
 
@@ -95,50 +76,7 @@ function ChatListExample() {
         muted: Math.floor((Math.random() * 10) % 2) === 1,
         showMute: Math.floor((Math.random() * 10) % 2) === 1,
         showVideoCall: Math.floor((Math.random() * 10) % 2) === 1,
-        dropdownMenu: (
-          <Dropdown
-            onSelect={() => {}}
-            animationPosition='norteast'
-            title='Dropdown Title'
-            buttonProps={{
-              type: 'transparent',
-              color: '#cecece',
-              icon: {
-                component: <MdOutlineMoreVert />,
-                size: 24,
-              },
-            }}
-            items={[
-              {
-                icon: {
-                  component: <FaSquare />,
-                  float: 'left',
-                  color: 'red',
-                  size: 22,
-                },
-                text: 'Menu Item',
-              },
-              {
-                icon: {
-                  component: <FaSquare />,
-                  float: 'left',
-                  color: 'purple',
-                  size: 22,
-                },
-                text: 'Menu Item',
-              },
-              {
-                icon: {
-                  component: <FaSquare />,
-                  float: 'left',
-                  color: 'yellow',
-                  size: 22,
-                },
-                text: 'Menu Item',
-              },
-            ]}
-          />
-        ),
+        customStatusComponents: [Test],
       },
     ])
   }, [chatListAray])

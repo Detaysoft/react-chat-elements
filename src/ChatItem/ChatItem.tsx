@@ -71,7 +71,10 @@ const ChatItem: React.FC<IChatItemProps> = ({
       <div className='rce-citem' onDragOver={onDragOver} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
         {!!props.onDragComponent && onDrag && props.onDragComponent(props.id)}
         {((onDrag && !props.onDragComponent) || !onDrag) && [
-          <div className={classNames('rce-citem-avatar', { 'rce-citem-status-encircle': statusColorType === 'encircle' })}>
+          <div
+            key={'avatar'}
+            className={classNames('rce-citem-avatar', { 'rce-citem-status-encircle': statusColorType === 'encircle' })}
+          >
             <Avatar
               src={props.avatar}
               alt={props.alt}
@@ -103,7 +106,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
               type={classNames('circle', { 'flexible': avatarFlexible })}
             />
           </div>,
-          <div className='rce-citem-body'>
+          <div key={'rce-citem-body'} className='rce-citem-body'>
             <div className='rce-citem-body--top'>
               <div className='rce-citem-body--top-title'>{props.title}</div>
               <div className='rce-citem-body--top-time'>{date && (props.dateString || format(date))}</div>
@@ -132,6 +135,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
                 )}
               </div>
               <div className='rce-citem-body--bottom-status'>{unread && unread > 0 ? <span>{unread}</span> : null}</div>
+              {props.customStatusComponents !== undefined ? props.customStatusComponents.map(Item => <Item />) : null}
             </div>
           </div>,
         ]}
