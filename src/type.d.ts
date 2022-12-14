@@ -619,7 +619,7 @@ export type MessageListEvent = (item: MessageType, index: number, event: React.M
  * @prop state The Progress Options's state is a object.
  */
 export interface IProgressOptions {
-  state: {
+  state?: {
     color?: string
     width?: string
   }
