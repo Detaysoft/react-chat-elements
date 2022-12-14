@@ -22,8 +22,8 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
         setText: (arg0: string | number) => void
       }
     ) => {
-      circle.path.setAttribute('trail', state.state.color)
-      circle.path.setAttribute('trailwidth-width', state.state.width)
+      circle.path.setAttribute('trail', state?.state?.color)
+      circle.path.setAttribute('trailwidth-width', state?.state?.width)
 
       var value = Math.round(circle?.value() * 100)
       if (value === 0) circle?.setText('')
@@ -45,9 +45,9 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
         style={{
           ...(props?.data.width &&
             props?.data.height && {
-              width: props.data.width,
-              height: props.data.height,
-            }),
+            width: props.data.width,
+            height: props.data.height,
+          }),
         }}
       >
         {!downloaded && (
