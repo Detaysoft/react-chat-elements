@@ -1,6 +1,7 @@
 import loremIpsum from 'lorem-ipsum'
 import { MessageType } from '../../src/type'
 import { getRandomColor, photo, token } from './common'
+import { MdOutlineVideoCall } from 'react-icons/md'
 
 export const photoMessage: MessageType = {
   type: 'photo',
@@ -320,6 +321,20 @@ export const meetingMessage: MessageType = {
 
 export const meetingLinkMessage: MessageType = {
   type: 'meetingLink',
+  actionButtons: [
+    {
+      onClickButton(id) {
+        console.log(id)
+      },
+      Component: () => MdOutlineVideoCall({ size: '25px' }),
+    },
+    {
+      onClickButton(id) {
+        console.log(id)
+      },
+      Component: () => MdOutlineVideoCall({ size: '25px' }),
+    },
+  ],
   meetingID: String(Math.random()),
   id: String(Math.random()),
   position: token() >= 1 ? 'right' : 'left',

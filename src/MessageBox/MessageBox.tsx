@@ -23,7 +23,7 @@ import { format } from 'timeago.js'
 import classNames from 'classnames'
 import { MessageBoxType } from '../type'
 
-const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...props }) => {
+const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, styles, ...props }) => {
   const prevProps = useRef(focus)
   const messageRef = useRef<HTMLDivElement>(null)
 
@@ -53,6 +53,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
         <SystemMessage {...props} focus={focus} notch={notch} />
       ) : (
         <div
+          style={styles}
           className={classNames(
             positionCls,
             { 'rce-mbox--clear-padding': thatAbsoluteTime },
@@ -157,7 +158,9 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
             {props.type === 'meeting' && <MeetingMessage focus={focus} notch={notch} {...props} />}
             {props.type === 'audio' && <AudioMessage focus={focus} notch={notch} {...props} />}
 
-            {props.type === 'meetingLink' && <MeetingLink focus={focus} notch={notch} {...props} />}
+            {props.type === 'meetingLink' && (
+              <MeetingLink focus={focus} notch={notch} {...props} actionButtons={props?.actionButtons} />
+            )}
 
             <div
               className={classNames(
@@ -185,6 +188,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
           {notch &&
             (props.position === 'right' ? (
               <svg
+                style={props.notchStyle}
                 className={classNames('rce-mbox-right-notch', { 'message-focus': focus })}
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 20 20'
@@ -194,6 +198,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, ...
             ) : (
               <div>
                 <svg
+                  style={props.notchStyle}
                   className={classNames('rce-mbox-left-notch', { 'message-focus': focus })}
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'

@@ -59,6 +59,7 @@ export interface IChatItemProps {
   onDragLeave?: Function
   onDragComponent?: any
   letterItem?: ILetterItem
+  customStatusComponents?: React.ElementType<any>[]
 }
 
 /**
@@ -533,6 +534,8 @@ export interface IMessageBoxProps {
   onMeetingLinkClick?: React.MouseEventHandler
   onMeetingTitleClick?: React.MouseEventHandler
   onMeetingVideoLinkClick?: React.MouseEventHandler
+  styles?: React.CSSProperties
+  notchStyle?: React.CSSProperties
 }
 
 /**
@@ -575,11 +578,12 @@ export interface IMessageListProps {
   isShowChild?: boolean
   referance: any
   dataSource: MessageType[]
+  actionButtons?: MeetingLinkActionButtons[]
   lockable: boolean
   toBottomHeight?: String | number
-  downButton: boolean
-  downButtonBadge: number
-  sendMessagePreview: boolean
+  downButton?: boolean
+  downButtonBadge?: number
+  sendMessagePreview?: boolean
   onScroll?: React.UIEventHandler
   onContextMenu?: MessageListEvent
   onDownButtonClick?: React.RefObject<HTMLButtonElement>
@@ -598,6 +602,8 @@ export interface IMessageListProps {
   onMeetingTitleClick?: React.MouseEventHandler
   onMeetingVideoLinkClick?: React.MouseEventHandler
   onMeetingLinkClick?: MessageListEvent
+  messageBoxStyles?: React.CSSProperties
+  notchStyle?: React.CSSProperties
 }
 
 /**
@@ -628,6 +634,14 @@ export interface IMeetingLinkMessage extends IMessage {
   meetingID?: string
 }
 
+export type TActionButton = React.FunctionComponent<any>
+
+export interface MeetingLinkActionButtons {
+  // return meeting id
+  onClickButton: (id: string) => void
+  Component: TActionButton
+}
+
 /**
  * IMeetingLinkMessageProps Interface
  * @prop type The Meeting Link Message's type is "meetingLink" and required.
@@ -636,7 +650,7 @@ export interface IMeetingLinkMessage extends IMessage {
  * @prop onMeetingMoreSelect The Meeting More Select Message's function onMeetingMoreSelect(event: React.MouseEvent<T, MouseEvent>) and optional.
  */
 export interface IMeetingLinkMessageProps extends IMeetingLinkMessage {
-  onMeetingLinkClick?: (id: string) => void
+  actionButtons?: MeetingLinkActionButtons[]
 }
 
 /**

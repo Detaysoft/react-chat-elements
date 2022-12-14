@@ -1,4 +1,78 @@
 <details open>
+<summary>12.0.4 Updates</summary>
+<br>
+
+# Meeting Link changes
+
+## You can render custom meeting link action buttons
+
+### New usage;
+
+```js
+
+import { MeetlingLink } from 'react-chat-elements'
+
+<MeetlingLink
+	actionButtons={[
+		{
+			onClickButton: test => {
+				console.log(test)
+			},
+			Component: () => <div>Test</div>,
+		},
+		{
+			onClickButton: test => {
+				console.log(test)
+			},
+			Component: () => <div>Test</div>,
+		},
+	]}
+	.
+	.
+	.
+/>
+```
+
+### In MessageList component usage;
+
+```js
+import { MessageList } from 'react-chat-elements'
+
+<MessageList
+	actionButtons={[
+		{
+			onClickButton: test => {
+				console.log(test)
+			},
+			Component: () => <div>Test</div>,
+		},
+		{
+			onClickButton: test => {
+				console.log(test)
+			},
+			Component: () => <div>Test</div>,
+		},
+	]}
+	.
+	.
+	.
+/>
+```
+
+</details>
+
+<br>
+
+<details >
+<summary>12.0.0 Updates</summary>
+<br>
+
+# typescript support
+
+</details>
+<br>
+
+<details>
 <summary>11.0.0 Updates</summary>
 <br>
 
@@ -6,9 +80,9 @@ This update target to fix component ref broken problems
 
 Fixed issues:
 
--   https://github.com/Detaysoft/react-chat-elements/issues/158
--   https://github.com/Detaysoft/react-chat-elements/issues/157
--   https://github.com/Detaysoft/react-chat-elements/issues/142
+- https://github.com/Detaysoft/react-chat-elements/issues/158
+- https://github.com/Detaysoft/react-chat-elements/issues/157
+- https://github.com/Detaysoft/react-chat-elements/issues/142
 
 1.  All react-chat-elements components turneded to function component for "ref" property problems.
 

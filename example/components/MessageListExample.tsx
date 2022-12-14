@@ -112,9 +112,11 @@ function MessageListExample() {
         referance={messageListReferance}
         dataSource={messageListArray}
         lockable={true}
-        downButton={false}
+        downButton={true}
         downButtonBadge={10}
         sendMessagePreview={true}
+        messageBoxStyles={{ backgroundColor: 'red' }}
+        notchStyle={{ fill: 'red' }}
       />
 
       <div
