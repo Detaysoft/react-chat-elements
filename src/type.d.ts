@@ -493,7 +493,7 @@ export interface ISpotifyMessage extends IMessage {
  * @prop type The Spotify Message's type is "spotify" and required.
  * @prop message The Spotify Message's message is a ISpotifyMessage and required.
  */
-export interface ISpotifyMessageProps extends ISpotifyMessage {}
+export interface ISpotifyMessageProps extends ISpotifyMessage { }
 
 /**
  * IMessageBoxProps Interface
@@ -614,8 +614,8 @@ export type MessageListEvent = (item: MessageType, index: number, event: React.M
  */
 export interface IProgressOptions {
   state: {
-    color: string
-    width: string
+    color?: string
+    width?: string
   }
 }
 
@@ -651,7 +651,7 @@ type MeetingMessageEvent = (item: IMeetingMessage, index: number, event: React.M
  * ITextMessage Interface extends IMessage
  * @prop type The Text Message's type is "text" and required.
  */
-export interface ITextMessage extends IMessage {}
+export interface ITextMessage extends IMessage { }
 
 /**
  * ITextMessageProps Interface
@@ -1068,29 +1068,29 @@ export type MessageType =
 
 export type MessageBoxType = MessageType & IMessageBoxProps
 
-export class ChatItem extends React.Component<IChatItemProps> {}
-export class ChatList extends React.Component<IChatListProps> {}
-export class MessageBox extends React.Component<IMessageBoxProps> {}
-export class LocationMessage extends React.Component<ILocationMessageProps> {}
-export class PhotoMessage extends React.Component<IPhotoMessageProps> {}
-export class VideoMessage extends React.Component<IVideoMessageProps> {}
-export class SpotifyMessage extends React.Component<ISpotifyMessageProps> {}
-export class AudioMessage extends React.Component<IAudioMessageProps> {}
-export class MeetingLink extends React.Component<IMeetingLinkMessageProps> {}
-export class FileMessage extends React.Component<IFileMessageProps> {}
-export class TextMessage extends React.Component<ITextMessageProps> {}
-export class SystemMessage extends React.Component<ISystemMessageProps> {}
-export class ReplyMessage extends React.Component<IReplyMessageProps> {}
-export class MeetingMessage extends React.Component<IMeetingMessageProps> {}
-export class MeetingItem extends React.Component<IMeetingItemProps> {}
-export class MeetingList extends React.Component<IMeetingListProps> {}
-export class MessageList extends React.Component<IMessageListProps> {}
+export class ChatItem extends React.Component<IChatItemProps> { }
+export class ChatList extends React.Component<IChatListProps> { }
+export class MessageBox extends React.Component<IMessageBoxProps> { }
+export class LocationMessage extends React.Component<ILocationMessageProps> { }
+export class PhotoMessage extends React.Component<IPhotoMessageProps> { }
+export class VideoMessage extends React.Component<IVideoMessageProps> { }
+export class SpotifyMessage extends React.Component<ISpotifyMessageProps> { }
+export class AudioMessage extends React.Component<IAudioMessageProps> { }
+export class MeetingLink extends React.Component<IMeetingLinkMessageProps> { }
+export class FileMessage extends React.Component<IFileMessageProps> { }
+export class TextMessage extends React.Component<ITextMessageProps> { }
+export class SystemMessage extends React.Component<ISystemMessageProps> { }
+export class ReplyMessage extends React.Component<IReplyMessageProps> { }
+export class MeetingMessage extends React.Component<IMeetingMessageProps> { }
+export class MeetingItem extends React.Component<IMeetingItemProps> { }
+export class MeetingList extends React.Component<IMeetingListProps> { }
+export class MessageList extends React.Component<IMessageListProps> { }
 
-export class Popup extends React.Component<IPopupProps> {}
-export class Avatar extends React.Component<IAvatarProps> {}
-export class Button extends React.Component<IButtonProps> {}
-export class Sidebar extends React.Component<ISideBar> {}
-export class Navbar extends React.Component<INavbarProps> {}
-export class Input extends React.Component<IInputProps> {}
-export class Dropdown extends React.Component<IDefaultProps> {}
-export class Circle extends React.Component<ICircleProps> {}
+export class Popup extends React.Component<IPopupProps> { }
+export class Avatar extends React.Component<IAvatarProps> { }
+export class Button extends React.Component<IButtonProps> { }
+export class Sidebar extends React.Component<ISideBar> { }
+export class Navbar extends React.Component<INavbarProps> { }
+export class Input extends React.Component<IInputProps> { }
+export class Dropdown extends React.Component<IDefaultProps> { }
+export class Circle extends React.Component<ICircleProps> { }
