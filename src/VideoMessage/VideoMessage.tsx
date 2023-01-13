@@ -22,8 +22,8 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
         setText: (arg0: string | number) => void
       }
     ) => {
-      circle.path.setAttribute('trail', (data.state !== undefined && data.state.color) || '')
-      circle.path.setAttribute('trailwidth-width', (data.state !== undefined && data.state.width) || '')
+      circle.path.setAttribute('trail', (data.state !== undefined && data?.state?.color) || '')
+      circle.path.setAttribute('trailwidth-width', (data.state !== undefined && data?.state?.width) || '')
 
       var value = Math.round(circle?.value() * 100)
       if (value === 0) circle?.setText('')
