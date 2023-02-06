@@ -15,6 +15,7 @@ import {
   textMessage,
   videoMessage,
 } from '../utils/MessageTypes'
+import { MdInfo } from 'react-icons/md'
 
 let clearRef = () => {}
 
@@ -28,6 +29,8 @@ function MessageListExample() {
   const [status, setStatus] = useState<string>('')
   const messageListReferance = useRef()
   const inputReferance = useRef()
+
+  console.log(messageListArray)
 
   const forceUpdate = useForceUpdate()
 
@@ -73,7 +76,21 @@ function MessageListExample() {
         break
     }
 
-    setMessageListArray([...messageListArray, randomMessage(Addmtype)])
+    const newMsg = randomMessage(Addmtype)
+
+    // add custom button
+    if (token() > 7) {
+      newMsg.customButtons = [
+        <div
+          onClick={() => {
+            console.log('custom button click')
+          }}
+        >
+          <MdInfo />
+        </div>,
+      ]
+    }
+    setMessageListArray([...messageListArray, newMsg])
     clearRef()
     forceUpdate()
   }

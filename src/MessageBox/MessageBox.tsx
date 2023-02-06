@@ -93,6 +93,12 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
                     </div>
                   </div>
                 )}
+                {!!props?.customButtons?.length &&
+                  props.customButtons.map(btn => (
+                    <div className='rce-mbox-btn-container'>
+                      <div className={'rce-mbox-btn'}>{btn}</div>
+                    </div>
+                  ))}
               </div>
             )}
 
