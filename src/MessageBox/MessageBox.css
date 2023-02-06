@@ -12,12 +12,12 @@
 
 .rce-mbox-btn-list-right {
   left: -12px;
-  transform: translateX(-100%);
+  transform: translate(-100%, -50%);
 }
 
 .rce-mbox-btn-list-left {
   right: -12px;
-  transform: translateX(100%);
+  transform: translate(100%, -50%);
 }
 
 .rce-mbox-btn-container {
