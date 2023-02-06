@@ -62,58 +62,37 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
           )}
         >
           <div className='rce-mbox-body' onContextMenu={props.onContextMenu}>
-            {!props.retracted && props.forwarded === true && (
+            {!props.retracted && (
               <div
                 className={classNames(
-                  'rce-mbox-forward',
-                  { 'rce-mbox-forward-right': props.position === 'left' },
-                  { 'rce-mbox-forward-left': props.position === 'right' }
+                  'rce-mbox-btn-list',
+                  { 'rce-mbox-btn-list-left': props.position === 'left' },
+                  { 'rce-mbox-btn-list-right': props.position === 'right' }
                 )}
-                onClick={props.onForwardClick}
               >
-                <RiShareForwardFill />
-              </div>
-            )}
+                {props.forwarded === true && (
+                  <div className='rce-mbox-btn-container'>
+                    <div className={classNames('rce-mbox-forward', 'rce-mbox-btn')} onClick={props.onForwardClick}>
+                      <RiShareForwardFill />
+                    </div>
+                  </div>
+                )}
 
-            {!props.retracted && props.replyButton === true && (
-              <div
-                className={
-                  props.forwarded !== true
-                    ? classNames(
-                        'rce-mbox-forward',
-                        { 'rce-mbox-forward-right': props.position === 'left' },
-                        { 'rce-mbox-forward-left': props.position === 'right' }
-                      )
-                    : classNames(
-                        'rce-mbox-forward',
-                        { 'rce-mbox-reply-btn-right': props.position === 'left' },
-                        { 'rce-mbox-reply-btn-left': props.position === 'right' }
-                      )
-                }
-                onClick={props.onReplyClick}
-              >
-                <MdMessage />
-              </div>
-            )}
+                {props.replyButton === true && (
+                  <div className='rce-mbox-btn-container'>
+                    <div className={classNames('rce-mbox-forward', 'rce-mbox-btn')} onClick={props.onReplyClick}>
+                      <MdMessage />
+                    </div>
+                  </div>
+                )}
 
-            {!props.retracted && props.removeButton === true && (
-              <div
-                className={
-                  props.forwarded === true
-                    ? classNames(
-                        'rce-mbox-remove',
-                        { 'rce-mbox-remove-right': props.position === 'left' },
-                        { 'rce-mbox-remove-left': props.position === 'right' }
-                      )
-                    : classNames(
-                        'rce-mbox-forward',
-                        { 'rce-mbox-reply-btn-right': props.position === 'left' },
-                        { 'rce-mbox-reply-btn-left': props.position === 'right' }
-                      )
-                }
-                onClick={props.onRemoveMessageClick}
-              >
-                <MdDelete />
+                {props.removeButton === true && (
+                  <div className='rce-mbox-btn-container'>
+                    <div className={classNames('rce-mbox-remove', 'rce-mbox-btn')} onClick={props.onRemoveMessageClick}>
+                      <MdDelete />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
