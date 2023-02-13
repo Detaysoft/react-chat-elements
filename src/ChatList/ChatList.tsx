@@ -25,9 +25,9 @@ const ChatList: React.FC<IChatListProps> = props => {
     list.push(state)
   }
 
-  const onDragLeaveMW = (e: React.MouseEvent<HTMLElement>, id: Number | string) => {
+  const onDragLeaveMW = (e: React.MouseEvent<HTMLElement>, id: number | string) => {
     if (list.length > 0) list.forEach(item => item(false))
-    props.onDragLeave(e, id)
+    props?.onDragLeave(e, id)
   }
 
   return (
