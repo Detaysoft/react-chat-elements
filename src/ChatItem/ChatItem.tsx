@@ -1,4 +1,4 @@
-import React, { Key, useState } from 'react'
+import React, { Key, useEffect, useState } from 'react'
 import './ChatItem.css'
 
 import Avatar from '../Avatar/Avatar'
@@ -21,6 +21,10 @@ const ChatItem: React.FC<IChatItemProps> = ({
 }) => {
   const [onHoverTool, setOnHoverTool] = useState(false)
   const [onDrag, setOnDrag] = useState(false)
+
+  useEffect(() => {
+    props.setDragStates(setOnDrag)
+  }, [])
 
   const handleOnMouseEnter = () => {
     setOnHoverTool(true)

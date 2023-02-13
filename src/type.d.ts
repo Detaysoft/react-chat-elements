@@ -57,6 +57,7 @@ export interface IChatItemProps {
   onDragEnter?: Function
   onDrop?: Function
   onDragLeave?: Function
+  setDragStates?: Function
   onDragComponent?: any
   letterItem?: ILetterItem
   customStatusComponents?: React.ElementType<any>[]
@@ -518,7 +519,7 @@ export interface ISpotifyMessageProps extends ISpotifyMessage {}
  */
 export interface IMessageBoxProps {
   onMessageFocused?: any
-  renderAddCmp?: React.Component
+  renderAddCmp?: JSX.Element
   onClick?: React.MouseEventHandler
   onOpen?: React.MouseEventHandler
   onPhotoError?: React.MouseEventHandler
