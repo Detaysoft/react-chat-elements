@@ -23,7 +23,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
   const [onDrag, setOnDrag] = useState(false)
 
   useEffect(() => {
-    props?.setDragStates(setOnDrag)
+    props.setDragStates?.(setOnDrag)
   }, [])
 
   const handleOnMouseEnter = () => {
