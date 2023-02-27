@@ -1,6 +1,5 @@
 dependencies
 node_modules
-.vscode/
 
 # testing
 coverage
