@@ -519,7 +519,7 @@ export interface ISpotifyMessageProps extends ISpotifyMessage {}
  */
 export interface IMessageBoxProps {
   onMessageFocused?: any
-  renderAddCmp?: JSX.Element
+  renderAddCmp?: JSX.Element | (() => JSX.Element)
   onClick?: React.MouseEventHandler
   onOpen?: React.MouseEventHandler
   onPhotoError?: React.MouseEventHandler
