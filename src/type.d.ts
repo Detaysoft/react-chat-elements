@@ -801,6 +801,7 @@ export interface IInputProps {
   placeholder?: string
   defaultValue?: string
   inputStyle?: Object
+  value?: string
   onCopy?: React.ClipboardEventHandler
   onCut?: React.ClipboardEventHandler
   onPaste?: React.ClipboardEventHandler

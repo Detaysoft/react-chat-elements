@@ -351,6 +351,7 @@ inputReferance = React.createRef()
   referance={inputReferance}
   placeholder='Type here...'
   multiline={true}
+  value={inputValue}
   rightButtons={<Button color='white' backgroundColor='black' text='Send' />}
 />
 
@@ -383,7 +384,7 @@ inputClear()
 | maxlength         | none    | int               | input or textarea maxlength   |
 | onMaxLengthExceed | none    | function          | called when max length exceed |
 | autofocus         | false   | bool              | input autofocus               |
-
+| value             | none    | string            | input value                   |
 ## Button Component
 
 ```javascript
