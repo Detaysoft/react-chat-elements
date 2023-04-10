@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 /**
  * IChatItemProps Interface
@@ -172,6 +172,7 @@ export interface IMessage {
   letterItem?: ILetterItem
   reply?: IReplyMessage | any
   type: string
+  customButtons?: Array<ReactNode>
 }
 
 /**
