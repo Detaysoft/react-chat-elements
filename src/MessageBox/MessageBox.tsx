@@ -172,8 +172,8 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
             >
               {props.copiableDate && props.date && (props.dateString || format(props.date))}
               {props.status && (
-                <span className='rce-mbox-status'>
-                  {props.status === 'waiting' && <MdAccessTime />}
+                <span className='rce-mbox-status' title={props.statusTitle}>
+                  {props.status === 'waiting' && <MdAccessTime />}        
 
                   {props.status === 'sent' && <MdCheck />}
 

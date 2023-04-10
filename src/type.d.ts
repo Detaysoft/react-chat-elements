@@ -140,8 +140,9 @@ export interface IDefaultProps {
  * @prop titleColor The Message's titleColor and required.
  * @prop forwarded The Message's forwarded and required.
  * @prop replyButton The Message's replyButton icon and required.
- * @prop removeButton The Message's removeButton icon and required.
+ * @prop removeButton The Message's removeButton icon and required. 
  * @prop status The Message's status icon and required.
+ * @prop statusTitle The Message's statusTitle and required.
  * @prop notch The Message's notch and required.
  * @prop copiableDate The Message's copiableDate and optional.
  * @prop retracted The Message's retracted and required.
@@ -163,6 +164,7 @@ export interface IMessage {
   replyButton: boolean
   removeButton: boolean
   status: 'waiting' | 'sent' | 'received' | 'read'
+  statusTitle?: string
   notch: boolean
   copiableDate?: boolean
   retracted: boolean
