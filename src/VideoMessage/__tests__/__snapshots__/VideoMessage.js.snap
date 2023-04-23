@@ -6,12 +6,9 @@ exports[`VideoMessage component should render without issues 1`] = `
 >
   <div
     className="rce-mbox-video--video"
+    style={Object {}}
   >
-    <img
-      onClick={null}
-      onError={null}
-      onLoad={null}
-    />
+    <img />
   </div>
 </div>
 `;
