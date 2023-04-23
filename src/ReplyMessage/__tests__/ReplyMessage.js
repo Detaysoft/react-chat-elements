@@ -5,7 +5,7 @@ import ReplyMessage from '../ReplyMessage'
 
 describe('ReplyMessage component', () => {
   it('should render without issues', () => {
-    const component = shallow(<ReplyMessage />)
+    const component = shallow(<ReplyMessage titleColor='' />)
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()
   })
