@@ -5,7 +5,7 @@ import SideBar from '../SideBar'
 
 describe('SideBar component', () => {
   it('should render without issues', () => {
-    const component = shallow(<SideBar />)
+    const component = shallow(<SideBar data={{}} />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()
