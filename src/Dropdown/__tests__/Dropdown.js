@@ -5,7 +5,7 @@ import Dropdown from '../Dropdown'
 
 describe('Dropdown component', () => {
   it('should render without issues', () => {
-    const component = shallow(<Dropdown />)
+    const component = shallow(<Dropdown items={[]} onSelect={() => {}} />)
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()
   })

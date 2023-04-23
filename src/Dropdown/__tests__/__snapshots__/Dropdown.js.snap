@@ -6,16 +6,7 @@ exports[`Dropdown component should render without issues 1`] = `
   onBlur={[Function]}
 >
   <Button
-    backgroundColor="#3979aa"
-    buttonRef={null}
-    className={null}
-    color="white"
-    disabled={false}
-    icon={null}
     onClick={[Function]}
-    text=""
-    title={null}
-    type={null}
   />
   <div
     className="rce-dropdown default rce-dropdown-open__nortwest"
