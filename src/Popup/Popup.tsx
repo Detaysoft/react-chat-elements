@@ -9,7 +9,7 @@ import { IPopupProps } from '../type'
 const Popup: React.FC<IPopupProps> = ({ ...props }) => {
   if (props.popup?.show === true)
     return (
-      <div className={classNames('rce-popup-wrapper', props.type, props.className)}>
+      <div className={classNames('rce-popup-wrapper' as any, props.type as any, props.className as any)}>
         <div className='rce-popup'>
           {props.popup?.renderHeader ? (
             <div className='rce-popup-header'>{props.popup?.renderHeader()}</div>
