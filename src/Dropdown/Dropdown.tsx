@@ -12,15 +12,15 @@ const Dropdown: React.FC<IDropdownProps> = ({ animationPosition = 'nortwest', an
   }
 
   return (
-    <div className={classNames('rce-dropdown-container', props.className)} onBlur={onBlur}>
+    <div className={classNames('rce-dropdown-container' as any, props.className as any)} onBlur={onBlur}>
       {<Button {...props.buttonProps} onClick={() => setShow(!show)} />}
       <div
         className={classNames(
-          'rce-dropdown',
-          animationType,
-          'rce-dropdown-open__' + animationPosition,
-          { 'dropdown-hide': show === false },
-          { 'dropdown-show': show === true }
+          'rce-dropdown' as any,
+          animationType as any,
+          'rce-dropdown-open__' + animationPosition as any,
+          { 'dropdown-hide': show === false } as any,
+          { 'dropdown-show': show === true } as any
         )}
       >
         <ul>
@@ -28,13 +28,13 @@ const Dropdown: React.FC<IDropdownProps> = ({ animationPosition = 'nortwest', an
           {props.items?.map((x: IDropdownItemType, i: number) => (
             <li key={i} onMouseDown={e => props.onSelect(i)}>
               {x instanceof Object ? (
-                x.icon ? (
+                  "icon" in x && x.icon ? (
                   <span className='rce-button-icon--container'>
                     {(x.icon.float === 'right' || !x.icon.float) && <a>{x.text}</a>}
 
                     <span
                       style={{ float: x.icon.float, color: x.icon.color, fontSize: x.icon.size || 12 }}
-                      className={classNames('rce-button-icon', x.icon.className)}
+                      className={classNames('rce-button-icon' as any, x.icon.className as any)}
                     >
                       {x.icon.component}
                     </span>
@@ -42,7 +42,7 @@ const Dropdown: React.FC<IDropdownProps> = ({ animationPosition = 'nortwest', an
                     {x.icon.float === 'left' && <a>{x.text}</a>}
                   </span>
                 ) : (
-                  <a>{x.text}</a>
+                  <a>{"text" in x ? x.text : null}</a>
                 )
               ) : (
                 <a>{x}</a>
