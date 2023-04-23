@@ -14,7 +14,6 @@ exports[`MeetingMessage component should render without issues 1`] = `
     </div>
     <div
       className="rce-mtmg-body"
-      onClick={[Function]}
     >
       <div
         className="rce-mtmg-item"
