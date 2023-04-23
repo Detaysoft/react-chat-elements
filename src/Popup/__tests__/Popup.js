@@ -10,7 +10,6 @@ describe('Popup component', () => {
       color: '#333',
     }
     const component = shallow(<Popup popup={popup} />)
-    console.log(component)
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()
   })
