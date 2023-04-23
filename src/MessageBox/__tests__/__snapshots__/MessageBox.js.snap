@@ -3,26 +3,20 @@
 exports[`MessageBox component should render without issues 1`] = `
 <div
   className="rce-container-mbox"
-  onClick={null}
 >
   <div
     className="rce-mbox"
   >
     <div
       className="rce-mbox-body"
-      onContextMenu={null}
     >
       <div
-        className="rce-mbox-text left"
-      />
-      <div
         className="rce-mbox-time non-copiable"
-        data-text="just now"
       >
         <span
           className="rce-mbox-status"
         >
-          <IoAndroidDoneAll
+          <MdDoneAll
             color="#4FC3F7"
           />
         </span>
