@@ -16,10 +16,10 @@ const LocationMessage: React.FC<ILocationMessageProps> = ({ markerColor = 'red',
       .replace('KEY', props.apiKey)
   }
   const className = () => {
-    var _className = classNames('rce-mbox-location', props.className)
+    let _className = classNames('rce-mbox-location' as any, props.className as any)
 
     if (props.text) {
-      _className = classNames(_className, 'rce-mbox-location-has-text')
+      _className = classNames(_className as any, 'rce-mbox-location-has-text' as any)
     }
 
     return _className

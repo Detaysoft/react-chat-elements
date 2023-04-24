@@ -5,7 +5,7 @@ import ChatList from '../ChatList'
 
 describe('ChatList component', () => {
   it('should render without issues', () => {
-    const component = shallow(<ChatList />)
+    const component = shallow(<ChatList dataSource={[]} id='' lazyLoadingImage='' />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()

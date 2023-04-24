@@ -7,7 +7,7 @@ const Button: React.FC<IButtonProps> = ({ disabled = false, backgroundColor = '#
     <button
       ref={props.buttonRef}
       title={props.title}
-      className={classNames('rce-button', props.type, props.className)}
+      className={classNames('rce-button' as any, props.type as any, props.className as any)}
       style={{
         backgroundColor: backgroundColor,
         color: color,

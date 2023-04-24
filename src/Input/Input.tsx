@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { CSSProperties, useEffect } from 'react'
 import './Input.css'
 import classNames from 'classnames'
 import { IInputProps } from '../type'
@@ -69,7 +69,7 @@ const Input: React.FC<IInputProps> = ({
           className={classNames('rce-input')}
           placeholder={props.placeholder}
           defaultValue={props.defaultValue}
-          style={props.inputStyle}
+          style={props.inputStyle as CSSProperties}
           onChange={onChangeEvent}
           onCopy={props.onCopy}
           onCut={props.onCut}
@@ -90,7 +90,7 @@ const Input: React.FC<IInputProps> = ({
           className={classNames('rce-input', 'rce-input-textarea')}
           placeholder={props.placeholder}
           defaultValue={props.defaultValue}
-          style={props.inputStyle}
+          style={props.inputStyle as CSSProperties}
           onChange={onChangeEvent}
           onCopy={props.onCopy}
           onCut={props.onCut}
@@ -103,7 +103,9 @@ const Input: React.FC<IInputProps> = ({
           onKeyDown={props.onKeyDown}
           onKeyPress={props.onKeyPress}
           onKeyUp={props.onKeyUp}
-        >{props?.value ?? ""}</textarea>
+        >
+          {props?.value ?? ''}
+        </textarea>
       )}
       {props.rightButtons && <div className='rce-input-buttons'>{props.rightButtons}</div>}
     </div>

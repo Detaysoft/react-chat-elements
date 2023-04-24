@@ -5,7 +5,7 @@ import MeetingMessage from '../MeetingMessage'
 
 describe('MeetingMessage component', () => {
   it('should render without issues', () => {
-    const component = shallow(<MeetingMessage />)
+    const component = shallow(<MeetingMessage dateString='just now' />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()

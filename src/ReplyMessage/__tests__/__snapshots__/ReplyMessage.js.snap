@@ -3,15 +3,14 @@
 exports[`ReplyMessage component should render without issues 1`] = `
 <div
   className="rce-mbox-reply"
-  onClick={[Function]}
-  style={null}
+  style={Object {}}
 >
   <div
     className="rce-mbox-reply-left"
   >
     <div
       className="rce-mbox-reply-owner"
-      style={null}
+      style={Object {}}
     >
       Unknown
     </div>

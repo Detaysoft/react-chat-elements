@@ -16,12 +16,7 @@ exports[`MeetingLink component should render without issues 1`] = `
     </div>
     <div
       className="rce-mtlink-btn"
-      onClick={[Function]}
-    >
-      <MdVideoCall
-        className="rce-mtlink-svg"
-      />
-    </div>
+    />
   </div>
 </div>
 `;

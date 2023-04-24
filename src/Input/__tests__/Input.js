@@ -5,7 +5,7 @@ import Input from '../Input'
 
 describe('Input component', () => {
   it('should render without issues', () => {
-    const component = shallow(<Input />)
+    const component = shallow(<Input maxHeight={200} />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()

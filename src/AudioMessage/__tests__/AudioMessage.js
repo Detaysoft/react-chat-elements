@@ -5,7 +5,7 @@ import AudioMessage from '../AudioMessage'
 
 describe('AudioMessage component', () => {
   it('should render without issues', () => {
-    const component = shallow(<AudioMessage />)
+    const component = shallow(<AudioMessage data={{}} />)
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()
   })

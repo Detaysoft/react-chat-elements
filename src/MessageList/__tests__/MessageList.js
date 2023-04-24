@@ -5,7 +5,7 @@ import MessageList from '../MessageList'
 
 describe('MessageList component', () => {
   it('should render without issues', () => {
-    const component = shallow(<MessageList />)
+    const component = shallow(<MessageList dataSource={[]} lockable={false} referance={{}} />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()

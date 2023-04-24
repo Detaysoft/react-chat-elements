@@ -5,7 +5,7 @@ import VideoMessage from '../VideoMessage'
 
 describe('VideoMessage component', () => {
   it('should render without issues', () => {
-    const component = shallow(<VideoMessage />)
+    const component = shallow(<VideoMessage controlsList='' data={{}} />)
 
     expect(component.length).toBe(1)
     expect(toJson(component)).toMatchSnapshot()

@@ -6,13 +6,12 @@ exports[`LocationMessage component should render without issues 1`] = `
 >
   <a
     className="rce-mbox-location"
-    href="https://www.google.com/maps/search/?api=1&query=undefined,undefined&zoom=14"
+    href="https://www.google.com/maps/search/?api=1&query=,&zoom=14"
     target="_blank"
   >
     <img
       className="rce-mbox-location-img"
-      onError={[Function]}
-      src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|undefined,undefined&zoom=14&size=270x200&scale=2&key="
+      src="https://maps.googleapis.com/maps/api/staticmap?markers=color:red|,&zoom=14&size=270x200&scale=2&key=undefined"
     />
   </a>
 </div>
