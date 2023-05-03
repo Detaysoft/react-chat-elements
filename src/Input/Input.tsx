@@ -103,7 +103,9 @@ const Input: React.FC<IInputProps> = ({
           onKeyDown={props.onKeyDown}
           onKeyPress={props.onKeyPress}
           onKeyUp={props.onKeyUp}
-        >{props?.value ?? ""}</textarea>
+        >
+          {props.defaultValue ? props?.value ?? null : null}
+        </textarea>
       )}
       {props.rightButtons && <div className='rce-input-buttons'>{props.rightButtons}</div>}
     </div>

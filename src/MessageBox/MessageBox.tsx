@@ -163,6 +163,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
             )}
 
             <div
+              title={props.statusTitle}
               className={classNames(
                 'rce-mbox-time',
                 { 'rce-mbox-time-block': thatAbsoluteTime },
@@ -172,8 +173,8 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
             >
               {props.copiableDate && props.date && (props.dateString || format(props.date))}
               {props.status && (
-                <span className='rce-mbox-status' title={props.statusTitle}>
-                  {props.status === 'waiting' && <MdAccessTime />}        
+                <span className='rce-mbox-status'>
+                  {props.status === 'waiting' && <MdAccessTime />}
 
                   {props.status === 'sent' && <MdCheck />}
 

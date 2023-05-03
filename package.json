@@ -28,10 +28,10 @@
     "jest": "21.2.1",
     "lorem-ipsum": "^1.0.4",
     "mini-css-extract-plugin": "^2.6.0",
-    "react": "^17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "react-test-renderer": "^17.0.2",
+    "react-test-renderer": "^18.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.75.6",
     "rollup-plugin-babel": "^4.4.0",
@@ -81,8 +81,8 @@
     "build:lib": "yarn run build && rollup -c && yarn run move:types"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "18.2.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",
