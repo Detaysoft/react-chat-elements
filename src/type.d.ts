@@ -140,7 +140,7 @@ export interface IDefaultProps {
  * @prop titleColor The Message's titleColor and required.
  * @prop forwarded The Message's forwarded and required.
  * @prop replyButton The Message's replyButton icon and required.
- * @prop removeButton The Message's removeButton icon and required. 
+ * @prop removeButton The Message's removeButton icon and required.
  * @prop status The Message's status icon and required.
  * @prop statusTitle The Message's statusTitle and required.
  * @prop notch The Message's notch and required.
@@ -581,6 +581,7 @@ export interface IMessageListProps {
   isShowChild?: boolean
   referance: any
   dataSource: MessageType[]
+  suggestMessages?: ISuggestMessageProps
   actionButtons?: MeetingLinkActionButtons[]
   lockable: boolean
   toBottomHeight?: String | number
@@ -1057,6 +1058,11 @@ export interface INavbarProps {
   left?: any
   center?: any
   right?: any
+}
+
+export interface ISuggestMessageProps {
+  suggestMessages?: string[]
+  messageClick?: Function
 }
 
 /**
