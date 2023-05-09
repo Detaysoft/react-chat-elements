@@ -78,7 +78,8 @@
     "move:types": "copyfiles -u 1 src/type.d.ts dist/",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js",
-    "build:lib": "yarn run build && rollup -c && yarn run move:types"
+    "build:lib": "yarn run build && rollup -c && yarn run move:types",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": "^18.2.0",
