@@ -140,7 +140,7 @@ export interface IDefaultProps {
  * @prop titleColor The Message's titleColor and required.
  * @prop forwarded The Message's forwarded and required.
  * @prop replyButton The Message's replyButton icon and required.
- * @prop removeButton The Message's removeButton icon and required. 
+ * @prop removeButton The Message's removeButton icon and required.
  * @prop status The Message's status icon and required.
  * @prop statusTitle The Message's statusTitle and required.
  * @prop notch The Message's notch and required.
@@ -1088,7 +1088,7 @@ export type MessageBoxType = MessageType & IMessageBoxProps
 
 export class ChatItem extends React.Component<IChatItemProps> {}
 export class ChatList extends React.Component<IChatListProps> {}
-export class MessageBox extends React.Component<IMessageBoxProps> {}
+export class MessageBox extends React.Component<MessageBoxType> {}
 export class LocationMessage extends React.Component<ILocationMessageProps> {}
 export class PhotoMessage extends React.Component<IPhotoMessageProps> {}
 export class VideoMessage extends React.Component<IVideoMessageProps> {}
