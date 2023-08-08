@@ -1,4 +1,5 @@
 import React from 'react'
+import { VirtuosoProps } from 'react-virtuoso'
 
 /**
  * IChatItemProps Interface
@@ -91,11 +92,12 @@ export interface ILetterItem {
  * @prop onDragLeave The Chat Item's drop leave function and optional.
  * @prop onDragComponent The Chat Item's drag component and optional.
  */
-export interface IChatListProps {
+export interface IChatListProps<D, C> {
   id: string | number
   className?: string
   lazyLoadingImage: string
   dataSource: IChatItemProps[]
+  virtualListOptions?: Omit<VirtuosoProps<D, C>, 'itemContent' | 'totalCount'>
   cmpRef?: React.Ref<HTMLButtonElement>
   onAvatarError?: ChatListEvent
   onContextMenu?: ChatListEvent
@@ -140,7 +142,7 @@ export interface IDefaultProps {
  * @prop titleColor The Message's titleColor and required.
  * @prop forwarded The Message's forwarded and required.
  * @prop replyButton The Message's replyButton icon and required.
- * @prop removeButton The Message's removeButton icon and required. 
+ * @prop removeButton The Message's removeButton icon and required.
  * @prop status The Message's status icon and required.
  * @prop statusTitle The Message's statusTitle and required.
  * @prop notch The Message's notch and required.
@@ -572,7 +574,7 @@ export interface IMessageBoxProps {
  * @prop onMeetingVideoLinkClick The MessageList's function onMeetingVideoLinkClick(event: React.MouseEvent<T, MouseEvent>) and optional.
  * @prop onMeetingLinkClick The Message List's function onMeetingLinkClick(item: IMessageBoxProps, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) and optional.
  */
-export interface IMessageListProps {
+export declare interface IMessageListProps<D, C> {
   className?: string
   customProps?: {
     [key: string]: unknown
@@ -581,6 +583,7 @@ export interface IMessageListProps {
   isShowChild?: boolean
   referance: any
   dataSource: MessageType[]
+  virtualListOptions?: Omit<VirtuosoProps<D, C>, 'itemContent' | 'totalCount'>
   actionButtons?: MeetingLinkActionButtons[]
   lockable: boolean
   toBottomHeight?: String | number
@@ -1087,7 +1090,7 @@ export type MessageType =
 export type MessageBoxType = MessageType & IMessageBoxProps
 
 export class ChatItem extends React.Component<IChatItemProps> {}
-export class ChatList extends React.Component<IChatListProps> {}
+export class ChatList extends React.Component<IChatListProps<{}, {}>> {}
 export class MessageBox extends React.Component<IMessageBoxProps> {}
 export class LocationMessage extends React.Component<ILocationMessageProps> {}
 export class PhotoMessage extends React.Component<IPhotoMessageProps> {}
@@ -1102,7 +1105,7 @@ export class ReplyMessage extends React.Component<IReplyMessageProps> {}
 export class MeetingMessage extends React.Component<IMeetingMessageProps> {}
 export class MeetingItem extends React.Component<IMeetingItemProps> {}
 export class MeetingList extends React.Component<IMeetingListProps> {}
-export class MessageList extends React.Component<IMessageListProps> {}
+export class MessageList extends React.Component<IMessageListProps<{}, {}>> {}
 
 export class Popup extends React.Component<IPopupProps> {}
 export class Avatar extends React.Component<IAvatarProps> {}

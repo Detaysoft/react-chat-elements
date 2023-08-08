@@ -59,7 +59,8 @@ function ChatListExample() {
   ])
 
   useEffect(() => {
-    if (chatListAray.length === 5) return
+    if (chatListAray.length === 20) return
+
     setChatListAray([
       ...chatListAray,
       {
@@ -82,23 +83,18 @@ function ChatListExample() {
   }, [chatListAray])
 
   return (
-    <div className='chat-list'>
-      <SideBar
-        data={{
-          center: (
-            <ChatList
-              dataSource={chatListAray}
-              onClickMute={({ ...props }) => console.log(props)}
-              onClickVideoCall={({ ...props }) => console.log(props)}
-              id={''}
-              lazyLoadingImage={''}
-              onDragEnter={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragEnter')}
-              onDragLeave={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragLeave')}
-              onDrop={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDrop')}
-              onDragComponent={() => <div className='on-drag-mlist'>{loremIpsum({ count: 4, units: 'words' })}</div>}
-            />
-          ),
-        }}
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <ChatList
+        virtualListOptions={{}}
+        dataSource={chatListAray}
+        onClickMute={({ ...props }) => console.log(props)}
+        onClickVideoCall={({ ...props }) => console.log(props)}
+        id={''}
+        lazyLoadingImage={''}
+        onDragEnter={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragEnter')}
+        onDragLeave={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDragLeave')}
+        onDrop={(e: React.DragEventHandler, id: number) => console.log(e, id, 'onDrop')}
+        onDragComponent={() => <div className='on-drag-mlist'>{loremIpsum({ count: 4, units: 'words' })}</div>}
       />
     </div>
   )

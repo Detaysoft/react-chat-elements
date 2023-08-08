@@ -8,6 +8,7 @@ import MeetingListExample from './components/MeetingListExample'
 import MessageListExample from './components/MessageListExample'
 import NavbarExample from './components/NavbarExample'
 import PopupExample from './components/PopupExample'
+import { ChatList } from '../src'
 
 const App: React.FC = () => {
   const [showComponent, setShowComponent] = useState('')

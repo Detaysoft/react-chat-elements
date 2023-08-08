@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '../../src/Button/Button'
 import Input from '../../src/Input/Input'
 import MessageList from '../../src/MessageList/MessageList'
@@ -108,10 +108,12 @@ function MessageListExample() {
   return (
     <div className='right-panel rce-example-messageList'>
       <MessageList
+        virtualListOptions={{ style: { overflowX: 'hidden' }, rangeChanged: s => console.log(s) }}
         className='message-list'
         referance={messageListReferance}
         dataSource={messageListArray}
         lockable={true}
+        toBottomHeight={100}
         downButton={true}
         downButtonBadge={10}
         sendMessagePreview={true}

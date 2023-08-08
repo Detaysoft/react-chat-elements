@@ -70,7 +70,7 @@ const Input: React.FC<IInputProps> = ({
           placeholder={props.placeholder}
           defaultValue={props.defaultValue}
           style={props.inputStyle}
-          onChange={onChangeEvent}
+          onChange={w => w}
           onCopy={props.onCopy}
           onCut={props.onCut}
           onPaste={props.onPaste}

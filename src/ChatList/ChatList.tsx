@@ -4,10 +4,11 @@ import './ChatList.css'
 
 import ChatItem from '../ChatItem/ChatItem'
 import { IChatListProps, ChatListEvent } from '../type'
+import { Virtuoso } from 'react-virtuoso'
 
 let list: Dispatch<SetStateAction<any>>[] = []
 
-const ChatList: React.FC<IChatListProps> = props => {
+const ChatList: React.FC<IChatListProps<{}, {}>> = props => {
   const onClick: ChatListEvent = (item, index, event) => {
     if (props.onClick instanceof Function) props.onClick(item, index, event)
   }
@@ -29,6 +30,35 @@ const ChatList: React.FC<IChatListProps> = props => {
     if (list.length > 0) list.forEach(item => item(false))
     props.onDragLeave?.(e, id)
   }
+
+  if (props.virtualListOptions)
+    return (
+      <div className={classNames('rce-container-clist', props.className)}>
+        <Virtuoso
+          style={{ minHeight: '500px', width: '100%' }}
+          {...props.virtualListOptions}
+          totalCount={props.dataSource.length}
+          itemContent={index => (
+            <ChatItem
+              {...props.dataSource[index]}
+              key={index as Key}
+              lazyLoadingImage={props.lazyLoadingImage}
+              onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(props.dataSource[index], index, e)}
+              onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(props.dataSource[index], index, e)}
+              onClick={(e: React.MouseEvent<HTMLElement>) => onClick(props.dataSource[index], index, e)}
+              onClickMute={(e: React.MouseEvent<HTMLElement>) => props.onClickMute?.(props.dataSource[index], index, e)}
+              onClickVideoCall={(e: React.MouseEvent<HTMLElement>) => props.onClickVideoCall?.(props.dataSource[index], index, e)}
+              onDragOver={props?.onDragOver}
+              onDragEnter={props?.onDragEnter}
+              onDrop={props.onDrop}
+              onDragLeave={onDragLeaveMW}
+              onDragComponent={props.onDragComponent}
+              setDragStates={setDragStates}
+            />
+          )}
+        />
+      </div>
+    )
 
   return (
     <div className={classNames('rce-container-clist', props.className)}>
