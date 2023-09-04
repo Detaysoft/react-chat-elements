@@ -8,6 +8,7 @@ import MeetingListExample from './components/MeetingListExample'
 import MessageListExample from './components/MessageListExample'
 import NavbarExample from './components/NavbarExample'
 import PopupExample from './components/PopupExample'
+import ModernExample from './components/ModernExample'
 
 const App: React.FC = () => {
   const [showComponent, setShowComponent] = useState('')
@@ -30,6 +31,8 @@ const App: React.FC = () => {
         return <NavbarExample />
       case 'popup':
         return <PopupExample />
+      case 'modern':
+        return <ModernExample />
       default:
         break
     }
@@ -181,6 +184,24 @@ const App: React.FC = () => {
           onClick={() => setShowComponent('popup')}
         >
           popup
+        </button>
+        <button
+          style={
+            showComponent === 'modern'
+              ? {
+                  backgroundColor: '#ffffff',
+                  color: '#bcd4e6',
+                  border: '2px solid #bcd4e6',
+                }
+              : {
+                  backgroundColor: '#bcd4e6',
+                  color: '#ffffff',
+                  border: '2px solid #bcd4e6',
+                }
+          }
+          onClick={() => setShowComponent('modern')}
+        >
+          modern
         </button>
       </div>
       <div className='rce-example-component'> {btnClick(showComponent)}</div>

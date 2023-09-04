@@ -1112,3 +1112,12 @@ export class Navbar extends React.Component<INavbarProps> {}
 export class Input extends React.Component<IInputProps> {}
 export class Dropdown extends React.Component<IDefaultProps> {}
 export class Circle extends React.Component<ICircleProps> {}
+
+
+/**
+ * IModernMessageBoxProps Interface
+ * @prop messageText Message Box text.
+ */
+export interface IModernMessageBoxProps {
+  messageText: string
+}
