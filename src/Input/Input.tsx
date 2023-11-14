@@ -40,7 +40,10 @@ const Input: React.FC<IInputProps> = ({
     if (props.maxlength && (e.target.value || '').length > props.maxlength) {
       if (props.onMaxLengthExceed instanceof Function) props.onMaxLengthExceed()
 
-      if (props.referance?.current?.value > (e.target.value || '').substring(0, props.maxlength)) return
+      if (props.referance) {
+        props.referance.current.value = (e.target.value || '').substring(0, props.maxlength)
+      }
+      return
     }
 
     if (props.onChange instanceof Function) props.onChange(e)

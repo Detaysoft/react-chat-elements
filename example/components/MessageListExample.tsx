@@ -133,6 +133,9 @@ function MessageListExample() {
           className='rce-example-input'
           placeholder='Write your message here.'
           defaultValue=''
+          multiline={true}
+          maxlength={300}
+          onMaxLengthExceed={() => console.log('onMaxLengthExceed')}
           referance={inputReferance}
           clear={(clear: any) => (clearRef = clear)}
           maxHeight={50}
