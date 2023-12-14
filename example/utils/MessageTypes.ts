@@ -18,7 +18,7 @@ export const photoMessage: MessageType = {
   text: loremIpsum({ count: 1, units: 'sentences' }),
   titleColor: getRandomColor(),
   status: 'waiting',
-  statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',     
+  statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',
   data: {
     uri: `data:image/png;base64,${photo(150)}`,
     status: {
@@ -30,6 +30,8 @@ export const photoMessage: MessageType = {
     width: 300,
     height: 300,
   },
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
 }
 
 export const locationMessage: MessageType = {
@@ -54,7 +56,9 @@ export const locationMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessage: true,
   className: '',
+  forwardedMessageText: 'Forwarded',
   data: {
     latitude: '37.773972',
     longitude: '-122.431297',
@@ -97,10 +101,12 @@ export const fileMessage: MessageType = {
   forwarded: true,
   replyButton: true,
   removeButton: true,
+  forwardedMessage: true,
   notch: true,
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
@@ -132,6 +138,7 @@ export const systemMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessageText: 'Forwarded',
 }
 
 export const spotifyMessage: MessageType = {
@@ -159,6 +166,8 @@ export const spotifyMessage: MessageType = {
   width: 300,
   height: 300,
   uri: 'spotify:track:0QjjaCaXE45mvhCnV3C0TA',
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
@@ -202,6 +211,8 @@ export const videoMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
   className: '',
   reply:
     token() >= 1
@@ -233,6 +244,8 @@ export const audioMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
   className: '',
   data: {
     audioURL: 'https://www.w3schools.com/html/horse.mp3',
@@ -271,6 +284,8 @@ export const meetingMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessage: false,
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
@@ -362,6 +377,8 @@ export const meetingLinkMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
@@ -393,6 +410,8 @@ export const textMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessage: true,
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
