@@ -30,7 +30,6 @@ export const photoMessage: MessageType = {
     width: 300,
     height: 300,
   },
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
 }
 
@@ -56,7 +55,6 @@ export const locationMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
-  forwardedMessage: true,
   className: '',
   forwardedMessageText: 'Forwarded',
   data: {
@@ -101,7 +99,6 @@ export const fileMessage: MessageType = {
   forwarded: true,
   replyButton: true,
   removeButton: true,
-  forwardedMessage: true,
   notch: true,
   copiableDate: true,
   retracted: false,
@@ -166,7 +163,6 @@ export const spotifyMessage: MessageType = {
   width: 300,
   height: 300,
   uri: 'spotify:track:0QjjaCaXE45mvhCnV3C0TA',
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
@@ -211,7 +207,6 @@ export const videoMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
   className: '',
   reply:
@@ -244,7 +239,6 @@ export const audioMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
   className: '',
   data: {
@@ -377,7 +371,6 @@ export const meetingLinkMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
@@ -410,7 +403,6 @@ export const textMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
-  forwardedMessage: true,
   forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1

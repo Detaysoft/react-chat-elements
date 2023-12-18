@@ -16,7 +16,6 @@ function Test(params: any) {
           'padding': '2px',
           'right': '-12px',
           'top': '-6px',
-          'background': 'red',
           'color': 'white',
           'borderRadius': '100%',
           'width': '12px',

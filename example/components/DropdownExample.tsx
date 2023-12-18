@@ -24,7 +24,6 @@ function DropdownExample() {
             icon: {
               component: <FaSquare />,
               float: 'left',
-              color: 'red',
               size: 22,
             },
             text: 'Menu Item',
