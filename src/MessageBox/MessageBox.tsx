@@ -17,6 +17,7 @@ import Avatar from '../Avatar/Avatar'
 import { RiShareForwardFill } from 'react-icons/ri'
 import { IoIosDoneAll } from 'react-icons/io'
 import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock, MdDoneAll } from 'react-icons/md'
+import { TiArrowForward } from 'react-icons/ti'
 
 import { format } from 'timeago.js'
 
@@ -130,7 +131,18 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
               </div>
             )}
 
-            {props.reply && <ReplyMessage onClick={props.onReplyMessageClick} {...props.reply} />}
+            {props.forwardedMessageText ? (
+              <div className='rce-mbox-forwardedMessage'>
+                <div className='rce-mbox-forwarded-message'>
+                  <TiArrowForward fontSize={18} />
+                  <i style={{ margin: '0 3px 1px 0' }}> {props.forwardedMessageText}</i>
+                </div>
+              </div>
+            ) : null}
+
+            {!props.forwardedMessageText && props.reply ? (
+              <ReplyMessage onClick={props.onReplyMessageClick} {...props.reply} />
+            ) : null}
 
             {props.type === 'text' && (
               <div

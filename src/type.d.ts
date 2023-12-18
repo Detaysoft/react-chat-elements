@@ -172,6 +172,7 @@ export interface IMessage {
   letterItem?: ILetterItem
   reply?: IReplyMessage | any
   type: string
+  forwardedMessageText?: String
 }
 
 /**

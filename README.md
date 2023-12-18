@@ -146,6 +146,7 @@ import { MessageBox } from 'react-chat-elements'
 | onMessageFocused        | none       | function             | makes focus value false after the message becomes focus                                            |
 | reply                   | none       | object               | reply data                                                                                         |
 | retracted               | none       | boolean              | message deleted or retracted                                                                       |
+| forwardedMessageText    | Forwarded  | string               | forwarded message text                                                                             |
 
 ## Reply Message Component
 
@@ -385,6 +386,7 @@ inputClear()
 | onMaxLengthExceed | none    | function          | called when max length exceed |
 | autofocus         | false   | bool              | input autofocus               |
 | value             | none    | string            | input value                   |
+
 ## Button Component
 
 ```javascript
