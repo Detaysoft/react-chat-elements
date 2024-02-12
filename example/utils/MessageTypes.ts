@@ -18,7 +18,7 @@ export const photoMessage: MessageType = {
   text: loremIpsum({ count: 1, units: 'sentences' }),
   titleColor: getRandomColor(),
   status: 'waiting',
-  statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',     
+  statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',
   data: {
     uri: `data:image/png;base64,${photo(150)}`,
     status: {
@@ -54,6 +54,7 @@ export const locationMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessageText: 'Forwarded',
   className: '',
   data: {
     latitude: '37.773972',
@@ -100,6 +101,7 @@ export const fileMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessageText: 'Forwarded',
   className: '',
   reply:
     token() >= 1
@@ -186,6 +188,7 @@ export const videoMessage: MessageType = {
   removeButton: true,
   controlsList: '',
   status: 'read',
+  forwardedMessageText: 'Forwarded',
   statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',
   data: {
     uri: `data:image/png;base64,${photo(150)}`,
@@ -271,6 +274,7 @@ export const meetingMessage: MessageType = {
   copiableDate: true,
   retracted: false,
   className: '',
+  forwardedMessageText: 'Forwarded',
   reply:
     token() >= 1
       ? {
@@ -392,6 +396,7 @@ export const textMessage: MessageType = {
   notch: true,
   copiableDate: true,
   retracted: false,
+  forwardedMessageText: 'Forwarded',
   className: '',
   reply:
     token() >= 1

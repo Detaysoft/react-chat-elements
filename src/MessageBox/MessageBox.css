@@ -331,3 +331,26 @@
 .rce-mbox-title > .rce-avatar-container {
   margin-right: 5px;
 }
+
+.rce-mbox-forwardedMessage {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  margin-top: -1px;
+  margin-bottom: 6px;
+  margin-right: -6px;
+  margin-left: -6px;
+  border-radius: 5px;
+  padding: 0 5px;
+  padding-right: 0;
+  transition: 200ms;
+  user-select: none;
+}
+
+.rce-mbox-forwarded-message {
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  font-size: 13px;
+  font-style: italic;
+}
