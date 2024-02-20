@@ -1111,5 +1111,5 @@ export class Button extends React.Component<IButtonProps> {}
 export class Sidebar extends React.Component<ISideBar> {}
 export class Navbar extends React.Component<INavbarProps> {}
 export class Input extends React.Component<IInputProps> {}
-export class Dropdown extends React.Component<IDefaultProps> {}
+export class Dropdown extends React.Component<IDropdownProps> {}
 export class Circle extends React.Component<ICircleProps> {}
