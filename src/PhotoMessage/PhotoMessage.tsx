@@ -49,6 +49,7 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
           onClick={props.onOpen}
           onLoad={props.onLoad}
           onError={props.onPhotoError}
+          loading="lazy"
         />
         {error && (
           <div className='rce-mbox-photo--img__block'>
