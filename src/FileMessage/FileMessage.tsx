@@ -43,7 +43,7 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
           <FaFile color='#aaa' />
           <div className='rce-mbox-file--size'>{props?.data.size}</div>
         </div>
-        <div className='rce-mbox-file--text'>{props.text}</div>
+        <div className='rce-mbox-file--text'>{props?.data?.name ?? props?.text}</div>
         <div className='rce-mbox-file--buttons'>
           {error && (
             <span className='rce-error-button'>
@@ -65,6 +65,7 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
             )}
         </div>
       </button>
+      {props?.text && <div className='rce-mbox-text'>{props.text}</div>}
     </div>
   )
 }
