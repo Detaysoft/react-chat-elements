@@ -9,6 +9,7 @@ import classNames from 'classnames'
 
 import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md'
 import { IChatItemProps } from '../type'
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
 const ChatItem: React.FC<IChatItemProps> = ({
   avatarFlexible = false,
@@ -65,86 +66,99 @@ const ChatItem: React.FC<IChatItemProps> = ({
     if (onDrag) setOnDrag(false)
   }
 
-  return (
-    <div
-      key={props.id as Key}
-      className={classNames('rce-container-citem', props.className)}
-      onClick={handleOnClick}
-      onContextMenu={props.onContextMenu}
-    >
-      <div className='rce-citem' onDragOver={onDragOver} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
-        {!!props.onDragComponent && onDrag && props.onDragComponent(props.id)}
-        {((onDrag && !props.onDragComponent) || !onDrag) && [
-          <div
-            key={'avatar'}
-            className={classNames('rce-citem-avatar', { 'rce-citem-status-encircle': statusColorType === 'encircle' })}
-          >
-            <Avatar
-              src={props.avatar}
-              alt={props.alt}
-              className={statusColorType === 'encircle' ? 'rce-citem-avatar-encircle-status' : ''}
-              size='large'
-              letterItem={props.letterItem}
-              sideElement={
-                props.statusColor ? (
-                  <span
-                    className='rce-citem-status'
-                    style={
-                      statusColorType === 'encircle'
-                        ? {
-                            border: `solid 2px ${props.statusColor}`,
-                          }
-                        : {
-                            backgroundColor: props.statusColor,
-                          }
-                    }
-                  >
-                    {props.statusText}
-                  </span>
-                ) : (
-                  <></>
-                )
-              }
-              onError={onAvatarError}
-              lazyLoadingImage={lazyLoadingImage}
-              type={classNames('circle', { 'flexible': avatarFlexible })}
-            />
-          </div>,
-          <div key={'rce-citem-body'} className='rce-citem-body'>
-            <div className='rce-citem-body--top'>
-              <div className='rce-citem-body--top-title'>{props.title}</div>
-              <div className='rce-citem-body--top-time'>{date && (props.dateString || format(date))}</div>
-            </div>
+  const onExpandItem = (e: React.MouseEvent, id: string | number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (props.onExpandItem instanceof Function) props.onExpandItem(id);
+  }
 
-            <div className='rce-citem-body--bottom'>
-              <div className='rce-citem-body--bottom-title'>{props.subtitle}</div>
-              <div className='rce-citem-body--bottom-tools' onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
-                {props.showMute && (
-                  <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickMute}>
-                    {props.muted === true && <MdVolumeOff />}
-                    {props.muted === false && <MdVolumeUp />}
-                  </div>
-                )}
-                {props.showVideoCall && (
-                  <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickVideoCall}>
-                    <MdVideoCall />
-                  </div>
-                )}
-              </div>
-              <div className='rce-citem-body--bottom-tools-item-hidden-hover'>
-                {props.showMute && props.muted && (
-                  <div className='rce-citem-body--bottom-tools-item'>
-                    <MdVolumeOff />
-                  </div>
-                )}
-              </div>
-              <div className='rce-citem-body--bottom-status'>{unread && unread > 0 ? <span>{unread}</span> : null}</div>
-              {props.customStatusComponents !== undefined ? props.customStatusComponents.map(Item => <Item />) : null}
+  return (
+    <>
+        <div
+            key={props.id as Key}
+            className={classNames('rce-container-citem', props.className)}
+            onClick={handleOnClick}
+            onContextMenu={props.onContextMenu}
+        >
+            <div className='rce-citem' onDragOver={onDragOver} onDragEnter={onDragEnter} onDragLeave={onDragLeave} onDrop={onDrop}>
+                {!!props.onDragComponent && onDrag && props.onDragComponent(props.id)}
+                {((onDrag && !props.onDragComponent) || !onDrag) && [
+                <div
+                    key={'avatar'}
+                    className={classNames('rce-citem-avatar', { 'rce-citem-status-encircle': statusColorType === 'encircle' })}
+                >
+                    <Avatar
+                        src={props.avatar}
+                        alt={props.alt}
+                        className={statusColorType === 'encircle' ? 'rce-citem-avatar-encircle-status' : ''}
+                        size={props.avatarSize || 'large'}
+                        letterItem={props.letterItem}
+                        sideElement={
+                            props.statusColor ? (
+                            <span
+                                className='rce-citem-status'
+                                style={
+                                statusColorType === 'encircle'
+                                    ? {
+                                        border: `solid 2px ${props.statusColor}`,
+                                    }
+                                    : {
+                                        backgroundColor: props.statusColor,
+                                    }
+                                }
+                            >
+                                {props.statusText}
+                            </span>
+                            ) : (
+                            <></>
+                            )
+                        }
+                        onError={onAvatarError}
+                        lazyLoadingImage={lazyLoadingImage}
+                        type={classNames('circle', { 'flexible': avatarFlexible })}
+                    />
+                    {props.subList && props.subList.length > 0 && (
+                        <button className='rce-citem-expand-button' onClick={(e) => onExpandItem(e, props.id)}>
+                            {props.expanded ? <FaArrowUp /> : <FaArrowDown />}
+                        </button>
+                    )}
+                </div>,
+                <div key={'rce-citem-body'} className='rce-citem-body'>
+                    <div className='rce-citem-body--top'>
+                    <div className='rce-citem-body--top-title'>{props.title}</div>
+                    <div className='rce-citem-body--top-time'>{date && (props.dateString || format(date))}</div>
+                    </div>
+
+                    <div className='rce-citem-body--bottom'>
+                    <div className='rce-citem-body--bottom-title'>{props.subtitle}</div>
+                    <div className='rce-citem-body--bottom-tools' onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
+                        {props.showMute && (
+                        <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickMute}>
+                            {props.muted === true && <MdVolumeOff />}
+                            {props.muted === false && <MdVolumeUp />}
+                        </div>
+                        )}
+                        {props.showVideoCall && (
+                        <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickVideoCall}>
+                            <MdVideoCall />
+                        </div>
+                        )}
+                    </div>
+                    <div className='rce-citem-body--bottom-tools-item-hidden-hover'>
+                        {props.showMute && props.muted && (
+                        <div className='rce-citem-body--bottom-tools-item'>
+                            <MdVolumeOff />
+                        </div>
+                        )}
+                    </div>
+                    <div className='rce-citem-body--bottom-status'>{unread && unread > 0 ? <span>{unread}</span> : null}</div>
+                    {props.customStatusComponents !== undefined ? props.customStatusComponents.map(Item => <Item />) : null}
+                    </div>
+                </div>,
+                ]}
             </div>
-          </div>,
-        ]}
-      </div>
-    </div>
+        </div>
+    </>
   )
 }
 

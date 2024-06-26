@@ -32,6 +32,7 @@
   justify-content: center;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .rce-citem-status {
@@ -129,6 +130,7 @@
   justify-content: center;
   display: flex;
   border-radius: 100%;
+  background: red;
 }
 
 .rce-citem-body--bottom-status-icon {
@@ -183,4 +185,55 @@
   width: 18px;
   height: 18px;
   fill: #575757;
+}
+
+.rce-container-citem.subitem .rce-citem {
+  height: 40px;
+  padding-left: 30px;
+}
+
+.rce-container-citem.subitem .rce-citem-body--top .rce-citem-body--top-title {
+  font-size: 12px !important;
+}
+
+.rce-container-citem.subitem .rce-citem-body--top .rce-citem-body--top-time {
+  font-size: 10px !important;
+}
+
+.rce-container-citem.subitem .rce-citem-body--bottom * {
+  font-size: 12px !important;
+}
+
+.rce-container-citem.subitem .rce-citem-body--bottom-status span {
+    width: 14px;
+    height: 14px;
+    font-size: 10px !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 100%;
+    background: red;
+  }
+
+.rce-container-citem.subitem .rce-citem-body--bottom {
+  margin-top: unset;
+}
+
+.rce-citem-expand-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px 15px;
+    color: teal;
+}
+
+.rce-citem-expand-button:hover {
+    background-color: #eee;
+}
+
+.rce-sublist-container {
+    position: relative;
 }

@@ -29,6 +29,9 @@ import React from 'react'
  * @prop onDragLeave The Chat Item's drop leave function and optional.
  * @prop onDragComponent The Chat Item's drag component and optional.
  * @prop letterItem The Chat Item's avatar letterItem and optional.
+ * @prop subList The Chat Item's sub chat items and optional.
+ * @prop onExpandItem The Chat Item's expand function onExpandItem(id: string) and optional.
+ * @prop expanded The Chat Item's expanded and optional.
  */
 export interface IChatItemProps {
   id: string | number
@@ -36,6 +39,7 @@ export interface IChatItemProps {
   unread?: number
   className?: string
   avatarFlexible?: boolean
+  avatarSize?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   alt?: string
   title?: string
   subtitle?: string
@@ -61,6 +65,9 @@ export interface IChatItemProps {
   onDragComponent?: any
   letterItem?: ILetterItem
   customStatusComponents?: React.ElementType<any>[]
+  subList?: IChatItemProps[]
+  onExpandItem?: Function
+  expanded?: boolean;
 }
 
 /**
@@ -90,6 +97,7 @@ export interface ILetterItem {
  * @prop onDrop The Chat Item's drop function and optional.
  * @prop onDragLeave The Chat Item's drop leave function and optional.
  * @prop onDragComponent The Chat Item's drag component and optional.
+ * @prop onExpand The Chat Item's expand function and optional.
  */
 export interface IChatListProps {
   id: string | number
@@ -107,6 +115,7 @@ export interface IChatListProps {
   onDrop?: Function
   onDragLeave?: Function
   onDragComponent?: Function
+  onExpand?: Function
 }
 
 /**

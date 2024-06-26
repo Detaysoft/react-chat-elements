@@ -61,24 +61,41 @@ function ChatListExample() {
     if (chatListAray.length === 5) return
     setChatListAray([
       ...chatListAray,
-      {
-        id: String(Math.random()),
-        avatar: `data:image/png;base64,${photo(20)}`,
-        avatarFlexible: true,
-        statusColor: 'lightgreen',
-        statusColorType: Math.floor((Math.random() * 100) % 2) === 1 ? 'encircle' : undefined,
-        alt: loremIpsum({ count: 2, units: 'words' }),
-        title: loremIpsum({ count: 2, units: 'words' }),
-        date: new Date(),
-        subtitle: loremIpsum({ count: 1, units: 'sentences' }),
-        unread: Math.floor((Math.random() * 10) % 3),
-        muted: Math.floor((Math.random() * 10) % 2) === 1,
-        showMute: Math.floor((Math.random() * 10) % 2) === 1,
-        showVideoCall: Math.floor((Math.random() * 10) % 2) === 1,
-        customStatusComponents: [Test],
-      },
+      getRandomChat(),
     ])
   }, [chatListAray])
+
+  const getRandomChat: any = (nested = true) => {
+    return {
+      id: String(Math.random()),
+      avatar: `data:image/png;base64,${photo(20)}`,
+      avatarFlexible: true,
+      statusColor: 'lightgreen',
+      statusColorType: Math.floor((Math.random() * 100) % 2) === 1 ? 'encircle' : undefined,
+      alt: loremIpsum({ count: 2, units: 'words' }),
+      title: loremIpsum({ count: 2, units: 'words' }),
+      date: new Date(),
+      subtitle: loremIpsum({ count: 1, units: 'sentences' }),
+      unread: Math.floor((Math.random() * 10) % 3),
+      muted: Math.floor((Math.random() * 10) % 2) === 1,
+      showMute: Math.floor((Math.random() * 10) % 2) === 1,
+      showVideoCall: Math.floor((Math.random() * 10) % 2) === 1,
+      customStatusComponents: [Test],
+      subList: nested && [getRandomLiteChat(), getRandomLiteChat()]
+    };
+  }
+
+  const getRandomLiteChat: any = () => {
+    return {
+      id: String(Math.random()),
+      avatar: `data:image/png;base64,${photo(20)}`,
+      avatarFlexible: true,
+      title: loremIpsum({ count: 2, units: 'words' }),
+      subtitle: loremIpsum({ count: 1, units: 'sentences' }),
+      date: new Date(),
+      unread: Math.floor((Math.random() * 10) % 3),
+    };
+  };
 
   return (
     <div className='chat-list'>
