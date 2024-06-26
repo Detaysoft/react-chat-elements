@@ -40,7 +40,7 @@ function MessageListExample() {
         break
       case 1:
         Addmtype = 'file'
-        setStatus('sent')
+        setStatus('error')
         break
       case 2:
         Addmtype = 'system'

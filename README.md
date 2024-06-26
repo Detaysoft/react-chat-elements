@@ -137,7 +137,7 @@ import { MessageBox } from 'react-chat-elements'
 | forwarded               | none       | boolean              | message forward icon                                                                               |
 | replyButton             | none       | boolean              | message reply icon                                                                                 |
 | removeButton            | none       | boolean              | message remove icon                                                                                |
-| status                  | none       | string               | message status info (waiting, sent, received, read)                                                |
+| status                  | none       | string               | message status info (waiting, sent, received, read, error)                                         |
 | notch                   | true       | boolean              | message box notch                                                                                  |
 | avatar                  | none       | url                  | message box avatar url                                                                             |
 | renderAddCmp            | none       | function (component) | adding custom components to message box                                                            |
