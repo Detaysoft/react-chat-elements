@@ -30,25 +30,57 @@ const ChatList: React.FC<IChatListProps> = props => {
     props.onDragLeave?.(e, id)
   }
 
+  const onExpand: ChatListEvent = (item, index, event) => {
+    if (props.onExpand instanceof Function) props.onExpand(item, index, event)
+  }
+
   return (
     <div className={classNames('rce-container-clist', props.className)}>
       {props.dataSource.map((x, i: number) => (
-        <ChatItem
-          {...x}
-          key={i as Key}
-          lazyLoadingImage={props.lazyLoadingImage}
-          onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(x, i, e)}
-          onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(x, i, e)}
-          onClick={(e: React.MouseEvent<HTMLElement>) => onClick(x, i, e)}
-          onClickMute={(e: React.MouseEvent<HTMLElement>) => props.onClickMute?.(x, i, e)}
-          onClickVideoCall={(e: React.MouseEvent<HTMLElement>) => props.onClickVideoCall?.(x, i, e)}
-          onDragOver={props?.onDragOver}
-          onDragEnter={props?.onDragEnter}
-          onDrop={props.onDrop}
-          onDragLeave={onDragLeaveMW}
-          onDragComponent={props.onDragComponent}
-          setDragStates={setDragStates}
-        />
+        <>
+            <ChatItem
+                {...x}
+                key={i as Key}
+                lazyLoadingImage={props.lazyLoadingImage}
+                onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(x, i, e)}
+                onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(x, i, e)}
+                onClick={(e: React.MouseEvent<HTMLElement>) => onClick(x, i, e)}
+                onClickMute={(e: React.MouseEvent<HTMLElement>) => props.onClickMute?.(x, i, e)}
+                onClickVideoCall={(e: React.MouseEvent<HTMLElement>) => props.onClickVideoCall?.(x, i, e)}
+                onDragOver={props?.onDragOver}
+                onDragEnter={props?.onDragEnter}
+                onDrop={props.onDrop}
+                onDragLeave={onDragLeaveMW}
+                onDragComponent={props.onDragComponent}
+                setDragStates={setDragStates}
+                onExpandItem={(e: React.MouseEvent<HTMLElement>) => onExpand(x, i, e)}
+                expanded={x.expanded}
+            />
+            {x.subList && x.subList.length > 0 && (
+            <>
+              {x.expanded && x.subList.map((sub, j) => (
+                <ChatItem
+                  {...sub}
+                  className='subitem'
+                  avatarSize='xsmall'
+                  key={`${i}-${j}`}
+                  lazyLoadingImage={props.lazyLoadingImage}
+                  onAvatarError={(e: React.MouseEvent<HTMLElement>) => onAvatarError(sub, j, e)}
+                  onContextMenu={(e: React.MouseEvent<HTMLElement>) => onContextMenu(sub, j, e)}
+                  onClick={(e: React.MouseEvent<HTMLElement>) => onClick(sub, j, e)}
+                  onClickMute={(e: React.MouseEvent<HTMLElement>) => props.onClickMute?.(sub, j, e)}
+                  onClickVideoCall={(e: React.MouseEvent<HTMLElement>) => props.onClickVideoCall?.(sub, j, e)}
+                  onDragOver={props?.onDragOver}
+                  onDragEnter={props?.onDragEnter}
+                  onDrop={props.onDrop}
+                  onDragLeave={onDragLeaveMW}
+                  onDragComponent={props.onDragComponent}
+                  setDragStates={setDragStates}
+                />
+              ))}
+            </>
+          )}
+        </>
       ))}
     </div>
   )
