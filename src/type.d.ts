@@ -172,7 +172,7 @@ export interface IMessage {
   forwarded: boolean
   replyButton: boolean
   removeButton: boolean
-  status: 'waiting' | 'sent' | 'received' | 'read'
+  status: 'waiting' | 'sent' | 'received' | 'read' | 'error'
   statusTitle?: string
   notch: boolean
   copiableDate?: boolean
