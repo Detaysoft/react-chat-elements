@@ -124,7 +124,7 @@ export interface IChatListProps {
  * @param index The Chat List's index.
  * @param event The Chat List's event.
  */
-type ChatListEvent = (item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any
+export type ChatListEvent = (item: IChatItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any
 
 /**
  *
@@ -672,7 +672,7 @@ export interface IMeetingLinkMessageProps extends IMeetingLinkMessage {
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
  */
-type MeetingMessageEvent = (item: IMeetingMessage, index: number, event: React.MouseEvent<HTMLElement>) => any
+export type MeetingMessageEvent = (item: IMeetingMessage, index: number, event: React.MouseEvent<HTMLElement>) => any
 
 /**
  * ITextMessage Interface extends IMessage
@@ -708,7 +708,7 @@ export interface IMeetingListProps {
  * @param index The MessageListEvent's index.
  * @param event The MessageListEvent's event.
  */
-type MeetingListEvent = (item: IMeetingItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any
+export type MeetingListEvent = (item: IMeetingItemProps, index: number, event: React.MouseEvent<HTMLElement>) => any
 
 /**
  * IMeetingItemProps Interface
@@ -917,10 +917,9 @@ export interface IButtonIcon {
 
 /**
  * IDropDownItemType Type
- * @type IDropdown
- * @type string
+ * @prop text The Dropdown Item's text and optional.
  */
-type IDropdownItemType = IDropdownItem | string
+export type IDropdownItemType = IDropdownItem | string
 
 /**
  * IDropdownItem Interface

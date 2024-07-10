@@ -3,11 +3,14 @@
     "outDir": "./dist",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
+    "module": "ESNext",
+    "target": "ESNext",
     "jsx": "react-jsxdev",
-    "allowJs": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "declaration": true,
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true
   }
 }
