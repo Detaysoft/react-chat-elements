@@ -3,7 +3,7 @@ import './MeetingList.css'
 
 import MeetingItem from '../MeetingItem/MeetingItem'
 import classNames from 'classnames'
-import { IMeetingListProps, MeetingListEvent } from '../type'
+import { IMeetingListProps, type MeetingListEvent } from '../type'
 
 const MeetingList: FC<IMeetingListProps> = props => {
   const onClick: MeetingListEvent = (item, index, event) => {

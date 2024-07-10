@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import './ChatList.css'
 
 import ChatItem from '../ChatItem/ChatItem'
-import { IChatListProps, ChatListEvent } from '../type'
+import { IChatListProps, type ChatListEvent } from '../type'
 
 let list: Dispatch<SetStateAction<any>>[] = []
 

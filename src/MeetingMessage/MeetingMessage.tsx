@@ -12,34 +12,34 @@ import Avatar from '../Avatar/Avatar'
 import Dropdown from '../Dropdown/Dropdown'
 
 import classNames from 'classnames'
-import { IMeetingMessageProps, MeetingMessageEvent } from '../type'
+import { IMeetingMessage, IMeetingMessageProps, MeetingMessageEvent} from '../type'
 
 const MeetingMessage: FC<IMeetingMessageProps> = ({
-  date,
-  dateString,
-  title,
-  subject,
-  collapseTitle,
-  moreItems,
-  participants,
-  dataSource,
+                                                      date,
+                                                      dateString,
+                                                      title,
+                                                      subject,
+                                                      collapseTitle,
+                                                      moreItems,
+                                                      participants,
+                                                      dataSource,
 
-  onClick,
-  onMeetingTitleClick,
-  onMeetingVideoLinkClick,
-  onMeetingMoreSelect,
-  ...props
-}) => {
-  const [toogle, setToogle] = useState(false)
+                                                      onClick,
+                                                      onMeetingTitleClick,
+                                                      onMeetingVideoLinkClick,
+                                                      onMeetingMoreSelect,
+                                                      ...props
+                                                  }) => {
+    const [toogle, setToogle] = useState(false)
 
-  const PARTICIPANT_LIMIT = props.participantsLimit
-  const dateText = dateString ? dateString : date && format(date)
+    const PARTICIPANT_LIMIT = props.participantsLimit
+    const dateText = dateString ? dateString : date && format(date)
 
-  const _onMeetingLinkClick: MeetingMessageEvent = (item, index, event) => {
+    const _onMeetingLinkClick: MeetingMessageEvent = (item: IMeetingMessage, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (onMeetingTitleClick instanceof Function) onMeetingTitleClick(item, index, event)
   }
 
-  const _onMeetingVideoLinkClick: MeetingMessageEvent = (item, index, event) => {
+  const _onMeetingVideoLinkClick: MeetingMessageEvent = (item: IMeetingMessage, index: number, event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (onMeetingVideoLinkClick instanceof Function) onMeetingVideoLinkClick(item, index, event)
   }
 
