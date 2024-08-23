@@ -5,6 +5,7 @@ import { BsListTask } from 'react-icons/bs'
 import ChatList from '../../src/ChatList/ChatList'
 import SideBar from '../../src/SideBar/SideBar'
 import { IChatItemProps } from '../../src/type'
+import { FaUsers } from 'react-icons/fa'
 
 function Test(params: any) {
   return (
@@ -81,21 +82,18 @@ function ChatListExample() {
       showMute: Math.floor((Math.random() * 10) % 2) === 1,
       showVideoCall: Math.floor((Math.random() * 10) % 2) === 1,
       customStatusComponents: [Test],
-      subList: nested && [getRandomLiteChat(), getRandomLiteChat()]
+      subTextElement: Math.floor((Math.random() * 100) % 2) === 1 ? getSubTextElement() : <></>,
     };
   }
 
-  const getRandomLiteChat: any = () => {
-    return {
-      id: String(Math.random()),
-      avatar: `data:image/png;base64,${photo(20)}`,
-      avatarFlexible: true,
-      title: loremIpsum({ count: 2, units: 'words' }),
-      subtitle: loremIpsum({ count: 1, units: 'sentences' }),
-      date: new Date(),
-      unread: Math.floor((Math.random() * 10) % 3),
-    };
-  };
+  const getSubTextElement = () => {
+    return (
+        <div className='chat-item-sub-text'>
+            <FaUsers />
+            <span>{loremIpsum({ count: 2, units: 'words' })}</span>
+        </div>
+    )
+  }
 
   return (
     <div className='chat-list'>
