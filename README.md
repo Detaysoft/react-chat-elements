@@ -4,7 +4,7 @@
 
 ## Reactjs chat elements
 
-## NOTE: this package not support react-native anymore.
+## NOTE: this package does not support react-native anymore.
 
 ## **[Full Documentation](https://detaysoft.github.io/docs-react-chat-elements/)**, **[Changelog](https://github.com/Detaysoft/react-chat-elements/blob/master/CHANGELOG.md)**
 
