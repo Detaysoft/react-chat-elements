@@ -29,7 +29,8 @@ import React from 'react'
  * @prop onDragLeave The Chat Item's drop leave function and optional.
  * @prop onDragComponent The Chat Item's drag component and optional.
  * @prop letterItem The Chat Item's avatar letterItem and optional.
- * @prop subTextElement The Chat Item's sub text element and optional
+ * @prop subTextElement The Chat Item's sub text element and optional.
+ * @prop miniAvatar The Chat Item's mini avatar and optional.
  */
 export interface IChatItemProps {
   id: string | number
@@ -64,6 +65,7 @@ export interface IChatItemProps {
   letterItem?: ILetterItem
   customStatusComponents?: React.ElementType<any>[]
   subTextElement?: JSX.Element
+  miniAvatar?: string
 }
 
 /**
@@ -1030,6 +1032,7 @@ export interface IPopupProps {
  * @prop statusColorType The Avatar's status color type and optional.
  * @prop statusColor The Avatar's status color and optional.
  * @prop statusText The Avatar's status text and optional.
+ * @prop miniImage The Avatar's mini image and optional.
  */
 export interface IAvatarProps {
   src: string
@@ -1045,6 +1048,7 @@ export interface IAvatarProps {
   statusColorType?: string
   statusColor?: string
   statusText?: string
+  miniImage?: string
 }
 
 /**

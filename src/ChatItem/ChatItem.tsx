@@ -109,6 +109,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
                         onError={onAvatarError}
                         lazyLoadingImage={lazyLoadingImage}
                         type={classNames('circle', { 'flexible': avatarFlexible })}
+                        miniImage={props.miniAvatar}
                     />
                 </div>,
                 <div key={'rce-citem-body'} className='rce-citem-body'>
