@@ -84,7 +84,7 @@ export const fileMessage: MessageType = {
     },
     size: '100MB',
   },
-  status: 'sent',
+  status: 'error',
   statusTitle: token() >= 5 ? 'Desktop' : 'Mobile',
   id: String(Math.random()),
   position: token() >= 1 ? 'right' : 'left',
