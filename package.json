@@ -1,6 +1,6 @@
 {
   "name": "react-chat-elements",
-  "version": "12.0.17",
+  "version": "12.0.18",
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
@@ -17,7 +17,6 @@
     "@types/progressbar.js": "^1.1.2",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "@types/react-icons": "^3.0.0",
     "babel-jest": "21.2.0",
     "babel-loader": "^8.2.5",
     "copyfiles": "^2.4.1",
@@ -86,9 +85,10 @@
     "react-dom": "18.2.0"
   },
   "dependencies": {
+    "@hugeicons/core-free-icons": "^1.0.13",
+    "@hugeicons/react": "^1.0.5",
     "classnames": "^2.2.5",
     "progressbar.js": "^1.1.0",
-    "react-icons": "^4.3.1",
     "react-spinkit": "^3.0.0",
     "timeago.js": "^4.0.2"
   },

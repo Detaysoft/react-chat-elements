@@ -2,11 +2,13 @@ import React from 'react'
 
 import './VideoMessage.css'
 
-import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa'
-
 import classNames from 'classnames'
 import ProgressCircle from '../Circle/Circle'
 import { IProgressOptions, IVideoMessageProps } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { CloudDownloadIcon, Alert02Icon } from '@hugeicons/core-free-icons';
 
 const VideoMessage: React.FC<IVideoMessageProps> = props => {
   var progressOptions = {
@@ -70,7 +72,7 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
         {error && (
           <div className='rce-mbox-video--video__block'>
             <span className='rce-mbox-video--video__block-item rce-mbox-video--error'>
-              <FaExclamationTriangle />
+              <HugeiconsIcon icon={Alert02Icon} />
             </span>
           </div>
         )}
@@ -78,7 +80,7 @@ const VideoMessage: React.FC<IVideoMessageProps> = props => {
           <div className='rce-mbox-video--video__block'>
             {!props.data.status.click && (
               <button onClick={props.onDownload} className='rce-mbox-video--video__block-item rce-mbox-video--download'>
-                <FaCloudDownloadAlt />
+                <HugeiconsIcon icon={CloudDownloadIcon} />
               </button>
             )}
             {typeof props.data.status.loading === 'number' && props.data.status.loading !== 0 && (

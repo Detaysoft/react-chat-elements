@@ -14,15 +14,22 @@ import MeetingLink from '../MeetingLink/MeetingLink'
 
 import Avatar from '../Avatar/Avatar'
 
-import { RiShareForwardFill } from 'react-icons/ri'
-import { IoIosDoneAll } from 'react-icons/io'
-import { MdAccessTime, MdCheck, MdMessage, MdDelete, MdBlock, MdDoneAll } from 'react-icons/md'
-import { TiArrowForward } from 'react-icons/ti'
-
 import { format } from 'timeago.js'
 
 import classNames from 'classnames'
 import { MessageBoxType } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+    LinkForwardIcon,
+    TickDouble02Icon,
+    ClockIcon,
+    Tick02Icon,
+    MessageOutgoing01Icon,
+    Delete02Icon,
+    UnavailableIcon,
+    // @ts-ignore
+} from '@hugeicons/core-free-icons';
 
 const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, styles, ...props }) => {
   const prevProps = useRef(focus)
@@ -72,7 +79,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
                 )}
                 onClick={props.onForwardClick}
               >
-                <RiShareForwardFill />
+                <HugeiconsIcon icon={LinkForwardIcon} size={20} />
               </div>
             )}
 
@@ -93,7 +100,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
                 }
                 onClick={props.onReplyClick}
               >
-                <MdMessage />
+                <HugeiconsIcon icon={MessageOutgoing01Icon} size={20} />
               </div>
             )}
 
@@ -114,7 +121,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
                 }
                 onClick={props.onRemoveMessageClick}
               >
-                <MdDelete />
+                <HugeiconsIcon icon={Delete02Icon} size={20} />
               </div>
             )}
 
@@ -134,7 +141,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
             {props.forwardedMessageText ? (
               <div className='rce-mbox-forwardedMessage'>
                 <div className='rce-mbox-forwarded-message'>
-                  <TiArrowForward fontSize={18} />
+                  <HugeiconsIcon icon={LinkForwardIcon} size={18} />
                   <i style={{ margin: '0 3px 1px 0' }}> {props.forwardedMessageText}</i>
                 </div>
               </div>
@@ -152,7 +159,7 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
                   'right': props.position === 'right',
                 })}
               >
-                {props.retracted && <MdBlock />}
+                {props.retracted && <HugeiconsIcon icon={UnavailableIcon} size={14} />}
                 {props.text}
               </div>
             )}
@@ -186,13 +193,13 @@ const MessageBox: React.FC<MessageBoxType> = ({ focus = false, notch = true, sty
               {props.copiableDate && props.date && (props.dateString || format(props.date))}
               {props.status && (
                 <span className='rce-mbox-status'>
-                  {props.status === 'waiting' && <MdAccessTime />}
+                  {props.status === 'waiting' && <HugeiconsIcon icon={ClockIcon} size={14} />}
 
-                  {props.status === 'sent' && <MdCheck />}
+                  {props.status === 'sent' && <HugeiconsIcon icon={Tick02Icon} size={14} />}
 
-                  {props.status === 'received' && <IoIosDoneAll />}
+                  {props.status === 'received' && <HugeiconsIcon icon={TickDouble02Icon} size={14} />}
 
-                  {props.status === 'read' && <MdDoneAll color='#4FC3F7' />}
+                  {props.status === 'read' && <HugeiconsIcon icon={TickDouble02Icon} color='#4FC3F7' size={14} />}
                 </span>
               )}
             </div>

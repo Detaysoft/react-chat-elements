@@ -1,7 +1,10 @@
 import loremIpsum from 'lorem-ipsum'
 import { MessageType } from '../../src/type'
 import { getRandomColor, photo, token } from './common'
-import { MdOutlineVideoCall } from 'react-icons/md'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { Video01Icon } from '@hugeicons/core-free-icons';
 
 export const photoMessage: MessageType = {
   type: 'photo',
@@ -338,13 +341,14 @@ export const meetingLinkMessage: MessageType = {
       onClickButton(id) {
         console.log(id)
       },
-      Component: () => MdOutlineVideoCall({ size: '25px' }),
+    //   Component: () => MdOutlineVideoCall({ size: '25px' }),
+      Component: () => HugeiconsIcon({ icon: Video01Icon, size: 25 })
     },
     {
       onClickButton(id) {
         console.log(id)
       },
-      Component: () => MdOutlineVideoCall({ size: '25px' }),
+      Component: () => HugeiconsIcon({ icon: Video01Icon, size: 25 })
     },
   ],
   meetingID: String(Math.random()),

@@ -1,6 +1,8 @@
-import { FaSquare } from 'react-icons/fa'
-import { MdOutlineMoreVert } from 'react-icons/md'
 import Dropdown from '../../src/Dropdown/Dropdown'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { MoreVerticalIcon, SquareIcon } from '@hugeicons/core-free-icons';
 
 function DropdownExample() {
   return (
@@ -15,14 +17,14 @@ function DropdownExample() {
           type: 'transparent',
           color: '#929292',
           icon: {
-            component: <MdOutlineMoreVert />,
+            component: <HugeiconsIcon icon={MoreVerticalIcon} />,
             size: 24,
           },
         }}
         items={[
           {
             icon: {
-              component: <FaSquare />,
+              component: <HugeiconsIcon icon={SquareIcon} />,
               float: 'left',
               size: 22,
             },
@@ -30,7 +32,7 @@ function DropdownExample() {
           },
           {
             icon: {
-              component: <FaSquare />,
+              component: <HugeiconsIcon icon={SquareIcon} />,
               float: 'left',
               color: 'purple',
               size: 22,
@@ -39,7 +41,7 @@ function DropdownExample() {
           },
           {
             icon: {
-              component: <FaSquare />,
+              component: <HugeiconsIcon icon={SquareIcon} />,
               float: 'left',
               color: 'yellow',
               size: 22,

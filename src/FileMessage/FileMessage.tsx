@@ -1,8 +1,11 @@
 import React from 'react'
-import { FaFile, FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa'
 import ProgressCircle from '../Circle/Circle'
 import { IFileMessageProps } from '../type'
 import './FileMessage.css'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { File01Icon, CloudDownloadIcon, Alert02Icon } from '@hugeicons/core-free-icons';
 
 const FileMessage: React.FC<IFileMessageProps> = props => {
   var progressOptions = {
@@ -40,18 +43,18 @@ const FileMessage: React.FC<IFileMessageProps> = props => {
     <div className='rce-mbox-file'>
       <button onClick={onClick}>
         <div className='rce-mbox-file--icon'>
-          <FaFile color='#aaa' />
+          <HugeiconsIcon icon={File01Icon} color='#aaa' />
           <div className='rce-mbox-file--size'>{props?.data.size}</div>
         </div>
         <div className='rce-mbox-file--text'>{props.text}</div>
         <div className='rce-mbox-file--buttons'>
           {error && (
             <span className='rce-error-button'>
-              <FaExclamationTriangle color='#ff3d3d' />
+              <HugeiconsIcon icon={Alert02Icon} color='#ff3d3d' />
             </span>
           )}
           {!error && props?.data?.status && !props?.data?.status.download && !props?.data?.status.click && (
-            <FaCloudDownloadAlt color='#aaa' />
+            <HugeiconsIcon icon={CloudDownloadIcon} color='#aaa' />
           )}
           {!error &&
             props?.data?.status &&

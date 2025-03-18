@@ -1,10 +1,12 @@
-import { FaCircle, FaMapMarkerAlt, FaVideo } from 'react-icons/fa'
-import { MdOutlineMoreVert } from 'react-icons/md'
 import Avatar from '../../src/Avatar/Avatar'
 import Button from '../../src/Button/Button'
 import Dropdown from '../../src/Dropdown/Dropdown'
 import Navbar from '../../src/Navbar/Navbar'
 import { photo } from '../utils/common'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { CircleIcon, Location01Icon, Video01Icon, MoreVerticalIcon } from '@hugeicons/core-free-icons';
 
 function NavbarExample() {
   return (
@@ -35,7 +37,7 @@ function NavbarExample() {
                   </span>
                   {
                     <span onClick={() => {}} className='user-location' style={{ fontSize: '10px', color: '#575757' }}>
-                      <FaMapMarkerAlt color='#9e9e9e' />
+                      <HugeiconsIcon icon={Location01Icon} size={10} color='#9e9e9e' />
                       Konum bilinmiyor
                     </span>
                   }
@@ -56,7 +58,7 @@ function NavbarExample() {
                 icon={{
                   component: (
                     <div className='chat-list-navbar-menu-button'>
-                      <FaVideo />
+                      <HugeiconsIcon icon={Video01Icon} />
                     </div>
                   ),
                   size: 24,
@@ -68,7 +70,7 @@ function NavbarExample() {
                     type: 'transparent',
                     color: '#929292',
                     icon: {
-                      component: <MdOutlineMoreVert />,
+                      component: <HugeiconsIcon icon={MoreVerticalIcon} />,
                       size: 24,
                     },
                   }}
@@ -77,7 +79,7 @@ function NavbarExample() {
                   items={[
                     {
                       icon: {
-                        component: <FaCircle />,
+                        component: <HugeiconsIcon icon={CircleIcon} />,
                         float: 'left',
                         color: 'blue',
                         size: 15,
