@@ -1,5 +1,8 @@
-import { FaComments } from 'react-icons/fa'
 import Button from '../../src/Button/Button'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { Chatting01Icon } from '@hugeicons/core-free-icons';
 
 function ButtonExample() {
   return (
@@ -16,7 +19,7 @@ function ButtonExample() {
           type='transparent'
           color='black'
           icon={{
-            component: <FaComments />,
+            component: <HugeiconsIcon icon={Chatting01Icon} />,
             size: 18,
           }}
         />

@@ -4,8 +4,11 @@ import './MessageList.css'
 import MessageBox from '../MessageBox/MessageBox'
 
 import classNames from 'classnames'
-import { FaChevronDown } from 'react-icons/fa'
 import { IMessageListProps, MessageListEvent } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 
 const MessageList: FC<IMessageListProps> = ({
   referance = null,
@@ -172,7 +175,7 @@ const MessageList: FC<IMessageListProps> = ({
       </div>
       {downButton === true && _downButton && toBottomHeight !== '100%' && (
         <div className='rce-mlist-down-button' onClick={toBottom}>
-          <FaChevronDown />
+          <HugeiconsIcon icon={ArrowDown01Icon} />
           {props.downButtonBadge !== undefined ? (
             <span className='rce-mlist-down-button--badge'>{props.downButtonBadge.toString()}</span>
           ) : null}

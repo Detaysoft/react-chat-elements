@@ -2,9 +2,12 @@ import React from 'react'
 
 import './PhotoMessage.css'
 
-import { FaCloudDownloadAlt, FaExclamationTriangle } from 'react-icons/fa'
 import ProgressCircle from '../Circle/Circle'
 import { IPhotoMessageProps, IProgressOptions } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { CloudDownloadIcon, Alert02Icon } from '@hugeicons/core-free-icons';
 
 const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
   var progressOptions = {
@@ -53,7 +56,7 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
         {error && (
           <div className='rce-mbox-photo--img__block'>
             <span className='rce-mbox-photo--img__block-item rce-mbox-photo--error'>
-              <FaExclamationTriangle />
+              <HugeiconsIcon icon={Alert02Icon} />
             </span>
           </div>
         )}
@@ -61,7 +64,7 @@ const PhotoMessage: React.FC<IPhotoMessageProps> = props => {
           <div className='rce-mbox-photo--img__block'>
             {!props?.data?.status.click && (
               <button onClick={props.onDownload} className='rce-mbox-photo--img__block-item rce-mbox-photo--download'>
-                <FaCloudDownloadAlt />
+                <HugeiconsIcon icon={CloudDownloadIcon} />
               </button>
             )}
             {typeof props?.data?.status.loading === 'number' && props?.data?.status.loading !== 0 && (

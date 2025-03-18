@@ -7,9 +7,17 @@ import { format } from 'timeago.js'
 
 import classNames from 'classnames'
 
-import { MdVideoCall, MdVolumeOff, MdVolumeUp } from 'react-icons/md'
 import { IChatItemProps } from '../type'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+import {
+    Video01Icon,
+    VolumeOffIcon,
+    VolumeHighIcon,
+    ArrowDown01Icon,
+    ArrowUp01Icon,
+    // @ts-ignore
+} from '@hugeicons/core-free-icons';
 
 const ChatItem: React.FC<IChatItemProps> = ({
   avatarFlexible = false,
@@ -119,7 +127,7 @@ const ChatItem: React.FC<IChatItemProps> = ({
                     />
                     {props.subList && props.subList.length > 0 && (
                         <button className='rce-citem-expand-button' onClick={(e) => onExpandItem(e, props.id)}>
-                            {props.expanded ? <FaArrowUp /> : <FaArrowDown />}
+                            {props.expanded ? <HugeiconsIcon icon={ArrowUp01Icon} /> : <HugeiconsIcon icon={ArrowDown01Icon} />}
                         </button>
                     )}
                 </div>,
@@ -134,20 +142,20 @@ const ChatItem: React.FC<IChatItemProps> = ({
                     <div className='rce-citem-body--bottom-tools' onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
                         {props.showMute && (
                         <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickMute}>
-                            {props.muted === true && <MdVolumeOff />}
-                            {props.muted === false && <MdVolumeUp />}
+                            {props.muted === true && <HugeiconsIcon icon={VolumeOffIcon} />}
+                            {props.muted === false && <HugeiconsIcon icon={VolumeHighIcon} />}
                         </div>
                         )}
                         {props.showVideoCall && (
                         <div className='rce-citem-body--bottom-tools-item' onClick={props.onClickVideoCall}>
-                            <MdVideoCall />
+                            <HugeiconsIcon icon={Video01Icon} />
                         </div>
                         )}
                     </div>
                     <div className='rce-citem-body--bottom-tools-item-hidden-hover'>
                         {props.showMute && props.muted && (
                         <div className='rce-citem-body--bottom-tools-item'>
-                            <MdVolumeOff />
+                            <HugeiconsIcon icon={VolumeOffIcon} />
                         </div>
                         )}
                     </div>

@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "es6",
     "target": "es5",
     "jsx": "react-jsxdev",
     "allowJs": true,

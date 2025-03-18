@@ -1,14 +1,16 @@
 import { FC } from 'react'
 import './MeetingItem.css'
 
-import { MdVideoCall, MdLink, MdCall } from 'react-icons/md'
-
 import Avatar from '../Avatar/Avatar'
 
 import { format } from 'timeago.js'
 
 import classNames from 'classnames'
 import { IMeetingItemProps } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { Video01Icon, Link05Icon, Call02Icon } from '@hugeicons/core-free-icons';
 
 const MeetingItem: FC<IMeetingItemProps> = ({
   subjectLimit = 60,
@@ -40,7 +42,7 @@ const MeetingItem: FC<IMeetingItemProps> = ({
         <div className='rce-mtitem-top'>
           <div className='rce-mtitem-subject'>{subject}</div>
           <div className='rce-mtitem-share' onClick={onShareClick}>
-            <MdLink />
+            <HugeiconsIcon icon={Link05Icon} />
           </div>
         </div>
         <div className='rce-mtitem-body'>
@@ -91,11 +93,11 @@ const MeetingItem: FC<IMeetingItemProps> = ({
           <div className='rce-mtitem-body--functions'>
             {props.closable && (
               <div className='rce-mtitem-closable' onClick={props.onCloseClick}>
-                <MdCall />
+                <HugeiconsIcon icon={Call02Icon} />
               </div>
             )}
             <div className='rce-mtitem-button' onClick={onMeetingClick}>
-              <MdVideoCall />
+              <HugeiconsIcon icon={Video01Icon} />
             </div>
           </div>
         </div>

@@ -1,10 +1,13 @@
 import Identicon from 'identicon.js'
 import loremIpsum from 'lorem-ipsum'
 import React, { useEffect, useState } from 'react'
-import { BsListTask } from 'react-icons/bs'
 import ChatList from '../../src/ChatList/ChatList'
 import SideBar from '../../src/SideBar/SideBar'
 import { IChatItemProps } from '../../src/type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { LeftToRightListBulletIcon } from '@hugeicons/core-free-icons';
 
 function Test(params: any) {
   return (
@@ -25,7 +28,7 @@ function Test(params: any) {
       >
         {Math.ceil(Math.random() * 9) + 1}
       </span>
-      <BsListTask />
+      <HugeiconsIcon icon={LeftToRightListBulletIcon} size={16} />
     </div>
   )
 }

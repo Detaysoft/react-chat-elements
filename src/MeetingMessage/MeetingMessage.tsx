@@ -1,11 +1,6 @@
 import React, { FC, useState } from 'react'
 import './MeetingMessage.css'
 
-import { FaCalendar, FaCaretDown, FaCaretRight } from 'react-icons/fa'
-import { HiOutlineVideoCamera } from 'react-icons/hi'
-import { IoMdChatboxes } from 'react-icons/io'
-import { MdMoreHoriz } from 'react-icons/md'
-
 import { format } from 'timeago.js'
 
 import Avatar from '../Avatar/Avatar'
@@ -13,6 +8,10 @@ import Dropdown from '../Dropdown/Dropdown'
 
 import classNames from 'classnames'
 import { IMeetingMessageProps, MeetingMessageEvent } from '../type'
+
+import { HugeiconsIcon } from '@hugeicons/react';
+// @ts-ignore
+import { Calendar04Icon, ArrowDown01Icon, ArrowRight01Icon, Video01Icon, MessageMultiple01Icon, MoreHorizontalIcon } from '@hugeicons/core-free-icons';
 
 const MeetingMessage: FC<IMeetingMessageProps> = ({
   date,
@@ -53,7 +52,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
         <div className='rce-mtmg-subject'>{subject || 'Unknown Meeting'}</div>
         <div className='rce-mtmg-body' onClick={onClick}>
           <div className='rce-mtmg-item'>
-            <FaCalendar />
+            <HugeiconsIcon icon={Calendar04Icon} />
             <div className='rce-mtmg-content'>
               <span className='rce-mtmg-title'>{title}</span>
               <span className='rce-mtmg-date'>{dateText}</span>
@@ -68,7 +67,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                 buttonProps={{
                   className: 'rce-mtmg-right-icon',
                   icon: {
-                    component: <MdMoreHoriz />,
+                    component: <HugeiconsIcon icon={MoreHorizontalIcon} />,
                     size: 24,
                   },
                 }}
@@ -81,12 +80,12 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
         <div className='rce-mtmg-body-bottom' onClick={toggleClick}>
           {toogle === true ? (
             <div className='rce-mtmg-bottom--tptitle'>
-              <FaCaretDown />
+              <HugeiconsIcon icon={ArrowDown01Icon} />
               <span>{collapseTitle}</span>
             </div>
           ) : (
             <div className='rce-mtmg-body-bottom--bttitle'>
-              <FaCaretRight />
+              <HugeiconsIcon icon={ArrowRight01Icon} />
               <span>
                 {participants
                   ?.slice(0, PARTICIPANT_LIMIT)
@@ -108,7 +107,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                   {!x.event && (
                     <div className='rce-mitem'>
                       <div className={classNames('rce-mitem avatar', { 'rce-mitem no-avatar': !x.avatar })}>
-                        {x.avatar ? <Avatar src={x.avatar} /> : <IoMdChatboxes />}
+                        {x.avatar ? <Avatar src={x.avatar} /> : <HugeiconsIcon icon={MessageMultiple01Icon} />}
                       </div>
                       <div className='rce-mitem-body'>
                         <div className='rce-mitem-body--top'>
@@ -132,7 +131,7 @@ const MeetingMessage: FC<IMeetingMessageProps> = ({
                     <div className='rce-mitem-event'>
                       <div className='rce-mitem-bottom-body'>
                         <div className='rce-mitem-body avatar'>
-                          <HiOutlineVideoCamera />
+                          <HugeiconsIcon icon={Video01Icon} />
                         </div>
                         <div className='rce-mitem-bottom-body-top'>
                           {x.event.title}
