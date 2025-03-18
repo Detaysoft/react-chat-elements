@@ -114,3 +114,13 @@ button {
 .rce-mlist {
   padding: 1rem 0;
 }
+
+.chat-item-sub-text {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    column-gap: 3px;
+    margin-top: 3px;
+    opacity: 0.7;
+    color: teal;
+}

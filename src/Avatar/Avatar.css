@@ -90,3 +90,15 @@
   width: 35px;
   border-radius: 20px;
 }
+
+.rce-mini-avatar-container {
+    position: absolute;
+    right: 5px;
+    bottom: 2.5px;
+}
+
+.rce-citem-avatar .rce-mini-avatar-container img {
+    width: 35px !important;
+    height: 35px !important;
+    border: 2px solid #FFF !important;
+}

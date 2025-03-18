@@ -58,22 +58,32 @@ const Avatar: React.FC<IAvatarProps> = ({ type = 'default', size = 'default', la
   }
 
   return (
-    // @ts-ignore
-    <div className={classNames('rce-avatar-container', type, size, props.className)}>
-      {props.letterItem ? (
-        <div className='rce-avatar-letter-background' style={{ backgroundColor: stringToColour(props.letterItem.id) }}>
-          <span className='rce-avatar-letter'>{props.letterItem.letter}</span>
+    <>
+        {/* @ts-ignore */}
+        <div className={classNames('rce-avatar-container', type, size, props.className)}>
+            {props.letterItem ? (
+                <div className='rce-avatar-letter-background' style={{ backgroundColor: stringToColour(props.letterItem.id) }}>
+                    <span className='rce-avatar-letter'>{props.letterItem.letter}</span>
+                </div>
+            ) : (
+                <img
+                    alt={props.alt}
+                    src={src}
+                    onError={props.onError}
+                    className={classNames('rce-avatar', { 'rce-avatar-lazy': isLazyImage })}
+                />
+            )}
+            {props.sideElement}
         </div>
-      ) : (
-        <img
-          alt={props.alt}
-          src={src}
-          onError={props.onError}
-          className={classNames('rce-avatar', { 'rce-avatar-lazy': isLazyImage })}
-        />
-      )}
-      {props.sideElement}
-    </div>
+
+        {props.miniImage && (
+            <div className='rce-mini-avatar-container'>
+                <img
+                    src={props.miniImage}
+                />
+            </div>
+        )}
+    </>
   )
 }
 export default Avatar

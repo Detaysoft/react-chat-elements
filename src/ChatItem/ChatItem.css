@@ -186,6 +186,10 @@
   height: 18px;
 }
 
+.rce-citem-body--subinfo {
+  display: flex;
+}
+
 .rce-container-citem.subitem .rce-citem {
   height: 40px;
   padding-left: 30px;
